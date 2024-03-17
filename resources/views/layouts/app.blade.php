@@ -24,7 +24,7 @@
 <body>
     <header>
         <nav class="navbar navbar-dark navbar-expand-sm bg-primary p-0">
-            <a class="navbar-brand col-md-2" href="#">
+            <a class="navbar-brand pl-1" href="#">
                 <img src="{{ asset('img/logo-sistema-compras-navbar.png') }}" alt="logo" width="130">
             </a>
             <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse"
@@ -63,7 +63,7 @@
     </header>
     <div class="container-fluid body-content">
         <div class="row">
-            <nav class="sidebar col-md-2 bg-light hide">
+            <nav class="sidebar bg-light">
                 <div class="sidebar-sticky">
                     @include('layouts.menus.menu-main')
                 </div>
