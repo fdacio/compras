@@ -23,33 +23,37 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-dark navbar-expand-sm bg-primary p-0">
-            <a class="navbar-brand pl-1" href="#">
-                <img src="{{ asset('img/logo-sistema-compras-navbar.png') }}" alt="logo" width="130">
-            </a>
-            <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse">
-                @auth
-                    <ul class="nav navbar-nav px-3 ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user-circle mr-2  text-white" style="font-size: 24px"></i>
-                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('perfil')}}">Perfil</a>
-                                <a class="dropdown-item" href="{{ route('edit.password') }}">Alterar Senha</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}">Sair</a>
-                            </div>
+        <nav class="navbar navbar-dark navbar-expand-sm bg-primary p-0 ">
+            <div class="col-md-2 col-lg-2 p-0">
+                <a class="navbar-brand pl-1 w-100" href="{{ route('home') }}">
+                    <img src="{{ asset('img/logo-sistema-compras-navbar.png') }}" alt="logo" width="130">
+                </a>
+                <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="col-md-10 col-lg-10 p-0">
+                <div class="collapse navbar-collapse">
+                    @auth
+                        <ul class="nav navbar-nav px-3 ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user-circle mr-2  text-white" style="font-size: 24px"></i>
+                                    <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('perfil')}}">Perfil</a>
+                                    <a class="dropdown-item" href="{{ route('edit.password') }}">Alterar Senha</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}">Sair</a>
+                                </div>
 
-                        </li>
-                    </ul>
-                @endauth
+                            </li>
+                        </ul>
+                    @endauth
+                </div>
             </div>
         </nav>
 
@@ -58,17 +62,16 @@
                 @include('layouts.menus.menu-main')
             </nav>
         </div>
-        </div>
-
     </header>
+
     <div class="container-fluid body-content">
         <div class="row">
-            <nav class="sidebar bg-light">
+            <nav class="sidebar bg-light col-md-2 col-lg-2">
                 <div class="sidebar-sticky">
                     @include('layouts.menus.menu-main')
                 </div>
             </nav>
-            <main role="main" class="col-md-10 ml-sm-auto col-lg-10">
+            <main role="main" class="col-md-10 col-lg-10 ml-sm-auto">
                 @yield('content')
             </main>
         </div>

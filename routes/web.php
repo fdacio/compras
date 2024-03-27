@@ -25,3 +25,8 @@ Route::put('/user-password-update', 'UserController@passwordUpdate')->name('user
 
 Route::resource('user', 'UserController');
 Route::resource('tipos-usuarios', 'TiposUsuariosController');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('centros-custos', 'CentrosCustosController');
+    Route::resource('solicitantes', 'SolicitantesController');
+});
