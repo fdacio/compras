@@ -156,4 +156,7 @@ footer {
     .navbar-brand {
         width: auto;
     }
+    h1, h2, h3 {
+        font-size: medium;
+    }
 }

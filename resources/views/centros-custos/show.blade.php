@@ -4,7 +4,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h2>Visualizar Centro de Custo</h2>
+            <h3>Visualizar Centro de Custo</h3>
         </div>
         <div class="card-body">
             <table class="table table-striped table-hover">

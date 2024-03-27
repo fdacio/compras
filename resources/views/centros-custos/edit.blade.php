@@ -4,7 +4,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-            <h2>Alterar Cadastro de Centro de Custo</h2>
+        <h3>Alterar Centro de Custo</h3>
         @if (count($errors) > 0)
         <div class="alert alert-danger alert-dismissable ''">
             <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
