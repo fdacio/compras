@@ -25,14 +25,16 @@
     <header>
         <nav class="navbar navbar-dark navbar-expand-sm bg-primary p-0 ">
             <div class="col-md-2 col-lg-2 p-0">
-                <a class="navbar-brand pl-1 w-100" href="{{ route('home') }}">
-                    <img src="{{ asset('img/logo-sistema-compras-navbar.png') }}" alt="logo" width="130">
-                </a>
-                <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="d-flex p-0">
+                    <a class="navbar-brand pl-1 w-100 mr-0" href="{{ route('home') }}">
+                        <img src="{{ asset('img/logo-sistema-compras-navbar.png') }}" alt="logo" width="130">
+                    </a>
+                    <button class="navbar-toggler hidden-lg-up float-sx-right" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
             </div>
             <div class="col-md-10 col-lg-10 p-0">
                 <div class="collapse navbar-collapse">
