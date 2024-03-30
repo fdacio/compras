@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Compras'),
 
     /*
     |--------------------------------------------------------------------------
@@ -182,6 +182,8 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
 
+        Canducci\Cep\Providers\CepServiceProvider::class,
+
     ],
 
     /*
@@ -232,7 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Formatter' => App\Helpers\Formatter::class
     ],
 
 ];

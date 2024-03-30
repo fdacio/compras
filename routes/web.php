@@ -29,4 +29,9 @@ Route::resource('tipos-usuarios', 'TiposUsuariosController');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('centros-custos', 'CentrosCustosController');
     Route::resource('solicitantes', 'SolicitantesController');
+    Route::resource('empresas', 'EmpresasController', ['parameters' => ['empresas' => 'empresa']]);
+    Route::get('empresas/pessoa/fisica/create', 'EmpresasController@createPessoaFisica')->name('empresas.pessoa.fisica.create');
+    Route::post('empresas/pessoa/fisica/store', 'EmpresasController@storePessoaFisica')->name('empresas.pessoa.fisica.store');
+    Route::match(['put', 'patch'], 'empresas/pessoa/fisica/{empresa}/update', 'EmpresasController@updatePessoaFisica')->name('empresas.pessoa.fisica.update');
+
 });

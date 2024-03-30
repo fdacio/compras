@@ -14,7 +14,7 @@
         <ul class="navbar-nav sub-menu collapse  p-1" id="cadastros-gerais">
             <li class="nav-item"><a href="{{ route('centros-custos.index') }}" class="nav-link">Centros de Custos</a></li>
             <li class="nav-item"><a href="{{ route('solicitantes.index') }}" class="nav-link">Solicitantes</a></li>
-            <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Empresas</a></li>
+            <li class="nav-item"><a href="{{ route('empresas.index') }}" class="nav-link">Empresas</a></li>
             <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Frotas</a></li>
             <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Veículos</a></li>
             <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Produtos</a></li>

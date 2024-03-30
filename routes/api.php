@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,7 +11,9 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('{uf}/cidades', 'Api\CidadesController')->name('api.cidades.show');
+Route::get('cep/{numero}', 'Api\CepController@getDados')->name('api.cep.show');
+Route::get('cnpj/{cnpj}', 'Api\PessoasJuridicasController@getDados')->name('api.pessoasjuridicas.cnpj');
+Route::get('cpf/{cpf}', 'Api\PessoasFisicasController@getDados')->name('api.pessoasfisicas.cpf');
+Route::get('empresas/{cnpjcpf}', 'Api\EmpresasController@empresa')->name('api.empresas.cnpjcpf');
+Route::get('empresas', 'Api\EmpreasController@empresas')->name('api.empresas');
