@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CentroCusto;
+use App\Frota;
 use App\Http\Requests\VeiculoRequest;
 use App\Veiculo;
 use Exception;
@@ -32,7 +34,10 @@ class VeiculosController extends Controller
      */
     public function create()
     {
-        return view('veiculos.create');
+        $frotas = Frota::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $empresas = [];
+        $centrosCustos = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        return view('veiculos.create', compact('frotas', 'empresas', 'centrosCustos'));
     }
 
     /**
@@ -66,7 +71,10 @@ class VeiculosController extends Controller
      */
     public function edit(Veiculo $veiculo)
     {
-        return view('veiculos.edit', compact('veiculo'));
+        $frotas = Frota::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $empresas = [];
+        $centrosCustos = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        return view('veiculos.edit', compact('veiculo', 'frotas', 'empresas', 'centrosCustos'));
     }
 
     /**
