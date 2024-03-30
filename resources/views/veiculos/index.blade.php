@@ -22,9 +22,9 @@
         <form action="{{ route('veiculos.index') }}" method="get" class="form-filter">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <label for="nome">Nome</label>
+                    <label for="placa">Placa</label>
                     <div class="input-group">
-                        <input type="text" name="nome" id="nome" class="form-control" value="{{ request('nome') }}" />
+                        <input type="text" name="placa" id="placa" class="form-control placa" value="{{ request('placa') }}" />
                         <div class="input-group-append">
                             <button class="btn btn-success"><i class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
                         </div>

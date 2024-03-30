@@ -17,10 +17,10 @@ class VeiculosController extends Controller
      */
     public function index()
     {
-        $veiculos = Veiculo::orderBy('nome', 'asc');
-        $nome = request()->get('nome');
-        if (!empty($nome)) {
-            $veiculos =  $veiculos->where('nome', 'LIKE', '%' . $nome . '%');
+        $veiculos = Veiculo::orderBy('placa', 'asc');
+        $placa = request()->get('placa');
+        if (!empty($placa)) {
+            $veiculos =  $veiculos->where('placa', $placa);
         }
         $veiculos = $veiculos->paginate(10);
         return view('veiculos.index', compact('veiculos'));
