@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Frotas')
+@section('title', 'Veículos')
 
 @section('content')
 <div class="card mb-2">
     <div class="card-header">
-        <h3>Frotas</h3>
+        <h3>Veículos</h3>
         @if(session('success'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
@@ -19,7 +19,7 @@
         @endif
     </div>
     <div class="card-body">
-        <form action="{{ route('frotas.index') }}" method="get" class="form-filter">
+        <form action="{{ route('veiculos.index') }}" method="get" class="form-filter">
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="nome">Nome</label>
@@ -35,7 +35,7 @@
     </div>
     <div class="card-footer">
         <div class="text-right mb-2">
-            <a href="{{ route('frotas.create') }}" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Cadastrar</a>
+            <a href="{{ route('veiculos.create') }}" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Cadastrar</a>
         </div>
     </div>
 </div>
@@ -81,12 +81,12 @@
 </section>
 
 <section class="text-center">
-    {{ $frotas->appends(request()->query())->links() }}
-    <h6><b>{{ $frotas->total() }}</b> {{ $frotas->total() == 1 ? 'registro' : 'registros' }} no total</h6>
+    {{ $veiculos->appends(request()->query())->links() }}
+    <h6><b>{{ $veiculos->total() }}</b> {{ $veiculos->total() == 1 ? 'registro' : 'registros' }} no total</h6>
 </section>
 @endsection
 
-@if($frotas->total() > 0)
+@if($veiculos->total() > 0)
 @section('scripts')
 {!! Html::script('js/modal-excluir.js') !!}
 @endsection

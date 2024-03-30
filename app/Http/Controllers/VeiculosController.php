@@ -7,7 +7,6 @@ use App\Frota;
 use App\Http\Requests\VeiculoRequest;
 use App\Veiculo;
 use Exception;
-use Illuminate\Http\Request;
 
 class VeiculosController extends Controller
 {
