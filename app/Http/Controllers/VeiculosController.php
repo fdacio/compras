@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\VeiculoRequest;
+use App\Veiculo;
+use Exception;
+use Illuminate\Http\Request;
+
+class VeiculosController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $veiculos = Veiculo::orderBy('nome', 'asc');
+        $nome = request()->get('nome');
+        if (!empty($nome)) {
+            $veiculos =  $veiculos->where('nome', 'LIKE', '%' . $nome . '%');
+        }
+        $veiculos = $veiculos->paginate(10);
+        return view('veiculos.index', compact('veiculos'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('veiculos.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  App\Http\Requests\VeiculoRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(VeiculoRequest $request)
+    {
+        Veiculo::create($request->all());
+        return redirect()->route('veiculos.index')->with('success', 'Veículo cadastrado com sucesso.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Veiculo $veiculo
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Veiculo $veiculo)
+    {
+        return view('veiculos.show', compact('veiculo'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Veiculo $veiculo)
+    {
+        return view('veiculos.edit', compact('veiculo'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(VeiculoRequest $request, Veiculo $veiculo)
+    {
+        $veiculo->update($request->all());
+        return redirect()->route('veiculos.index')->with('success', 'Veículo alterado com sucesso.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Veiculo $veiculo)
+    {
+        try {
+            $veiculo->delete();
+            return redirect()->route('veiculos.index')->with('success', 'Cadastro de Veículo excluído com sucesso.');
+        } catch (Exception $e) {
+            return redirect()->route('veiculos.index')->with('danger', 'Não é possível excluir Veículo. Há vínculos');
+        }
+    }
+}
