@@ -15,11 +15,9 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_marca');
             $table->unsignedBigInteger('id_unidade');
-            $table->string('descricao', 150);
+            $table->string('nome', 150);
             $table->decimal('valor_unitario', 15, 2);
-            $table->foreign('id_marca')->references('id')->on('marcas');
             $table->foreign('id_unidade')->references('id')->on('unidades');
             $table->timestamps();
         });

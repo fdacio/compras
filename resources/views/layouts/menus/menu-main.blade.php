@@ -17,7 +17,7 @@
             <li class="nav-item"><a href="{{ route('empresas.index') }}" class="nav-link">Empresas</a></li>
             <li class="nav-item"><a href="{{ route('frotas.index') }}" class="nav-link">Frotas</a></li>
             <li class="nav-item"><a href="{{ route('veiculos.index') }}" class="nav-link">Veículos</a></li>
-            <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Produtos</a></li>
+            <li class="nav-item"><a href="{{ route('produtos.index') }}" class="nav-link">Produtos</a></li>
         </ul>
     </li>
 

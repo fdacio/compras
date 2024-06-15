@@ -35,4 +35,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('empresas/pessoa/fisica/store', 'EmpresasController@storePessoaFisica')->name('empresas.pessoa.fisica.store');
     Route::match(['put', 'patch'], 'empresas/pessoa/fisica/{empresa}/update', 'EmpresasController@updatePessoaFisica')->name('empresas.pessoa.fisica.update');
     Route::resource('veiculos', 'VeiculosController');
+    Route::resource('produtos', 'ProdutosController');
+    Route::get('produtos/{produto}/duplicar', 'ProdutosController@duplicate')->name('produtos.duplicate');
 });

@@ -23,7 +23,7 @@ $('.btn-cnpj').on('click', function() {
     cnpj = cnpj.replaceAll('.', '').replace('-', '').replace('/', '');
     var url = rota.cnpj.replace('_cnpj_', cnpj);
     $.get(url, function(result) {
-        if (result.success) {
+        if (result.pessoa) {
             var pessoa = result.pessoa;
             if (pessoa.length == 0) return;
             $('#razao-social').val(pessoa.nome);

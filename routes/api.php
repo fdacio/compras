@@ -17,3 +17,4 @@ Route::get('cnpj/{cnpj}', 'Api\PessoasJuridicasController@getDados')->name('api.
 Route::get('cpf/{cpf}', 'Api\PessoasFisicasController@getDados')->name('api.pessoasfisicas.cpf');
 Route::get('empresas/{cnpjcpf}', 'Api\EmpresasController@empresa')->name('api.empresas.cnpjcpf');
 Route::get('empresas', 'Api\EmpreasController@empresas')->name('api.empresas');
+Route::post('unidades/store', 'Api\UnidadesController@store')->name('api.unidades.store');
