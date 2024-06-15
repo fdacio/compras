@@ -27,14 +27,14 @@
                         <label for="id">Código</label>
                         <input type="text" name="id" id="id" class="form-control" value="{{ request('id') }}" />
                     </div>
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-10">
                         <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" class="form-control" value="{{ request('nome') }}" />
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label>&nbsp;</label>
-                        <button class="btn btn-success form-control"><i
-                                class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
+                        <div class="input-group">
+                            <input type="text" name="nome" id="nome" class="form-control" value="{{ request('nome') }}" />
+                            <div class="input-group-append">
+                                <button class="btn btn-success"><i class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

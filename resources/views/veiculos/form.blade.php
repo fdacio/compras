@@ -7,19 +7,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-                <label for="id_frota">Frota<small class="text-danger p-2">*</small></label>
-                {!! Form::select('id_frota', $frotas, isset($veiculo) ? $veiculo->id_frota : old('id_frota'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id_frota']) !!}
-            </div>
-        </div>        
-        <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="id_empresa">Empresa<small class="text-danger p-2">*</small></label>
                 {!! Form::select('id_empresa', $empresas, isset($veiculo) ? $veiculo->id_empresa : old('id_empresa'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id_empresa']) !!}
             </div>
         </div>        
-        <div class="col-xs-4 col-sm-4 col-md-4">
+
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <label for="id_frota">Frota<small class="text-danger p-2">*</small></label>
+                {!! Form::select('id_frota', $frotas, isset($veiculo) ? $veiculo->id_frota : old('id_frota'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id_frota']) !!}
+            </div>
+        </div>        
+        <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <label for="id_centro_custo">Centro de Custo<small class="text-danger p-2">*</small></label>
                 {!! Form::select('id_centro_custo', $centrosCustos, isset($veiculo) ? $veiculo->id_centro_custo : old('id_centro_custo'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id_centro_custo']) !!}

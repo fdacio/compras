@@ -44,10 +44,11 @@
     <table class="table table-striped table-hover">
         <thead>
             <th class="col-md-1">ID</th>
+            <th class="col-md-3">Empresa</th>
+            <th class="col-md-3">Frota</th>
+            <th class="col-md-3">Centro de Custo</th>
             <th class="col-md-4">Placa</th>
-            <th class="col-md-2">UF</th>
-            <th class="col-md-2">Cor</th>
-            <th class="col-md-2">Ano</th>
+            <th class="col-md-2">Modelo</th>
             <th class="col-md-1"></th>
         </thead>
         <tbody>
@@ -59,19 +60,19 @@
                 @foreach ($veiculos as $veiculo)
                     <tr>
                         <td>{{ $veiculo->id }}</td>
+                        <td>{{ $veiculo->empresa->pessoa->nome_razao_social }}</td>
+                        <td>{{ $veiculo->frota->nome }}</td>
+                        <td>{{ $veiculo->centroCusto->nome }}</td>
                         <td>{{ $veiculo->placa }}</td>
-                        <td>{{ $veiculo->uf }}</td>
-                        <td>{{ $veiculo->cor }}</td>
-                        <td>{{ $veiculo->ano }}</td>
+                        <td>{{ $veiculo->modelo }}</td>
                         <td class="text-right text-nowrap">
-                            {!! Form::button('<i class="fa fa-edit"></i>', [
-                                'class' => 'btn btn-primary btn-sm btn-edit-veiculo',
-                                'data-id' => $veiculo->id,
-                            ]) !!}
-                            {!! Form::button('<i class="fa fa-trash"></i>', [
-                                'class' => 'btn btn-danger btn-sm btn-delete-veiculo',
-                                'data-id' => $veiculo->id,
-                            ]) !!}
+                            <a href="{{ route('veiculos.show', $veiculo->id) }}" class="btn btn-info" title="Visualizar"><i class="fa fa-eye"></i></a>
+                            <a href="{{ route('veiculos.edit', $veiculo->id) }}" class="btn btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
+                            @if($veiculos->total() > 0)
+                            {!! Form::open(['id' => 'form_excluir_' . $veiculo->id, 'method' => 'delete', 'route' => ['veiculos.destroy', $veiculo->id], 'style'=>'display: inline']) !!}
+                            {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger modal-excluir']) !!}
+                            {!! Form::close() !!}
+                            @endif
                         </td>
                     </tr>
                 @endforeach

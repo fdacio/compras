@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\CentroCusto;
+use App\Empresa;
 use App\Frota;
 use App\Http\Requests\VeiculoRequest;
 use App\Veiculo;
 use Exception;
+
+use function Psy\debug;
 
 class VeiculosController extends Controller
 {
@@ -34,7 +37,9 @@ class VeiculosController extends Controller
     public function create()
     {
         $frotas = Frota::orderBy('nome', 'asc')->pluck('nome', 'id');
-        $empresas = [];
+        $empresas = Empresa::get()->map(function ($empresa) {
+            return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
+        })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $centrosCustos = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         return view('veiculos.create', compact('frotas', 'empresas', 'centrosCustos'));
     }
@@ -71,7 +76,9 @@ class VeiculosController extends Controller
     public function edit(Veiculo $veiculo)
     {
         $frotas = Frota::orderBy('nome', 'asc')->pluck('nome', 'id');
-        $empresas = [];
+        $empresas = Empresa::get()->map(function ($empresa) {
+            return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
+        })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $centrosCustos = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         return view('veiculos.edit', compact('veiculo', 'frotas', 'empresas', 'centrosCustos'));
     }
