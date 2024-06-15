@@ -16,9 +16,7 @@ class CreateEmpresasTable extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_pessoa');
-            $table->unsignedBigInteger('id_proprietario');
             $table->foreign('id_pessoa')->references('id')->on('pessoas');
-            $table->foreign('id_proprietario')->references('id')->on('pessoas_fisicas');
             $table->timestamps();
         });
     }

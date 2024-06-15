@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\EmpresaCnpj;
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmpresaRequest extends FormRequest
+class EmpresaPessoaJuridicaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

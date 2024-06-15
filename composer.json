@@ -10,7 +10,8 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "~5.0",
-        "canducci/cep": "^3.1"
+        "canducci/cep": "^3.1",
+        "geekcom/validator-docs": "^3.4"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

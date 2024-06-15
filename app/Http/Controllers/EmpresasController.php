@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Empresa;
+use App\Http\Requests\EmpresaPessoaFisicaRequest;
+use App\Http\Requests\EmpresaPessoaJuridicaRequest;
 use App\Http\Requests\EmpresaRequest;
 use App\Municipio;
 use App\Pessoa;
@@ -98,7 +100,7 @@ class EmpresasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmpresaRequest $request)
+    public function store(EmpresaPessoaJuridicaRequest $request)
     {
         try {
 
@@ -170,7 +172,7 @@ class EmpresasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmpresaRequest $request, Empresa $empresa)
+    public function update(EmpresaPessoaJuridicaRequest $request, Empresa $empresa)
     {
         $empresa->update($request->all());
         $empresa->pessoa()->update($request->all());
@@ -201,7 +203,7 @@ class EmpresasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storePessoaFisica(EmpresaRequest $request)
+    public function storePessoaFisica(EmpresaPessoaFisicaRequest $request)
     {
         try {
 
@@ -229,7 +231,7 @@ class EmpresasController extends Controller
         }
     }
 
-    public function updatePessoaFisica(EmpresaRequest $request, Empresa $empresa)
+    public function updatePessoaFisica(EmpresaPessoaFisicaRequest $request, Empresa $empresa)
     {
         $empresa->update($request->all());
         $empresa->pessoa->update($request->all());

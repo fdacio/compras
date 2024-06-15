@@ -63,7 +63,7 @@
             </table>
         </div>
         <div class="card-footer">
-            <a href="{{ route('.edit', $empresa->id) }}" class="btn btn-primary" title="Editar">Editar</a>
+            <a href="{{ route('empresas.edit', $empresa->id) }}" class="btn btn-primary" title="Editar">Editar</a>
             <a class="btn btn-danger" href="{{ route('empresas.index') }}">Cancelar</a>
         </div>
     </div>

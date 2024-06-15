@@ -17,7 +17,7 @@ class CreatePessoasJuridicasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_pessoa');
             $table->string('cnpj', 20);
-            $table->string('cgf', 20);
+            $table->string('cgf', 20)->nullable();
             $table->string('razao_social', 80);
             $table->string('nome_fantasia', 80);
             $table->foreign('id_pessoa')->references('id')->on('pessoas');
