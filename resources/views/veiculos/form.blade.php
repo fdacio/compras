@@ -33,13 +33,10 @@
     <div class="row">
         <div class="col-xs-3 col-sm-3 col-md-3">
             <div class="form-group">
-                <label for="tipo">Tipo<small class="text-danger p-2">*</small></label>
-                {!! Form::text('tipo', isset($veiculo->tipo) ? $veiculo->placa : old('tipo'), [
-                    'class' => 'form-control',
-                    'id' => 'tipo',
-                ]) !!}
+                <label for="id_tipo_veiculo">Tipo<small class="text-danger p-2">*</small></label>
+                {!! Form::select('id_tipo_veiculo', $tiposVeiculos, isset($veiculo) ? $veiculo->id_tipo_veiculo : old('id_tipo_veiculo'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id_tipo_veiculo']) !!}
             </div>
-        </div>
+        </div>  
         <div class="col-xs-3 col-sm-3 col-md-3">
             <div class="form-group">
                 <label for="marca">Marca<small class="text-danger p-2">*</small></label>

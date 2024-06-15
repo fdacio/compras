@@ -6,6 +6,7 @@ use App\CentroCusto;
 use App\Empresa;
 use App\Frota;
 use App\Http\Requests\VeiculoRequest;
+use App\TipoVeiculo;
 use App\Veiculo;
 use Exception;
 
@@ -41,7 +42,8 @@ class VeiculosController extends Controller
             return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
         })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $centrosCustos = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-        return view('veiculos.create', compact('frotas', 'empresas', 'centrosCustos'));
+        $tiposVeiculos = TipoVeiculo::orderBy('nome', 'asc')->pluck('nome', 'id');
+        return view('veiculos.create', compact('frotas', 'empresas', 'centrosCustos', 'tiposVeiculos'));
     }
 
     /**
@@ -80,7 +82,8 @@ class VeiculosController extends Controller
             return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
         })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $centrosCustos = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-        return view('veiculos.edit', compact('veiculo', 'frotas', 'empresas', 'centrosCustos'));
+        $tiposVeiculos = TipoVeiculo::orderBy('nome', 'asc')->pluck('nome', 'id');
+        return view('veiculos.edit', compact('veiculo', 'frotas', 'empresas', 'centrosCustos', 'tiposVeiculos'));
     }
 
     /**

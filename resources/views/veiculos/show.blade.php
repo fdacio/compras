@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <th>Tipo:</th>
-                    <td>{{ $veiculo->tipo }}</td>
+                    <td>{{ $veiculo->tipoVeiculo->nome }}</td>
                 </tr>
                 <tr>
                     <th>Marca:</th>

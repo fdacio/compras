@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Veiculo extends Model
 {
     protected $table = 'veiculos';
-    protected $fillable = ['id_frota', 'id_empresa', 'id_centro_custo', 'tipo', 'marca', 'modelo', 'placa', 'uf', 'cor', 'ano', 'renavan'];
+    protected $fillable = ['id_frota', 'id_empresa', 'id_centro_custo', 'id_tipo_veiculo', 'marca', 'modelo', 'placa', 'uf', 'cor', 'ano', 'renavan'];
 
     public function empresa()
     {
@@ -24,5 +24,9 @@ class Veiculo extends Model
         return $this->belongsTo(CentroCusto::class, 'id_centro_custo');
     }
 
+    public function tipoVeiculo()
+    {
+        return $this->belongsTo(TipoVeiculo::class, 'id_tipo_veiculo');
+    }
 
 }
