@@ -97,7 +97,7 @@
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3">
             <div class="form-group">
-                <label for="renavan">Renavan</label>
+                <label for="renavan">Renavan<small class="text-danger p-2">*</small></label>
                 {!! Form::text('renavan', isset($veiculo->renavan) ? $veiculo->renavan : old('ranavan'), [
                     'class' => 'form-control',
                     'id' => 'renavan',
