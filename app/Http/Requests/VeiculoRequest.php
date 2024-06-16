@@ -25,8 +25,8 @@ class VeiculoRequest extends FormRequest
     {
         $id = request()->get('id');
         return [
-            'id_frota' => 'required|integer',
             'id_empresa' => 'required|integer',
+            'id_frota' => 'required|integer',
             'id_centro_custo' => 'required|integer',
             'id_tipo_veiculo' => 'required|integer',
             'marca' => 'required|string|max:30',
@@ -42,8 +42,8 @@ class VeiculoRequest extends FormRequest
     public function messages()
     {
         return [
-            'id_frota.required' => 'Informe a Fronta',
             'id_empresa.required' => 'Informe a Empresa',
+            'id_frota.required' => 'Informe a Fronta',
             'id_centro_custo.required' => 'Informe o Centro de Custo',
             'id_tipo_veiculo.required' => 'Informe o Tipo',
             'marca.required' => 'Informe a Marca',
@@ -52,6 +52,8 @@ class VeiculoRequest extends FormRequest
             'modelo.max' => 'Modelo quantidade máxima de 30 caractéres',
             'placa.required' => 'Informe o Placa',
             'placa.max' => 'Placa quantidade máxima de 20 caractéres',
+            'uf.required' => 'Informe a UF',
+            'uf.max' => 'UF quantidade máxima de 2 caractéres',
             'cor.required' => 'Informe o Cor',
             'cor.max' => 'Cor quantidade máxima de 20 caractéres',
             'ano.required' => 'Informe o Ano',
