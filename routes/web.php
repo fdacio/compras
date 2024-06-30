@@ -37,4 +37,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('veiculos', 'VeiculosController');
     Route::resource('produtos', 'ProdutosController');
     Route::get('produtos/{produto}/duplicar', 'ProdutosController@duplicate')->name('produtos.duplicate');
+    Route::resource('requisicoes-compras', 'RequisicoesComprasController');
 });
