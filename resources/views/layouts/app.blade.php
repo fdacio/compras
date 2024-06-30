@@ -192,7 +192,7 @@
                 prefix: '',
                 thousands: '',
                 decimal: ',',
-                precision: 3,
+                precision: 0,
                 selectAllOnFocus: true,
             }).trigger('mask.maskMoney');
 

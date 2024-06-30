@@ -34,13 +34,13 @@
             <div class="stepwizard" style="margin-top: 20px;">
                 <div class="stepwizard-row setup-panel">
                     <div class="stepwizard-step">
-                        <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}" class="btn btn-primary btn-circle"><i
+                        <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}" class="btn  btn-outline-secondary btn-light btn-circle"><i
                                 class="fa fa-file-text-o"></i></a>
                         <p><b>Cabeçalho da Requisição</b></p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="{{ route('requisicoes-compras.item.create', $requisicao->id) }}"
-                            class="btn btn-outline-secondary btn-light btn-circle"><i class="fa fa-list-ol"></i></a>
+                            class="btn btn-primary btn-circle"><i class="fa fa-list-ol"></i></a>
                         <p><b>Itens da Requisição</b></p>
                     </div>
                 </div>
@@ -49,12 +49,7 @@
     {!! Form::open(array('id' => 'form_requisicao_compra', 'method' => 'patch', 'route' => ['requisicoes-compras.update', $requisicao->id])) !!}
     {!! Form::hidden('id', $requisicao->id) !!}
     <div class="card-body">
-        @include('requisicoes-compras.form')
+        @include('requisicoes-compras.form-create-item')
     </div>
-    <div class="card-footer">
-        {!! Form::submit('Alterar', ['class' => 'btn btn-primary']) !!}
-        <a class="btn btn-danger" href="{{ route('requisicoes-compras.index') }}">Cancelar</a>
-    </div>
-    {!! Form::close() !!}
 </div>
 @endsection

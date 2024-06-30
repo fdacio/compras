@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\CentroCusto;
+use App\Http\Requests\RequisicaoCompraRequest;
+use App\Produto;
 use App\RequisicaoCompra;
 use App\Solicitante;
 use App\Veiculo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RequisicoesComprasController extends Controller
@@ -56,9 +59,14 @@ class RequisicoesComprasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequisicaoCompraRequest $request)
     {
-        print_r($request->all()); die();
+        $dados = $request->all();
+        $hoje = Carbon::now();
+        $dados = array_merge($dados, ['data' => $hoje]);
+        $requisicao = RequisicaoCompra::create($dados);
+        return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Requisição de Compras cadastrado com sucesso.');
+
     }
 
     /**
@@ -78,9 +86,22 @@ class RequisicoesComprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(RequisicaoCompra $requisicao)
     {
-        //
+        $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+
+        $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
+
+        $veiculos = Veiculo::get()->map(function($veiculo) {
+            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
+        })->sortBy('descricao')->pluck('descricao', 'id');
+
+        $tipos = collect(RequisicaoCompra::TIPOS)->map(function($tipo) {
+            return ['tipo' => $tipo['value'], 'descricao' => $tipo['label']];
+        })->pluck('descricao', 'tipo');
+
+        return view('requisicoes-compras.edit', compact('requisicao', 'requisitantes', 'solicitantes', 'veiculos', 'tipos'));
+        
     }
 
     /**
@@ -104,5 +125,20 @@ class RequisicoesComprasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function itemCreate(RequisicaoCompra $requisicao) 
+    {
+        $itens = [];
+        $produtos = Produto::get()->map(function($produto) {
+            return ['id' => $produto->id, 'nome' => $produto->nome . ' - ' . $produto->unidade->nome];
+        })->sortBy('nome')->pluck('nome', 'id');
+        return view('requisicoes-compras.create-item', compact('requisicao', 'produtos', 'itens'));
+    } 
+
+    public function itemStore(RequisicaoCompra $requisicao, Request $request) 
+    {
+
     }
 }
