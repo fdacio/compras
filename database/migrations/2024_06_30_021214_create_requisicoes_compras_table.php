@@ -13,7 +13,7 @@ class CreateRequisicoesComprasTable extends Migration
      */
     public function up()
     {
-        Schema::table('requisicoes_compras', function (Blueprint $table) {
+        Schema::create('requisicoes_compras', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_requisitante');
             $table->unsignedBigInteger('id_solicitante');
