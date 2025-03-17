@@ -21,11 +21,22 @@ class RequisicoesComprasController extends Controller
     public function index()
     {
         $requisicoes = RequisicaoCompra::orderBy('id', 'desc');
-        
+        $requisitante = request()->get('id_requisitante');
+        $solicitante = request()->get('id_solicitante');
+        $veiculo = request()->get('id_veiculo');
+
+        if (!empty($requisitante)) {
+            $requisicoes =  $requisicoes->where('id_requisitante', $requisitante);
+        }
+        if (!empty($solicitante)) {
+            $requisicoes =  $requisicoes->where('id_solicitante', $solicitante);
+        }
+        if (!empty($veiculo)) {
+            $requisicoes =  $requisicoes->where('id_veiculo', $veiculo);
+        }
+
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
-
         $veiculos = Veiculo::get()->map(function($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
