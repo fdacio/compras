@@ -104,7 +104,7 @@
                                 <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}" class="btn btn-primary btn-sm"
                                     title="Editar"><i class="fa fa-pencil"></i></a>
                                 @if ($requisicoes->total() > 0)
-                                    {!! Form::open(['id' => 'form_excluir_' . $requisicao->id, 'method' => 'delete', 'route' => ['requisicoes-compras.destroy', $produto->id], 'style' => 'display: inline']) !!}
+                                    {!! Form::open(['id' => 'form_excluir_' . $requisicao->id, 'method' => 'delete', 'route' => ['requisicoes-compras.destroy', $requisicao->id], 'style' => 'display: inline']) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir']) !!}
                                     {!! Form::close() !!}
                                 @endif
