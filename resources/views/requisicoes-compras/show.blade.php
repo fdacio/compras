@@ -8,10 +8,7 @@
         </div>
         <div class="card-body">
             <table class="table table-striped table-hover">
-                <tr>
-                    <th class="col-md-2">ID:</th>
-                    <td>{{ $requisicao->id }}</td>
-                </tr>
+                
                 <tr>
                     <th class="col-md-2">Data:</th>
                     <td>{{ $requisicao->data }}</td>
