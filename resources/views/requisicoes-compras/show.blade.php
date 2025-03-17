@@ -13,11 +13,29 @@
                     <td>{{ $requisicao->id }}</td>
                 </tr>
                 <tr>
+                    <th class="col-md-2">Data:</th>
+                    <td>{{ $requisicao->data }}</td>
+                </tr>
+                <tr>
                     <th class="col-md-2">Requisitante:</th>
                     <td>{{ $requisicao->requisitante->nome }}</td>
                 </tr>
-
-
+                <tr>
+                    <th class="col-md-2">Solicitante:</th>
+                    <td>{{ $requisicao->solicitante->nome }}</td>
+                </tr>
+                <tr>
+                    <th class="col-md-2">Placa:</th>
+                    <td>{{ $requisicao->veiculo->placa }}</td>
+                </tr>
+                <tr>
+                    <th class="col-md-2">Marca:</th>
+                    <td>{{ $requisicao->veiculo->marca }}</td>
+                </tr>
+                <tr>
+                    <th class="col-md-2">Modelo:</th>
+                    <td>{{ $requisicao->veiculo->modelo }}</td>
+                </tr>
                 <tr>
                     <th>Criado:</th>
                     <td>{{ \Carbon\Carbon::parse($requisicao->created_at)->format('d/m/Y H:i:s') }}</td>
