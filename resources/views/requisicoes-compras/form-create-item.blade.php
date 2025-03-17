@@ -8,16 +8,21 @@
             ]) !!}
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="produtos">Produto<small class="text-danger p-2">*</small></label>
-                        {!! Form::select('id_produto', $produtos, old('id_produto'), [
-                            'placeholder' => 'Selecione o Produto',
-                            'id' => 'produtos',
-                            'class' => 'form-control select',
-                            'style' => 'width: 100%;',
-                            'required' => 'required',
-                        ]) !!}
-                    </div>
+                    @if ($requisicao->tipo == 'PRODUTO')
+                        <div class="form-group">
+                            <label for="produtos">Produto<small class="text-danger p-2">*</small></label>
+                            {!! Form::select('id_produto', $produtos, old('id_produto'), [
+                                'placeholder' => 'Selecione o Produto',
+                                'id' => 'produtos',
+                                'class' => 'form-control select',
+                                'style' => 'width: 100%;',
+                                'required' => 'required',
+                            ]) !!}
+                        </div>
+                    @else
+                        <label for="servico">Descrição do Serviço<small class="text-danger p-2">*</small></label>
+                        <textarea id="servico" name="servico" rows="4" class="form-control"></textarea>
+                    @endif
                 </div>
             </div>
             <div class="row">
