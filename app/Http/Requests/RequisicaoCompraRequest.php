@@ -24,10 +24,10 @@ class RequisicaoCompraRequest extends FormRequest
     public function rules()
     {
         return [
+            'tipo' => 'required|string',
             'id_requisitante' => 'required|integer',
             'id_solicitante' => 'required|integer',
             'id_veiculo' => 'required|integer',
-            'tipo' => 'required|string',
             'autorizacao_cotacao' => 'nullable|string',
             'local_entrega' => 'nullable|string',
         ];
@@ -37,10 +37,10 @@ class RequisicaoCompraRequest extends FormRequest
     public function messages()
     {
         return [
+            'tipo.required' => 'Informe o Tipo',
             'id_requisitante.required' => 'Informe o Requisitante',
             'id_solicitante.required' => 'Informe o Solicitante',
             'id_veiculo.required' => 'Informe o Veículo',
-            'tipo.required' => 'Informe o Tipo',
         ];
     }
 
