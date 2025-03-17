@@ -97,7 +97,7 @@
                             <td>{{ $requisicao->data }}</td>
                             <td>{{ $requisicao->requisitante->nome }}</td>
                             <td>{{ $requisicao->solicitante->nome }}</td>
-                            <td>{{ $requisicao->$veiculo->placa . ' - ' . $requisicao->$veiculo->marca . ' - ' . $requisicao->$veiculo->modelo }}</td>
+                            <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}</td>
                             <td class="text-right text-nowrap">{{ 'R$ ' . number_format($requisicao->valor_unitario, '2', ',', '.') }}</td>
                             <td class="text-right text-nowrap">
                                 <a href="{{ route('requisicoes-compras.show', $requisicao->id) }}" class="btn btn-info btn-sm"
