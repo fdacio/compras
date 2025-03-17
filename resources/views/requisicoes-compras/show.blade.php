@@ -14,7 +14,7 @@
                 </tr>
                 <tr>
                     <th class="col-md-2">Data:</th>
-                    <td>{{ $requisicao->data }}</td>
+                    <td>{{ \Carbon\Carbon::parse($ $requisicao->data)->format('d/m/Y H:i:s') }}</td>
                 </tr>
                 <tr>
                     <th class="col-md-2">Requisitante:</th>

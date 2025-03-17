@@ -94,7 +94,7 @@
                     @foreach ($requisicoes as $requisicao)
                         <tr>
                             <td>{{ $requisicao->id }}</td>
-                            <td>{{ $requisicao->data }}</td>
+                            <td>{{ \Carbon\Carbon::parse( $requisicao->data )->format('d/m/Y H:i:s')  }}</td>
                             <td>{{ $requisicao->requisitante->nome }}</td>
                             <td>{{ $requisicao->solicitante->nome }}</td>
                             <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}</td>
