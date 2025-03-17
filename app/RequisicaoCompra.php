@@ -8,7 +8,14 @@ class RequisicaoCompra extends Model
 {
     
     protected $table = 'requisicoes_compras';
-    protected $fillable = ['id_requisitante', 'id_solicitante', 'id_veiculo', 'data', 'tipo', 'autorizacao_cotacao', 'local_entrega'];
+    protected $fillable = [
+        'id_requisitante', 
+        'id_solicitante', 
+        'id_veiculo', 
+        'data', 
+        'tipo', 
+        'autorizacao_cotacao', 
+        'local_entrega'];
     
     const TIPOS = [
         [
