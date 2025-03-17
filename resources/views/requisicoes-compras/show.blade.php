@@ -12,6 +12,10 @@
                     <th class="col-md-2">ID:</th>
                     <td>{{ $requisicao->id }}</td>
                 </tr>
+                <tr>
+                    <th class="col-md-2">Requisitante:</th>
+                    <td>{{ $requisicao->requisitante->nome }}</td>
+                </tr>
 
 
                 <tr>
