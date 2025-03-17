@@ -30,6 +30,8 @@ class RequisicoesComprasController extends Controller
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
 
+        $requisicoes = $requisicoes->paginate(10);
+
         return view('requisicoes-compras.index', compact('requisicoes', 'requisitantes', 'solicitantes', 'veiculos'));
     }
 
