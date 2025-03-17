@@ -86,12 +86,12 @@
                 <th style="width: 15%;"></th>
             </thead>
             <tbody>
-                @if ($requsicoes->total() == 0)
+                @if ($requisicoes->total() == 0)
                     <tr>
                         <th class="text-center" colspan="6">Nenhuma requisição encontrada</th>
                     </tr>
                 @else
-                    @foreach ($requsicoes as $requisicao)
+                    @foreach ($requisicoes as $requisicao)
                         <tr>
                             <td>{{ $requisicao->id }}</td>
                             <td>{{ $requisicao->data }}</td>
@@ -118,12 +118,12 @@
     </section>
 
     <section class="text-center">
-        {{ $requsicoes->appends(request()->query())->links() }}
-        <h6><b>{{ $requsicoes->total() }}</b> {{ $requsicoes->total() == 1 ? 'registro' : 'registros' }} no total</h6>
+        {{ $requisicoes->appends(request()->query())->links() }}
+        <h6><b>{{ $requisicoes->total() }}</b> {{ $requisicoes->total() == 1 ? 'registro' : 'registros' }} no total</h6>
     </section>
 @endsection
 
-@if ($requsicoes->total() > 0)
+@if ($requisicoes->total() > 0)
     @section('scripts')
         {!! Html::script('js/modal-excluir.js') !!}
     @endsection
