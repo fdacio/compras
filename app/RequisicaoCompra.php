@@ -29,6 +29,19 @@ class RequisicaoCompra extends Model
     ];
 
     
+    public function getTipoNomeAttribute() 
+    {
+        $tipo = $this->tipo;
+        $tipoNome = '';
+        foreach (self::TIPOS as $tipoItem) {
+            if ($tipoItem['value'] == $tipo) {
+                $tipoNome = $tipoItem['label'];
+                break;
+            }
+        }
+        return $tipoNome;
+    }
+
     public function requisitante()
     {
         return $this->belongsTo(CentroCusto::class, 'id_requisitante');
