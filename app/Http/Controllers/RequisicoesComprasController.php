@@ -75,9 +75,9 @@ class RequisicoesComprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(RequisicaoCompra $requisicao)
     {
-        //
+        return view('requisicoes-compras.show', compact('requisicao'));
     }
 
     /**
@@ -111,9 +111,10 @@ class RequisicoesComprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RequisicaoCompraRequest $request, RequisicaoCompra $requisicao)
     {
-        //
+        $requisicao->update($request->all());
+        return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Requisição de Compras atualizado com sucesso.');
     }
 
     /**
@@ -122,7 +123,7 @@ class RequisicoesComprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(RequisicaoCompra $requisicao)
     {
         //
     }

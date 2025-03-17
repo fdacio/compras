@@ -74,4 +74,57 @@
             </div>
         </div>
     </div>
+    <section class="table-responsive">
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <th>Código</th>
+                <th>Data</th>
+                <th>Requisitante</th>
+                <th>Solicitante</th>
+                <th>Veículo</th>
+                <th style="width: 15%;"></th>
+            </thead>
+            <tbody>
+                @if ($requsicoes->total() == 0)
+                    <tr>
+                        <th class="text-center" colspan="6">Nenhuma requisição encontrada</th>
+                    </tr>
+                @else
+                    @foreach ($requsicoes as $requisicao)
+                        <tr>
+                            <td>{{ $requisicao->id }}</td>
+                            <td>{{ $requisicao->data }}</td>
+                            <td>{{ $requisicao->requisitante->nome }}</td>
+                            <td>{{ $requisicao->solicitante->nome }}</td>
+                            <td>{{ $requisicao->$veiculo->placa . ' - ' . $requisicao->$veiculo->marca . ' - ' . $requisicao->$veiculo->modelo }}</td>
+                            <td class="text-right text-nowrap">{{ 'R$ ' . number_format($requisicao->valor_unitario, '2', ',', '.') }}</td>
+                            <td class="text-right text-nowrap">
+                                <a href="{{ route('requisicoes-compras.show', $requisicao->id) }}" class="btn btn-info btn-sm"
+                                    title="Visualizar"><i class="fa fa-eye"></i></a>
+                                <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}" class="btn btn-primary btn-sm"
+                                    title="Editar"><i class="fa fa-pencil"></i></a>
+                                @if ($requisicao->total() > 0)
+                                    {!! Form::open(['id' => 'form_excluir_' . $requisicao->id, 'method' => 'delete', 'route' => ['requisicoes-compras.destroy', $produto->id], 'style' => 'display: inline']) !!}
+                                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir']) !!}
+                                    {!! Form::close() !!}
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </tbody>
+        </table>
+    </section>
+
+    <section class="text-center">
+        {{ $requsicoes->appends(request()->query())->links() }}
+        <h6><b>{{ $requsicoes->total() }}</b> {{ $requsicoes->total() == 1 ? 'registro' : 'registros' }} no total</h6>
+    </section>
 @endsection
+
+@if ($requsicoes->total() > 0)
+    @section('scripts')
+        {!! Html::script('js/modal-excluir.js') !!}
+    @endsection
+@endif

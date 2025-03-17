@@ -22,4 +22,19 @@ class RequisicaoCompra extends Model
     ];
 
     
+    public function requisitante()
+    {
+        return $this->belongsTo(CentroCusto::class, 'id_requisitante');
+    }
+
+    public function solicitante()
+    {
+        return $this->belongsTo(Solicitante::class, 'id_solicitante');
+    }
+
+    public function veiculo()
+    {
+        return $this->belongsTo(Veiculo::class, 'id_veiculo');
+    }
+
 }
