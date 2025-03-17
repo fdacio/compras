@@ -20,6 +20,8 @@ class RequisicoesComprasController extends Controller
      */
     public function index()
     {
+        $requisicoes = RequisicaoCompra::orderBy('id', 'desc');
+        
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
 
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
@@ -28,7 +30,7 @@ class RequisicoesComprasController extends Controller
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
 
-        return view('requisicoes-compras.index', compact('requisitantes', 'solicitantes', 'veiculos'));
+        return view('requisicoes-compras.index', compact('requisicoes', 'requisitantes', 'solicitantes', 'veiculos'));
     }
 
     /**
