@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 text-right">
                     {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
-                        'type' => 'button',
+                        'type' => 'submit',
                         'id' => 'btn-adicionar',
                         'class' => 'btn btn-primary form-control',
                     ]) !!}
@@ -69,7 +69,6 @@
                     <th>Item</th>
                     <th>Produto/Serviço</th>
                     <th>Unidade</th>
-
                     <th class="text-right">Quantidade Solicitada</th>
                     <th class="text-right">Quantidade a Cotar</th>
                     <th style="width: 45px;"></th>
@@ -97,10 +96,10 @@
                                 {!! Form::open([
                                     'id' => 'form_excluir_' . $item->pivot->id,
                                     'method' => 'delete',
-                                    'route' => ['entradas.del-item.destroy', $entrada->id],
+                                    'route' => ['requisicoes-compras.del-item.destroy', $item->pivot->id],
                                     'style' => 'display: inline',
                                 ]) !!}
-                                {!! Form::hidden('id_entrada_item', $item->pivot->id) !!}
+                                {!! Form::hidden('id_requisicao_compra_item', $item->pivot->id) !!}
                                 {!! Form::button('<i class="fa fa-trash"></i>', [
                                     'class' => 'btn btn-danger modal-excluir',
                                     'style' => 'padding: 1px 6px;',

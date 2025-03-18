@@ -46,10 +46,15 @@
                 </div>
             </div>
     </div>
-    {!! Form::open(array('id' => 'form_requisicao_compra', 'method' => 'patch', 'route' => ['requisicoes-compras.update', $requisicao->id])) !!}
+    {!! Form::open([
+        'id' => 'form_requisicos_compras_item',
+        'method' => 'post',
+        'route' => ['requisicoes-compras.item.store', $requisicao->id],
+    ]) !!}
     {!! Form::hidden('id', $requisicao->id) !!}
     <div class="card-body">
         @include('requisicoes-compras.form-create-item')
     </div>
+    {!! Form::close() !!}
 </div>
 @endsection
