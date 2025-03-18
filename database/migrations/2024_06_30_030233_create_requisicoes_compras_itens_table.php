@@ -20,6 +20,7 @@ class CreateRequisicoesComprasItensTable extends Migration
             $table->string('unidade', 10);
             $table->integer('quantidade_solicitada');
             $table->integer('quantidade_a_cotar');
+            $table->unsignedBigInteger('id_requisitante');
             $table->foreign('id_requisicao')->references('id')->on('requicoes_compras');
             $table->timestamps();
         });
