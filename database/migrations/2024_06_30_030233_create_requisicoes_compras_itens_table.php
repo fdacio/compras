@@ -17,7 +17,7 @@ class CreateRequisicoesComprasItensTable extends Migration
             $table->bigIncrements('id');
             $table->integer('item');
             $table->string('descricao', 200);
-            $table->string('unidade', 10);
+            $table->string('unidade', 20);
             $table->integer('quantidade_solicitada');
             $table->integer('quantidade_a_cotar');
             $table->unsignedBigInteger('id_requisicao');
