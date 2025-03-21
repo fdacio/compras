@@ -60,7 +60,7 @@ class RequisicaoCompra extends Model
     public function itens()
     {
         return $this->hasMany(RequisicaoCompraItem::class, 'id_requisicao', 'id')
-        ->orderBy('item', 'asc');
+        ->orderBy('requisicoes_compras_itens.item', 'asc');
     }
 
 }
