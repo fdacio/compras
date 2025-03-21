@@ -59,7 +59,7 @@ class RequisicaoCompra extends Model
 
     public function itens()
     {
-        return $this->belongsToMany(RequisicaoCompraItem::class, 'requisicoes_compras_itens', 'id_requisicao')
+        return $this->hasMany(RequisicaoCompraItem::class, 'id_requisicao')
         ->withPivot('id', 'item', 'descricao', 'unidade', 'quantidade_solicitada', 'quantidade_a_cotar')
         ->orderBy('requisicoes_compras_itens.item', 'asc');
     }
