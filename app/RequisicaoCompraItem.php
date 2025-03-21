@@ -12,6 +12,7 @@ class RequisicaoCompraItem extends Model
         'descricao', 
         'unidade', 
         'quantidade_solicitada', 
-        'quantidade_a_cotar'
+        'quantidade_a_cotar',
+        'id_requisicao',
     ];
 }
