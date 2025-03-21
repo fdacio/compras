@@ -62,30 +62,31 @@
                 </div>
                 <!-- Tab de Itens -->
                 <div class="tab-pane fade" id="tabs-itens" role="tabpanel" aria-labelledby="tabs-itens-tab">
-                    <table class="table table-striped table-hover">
-                        @foreach ($requisicao->itens as $item)
-                            <tr>
-                                <th class="col-md-2">Item:</th>
-                                <td>{{ $item->item }}</td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-2">Produto/Serviço:</th>
-                                <td>{{ $item->descricao }}</td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-2">Unidade:</th>
-                                <td>{{ $item->unidade }}</td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-2">Quantidade solicitada:</th>
-                                <td>{{ $item->quantidade_solicitada }}</td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-2">Quantidade a cotar:</th>
-                                <td>{{ $item->quantidade_a_cotar }}</td>
-                            </tr>
-                        @endforeach
-                    </table>
+                    <div class="card">
+                        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 20px;">
+
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    
+                                        <th class="col-md-2">Item</th>
+                                        <th class="col-md-2">Produto/Serviço</th>
+                                        <th class="col-md-2">Unidade</th>
+                                        <th class="col-md-2">Quantidade solicitada</th>
+                                        <th class="col-md-2">Quantidade a cotar</th>
+                                    
+                                </thead>
+                                @foreach ($requisicao->itens as $item)
+                                    <tr>
+                                        <td>{{ $item->item }}</td>
+                                        <td>{{ $item->descricao }}</td>
+                                        <td>{{ $item->unidade }}</td>
+                                        <td>{{ $item->quantidade_solicitada }}</td>
+                                        <td>{{ $item->quantidade_a_cotar }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>    
                 </div>
             </div>
         </div>
