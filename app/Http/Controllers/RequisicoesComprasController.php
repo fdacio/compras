@@ -9,7 +9,9 @@ use App\RequisicaoCompra;
 use App\Solicitante;
 use App\Veiculo;
 use App\Http\Requests\RequisicaoCompraItemRequest;
+use App\Reports\DemoRequisicaoCompraPdf;
 use Carbon\Carbon;
+use Exception;
 
 class RequisicoesComprasController extends Controller
 {
@@ -140,7 +142,12 @@ class RequisicoesComprasController extends Controller
      */
     public function destroy(RequisicaoCompra $requisicao)
     {
-        //
+        try {
+            $requisicao->delete();
+            return redirect()->route('requisicoes-compras.index')->with('success', 'Cadastro de Requisição de Compra excluído oom sucesso.');
+        } catch (Exception $e) {
+            return redirect()->route('requisicoes-compras.index')->with('danger', 'Não é possível excluir Requisição de Compra. Há vínculos com outros registros.');
+        }
     }
 
 
@@ -155,6 +162,15 @@ class RequisicoesComprasController extends Controller
 
     public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request) 
     {
+
+    }
+
+
+    public function geraPdf(RequisicaoCompra $requisicao) 
+    {
+        $demo = new DemoRequisicaoCompraPdf('Requisição de Compra');
+        $demo->setContent($requisicao);
+        $demo->download();
 
     }
 }
