@@ -10,6 +10,7 @@ use App\Solicitante;
 use App\Veiculo;
 use App\Http\Requests\RequisicaoCompraItemRequest;
 use App\Reports\DemoRequisicaoCompraPdf;
+use App\RequisicaoCompraItem;
 use Carbon\Carbon;
 use Exception;
 
@@ -162,6 +163,41 @@ class RequisicoesComprasController extends Controller
 
     public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request) 
     {
+        $item = 1;
+        $descricao = "";
+        $unidade = "";
+        $quantidade_solicitada = 0;
+        $quantidade_a_cotar = 0;
+
+        if ($requisicao->tipo == 'PRODUTO') {
+            $produto = Produto::find($request->id_produto);
+            $descricao = $produto->nome;
+            $unidade = $produto->unidade->nome;
+            $quantidade_solicitada = $request->quantidade_solicitada;
+            $quantidade_a_cotar = $request->quantidade_a_cotar;
+            $item = $requisicao->itens()->count() + 1;
+
+        }
+
+        if ($requisicao->tipo == 'SERVICO') {
+            $descricao = $request->servico;
+            $unidade = "UNIDADE";
+            $quantidade_solicitada = $request->quantidade_solicitada;
+            $quantidade_a_cotar = $request->quantidade_a_cotar;
+            $item = $requisicao->itens()->count() + 1;
+        }
+
+        $dados = [
+            'id_requisicao' => $requisicao->id,
+            'item' => $item,
+            'descricao' => $descricao,
+            'unidade' => $unidade,
+            'quantidade_solicitada' => $quantidade_solicitada,
+            'quantidade_a_cotar' => $quantidade_a_cotar,
+        ];
+
+        RequisicaoCompraItem::create($dados);
+        return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Item da Requisição de Compra cadastrado com sucesso.');
 
     }
 
@@ -171,6 +207,5 @@ class RequisicoesComprasController extends Controller
         $demo = new DemoRequisicaoCompraPdf('Requisição de Compra');
         $demo->setContent($requisicao);
         $demo->download();
-
     }
 }

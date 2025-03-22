@@ -77,7 +77,7 @@
                     @php
                         $itemId = 1;
                     @endphp
-                    @foreach ($itens as $item)
+                    @foreach ($requisicao->itens() as $item)
                         <tr>
                             <td>{{ $itemId }}</td>
                             <td>{{ $item->descricao }}</td>
