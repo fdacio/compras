@@ -202,6 +202,14 @@ class RequisicoesComprasController extends Controller
 
     }
 
+    public function destroyItem(Request $request, RequisicaoCompra $requisicao)
+    {
+        $item = RequisicaoCompraItem::find($request->id_requisicao_compra_item);
+        $item->delete();
+        return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Item deletado!');
+    }
+
+
 
     public function geraPdf(RequisicaoCompra $requisicao) 
     {
