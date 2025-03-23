@@ -64,24 +64,26 @@
                 <div class="tab-pane fade" id="tabs-itens" role="tabpanel" aria-labelledby="tabs-itens-tab">
                     <div class="card">
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 20px;">
-
+                            <!-- Criação da tabela -->
                             <table class="table table-striped table-hover">
+                                <!-- Table head dos itens -->
                                 <thead>
                                     
                                         <th class="col-md-2">Item</th>
-                                        <th class="col-md-2">Produto/Serviço</th>
-                                        <th class="col-md-2">Unidade</th>
-                                        <th class="col-md-2">Quantidade solicitada</th>
-                                        <th class="col-md-2">Quantidade a cotar</th>
+                                        <th class="col-md-2 text-center">Produto/Serviço</th>
+                                        <th class="col-md-2 text-center">Unidade</th>
+                                        <th class="col-md-2 text-center">Quantidade solicitada</th>
+                                        <th class="col-md-2 text-center">Quantidade a cotar</th>
                                     
                                 </thead>
                                 @foreach ($requisicao->itens as $item)
+                                <!-- Table row dos itens -->
                                     <tr>
                                         <td>{{ $item->item }}</td>
-                                        <td>{{ $item->descricao }}</td>
-                                        <td>{{ $item->unidade }}</td>
-                                        <td>{{ $item->quantidade_solicitada }}</td>
-                                        <td>{{ $item->quantidade_a_cotar }}</td>
+                                        <td class="text-center">{{ $item->descricao }}</td>
+                                        <td class="text-center">{{ $item->unidade }}</td>
+                                        <td class="text-center">{{ $item->quantidade_solicitada }}</td>
+                                        <td class="text-center">{{ $item->quantidade_a_cotar }}</td>
                                     </tr>
                                 @endforeach
                             </table>
