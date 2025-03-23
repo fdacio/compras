@@ -77,9 +77,9 @@
                     @php
                         $itemId = 1;
                     @endphp
-                    @foreach ($requisicao->itens() as $item)
+                    @foreach ($requisicao->itens as $item)
                         <tr>
-                            <td>{{ $itemId }}</td>
+                            <td>{{ $item->item }}</td>
                             <td>{{ $item->descricao }}</td>
                             <td>{{ $item->unidade }}</td>
                             <td class="text-right">
@@ -89,17 +89,13 @@
                                 <span class="quantidade-a-cotar">{{ $item->pivot->quantidade_a_cotar }}</span>
                             </td>
                             <td class="text-nowrap">
-                                <button class="btn btn-primary btn-edit-item" style="padding: 1px 6px"
-                                    title="Editar Item" data-id="{{ $item->pivot->id }}" data-toggle="modal"
-                                    data-target="#editItemModal"><i class="fa fa-pencil"></i></button>
-
                                 {!! Form::open([
-                                    'id' => 'form_excluir_' . $item->pivot->id,
+                                    'id' => 'form_excluir_' . $item->id,
                                     'method' => 'delete',
-                                    'route' => ['requisicoes-compras.del-item.destroy', $item->pivot->id],
+                                    'route' => ['requisicoes-compras.del-item.destroy', $item->id],
                                     'style' => 'display: inline',
                                 ]) !!}
-                                {!! Form::hidden('id_requisicao_compra_item', $item->pivot->id) !!}
+                                {!! Form::hidden('id_requisicao_compra_item', $item->id) !!}
                                 {!! Form::button('<i class="fa fa-trash"></i>', [
                                     'class' => 'btn btn-danger modal-excluir',
                                     'style' => 'padding: 1px 6px;',
