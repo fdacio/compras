@@ -40,4 +40,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('requisicoes-compras', 'RequisicoesComprasController', ['parameters' => ['requisicoes-compras' => 'requisicao']]);
     Route::get('requisicoes-compras/item/create/{requisicao}', 'RequisicoesComprasController@itemCreate')->name('requisicoes-compras.item.create');
     Route::post('requisicoes-compras/item/store/{requisicao}', 'RequisicoesComprasController@itemStore')->name('requisicoes-compras.item.store');
+    Route::get('requisicoes-compras/gera-pdf/{requisicao}', 'RequisicoesComprasController@geraPdf')->name('requisicoes-compras.gera.pdf');
+    Route::delete('requisicoes-compras/{requisicao}/del-item', 'RequisicoesComprasController@destroyItem')->name('requisicoes-compras.del-item.destroy');
 });

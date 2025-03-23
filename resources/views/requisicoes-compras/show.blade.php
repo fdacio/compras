@@ -95,6 +95,7 @@
         <div class="card-footer">
             <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}" class="btn btn-primary" title="Editar">Editar</a>
             <a class="btn btn-danger" href="{{ route('requisicoes-compras.index') }}">Cancelar</a>
+            <a href="{{ route('requisicoes-compras.gera.pdf', $requisicao->id) }}" class="btn btn-danger" title="download" target="_blank">Demonstrativo</a>
         </div>
     </div>
 @endsection
