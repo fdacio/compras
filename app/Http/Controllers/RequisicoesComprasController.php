@@ -13,6 +13,7 @@ use App\Reports\DemoRequisicaoCompraPdf;
 use App\RequisicaoCompraItem;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Http\Request;
 
 class RequisicoesComprasController extends Controller
 {
@@ -161,7 +162,7 @@ class RequisicoesComprasController extends Controller
         return view('requisicoes-compras.create-item', compact('requisicao', 'produtos', 'itens'));
     } 
 
-    public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request) 
+    public function itemStore(RequisicaoCompra $requisicao, Request $request) 
     {
         $item = 1;
         $descricao = "";
