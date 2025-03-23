@@ -83,10 +83,10 @@
                             <td>{{ $item->descricao }}</td>
                             <td>{{ $item->unidade }}</td>
                             <td class="text-right">
-                                <span class="quantidade-solicitada">{{ $item->pivot->quantidade_solicitada }}</span>
+                                <span class="quantidade-solicitada">{{ $item->quantidade_solicitada }}</span>
                             </td>
                             <td class="text-right">
-                                <span class="quantidade-a-cotar">{{ $item->pivot->quantidade_a_cotar }}</span>
+                                <span class="quantidade-a-cotar">{{ $item->quantidade_a_cotar }}</span>
                             </td>
                             <td class="text-nowrap">
                                 {!! Form::open([
