@@ -92,7 +92,7 @@
                                 {!! Form::open([
                                     'id' => 'form_excluir_' . $item->id,
                                     'method' => 'delete',
-                                    'route' => ['requisicoes-compras.del-item.destroy', $item->id],
+                                    'route' => ['requisicoes-compras.del-item.destroy', $requisicao->id],
                                     'style' => 'display: inline',
                                 ]) !!}
                                 {!! Form::hidden('id_requisicao_compra_item', $item->id) !!}
