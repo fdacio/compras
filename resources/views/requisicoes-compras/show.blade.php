@@ -76,6 +76,9 @@
                                 <!-- Table head dos itens -->
                                 <thead>
                                     
+
+
+                                    
                                         <th class="col-md-2">Item</th>
                                         <th class="col-md-2 text-center">Produto/Serviço</th>
                                         <th class="col-md-2 text-center">Unidade</th>
