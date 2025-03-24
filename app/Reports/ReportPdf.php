@@ -41,7 +41,8 @@ abstract class ReportPdf extends Fpdf
     public function __construct($title = null)
     {
         parent::__construct($this->orientation, "mm", $this->pageSize);
-        $this->logo =  asset('img/logo-sistema-compras.png');
+        $this->logo = "";
+        //$this->logo =  asset('public/img/logo-sistema-compras.png');
         $this->header1 = '';
         $this->header2 = '';
         $this->setTitleHeader(utf8_decode($title));
