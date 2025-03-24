@@ -60,7 +60,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="autorizacao-cotacao">Autorização de Cotação</label>
-                {!! Form::textarea('autorizacao_cotacao', isset($requisicao) ? $requisicao->autorizacao_cotacao : old('autorizacao_cotacao'), ['placeholder' => 'Autorização de Cotação', 'class' => 'form-control', 'rows' => 2, 'id' => 'autorizacao-cotacao']) !!}
+                {!! Form::textarea('autorizacao_cotacao', isset($requisicao) ? $requisicao->autorizacao_cotacao : old('autorizacao_cotacao'), ['class' => 'form-control', 'rows' => 2, 'id' => 'autorizacao-cotacao']) !!}
             </div>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="local-entrega">Local de Entrega</label>
-                {!! Form::textarea('local_entrega', isset($requisicao) ? $requisicao->local_entrega : old('local_entrega'), ['placeholder' => 'Local de Entrega', 'class' => 'form-control', 'rows' => 2, 'id' => 'local-entrega']) !!}
+                {!! Form::textarea('local_entrega', isset($requisicao) ? $requisicao->local_entrega : old('local_entrega'), ['class' => 'form-control', 'rows' => 2, 'id' => 'local-entrega']) !!}
             </div>
         </div>
     </div>
