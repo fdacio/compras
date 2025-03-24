@@ -19,6 +19,7 @@
             <li class="nav-item"><a href="{{ route('frotas.index') }}" class="nav-link">Frotas</a></li>
             <li class="nav-item"><a href="{{ route('veiculos.index') }}" class="nav-link">Veículos</a></li>
             <li class="nav-item"><a href="{{ route('produtos.index') }}" class="nav-link">Produtos</a></li>
+        </ul>    
     </li>
 
     <li class="nav-item"> <a href="{{ route('requisicoes-compras.index') }}" class="nav-link"><i class="fa fa-laptop"></i> <span
