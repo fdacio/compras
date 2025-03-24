@@ -30,12 +30,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('centros-custos', 'CentrosCustosController');
     Route::resource('solicitantes', 'SolicitantesController');
     Route::resource('frotas', 'FrotasController');
+    Route::resource('veiculos', 'VeiculosController');
+    Route::resource('produtos', 'ProdutosController');
+    
     Route::resource('empresas', 'EmpresasController', ['parameters' => ['empresas' => 'empresa']]);
     Route::get('empresas/pessoa/fisica/create', 'EmpresasController@createPessoaFisica')->name('empresas.pessoa.fisica.create');
     Route::post('empresas/pessoa/fisica/store', 'EmpresasController@storePessoaFisica')->name('empresas.pessoa.fisica.store');
     Route::match(['put', 'patch'], 'empresas/pessoa/fisica/{empresa}/update', 'EmpresasController@updatePessoaFisica')->name('empresas.pessoa.fisica.update');
-    Route::resource('veiculos', 'VeiculosController');
-    Route::resource('produtos', 'ProdutosController');
+    
+    Route::resource('favorecidos', 'FavorecidosController', ['parameters' => ['favorecidos' => 'favorecido']]);
+    Route::get('favorecidos/pessoa/fisica/create', 'FavorecidosController@createPessoaFisica')->name('favorecidos.pessoa.fisica.create');
+    Route::post('favorecidos/pessoa/fisica/store', 'FavorecidosController@storePessoaFisica')->name('favorecidos.pessoa.fisica.store');
+    Route::match(['put', 'patch'], 'favorecidos/pessoa/fisica/{favorecido}/update', 'FavorecidosController@updatePessoaFisica')->name('favorecidos.pessoa.fisica.update');
+    
+
     Route::get('produtos/{produto}/duplicar', 'ProdutosController@duplicate')->name('produtos.duplicate');
     Route::resource('requisicoes-compras', 'RequisicoesComprasController', ['parameters' => ['requisicoes-compras' => 'requisicao']]);
     Route::get('requisicoes-compras/item/create/{requisicao}', 'RequisicoesComprasController@itemCreate')->name('requisicoes-compras.item.create');

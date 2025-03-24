@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAutorizacoesPagamentosItensTable extends Migration
+class CreateFavorecidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateAutorizacoesPagamentosItensTable extends Migration
      */
     public function up()
     {
-        Schema::create('autorizacoes_pagamentos_itens', function (Blueprint $table) {
+        Schema::create('favorecidos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_pessoa');
+            $table->foreign('id_pessoa')->references('id')->on('pessoas');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateAutorizacoesPagamentosItensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autorizacoes_pagamentos_itens');
+        Schema::dropIfExists('favorecidos');
     }
 }
