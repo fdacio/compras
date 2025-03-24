@@ -13,4 +13,19 @@ Use App\Municipio;
 Use Exception;
 Use Illuminate\Support\Facades\DB;
 
-class 
+class FavorecidosController extends Controller
+{
+        @return \Illuminate\Http\Response
+
+    public function index ()
+    {
+        $favorecidos = Favorecido::orderBy('id', 'asc');
+        $tipoPessoas = request()->get('pessoa')
+    }
+
+
+
+
+
+    
+}
