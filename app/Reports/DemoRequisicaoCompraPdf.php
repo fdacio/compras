@@ -73,6 +73,18 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         foreach ($requisicao->itens as $item) {
             $this->Row([$item->item, utf8_decode($item->descricao), utf8_decode($item->unidade), utf8_decode($item->quantidade_solicitada), utf8_decode($item->quantidade_a_cotar)]);
         }
+        $this->Ln();
+        
+        $this->SetFont('Arial', 'B', 6);
+        $this->Cell(95, 5, utf8_decode('Local entrega'), 'LTR');
+        $this->Cell(95, 5, utf8_decode('Autorização da cotação'), 'LTR');
+        $this->Ln();
+        
+        $this->SetFont('Arial', '', 8);
+        $this->SetWidths([95, 95]);
+        $this->setBorders(['RBL', 'RBL']);
+        $this->Row([utf8_decode($requisicao->local_entrega), utf8_decode($requisicao->autorizacao_cotacao)]);
+        
     }
 }
 
