@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="cpf">CPF<small class="text-danger p-2">*</small></label>
                 <div class="input-group">
-                    {!! Form::text('cpf', isset($empresa) ? $empresa->pessoa->pessoaFisica->cpf : null, [
+                    {!! Form::text('cpf', isset($favorecido) ? $favorecido->pessoa->pessoaFisica->cpf : null, [
                         'class' => 'form-control cpf',
                         'id' => 'cpf',
                     ]) !!}
@@ -25,7 +25,7 @@
         <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
                 <label for="nome">Nome<small class="text-danger p-2">*</small></label>
-                {!! Form::text('nome', isset($empresa) ? $empresa->pessoa->pessoaFisica->nome : null, [
+                {!! Form::text('nome', isset($favorecido) ? $favorecido->pessoa->pessoaFisica->nome : null, [
                     'class' => 'form-control',
                     'id' => 'nome',
                 ]) !!}
@@ -36,7 +36,7 @@
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
                 <label for="rg">RG</label>
-                {!! Form::text('rg', isset($empresa) ? $empresa->pessoa->pessoaFisica->rg : null, [
+                {!! Form::text('rg', isset($favorecido) ? $favorecido->pessoa->pessoaFisica->rg : null, [
                     'class' => 'form-control',
                     'id' => 'rg',
                 ]) !!}
@@ -45,7 +45,7 @@
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
                 <label for="rg-orgao">Órgão Emissor</label>
-                {!! Form::text('rg_orgao', isset($empresa) ? $empresa->pessoa->pessoaFisica->rg_orgao : null, [
+                {!! Form::text('rg_orgao', isset($favorecido) ? $favorecido->pessoa->pessoaFisica->rg_orgao : null, [
                     'class' => 'form-control',
                     'id' => 'rg-orgao',
                 ]) !!}
@@ -56,7 +56,7 @@
                 <label for="rg-emissao">Emissão</label>
                 {!! Form::text(
                     'rg_emissao',
-                    isset($empresa) ? \Carbon\Carbon::parse($empresa->pessoa->pessoaFisica->rg_emissao)->format('d/m/Y') : null,
+                    isset($favorecido) ? \Carbon\Carbon::parse($favorecido->pessoa->pessoaFisica->rg_emissao)->format('d/m/Y') : null,
                     ['class' => 'form-control data', 'id' => 'rg-emissao'],
                 ) !!}
             </div>
@@ -68,7 +68,7 @@
                 <label for="nascimento">Nascimento</label>
                 {!! Form::text(
                     'nascimento',
-                    isset($empresa) ? \Carbon\Carbon::parse($empresa->pessoa->pessoaFisica->nascimento)->format('d/m/Y') : null,
+                    isset($favorecido) ? \Carbon\Carbon::parse($favorecido->pessoa->pessoaFisica->nascimento)->format('d/m/Y') : null,
                     ['class' => 'form-control data', 'id' => 'nascimento'],
                 ) !!}
             </div>
@@ -79,7 +79,7 @@
                 {!! Form::select(
                     'sexo',
                     ['M' => 'Masculino', 'F' => 'Feminino'],
-                    isset($empresa) ? $empresa->pessoa->pessoaFisica->sexo : old('sexo'),
+                    isset($favorecido) ? $favorecido->pessoa->pessoaFisica->sexo : old('sexo'),
                     ['class' => 'form-control data', 'id' => 'sexo'],
                 ) !!}
             </div>
@@ -90,7 +90,7 @@
             <div class="form-group">
                 <label for="cep">CEP<small class="text-danger p-2">*</small></label>
                 <div class="input-group">
-                    {!! Form::text('cep', isset($empresa) ? $empresa->pessoa->cep : null, [
+                    {!! Form::text('cep', isset($favorecido) ? $favorecido->pessoa->cep : null, [
                         'class' => 'form-control cep',
                         'id' => 'cep',
                     ]) !!}
@@ -104,7 +104,7 @@
         <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
                 <label for="logradouro">Logradouro<small class="text-danger p-2">*</small></label>
-                {!! Form::text('logradouro', isset($empresa) ? $empresa->pessoa->logradouro : null, [
+                {!! Form::text('logradouro', isset($favorecido) ? $favorecido->pessoa->logradouro : null, [
                     'class' => 'form-control',
                     'id' => 'logradouro',
                     'id' => 'logradouro',
@@ -114,7 +114,7 @@
         <div class="col-xs-2 col-sm-2 col-md-2">
             <div class="form-group">
                 <label for="numero">Número<small class="text-danger p-2">*</small></label>
-                {!! Form::text('numero', isset($empresa) ? $empresa->pessoa->numero : null, [
+                {!! Form::text('numero', isset($favorecido) ? $favorecido->pessoa->numero : null, [
                     'class' => 'form-control',
                     'id' => 'numero',
                     'id' => 'numero',
@@ -126,7 +126,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <label for="complemento">Complemento</label>
-                {!! Form::text('complemento', isset($empresa) ? $empresa->pessoa->complemento : null, [
+                {!! Form::text('complemento', isset($favorecido) ? $favorecido->pessoa->complemento : null, [
                     'class' => 'form-control',
                     'id' => 'complemento',
                 ]) !!}
@@ -135,7 +135,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <label for="bairro">Bairro<small class="text-danger p-2">*</small></label>
-                {!! Form::text('bairro', isset($empresa) ? $empresa->pessoa->bairro : null, [
+                {!! Form::text('bairro', isset($favorecido) ? $favorecido->pessoa->bairro : null, [
                     'class' => 'form-control',
                     'id' => 'bairro',
                 ]) !!}
@@ -149,7 +149,7 @@
                 {!! Form::select(
                     'estado',
                     $estados,
-                    isset($empresa->pessoa->cidade->estado) ? $empresa->pessoa->cidade->estado->id : old('estado'),
+                    isset($favorecido->pessoa->cidade->estado) ? $favorecido->pessoa->cidade->estado->id : old('estado'),
                     ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'estado'],
                 ) !!}
             </div>
@@ -160,7 +160,7 @@
                 {!! Form::select(
                     'id_municipio',
                     $cidades,
-                    isset($empresa->pessoa->cidade) ? $empresa->pessoa->cidade->id : old('id_municipio'),
+                    isset($favorecido->pessoa->cidade) ? $favorecido->pessoa->cidade->id : old('id_municipio'),
                     ['placeholder' => 'Selecione um Estado', 'class' => 'form-control select', 'id' => 'cidade'],
                 ) !!}
             </div>
@@ -170,7 +170,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                {!! Form::tel('telefone', isset($empresa) ? $empresa->pessoa->telefone : null, [
+                {!! Form::tel('telefone', isset($favorecido) ? $favorecido->pessoa->telefone : null, [
                     'class' => 'form-control telefone',
                     'id' => 'telefone',
                 ]) !!}
@@ -179,7 +179,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <label for="celular">Celular</label>
-                {!! Form::tel('celular', isset($empresa) ? $empresa->pessoa->celular : null, [
+                {!! Form::tel('celular', isset($favorecido) ? $favorecido->pessoa->celular : null, [
                     'class' => 'form-control celular',
                     'id' => 'celular',
                 ]) !!}
@@ -190,7 +190,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="email">E-mail</label>
-                {!! Form::email('email', isset($empresa) ? $empresa->pessoa->email : null, [
+                {!! Form::email('email', isset($favorecido) ? $favorecido->pessoa->email : null, [
                     'class' => 'form-control',
                     'id' => 'email',
                 ]) !!}
@@ -207,9 +207,9 @@
     <script>
         $(document).ready(function() {
 
-            @if (!empty($empresa->pessoa->cidade))
-                var estado = "@php echo $empresa->pessoa->cidade->estado->sigla @endphp";
-                var cidade = "@php echo $empresa->pessoa->cidade->nome @endphp";
+            @if (!empty($favorecido->pessoa->cidade))
+                var estado = "@php echo $favorecido->pessoa->cidade->estado->sigla @endphp";
+                var cidade = "@php echo $favorecido->pessoa->cidade->nome @endphp";
                 setEstado(estado, cidade);
             @endif
 

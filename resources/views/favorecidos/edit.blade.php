@@ -17,8 +17,8 @@
         </div>
         @endif
     </div>
-    {!! Form::open(array('id' => 'form_favorecidos', 'method' => 'patch', 'route' => ['favorecidos.update', $empresa->id], 'enctype' => 'multipart/form-data')) !!}
-    {!! Form::hidden('id', $empresa->id) !!}
+    {!! Form::open(array('id' => 'form_favorecidos', 'method' => 'patch', 'route' => ['favorecidos.update', $favorecido->id], 'enctype' => 'multipart/form-data')) !!}
+    {!! Form::hidden('id', $favorecido->id) !!}
     <div class="card-body">
         @include('favorecidos.form')
     </div>
