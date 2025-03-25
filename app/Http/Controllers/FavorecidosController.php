@@ -193,7 +193,7 @@ class FavorecidosController extends Controller
             Favorecido::create($dadosFavorecido);
 
             DB::commit();
-            return redirect()->route('favorecidos.indes')->with('sucess' , 'Favorecido cadastrado com sucesso');
+            return redirect()->route('favorecidos.index')->with('sucess' , 'Favorecido cadastrado com sucesso');
         } catch(Exception $e) {
             return redirect()->route('favorecidos.pessoa.fisica.create')->withInput()->with('danger', 'Error:' . $e->getMessage());
             DB::rollback();
