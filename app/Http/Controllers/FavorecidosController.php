@@ -111,7 +111,7 @@ class FavorecidosController extends Controller
             $cnpj = str_replace(['.', '-', '/'], '', $cnpj);
 
             $pessoaJuridica = PessoaJuridica::where('cnpj', $cnpj)->first();
-            if (empty(pessoaJuridica)) {
+            if (empty($pessoaJuridica)) {
                 $pessoa = Pessoa::create(array_merge(['tipo_pessoa' => Pessoa::TIPO_PESSOA_JURIDICA], $request->all()));
                 $pessoaJuridica = $pessoa->pessoaJuridica()->create($request->all());
             }
@@ -127,7 +127,7 @@ class FavorecidosController extends Controller
             return redirect()->route('favorecidos.index')->with('success', 'Favorecido cadastrado com sucesso!');
 
         } catch (Exception $e) {
-            return redirect()->route(favorecidos.index)->withInput()->with('danger', 'Error:' . $e->getMessage());
+            return redirect()->route('favorecidos.index')->withInput()->with('danger', 'Error:' . $e->getMessage());
             DB::rollBack();
         }
     }
@@ -177,7 +177,7 @@ class FavorecidosController extends Controller
     {
         try{
             DB::beginTransaction();
-            $cpff = $request->get('cpf');
+            $cpf = $request->get('cpf');
             $cpf = str_replace(['.', '-'], '', $cpf);
 
             $pessoaFisica = PessoaFisica::where('cpf', $cpf)->first();

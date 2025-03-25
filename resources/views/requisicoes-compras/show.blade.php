@@ -75,16 +75,13 @@
                             <table class="table table-striped table-hover">
                                 <!-- Table head dos itens -->
                                 <thead>
-                                    
-
-
-                                    
+                                    <tr>
                                         <th class="col-md-2">Item</th>
                                         <th class="col-md-2 text-center">Produto/Serviço</th>
                                         <th class="col-md-2 text-center">Unidade</th>
                                         <th class="col-md-2 text-center">Quantidade solicitada</th>
                                         <th class="col-md-2 text-center">Quantidade a cotar</th>
-                                    
+                                    </tr>
                                 </thead>
                                 @foreach ($requisicao->itens as $item)
                                 <!-- Table row dos itens -->
