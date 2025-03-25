@@ -33,10 +33,6 @@
                     <td>{{ $empresa->pessoa->endereco_completo }}</td>
                 </tr>
                 <tr>
-                    <th>Ponto de Refência:</th>
-                    <td>{{ $empresa->pessoa->ponto_referencia }}</td>
-                </tr>
-                <tr>
                     <th>Cidade:</th>
                     <td>{{ $empresa->pessoa->cidade->nome . ' - ' . $empresa->pessoa->cidade->estado->nome }}</td>
                 </tr>

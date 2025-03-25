@@ -33,10 +33,6 @@
                     <td>{{ $favorecido->pessoa->endereco_completo }}</td>
                 </tr>
                 <tr>
-                    <th>Ponto de Refência:</th>
-                    <td>{{ $favorecido->pessoa->ponto_referencia }}</td>
-                </tr>
-                <tr>
                     <th>Cidade:</th>
                     <td>{{ $favorecido->pessoa->cidade->nome . ' - ' . $favorecido->pessoa->cidade->estado->nome }}</td>
                 </tr>
