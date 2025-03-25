@@ -91,7 +91,7 @@
                                 <a href="{{ route('favorecidos.edit', $favorecido->id) }}" class="btn btn-primary"
                                     title="Editar"><i class="fa fa-pencil"></i></a>
                                 @if ($favorecidos->total() > 0)
-                                    {!! Form::open(['id' => 'form_excluir_' . $favorecido->id, 'method' => 'delete', 'route' => ['favorecido.destroy', $favorecido->id], 'style' => 'display: inline']) !!}
+                                    {!! Form::open(['id' => 'form_excluir_' . $favorecido->id, 'method' => 'delete', 'route' => ['favorecidos.destroy', $favorecido->id], 'style' => 'display: inline']) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger modal-excluir']) !!}
                                     {!! Form::close() !!}
                                 @endif
