@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Empresas')
+@section('title', 'Favorecidos')
 
 @section('content')
     <div class="card mb-2">
         <div class="card-header">
-            <h3>Empresas</h3>
+            <h3>Favorecidos</h3>
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
@@ -21,7 +21,7 @@
             @endif
         </div>
         <div class="card-body">
-            <form action="{{ route('empresas.index') }}" method="get" class="form-filter">
+            <form action="{{ route('favorecidos.index') }}" method="get" class="form-filter">
                 <div class="row">
                     <div class="col-md-2">
                         <label for="pessoa">Pessoa</label>
@@ -56,8 +56,8 @@
                         <i class="fa fa-plus mr-2"></i>Cadastrar
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a href="{{ route('empresas.create') }}" class="dropdown-item">Pessoa Jurídica</a>
-                        <a href="{{ route('empresas.pessoa.fisica.create') }}" class="dropdown-item">Pessoa
+                        <a href="{{ route('favorecidos.create') }}" class="dropdown-item">Pessoa Jurídica</a>
+                        <a href="{{ route('favorecidos.pessoa.fisica.create') }}" class="dropdown-item">Pessoa
                             Física</a>
                     </div>
                 </div>
@@ -75,23 +75,23 @@
                 <th style="width: 20%;"></th>
             </thead>
             <tbody>
-                @if ($empresas->total() == 0)
+                @if ($favorecidos->total() == 0)
                     <tr>
-                        <th class="text-center" colspan="6">Nenhuma empresa encontrado</th>
+                        <th class="text-center" colspan="6">Nenhum favorecido encontrado</th>
                     </tr>
                 @else
-                    @foreach ($empresas as $empresa)
+                    @foreach ($favorecidos as $favorecido)
                         <tr>
-                            <td>{{ $empresa->id }}</td>
-                            <td>{{ Formatter::cpfCnpj($empresa->pessoa->cpf_cnpj) }}</td>
-                            <td>{{ $empresa->pessoa->nome_razao_social }}</td>
+                            <td>{{ $favorecido->id }}</td>
+                            <td>{{ Formatter::cpfCnpj($favorecido->pessoa->cpf_cnpj) }}</td>
+                            <td>{{ $favorecido->pessoa->nome_razao_social }}</td>
                             <td class="text-right text-nowrap">
-                                <a href="{{ route('empresas.show', $empresa->id) }}" class="btn btn-info"
+                                <a href="{{ route('favorecidos.show', $favorecido->id) }}" class="btn btn-info"
                                     title="Visualizar"><i class="fa fa-eye"></i></a>
-                                <a href="{{ route('empresas.edit', $empresa->id) }}" class="btn btn-primary"
+                                <a href="{{ route('favorecidos.edit', $favorecido->id) }}" class="btn btn-primary"
                                     title="Editar"><i class="fa fa-pencil"></i></a>
-                                @if ($empresas->total() > 0)
-                                    {!! Form::open(['id' => 'form_excluir_' . $empresa->id, 'method' => 'delete', 'route' => ['empresas.destroy', $empresa->id], 'style' => 'display: inline']) !!}
+                                @if ($favorecidos->total() > 0)
+                                    {!! Form::open(['id' => 'form_excluir_' . $favorecido->id, 'method' => 'delete', 'route' => ['favorecido.destroy', $favorecido->id], 'style' => 'display: inline']) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger modal-excluir']) !!}
                                     {!! Form::close() !!}
                                 @endif
@@ -104,8 +104,8 @@
     </section>
 
     <section class="text-center">
-        {{ $empresas->appends(request()->query())->links() }}
-        <h6><b>{{ $empresas->total() }}</b> {{ $empresas->total() == 1 ? 'registro' : 'registros' }} no total
+        {{ $favorecidos->appends(request()->query())->links() }}
+        <h6><b>{{ $favorecidos->total() }}</b> {{ $favorecidos->total() == 1 ? 'registro' : 'registros' }} no total
         </h6>
     </section>
 @endsection
@@ -138,7 +138,7 @@
         });
     </script>
 
-        @if ($empresas->total() > 0)
+        @if ($favorecidos->total() > 0)
             {!! Html::script('js/modal-excluir.js') !!}
         @endif
 
