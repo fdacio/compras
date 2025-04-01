@@ -15,7 +15,7 @@ class CreateAutorizacoesPagamentosTable extends Migration
     {
         Schema::create('autorizacoes_pagamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_fovorecido');
+            $table->unsignedBigInteger('id_favorecido');
             $table->unsignedBigInteger('id_municipio');
             $table->unsignedBigInteger('id_veiculo');
             $table->unsignedBigInteger('id_forma_pagamento');
