@@ -20,7 +20,7 @@ class CreateAutorizacoesPagamentosTable extends Migration
             $table->unsignedBigInteger('id_veiculo');
             $table->unsignedBigInteger('id_forma_pagamento');
             $table->date('data');
-            $table->numeric('valor', 10, 2);
+            $table->decimal('valor', 10, 2);
             $table->string('observacao', 500)->nullable();
             $table->string('banco', 60)->nullable();
             $table->string('agencia', 20)->nullable();
