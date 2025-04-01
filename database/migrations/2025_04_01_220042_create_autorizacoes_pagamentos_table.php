@@ -16,7 +16,7 @@ class CreateAutorizacoesPagamentosTable extends Migration
         Schema::create('autorizacoes_pagamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_fovorecido');
-            $table->unsignedBigInteger('id_centro_custo');
+            $table->unsignedBigInteger('id_municipio');
             $table->unsignedBigInteger('id_veiculo');
             $table->unsignedBigInteger('id_forma_pagamento');
             $table->date('data');
@@ -27,6 +27,11 @@ class CreateAutorizacoesPagamentosTable extends Migration
             $table->string('conta', 30)->nullable();
             $table->string('operacao', 30)->nullable();
             $table->string('chave_pix', 30)->nullable();
+            $table->foreign('id_favorecido')->references('id')->on('favorecidos');
+            $table->foreign('id_municipio')->references('id')->on('centros_custos');
+            $table->foreign('id_veiculo')->references('id')->on('veiculos');
+            $table->foreign('id_forma_pagamento')->references('id')->on('formas_pagamentos');
+
             $table->timestamps();
         });
     }
