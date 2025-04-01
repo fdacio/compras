@@ -21,6 +21,7 @@ class CreateAutorizacoesPagamentosTable extends Migration
             $table->unsignedBigInteger('id_forma_pagamento');
             $table->date('data');
             $table->decimal('valor', 10, 2);
+            $table->enum('situacao', ['PENDENTE', 'AUTORIZADO', 'CANCELADO']);
             $table->string('observacao', 500)->nullable();
             $table->string('banco', 60)->nullable();
             $table->string('agencia', 20)->nullable();
