@@ -27,14 +27,13 @@ class AutorizacoesPagamentosController extends Controller
             $autorizacoes =  $autorizacoes->where('id_veiculo', $veiculo);
         }
 
-        $favorevidos = Favorecido::orderBy('nome', 'asc')->pluck('nome', 'id');
         $veiculos = Veiculo::get()->map(function($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
 
         $autorizacoes = $autorizacoes->paginate(10);
 
-        return view('autorizacoes-pagamentos.index', compact('autorizacoes', 'favorecidos', 'veiculos'));
+        return view('autorizacoes-pagamentos.index', compact('autorizacoes', 'veiculos'));
     }
 
     /**
