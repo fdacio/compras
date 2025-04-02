@@ -16,7 +16,6 @@ class AlterVeiculosAddFieldChassiTable extends Migration
         Schema::table('veiculos', function (Blueprint $table) {
             $table->string('chassi', 100)->nullable()->after('renavan');
         });
-
     }
 
     /**
