@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\AutorizacaoPagamento;
+use App\Favorecido;
+use App\Veiculo;
 use Illuminate\Http\Request;
 
 class AutorizacoesPagamentosController extends Controller
@@ -13,7 +16,25 @@ class AutorizacoesPagamentosController extends Controller
      */
     public function index()
     {
-        //
+        $autorizacoes = AutorizacaoPagamento::orderBy('id', 'desc');
+        $favorecido = request()->get('id_favorecido');
+        $veiculo = request()->get('id_veiculo');
+
+        if (!empty($favorecido)) {
+            $autorizacoes =  $autorizacoes->where('id_favorecido', $favorecido);
+        }
+        if (!empty($veiculo)) {
+            $autorizacoes =  $autorizacoes->where('id_veiculo', $veiculo);
+        }
+
+        $favorevidos = Favorecido::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $veiculos = Veiculo::get()->map(function($veiculo) {
+            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
+        })->sortBy('descricao')->pluck('descricao', 'id');
+
+        $autorizacoes = $autorizacoes->paginate(10);
+
+        return view('autorizacoes-pagamentos.index', compact('autorizacoes', 'favorecidos', 'veiculos'));
     }
 
     /**

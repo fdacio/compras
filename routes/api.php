@@ -18,3 +18,5 @@ Route::get('cpf/{cpf}', 'Api\PessoasFisicasController@getDados')->name('api.pess
 Route::get('empresas/{cnpjcpf}', 'Api\EmpresasController@empresa')->name('api.empresas.cnpjcpf');
 Route::get('empresas', 'Api\EmpreasController@empresas')->name('api.empresas');
 Route::post('unidades/store', 'Api\UnidadesController@store')->name('api.unidades.store');
+Route::get('favorecidos/{cnpjcpf}', 'Api\FavorecidosController@favorecido')->name('api.favorecidos.cnpjcpf');
+Route::get('favorecidos', 'Api\FAvorecidosController@favorecidos')->name('api.favorecidos');

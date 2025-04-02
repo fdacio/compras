@@ -112,6 +112,8 @@
             cpf: "{{ route('api.pessoasfisicas.cpf', '_cpf_') }}",
             empresa: "{{ route('api.empresas.cnpjcpf', '_cnpjcpf_') }}",
             empresas: "{{ route('api.empresas') }}",
+            favorecido: "{{ route('api.favorecidos.cnpjcpf', '_cnpjcpf_') }}",
+            favorecidos: "{{ route('api.favorecidos') }}",
         }
     </script>
 
