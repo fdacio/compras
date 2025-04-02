@@ -41,7 +41,7 @@
                             {!! Form::select('pessoa', ['PF' => 'Física', 'PJ' => 'Jurídica'], request('pessoa'), [
                                 'class' => 'form-control',
                                 'id' => 'pessoa',
-                                'value' => 'PJ',
+                                'value' => 'PF',
                             ]) !!}
                         </div>
                     </div>
