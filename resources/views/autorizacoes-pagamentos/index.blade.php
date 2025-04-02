@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label for="cnpj-cpf">CPF Favorecido</label>
                             <div class="input-group">
-                                {!! Form::text('cnpj_cpf', request('cnpj_cpf'), ['class' => 'form-control cnpj', 'id' => 'cnpj-cpf']) !!}
+                                {!! Form::text('cnpj_cpf', request('cnpj_cpf'), ['class' => 'form-control cpf', 'id' => 'cnpj-cpf']) !!}
                                 {!! Form::hidden('id_favorecido', request('id_favorecido'), ['id' => 'id_favorecido']) !!}
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary btn-cnpj-cpf" type="button"><i
