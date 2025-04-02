@@ -158,5 +158,4 @@
         setCnpjCpfcliente($('#pessoa').val());
     </script>
     {!! Html::script('js/favorecidos.js') !!}
-    @endif
 @endsection
