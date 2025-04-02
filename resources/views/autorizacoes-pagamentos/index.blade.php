@@ -50,7 +50,7 @@
                             <label for="cnpj-cpf">CPF Favorecido</label>
                             <div class="input-group">
                                 {!! Form::text('cnpj_cpf', request('cnpj_cpf'), ['class' => 'form-control cnpj', 'id' => 'cnpj-cpf']) !!}
-                                {!! Form::hidden('id_cliente', request('id_cliente'), ['id' => 'id_cliente']) !!}
+                                {!! Form::hidden('id_favorecido', request('id_favorecido'), ['id' => 'id_favorecido']) !!}
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary btn-cnpj-cpf" type="button"><i
                                             class="fa fa-search"></i></button>
@@ -141,21 +141,21 @@
 @section('scripts')
     <script>
         $('#pessoa').on('change', function() {
-            setCnpjCpfcliente($(this).val());
+            setCnpjCpfFavorecido($(this).val());
         });
 
-        function setCnpjCpfcliente(tipo) {
+        function setCnpjCpfFavorecido(tipo) {
             if (tipo == 'PJ') {
                 $('#cnpj-cpf').mask('99.999.999/9999-99').trigger('mask');
-                $('label[for="cnpj-cpf"]').html('CNPJ Cliente');
-                $('label[for="razao-social-nome"]').html('Razão Social Cliente');
+                $('label[for="cnpj-cpf"]').html('CNPJ Favorecido');
+                $('label[for="razao-social-nome"]').html('Razão Social Favorecido');
             } else if (tipo == 'PF') {
                 $('#cnpj-cpf').mask('999.999.999-99').trigger('mask');
-                $('label[for="cnpj-cpf"]').html('CPF Cliente');
-                $('label[for="razao-social-nome"]').html('Nome Cliente');
+                $('label[for="cnpj-cpf"]').html('CPF Favorecido');
+                $('label[for="razao-social-nome"]').html('Nome Favorecido');
             }
         }
-        setCnpjCpfcliente($('#pessoa').val());
+        setCnpjCpfFavorecido($('#pessoa').val());
     </script>
     {!! Html::script('js/favorecidos.js') !!}
 @endsection
