@@ -107,7 +107,7 @@
                             <td>{{ \Carbon\Carbon::parse( $autorizacao->data )->format('d/m/Y')  }}</td>
                             <td>{{ Formatter::cpfCnpj($autorizacao->favorecido->pessoa->cpf_cnpj) . ' - ' . $autorizacao->favorecido->pessoa->nome_razao_social }}</td>
                             <td>{{ $autorizacao->veiculo->placa . ' - ' . $autorizacao->veiculo->marca . ' - ' . $autorizacao->veiculo->modelo }}</td>
-                            <td>{{ {{ 'R$ ' . number_format($autorizacao->valor, 2, ',', '.') }} }}</td>
+                            <td>{{ 'R$ ' . number_format($autorizacao->valor, 2, ',', '.') }}</td>
                             <td class="text-right text-nowrap">
                                 <a href="{{ route('autorizacoes-pagamentos.show', $autorizacao->id) }}" class="btn btn-info btn-sm"
                                     title="Visualizar"><i class="fa fa-eye"></i></a>
