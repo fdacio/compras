@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Cotacao\FormaPagamento;
+use App\FormaPagamento;
 use Illuminate\Database\Eloquent\Model;
 
 class AutorizacaoPagamento extends Model

@@ -119,8 +119,8 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="historico">Histórico</label>
-                {!! Form::textarea('historico', isset($autorizacao) ? $autorizacao->historico : old('historico'), ['placeholder' => 'Histórico', 'class' => 'form-control', 'id' => 'historico']) !!}
+                <label for="observacao">Observação</label>
+                {!! Form::textarea('observacao', isset($autorizacao) ? $autorizacao->observacao : old('observacao'), ['class' => 'form-control', 'id' => 'observacao']) !!}
             </div>
         </div>
     </div>
