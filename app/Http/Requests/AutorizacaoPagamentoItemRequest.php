@@ -28,8 +28,7 @@ class AutorizacaoPagamentoItemRequest extends FormRequest
             'item' => 'required|integer',
             'descricao' => 'required|string|max:200',
             'unidade' => 'required|string|max:10',
-            'quantidade_solicitada' => 'required|integer',
-            'quantidade_a_cotar' => 'required|integer'
+            'quantidade' => 'required|integer',
         ];
     }
 
@@ -44,10 +43,8 @@ class AutorizacaoPagamentoItemRequest extends FormRequest
             'unidade.required' => 'O campo unidade é obrigatório.',
             'unidade.string' => 'O campo unidade deve ser uma string.',
             'unidade.max' => 'O campo unidade deve ter no máximo 10 caracteres.',
-            'quantidade_solicitada.required' => 'O campo quantidade solicitada é obrigatório.',
-            'quantidade_solicitada.integer' => 'O campo quantidade solicitada deve ser um número inteiro.',
-            'quantidade_a_cotar.required' => 'O campo quantidade a cotar é obrigatório.',
-            'quantidade_a_cotar.integer' => 'O campo quantidade a cotar deve ser um número inteiro.'
+            'quantidade.required' => 'O campo quantidade é obrigatório.',
+            'quantidade.integer' => 'O campo quantidade deve ser um número inteiro.',
         ];
     }
 }

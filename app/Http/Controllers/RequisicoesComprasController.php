@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CentroCusto;
+use App\Http\Requests\RequisicaoCompraItemRequest;
 use App\Http\Requests\RequisicaoCompraRequest;
 use App\Produto;
 use App\RequisicaoCompra;
@@ -161,7 +162,7 @@ class RequisicoesComprasController extends Controller
         return view('requisicoes-compras.create-item', compact('requisicao', 'produtos', 'itens'));
     } 
 
-    public function itemStore(RequisicaoCompra $requisicao, Request $request) 
+    public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request) 
     {
         $item = 1;
         $descricao = "";

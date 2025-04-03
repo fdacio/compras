@@ -1,7 +1,6 @@
 <?php
 namespace App\Reports;
 
-use App\Helpers\Formatter;
 use App\Reports\ReportPdf;
 use App\RequisicaoCompra;
 use Illuminate\Support\Carbon;

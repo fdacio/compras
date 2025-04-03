@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\AutorizacaoPagamento;
+use App\AutorizacaoPagamentoItem;
 use App\CentroCusto;
+use App\Http\Requests\AutorizacaoPagamentoItemRequest;
 use App\Http\Requests\AutorizacaoPagamentoRequest;
 use App\Pessoa;
+use App\Reports\DemoAutorizacaoPagamentoPdf;
 use App\Veiculo;
 use Carbon\Carbon;
 use Cotacao\FormaPagamento;
@@ -168,5 +171,44 @@ class AutorizacoesPagamentosController extends Controller
             return redirect()->route('autorizacoes-pagamentos.index')->with('danger', 'Não é possível excluir Atualização de Pagamento. Há vínculos com outros registros.');
         }
 
+    }
+
+    public function itemCreate(AutorizacaoPagamento $autorizacao)
+    {
+        return view('autorizacoes-pagamentos.create-item', compact('autorizacao'));
+    }
+
+    public function itemStore(AutorizacaoPagamento $autorizacao, AutorizacaoPagamentoItemRequest $request)
+    {
+        $item = $autorizacao->itens()->count() + 1;
+        $descricao = $request->descricao;
+        $unidade = $request->unidade;
+        $quantidade = $request->quantidade;
+
+        $dados = [
+            'id_autorizacao' => $autorizacao->id,
+            'item' => $item,
+            'descricao' => $descricao,
+            'unidade' => $unidade,
+            'quantidade' => $quantidade,
+        ];
+
+        AutorizacaoPagamentoItem::create($dados);
+        return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');
+
+    }
+
+    public function destroyItem(AutorizacaoPagamentoItemRequest $request, AutorizacaoPagamento $autorizacao)
+    {
+        $item = AutorizacaoPagamentoItem::find($request->id_autorizacao_pagamento_item);
+        $item->delete();
+        return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item deletado!');
+    }
+
+    public function geraPdf(AutorizacaoPagamento $autorizacao) 
+    {
+        $demo = new DemoAutorizacaoPagamentoPdf('Autorização de Pagamento');
+        $demo->setContent($autorizacao);
+        $demo->download();
     }
 }
