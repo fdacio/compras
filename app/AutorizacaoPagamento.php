@@ -27,13 +27,7 @@ class AutorizacaoPagamento extends Model
         'paga',
         'data_pagamento',
     ];
-    /*
-    UPLOADS
-    LOGIN_AUTORIZOU
-    PAGOU_SIM_NAO
-    DATA_HORA_AUTORIZOU
-    DATA_HORA_PAGOU
-*/
+
     const SITUACOES = [
         [
             'label' => 'Pendente',
