@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AutorizacaoPagamento extends Model
 {
     protected $table = 'autorizacoes_pagamentos';
-    protected $fillable = [ 
+    protected $fillable = [
         'id_favorecido',
         'id_municipio',
         'id_veiculo',
@@ -22,8 +22,12 @@ class AutorizacaoPagamento extends Model
         'conta',
         'operacao',
         'chave_pix',
+        'id_usuario_autorizacao',
+        'data_autorizacao',
+        'paga',
+        'data_pagamento',
     ];
-/*
+    /*
     UPLOADS
     LOGIN_AUTORIZOU
     PAGOU_SIM_NAO
@@ -36,8 +40,8 @@ class AutorizacaoPagamento extends Model
             'value' => 'PENDENTE'
         ],
         [
-            'label' => 'Aprovado',
-            'value' => 'APROVADO'
+            'label' => 'Autorizado',
+            'value' => 'AUTORIZADO'
         ],
         [
             'label' => 'Cancelado',
@@ -45,7 +49,7 @@ class AutorizacaoPagamento extends Model
         ],
     ];
 
-    public function getSituacaoNomeAttribute() 
+    public function getSituacaoNomeAttribute()
     {
         $situacao = $this->situacao;
         $situacaoNome = '';
@@ -67,7 +71,7 @@ class AutorizacaoPagamento extends Model
     {
         return $this->belongsTo(CentroCusto::class, 'id_municipio');
     }
-    
+
     public function veiculo()
     {
         return $this->belongsTo(Veiculo::class, 'id_veiculo');
@@ -76,5 +80,10 @@ class AutorizacaoPagamento extends Model
     public function formaPagamento()
     {
         return $this->belongsTo(FormaPagamento::class, 'id_forma_pagamento');
+    }
+
+    public function usuarioAutorizacao()
+    {
+        return $this->belongsTo(User::class, 'id_usuario_autorizacao');
     }
 }

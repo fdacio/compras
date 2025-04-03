@@ -81,7 +81,7 @@
         </div>
     </div>
     <footer>
-        Dacio Software. Todos os Direitos Reservados
+        Copyright 2021 - 2025. Todos os Direitos Reservados
     </footer>
     
     <!-- Scripts -->
