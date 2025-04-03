@@ -18,7 +18,7 @@ class CreteAutorizacoesPagamentosDocumentosTable extends Migration
             $table->string('nome', 60);
             $table->string('arquivo', 255);
             $table->unsignedBigInteger('id_autorizacao_pagamento');
-            $table->foreign('id_id_autorizacao_pagamento')->references('id')->on('autorizacoes_pagamentos');
+            $table->foreign('id_autorizacao_pagamento')->references('id')->on('autorizacoes_pagamentos');
             $table->timestamps();
 
         });
