@@ -1,9 +1,9 @@
 <?php
 
-namespace Cotacao;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
+
 
 class FormaPagamento extends Model
 {

@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\AutorizacaoPagamento;
 use App\AutorizacaoPagamentoItem;
 use App\CentroCusto;
+use App\FormaPagamento;
 use App\Http\Requests\AutorizacaoPagamentoItemRequest;
 use App\Http\Requests\AutorizacaoPagamentoRequest;
 use App\Pessoa;
 use App\Reports\DemoAutorizacaoPagamentoPdf;
 use App\Veiculo;
 use Carbon\Carbon;
-use Cotacao\FormaPagamento;
 use Exception;
 
 class AutorizacoesPagamentosController extends Controller
