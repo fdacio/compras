@@ -24,12 +24,17 @@ class AutorizacaoPagamentoRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo' => 'required|string',
-            'id_requisitante' => 'required|integer',
-            'id_solicitante' => 'required|integer',
+            'id_favorecido' => 'required|integer',
+            'id_municipio' => 'required|integer',
             'id_veiculo' => 'required|integer',
-            'autorizacao_cotacao' => 'nullable|string',
-            'local_entrega' => 'nullable|string',
+            'id_forma_pagamento' => 'required|integer',
+            'valor' => 'required|numeric|between:0.00001,99999999999.9999',
+            'observacao' => 'nullable|string',
+            'banco' => 'nullable|string|max:60',
+            'agencia' => 'nullable|string|max:20',
+            'conta' => 'nullable|string|max:30',
+            'operacao' => 'nullable|string|max:30',
+            'chave_pix' => 'nullable|string|max:30',    
         ];
     }
 
@@ -37,10 +42,25 @@ class AutorizacaoPagamentoRequest extends FormRequest
     public function messages()
     {
         return [
-            'tipo.required' => 'Informe o Tipo',
-            'id_requisitante.required' => 'Informe o Requisitante',
-            'id_solicitante.required' => 'Informe o Solicitante',
+            'id_favorecido.required' => 'Informe o Favorecido',
+            'id_municipio.required' => 'Informe o Municipio',
             'id_veiculo.required' => 'Informe o Veículo',
+            'id_forma_pagamento.required' => 'Informe a Forma de Pagamento',
+            'valor.required' => 'Informe o Valor',
+            'valor.numeric' => 'Valor Inválido',
+            'valor.between' => 'Valor Inválido',
+            'observacao.string' => 'Observação deve ser texto',
+            'observacao.max' => 'Observação deve ter no máximo 500 caracteres',
+            'banco.string' => 'Banco deve ser texto',
+            'banco.max' => 'Banco deve ter no máximo 60 caracteres',
+            'agencia.string' => 'Agência deve ser texto',
+            'agencia.max' => 'Agência deve ter no máximo 20 caracteres',
+            'conta.string' => 'Conta deve ser texto',
+            'conta.max' => 'Conta deve ter no máximo 30 caracteres',
+            'operacao.string' => 'Operação deve ser texto',
+            'operacao.max' => 'Operação deve ter no máximo 30 caracteres',
+            'chave_pix.string' => 'Chave PIX deve ser texto',
+            'chave_pix.max' => 'Chave PIX deve ter no máximo 30 caracteres',
         ];
     }
 

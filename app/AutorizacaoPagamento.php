@@ -28,18 +28,22 @@ class AutorizacaoPagamento extends Model
         'data_pagamento',
     ];
 
+    const SITUACAO_PENDENTE = 'PENDENTE';
+    const SITUACAO_AUTORIZADO = 'AUTORIZADO';
+    const SITUACAO_CANCELADO = 'CANCELADO';   
+
     const SITUACOES = [
         [
             'label' => 'Pendente',
-            'value' => 'PENDENTE'
+            'value' => self::SITUACAO_PENDENTE
         ],
         [
             'label' => 'Autorizado',
-            'value' => 'AUTORIZADO'
+            'value' => self::SITUACAO_AUTORIZADO
         ],
         [
             'label' => 'Cancelado',
-            'value' => 'CANCELADO'
+            'value' => self::SITUACAO_CANCELADO
         ],
     ];
 

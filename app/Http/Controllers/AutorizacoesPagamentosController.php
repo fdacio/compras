@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\AutorizacaoPagamento;
-use App\Favorecido;
+use App\CentroCusto;
+use App\Http\Requests\AutorizacaoPagamentoRequest;
 use App\Pessoa;
 use App\Veiculo;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Cotacao\FormaPagamento;
+use Exception;
 
 class AutorizacoesPagamentosController extends Controller
 {
@@ -84,7 +87,14 @@ class AutorizacoesPagamentosController extends Controller
      */
     public function create()
     {
-        //
+        $favorecidos = [];
+        $municipios = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $veiculos = Veiculo::get()->map(function($veiculo) {
+            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
+        })->sortBy('descricao')->pluck('descricao', 'id');
+        $formasPagamentos = FormaPagamento::pluck('nome', 'id');
+        return view('autorizacoes-pagamentos.create', compact('favorecidos', 'municipios', 'veiculos', 'formasPagamentos'));
+
     }
 
     /**
@@ -93,9 +103,13 @@ class AutorizacoesPagamentosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AutorizacaoPagamentoRequest $request)
     {
-        //
+        $dados = $request->all();
+        $hoje = Carbon::now();
+        $dados = array_merge($dados, ['data' => $hoje, 'situacao' => AutorizacaoPagamento::SITUACAO_PENDENTE]);
+        $autorizacao = AutorizacaoPagamento::create($dados);
+        return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Autorização de Pagamento cadastrado com sucesso.');
     }
 
     /**
@@ -104,9 +118,9 @@ class AutorizacoesPagamentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(AutorizacaoPagamento $autorizacao)
     {
-        //
+        return view('autorizacoes-pagamentos.show', compact('autorizacao'));
     }
 
     /**
@@ -115,9 +129,15 @@ class AutorizacoesPagamentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(AutorizacaoPagamento $autorizacao)
     {
-        //
+        $favorecidos = [];
+        $municipios = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $veiculos = Veiculo::get()->map(function($veiculo) {
+            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
+        })->sortBy('descricao')->pluck('descricao', 'id');
+        $formasPagamentos = FormaPagamento::pluck('nome', 'id');
+        return view('autorizacoes-pagamentos.edit', compact('favorecidos', 'municipios', 'veiculos', 'formasPagamentos', 'autorizacao'));
     }
 
     /**
@@ -127,9 +147,10 @@ class AutorizacoesPagamentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AutorizacaoPagamentoRequest $request, AutorizacaoPagamento $autorizacao)
     {
-        //
+        $autorizacao->update($request->all());
+        return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Atualização de Pagamento atualizada com sucesso.');
     }
 
     /**
@@ -138,8 +159,14 @@ class AutorizacoesPagamentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(AutorizacaoPagamento $autorizacao)
     {
-        //
+        try {
+            $autorizacao->delete();
+            return redirect()->route('autorizacoes-pagamentos.index')->with('success', 'Atualização de Pagamento de Compra excluído oom sucesso.');
+        } catch (Exception $e) {
+            return redirect()->route('autorizacoes-pagamentos.index')->with('danger', 'Não é possível excluir Atualização de Pagamento. Há vínculos com outros registros.');
+        }
+
     }
 }

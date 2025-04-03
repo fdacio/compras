@@ -8,7 +8,6 @@ use App\Produto;
 use App\RequisicaoCompra;
 use App\Solicitante;
 use App\Veiculo;
-use App\Http\Requests\RequisicaoCompraItemRequest;
 use App\Reports\DemoRequisicaoCompraPdf;
 use App\RequisicaoCompraItem;
 use Carbon\Carbon;

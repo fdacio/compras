@@ -93,6 +93,7 @@
                 <th>Favorecido</th>
                 <th>Veículo</th>
                 <th>Valor</th>
+                <th>Situação</th>
                 <th style="width: 15%;"></th>
             </thead>
             <tbody>
@@ -108,6 +109,7 @@
                             <td>{{ Formatter::cpfCnpj($autorizacao->favorecido->pessoa->cpf_cnpj) . ' - ' . $autorizacao->favorecido->pessoa->nome_razao_social }}</td>
                             <td>{{ $autorizacao->veiculo->placa . ' - ' . $autorizacao->veiculo->marca . ' - ' . $autorizacao->veiculo->modelo }}</td>
                             <td>{{ 'R$ ' . number_format($autorizacao->valor, 2, ',', '.') }}</td>
+                            <td>{{ $autorizacao->situacao_nome }}</td>
                             <td class="text-right text-nowrap">
                                 <a href="{{ route('autorizacoes-pagamentos.show', $autorizacao->id) }}" class="btn btn-info btn-sm"
                                     title="Visualizar"><i class="fa fa-eye"></i></a>
