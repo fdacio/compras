@@ -13,7 +13,7 @@ class CreteAutorizacoesPagamentosDocumentosTable extends Migration
      */
     public function up()
     {
-        Schema::table('autorizacoes_pagamentos_documentos', function (Blueprint $table) {
+        Schema::create('autorizacoes_pagamentos_documentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome', 60);
             $table->string('arquivo', 255);
