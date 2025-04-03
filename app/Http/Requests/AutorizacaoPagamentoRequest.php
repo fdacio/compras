@@ -65,5 +65,16 @@ class AutorizacaoPagamentoRequest extends FormRequest
     }
 
 
-    
+    protected function prepareForValidation()
+    {
+        $valor = str_replace('R$', '', $this->valor);
+        $valor = str_replace(' ', '', $valor);
+        $valor = str_replace('.', '', $valor);
+        $valor = str_replace(',', '.', $valor);
+
+        $this->merge([
+            'valor' => $valor
+        ]);
+    }
+
 }
