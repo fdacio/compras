@@ -20,7 +20,7 @@
 
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group" id="div-item-produto">
-                        <label for="opcional">Opcional<small class="text-danger p-2">*</small></label>
+                        <label for="opcional">Opcional</label>
                         {!! Form::select('id_produto', [1 => "Veículo", 2 => "Produto"], old('opcional'), [
                             'placeholder' => 'Opcional',
                             'id' => 'opcional',
@@ -30,8 +30,17 @@
                 </div>
 
                 <div class="col-xs-9 col-sm-9 col-md-9">
+                    <div class="form-group d-none" id="div-item-veiculo">
+                        <label for="veiculos">Veículo</label>
+                        {!! Form::select('id_veiculo', $veiculos, old('id_veiculo'), [
+                            'placeholder' => 'Selecione o Veículo',
+                            'id' => 'veiculos',
+                            'class' => 'form-control select',
+                        ]) !!}
+                    </div>
+
                     <div class="form-group d-none" id="div-item-produto">
-                        <label for="produtos">Produto<small class="text-danger p-2">*</small></label>
+                        <label for="produtos">Produto</label>
                         {!! Form::select('id_produto', $produtos, old('id_produto'), [
                             'placeholder' => 'Selecione o Produto',
                             'id' => 'produtos',
@@ -39,14 +48,6 @@
                         ]) !!}
                     </div>
 
-                    <div class="form-group d-none" id="div-item-veiculo">
-                        <label for="veiculos">Veículo<small class="text-danger p-2">*</small></label>
-                        {!! Form::select('id_veiculo', $veiculos, old('id_veiculo'), [
-                            'placeholder' => 'Selecione o Veículo',
-                            'id' => 'veiculos',
-                            'class' => 'form-control select',
-                        ]) !!}
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -99,7 +100,16 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            $("#")
+            $("#opcional").change(function () {
+                let valor = $(this).val();
+                if (valor == 1) {
+                    $("#div-item-veiculo").removeClass('d-none');
+                    $("#div-item-produto").addClass('d-none');
+                } else {
+                    $("#div-item-veiculo").addClass('d-none');
+                    $("#div-item-produto").removeClass('d-none');
+                }
+            })
 
         });
     </script>
