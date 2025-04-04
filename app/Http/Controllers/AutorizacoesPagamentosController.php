@@ -14,6 +14,7 @@ use App\Reports\DemoAutorizacaoPagamentoPdf;
 use App\Veiculo;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Http\Request;
 
 class AutorizacoesPagamentosController extends Controller
 {
@@ -208,7 +209,7 @@ class AutorizacoesPagamentosController extends Controller
 
     }
 
-    public function destroyItem(AutorizacaoPagamentoItemRequest $request, AutorizacaoPagamento $autorizacao)
+    public function destroyItem(Request $request, AutorizacaoPagamento $autorizacao)
     {
         $item = AutorizacaoPagamentoItem::find($request->id_autorizacao_pagamento_item);
         $item->delete();
