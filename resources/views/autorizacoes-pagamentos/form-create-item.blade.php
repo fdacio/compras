@@ -4,7 +4,7 @@
             {!! Form::open([
                 'id' => 'form_autorizacoes_pagamentos_item',
                 'method' => 'post',
-                'route' => ['autorizacoes-pageamentos.item.store', $autorizacao->id],
+                'route' => ['autorizacoes-pagamentos.item.store', $autorizacao->id],
             ]) !!}
             <div class="row">
 
