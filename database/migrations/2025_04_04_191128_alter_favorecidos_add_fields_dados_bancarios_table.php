@@ -15,10 +15,10 @@ class AlterFavorecidosAddFieldsDadosBancariosTable extends Migration
     {
         Schema::table('favorecidos', function (Blueprint $table) {
             $table->string('banco', 60)->nullable()->after('id_pessoa');
-            $table->string('agencia', 20)->nullable();
-            $table->string('conta', 30)->nullable();
-            $table->string('operacao', 30)->nullable();
-            $table->string('chave_pix', 30)->nullable();
+            $table->string('agencia', 20)->nullable()->after('banco');
+            $table->string('conta', 30)->nullable()->after('agencia');
+            $table->string('operacao', 30)->nullable()->after('conta');
+            $table->string('chave_pix', 30)->nullable()->after('operacao');
         });
     }
 
