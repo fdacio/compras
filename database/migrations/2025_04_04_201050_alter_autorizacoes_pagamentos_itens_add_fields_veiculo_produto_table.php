@@ -14,7 +14,7 @@ class AlterAutorizacoesPagamentosItensAddFieldsVeiculoProdutoTable extends Migra
     public function up()
     {
         Schema::table('autorizacoes_pagamentos_itens', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_veiculo')->nullable()->after('id_autorizacao_pagamento');
+            $table->unsignedBigInteger('id_veiculo')->nullable()->after('id_autorizacao');
             $table->unsignedBigInteger('id_produto')->nullable()->after('id_veiculo');
             $table->foreign('id_veiculo')->references('id')->on('veiculos');
             $table->foreign('id_produto')->references('id')->on('produtos');
