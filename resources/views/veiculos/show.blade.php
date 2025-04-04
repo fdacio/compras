@@ -56,7 +56,10 @@
                     <th>Renavan:</th>
                     <td>{{ $veiculo->renavan }}</td>
                 </tr>
-
+                <tr>
+                    <th>Chassi</th>
+                    <td>{{ $veiculo->chassi }}</td>
+                </tr>
                 <tr>
                     <th>Criado:</th>
                     <td>{{ \Carbon\Carbon::parse($veiculo->created_at)->format('d/m/Y H:i:s') }}</td>
