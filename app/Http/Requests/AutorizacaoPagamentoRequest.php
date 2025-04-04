@@ -42,7 +42,7 @@ class AutorizacaoPagamentoRequest extends FormRequest
     {
         return [
             'id_favorecido.required' => 'Informe o Favorecido',
-            'id_cento_custo.required' => 'Informe o Centro de Custo',
+            'id_centro_custo.required' => 'Informe o Centro de Custo',
             'id_forma_pagamento.required' => 'Informe a Forma de Pagamento',
             'valor.required' => 'Informe o Valor',
             'valor.numeric' => 'Valor Inválido',

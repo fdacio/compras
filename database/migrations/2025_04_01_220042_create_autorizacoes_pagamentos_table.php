@@ -30,7 +30,6 @@ class CreateAutorizacoesPagamentosTable extends Migration
             $table->foreign('id_favorecido')->references('id')->on('favorecidos');
             $table->foreign('id_centro_custo')->references('id')->on('centros_custos');
             $table->foreign('id_forma_pagamento')->references('id')->on('formas_pagamentos');
-
             $table->timestamps();
         });
     }
