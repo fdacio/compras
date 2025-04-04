@@ -71,7 +71,19 @@
                     @foreach ($autorizacao->itens as $item)
                         <tr>
                             <td>{{ $item->item }}</td>
-                            <td>{{ $item->descricao }}</td>
+                            <td>
+                                {{ $item->descricao }}
+                                @if ($item->veiculo)
+                                <div>
+                                    <strong>Veículo:</strong> {{ $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo }}
+                                </div>
+                                @endif
+                                @if ($item->produto)
+                                <div>
+                                    <strong>Produto:</strong> {{ $item->produto->nome . '-' . $item->produto->unidade->nome}}
+                                </div>
+                                 @endif
+                            </td>
 
                             <td class="text-nowrap">
                                 {!! Form::open([
@@ -88,20 +100,6 @@
                                 {!! Form::close() !!}
                             </td>
                         </tr>
-                        @if ($item->veiculo)
-                            <tr>
-                                <td colspan="3">
-                                    <strong>Veículo:</strong> {{ $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo }}
-                                </td>
-                            </tr>
-                        @endif
-                        @if ($item->produto)
-                            <tr>
-                                <td colspan="3">
-                                    <strong>Produto:</strong> {{ $item->produto->nome . '-' . $item->produto->unidade->nome}}
-                                </td>
-                            </tr>
-                        @endif    
                     @endforeach
                 </tbody>
             </table>
