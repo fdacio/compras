@@ -105,9 +105,12 @@
                 if (valor == 1) {
                     $("#div-item-veiculo").removeClass('d-none');
                     $("#div-item-produto").addClass('d-none');
-                } else {
+                } else if (valor == 2) {
                     $("#div-item-veiculo").addClass('d-none');
                     $("#div-item-produto").removeClass('d-none');
+                } else {
+                    $("#div-item-veiculo").addClass('d-none');
+                    $("#div-item-produto").addClass('d-none');
                 }
             })
 
