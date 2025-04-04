@@ -20,8 +20,10 @@
                             ]) !!}
                         </div>
                     @else
-                        <label for="servico">Descrição do Serviço<small class="text-danger p-2">*</small></label>
-                        <textarea id="servico" name="servico" rows="4" class="form-control"></textarea>
+                        <div class="form-group">
+                            <label for="servico">Descrição do Serviço<small class="text-danger p-2">*</small></label>
+                            <textarea id="servico" name="servico" rows="4" class="form-control"></textarea>
+                        </div>
                     @endif
                 </div>
             </div>

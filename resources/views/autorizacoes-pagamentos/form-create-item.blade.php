@@ -7,6 +7,16 @@
                 'route' => ['autorizacoes-pagamentos.item.store', $autorizacao->id],
             ]) !!}
             <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label for="servico">Descrição do Serviço<small class="text-danger p-2">*</small></label>
+                        <textarea id="servico" name="servico" rows="4" class="form-control"></textarea>
+                    </div>    
+                </div>
+            </div>
+
+
+            <div class="row">
 
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group hide" id="div-item-produto">
