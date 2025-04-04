@@ -19,7 +19,7 @@
             <div class="row">
 
                 <div class="col-xs-3 col-sm-3 col-md-3">
-                    <div class="form-group" id="div-item-produto">
+                    <div class="form-group">
                         <label for="opcional">Opcional</label>
                         {!! Form::select('id_produto', [1 => "Veículo", 2 => "Produto"], old('opcional'), [
                             'placeholder' => 'Opcional',
