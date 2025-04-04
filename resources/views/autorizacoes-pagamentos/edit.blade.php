@@ -41,7 +41,7 @@
                     <div class="stepwizard-step">
                         <a href="{{ route('autorizacoes-pagamentos.item.create', $autorizacao->id) }}"
                             class="btn btn-outline-secondary btn-light btn-circle"><i class="fa fa-list-ol"></i></a>
-                        <p><b>Itens da Requisição</b></p>
+                        <p><b>Itens da Autorização</b></p>
                     </div>
                 </div>
             </div>
