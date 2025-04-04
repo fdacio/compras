@@ -203,6 +203,8 @@ class AutorizacoesPagamentosController extends Controller
             $dados = array_merge($dados, ['id_produto' => $idProduto]);
         }        
 
+        dd($dados, $request->id_veiculo, $request->id_produto);
+
         AutorizacaoPagamentoItem::create($dados);
         return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');
 
