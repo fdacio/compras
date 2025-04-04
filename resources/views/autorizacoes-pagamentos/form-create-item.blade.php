@@ -101,6 +101,7 @@
                                     <strong>Produto:</strong> {{ $item->produto->nome . '-' . $item->produto->unidade->nome}}
                                 </td>
                             </tr>
+                        @endif    
                     @endforeach
                 </tbody>
             </table>
