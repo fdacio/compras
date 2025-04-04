@@ -91,10 +91,7 @@ class AutorizacoesPagamentosController extends Controller
     public function create()
     {
         $favorecidos = [];
-        $municipios = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-        $veiculos = Veiculo::get()->map(function($veiculo) {
-            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
-        })->sortBy('descricao')->pluck('descricao', 'id');
+        $centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $formasPagamentos = FormaPagamento::pluck('nome', 'id');
         return view('autorizacoes-pagamentos.create', compact('favorecidos', 'municipios', 'veiculos', 'formasPagamentos'));
 
@@ -135,10 +132,7 @@ class AutorizacoesPagamentosController extends Controller
     public function edit(AutorizacaoPagamento $autorizacao)
     {
         $favorecidos = [];
-        $municipios = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-        $veiculos = Veiculo::get()->map(function($veiculo) {
-            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
-        })->sortBy('descricao')->pluck('descricao', 'id');
+        $centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $formasPagamentos = FormaPagamento::pluck('nome', 'id');
         return view('autorizacoes-pagamentos.edit', compact('favorecidos', 'municipios', 'veiculos', 'formasPagamentos', 'autorizacao'));
     }

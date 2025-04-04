@@ -10,8 +10,7 @@ class AutorizacaoPagamento extends Model
     protected $table = 'autorizacoes_pagamentos';
     protected $fillable = [
         'id_favorecido',
-        'id_municipio',
-        'id_veiculo',
+        'id_centro_custo',
         'id_forma_pagamento',
         'data',
         'valor',
@@ -65,14 +64,9 @@ class AutorizacaoPagamento extends Model
         return $this->belongsTo(Favorecido::class, 'id_favorecido');
     }
 
-    public function municipio()
+    public function centroCusto()
     {
-        return $this->belongsTo(CentroCusto::class, 'id_municipio');
-    }
-
-    public function veiculo()
-    {
-        return $this->belongsTo(Veiculo::class, 'id_veiculo');
+        return $this->belongsTo(CentroCusto::class, 'id_centro_custo');
     }
 
     public function formaPagamento()

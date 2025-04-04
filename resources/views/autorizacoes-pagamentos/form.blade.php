@@ -43,26 +43,13 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="municipio">Município<small class="text-danger p-2">*</small></label>
+                <label for="centro-custo">Centro de Custo<small class="text-danger p-2">*</small></label>
                 {!! Form::select(
-                    'id_municipio', 
-                    $municipios, 
-                    isset($autorizacao) ? $autorizacao->id_municipio : old('id_municipio'), 
-                    ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'municipio']) 
+                    'id_centro_custo', 
+                    $centrosCusto, 
+                    isset($autorizacao) ? $autorizacao->id_centro_custo : old('id_centro_custo'), 
+                    ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'centro-custo'])
                 !!}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <label for="id_veiculo">Veículo<small class="text-danger p-2">*</small></label>
-                {!! Form::select(
-                    'id_veiculo',
-                    $veiculos,
-                    isset($requisicao) ? $requisicao->id_veiculo : old('id_veiculo'),
-                    ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id_veiculo'],
-                ) !!}
             </div>
         </div>
     </div>
