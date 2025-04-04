@@ -25,8 +25,7 @@ class AutorizacaoPagamentoRequest extends FormRequest
     {
         return [
             'id_favorecido' => 'required|integer',
-            'id_municipio' => 'required|integer',
-            'id_veiculo' => 'required|integer',
+            'id_centro_custo' => 'required|integer',
             'id_forma_pagamento' => 'required|integer',
             'valor' => 'required|numeric|between:0.00001,99999999999.9999',
             'observacao' => 'nullable|string',
@@ -43,8 +42,7 @@ class AutorizacaoPagamentoRequest extends FormRequest
     {
         return [
             'id_favorecido.required' => 'Informe o Favorecido',
-            'id_municipio.required' => 'Informe o Municipio',
-            'id_veiculo.required' => 'Informe o Veículo',
+            'id_cento_custo.required' => 'Informe o Centro de Custo',
             'id_forma_pagamento.required' => 'Informe a Forma de Pagamento',
             'valor.required' => 'Informe o Valor',
             'valor.numeric' => 'Valor Inválido',
