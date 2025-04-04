@@ -16,4 +16,13 @@ class AutorizacaoPagamentoItem extends Model
         'unidade',
         'quantidade',
     ];
+
+    public function veiculo()
+    {
+        return $this->belongsTo(Veiculo::class, 'id_veiculo');
+    }
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class, 'id_produto');
+    }
 }

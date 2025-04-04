@@ -15,9 +15,7 @@
                 </div>
             </div>
 
-
             <div class="row">
-
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group">
                         <label for="opcional">Opcional</label>
@@ -28,7 +26,6 @@
                         ]) !!}
                     </div>
                 </div>
-
                 <div class="col-xs-9 col-sm-9 col-md-9">
                     <div class="form-group d-none" id="div-item-veiculo">
                         <label for="veiculos">Veículo</label>
@@ -47,7 +44,6 @@
                             'class' => 'form-control select',
                         ]) !!}
                     </div>
-
                 </div>
             </div>
             <div class="row">
@@ -76,6 +72,7 @@
                         <tr>
                             <td>{{ $item->item }}</td>
                             <td>{{ $item->descricao }}</td>
+
                             <td class="text-nowrap">
                                 {!! Form::open([
                                     'id' => 'form_excluir_' . $item->id,
@@ -91,6 +88,19 @@
                                 {!! Form::close() !!}
                             </td>
                         </tr>
+                        @if ($item->veiculo)
+                            <tr>
+                                <td colspan="3">
+                                    <strong>Veículo:</strong> {{ $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo }}
+                                </td>
+                            </tr>
+                        @endif
+                        @if ($item->produto)
+                            <tr>
+                                <td colspan="3">
+                                    <strong>Produto:</strong> {{ $item->produto->nome . '-' . $item->produto->unidade->nome}}
+                                </td>
+                            </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -113,9 +123,7 @@
                     $("#div-item-produto").addClass('d-none');
                 }
             })
-
         });
     </script>
-
     {!! Html::script('js/modal-excluir.js') !!}
 @endsection
