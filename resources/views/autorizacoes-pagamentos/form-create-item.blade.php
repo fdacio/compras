@@ -19,7 +19,7 @@
             <div class="row">
 
                 <div class="col-xs-3 col-sm-3 col-md-3">
-                    <div class="form-group d-none" id="div-item-produto">
+                    <div class="form-group" id="div-item-produto">
                         <label for="opcional">Opcional<small class="text-danger p-2">*</small></label>
                         {!! Form::select('id_produto', [1 => "Veículo", 2 => "Produto"], old('opcional'), [
                             'placeholder' => 'Opcional',
@@ -39,7 +39,7 @@
                         ]) !!}
                     </div>
 
-                    <div class="form-group hide" id="div-item-veiculo">
+                    <div class="form-group d-none" id="div-item-veiculo">
                         <label for="veiculos">Veículo<small class="text-danger p-2">*</small></label>
                         {!! Form::select('id_veiculo', $veiculos, old('id_veiculo'), [
                             'placeholder' => 'Selecione o Veículo',
