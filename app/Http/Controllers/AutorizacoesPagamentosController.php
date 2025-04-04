@@ -93,7 +93,7 @@ class AutorizacoesPagamentosController extends Controller
         $favorecidos = [];
         $centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $formasPagamentos = FormaPagamento::pluck('nome', 'id');
-        return view('autorizacoes-pagamentos.create', compact('favorecidos', 'municipios', 'veiculos', 'formasPagamentos'));
+        return view('autorizacoes-pagamentos.create', compact('favorecidos', 'centrosCusto', 'formasPagamentos'));
 
     }
 
@@ -134,7 +134,7 @@ class AutorizacoesPagamentosController extends Controller
         $favorecidos = [];
         $centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $formasPagamentos = FormaPagamento::pluck('nome', 'id');
-        return view('autorizacoes-pagamentos.edit', compact('favorecidos', 'municipios', 'veiculos', 'formasPagamentos', 'autorizacao'));
+        return view('autorizacoes-pagamentos.edit', compact('favorecidos', 'centrosCusto', 'formasPagamentos', 'autorizacao'));
     }
 
     /**
