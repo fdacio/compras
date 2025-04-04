@@ -85,7 +85,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
 
         $this->Ln(5);
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(190, 5, utf8_decode('Autorização de cotação'), 'LTR');
+        $this->Cell(190, 5, utf8_decode('Autorização de cotação'), 'LTR', 0, 'C');
         $this->Ln();
         $this->MultiCell(190, 30, utf8_decode(''), 1, 'LBR');
         
