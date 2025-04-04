@@ -122,5 +122,15 @@
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="id_empresa">Chassi<small class="text-danger p-2">*</small></label>
+                {!! Form::text('chassi', isset($veiculo->chassi) ? $veiculo->chassi : old('chassi'), [
+                    'class' => 'form-control',
+                    'id' => 'chassi',
+                ]) !!}
+            </div>
+        </div>
+    </div>
 </div>
