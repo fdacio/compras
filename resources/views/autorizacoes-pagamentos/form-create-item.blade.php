@@ -77,7 +77,7 @@
                                 {!! Form::open([
                                     'id' => 'form_excluir_' . $item->id,
                                     'method' => 'delete',
-                                    'route' => ['autorizacoes-pageamentos.del-item.destroy', $autorizacao->id],
+                                    'route' => ['autorizacoes-pagamentos.del-item.destroy', $autorizacao->id],
                                     'style' => 'display: inline',
                                 ]) !!}
                                 {!! Form::hidden('id_autorizacao_pagamento_item', $item->id) !!}
