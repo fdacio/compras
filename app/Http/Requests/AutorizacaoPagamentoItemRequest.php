@@ -29,6 +29,8 @@ class AutorizacaoPagamentoItemRequest extends FormRequest
             'descricao' => 'required|string|max:200',
             'unidade' => 'required|string|max:10',
             'quantidade' => 'required|integer',
+            'id_veiculo' => 'nullable|integer',
+            'id_produto' => 'nullable|integer',
         ];
     }
 

@@ -9,6 +9,7 @@ use App\FormaPagamento;
 use App\Http\Requests\AutorizacaoPagamentoItemRequest;
 use App\Http\Requests\AutorizacaoPagamentoRequest;
 use App\Pessoa;
+use App\Produto;
 use App\Reports\DemoAutorizacaoPagamentoPdf;
 use App\Veiculo;
 use Carbon\Carbon;
@@ -169,16 +170,22 @@ class AutorizacoesPagamentosController extends Controller
 
     public function itemCreate(AutorizacaoPagamento $autorizacao)
     {
-        return view('autorizacoes-pagamentos.create-item', compact('autorizacao'));
+        $itens = [];
+        $produtos = Produto::get()->map(function($produto) {
+            return ['id' => $produto->id, 'nome' => $produto->nome . ' - ' . $produto->unidade->nome];
+        })->sortBy('nome')->pluck('nome', 'id');
+        $veiculos = Veiculo::get()->map(function($veiculo) {
+            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
+        })->sortBy('descricao')->pluck('descricao', 'id');
+        return view('autorizacoes-pagamentos.create-item', compact('autorizacao', 'produtos', 'itens', 'veiculos'));
     }
 
     public function itemStore(AutorizacaoPagamento $autorizacao, AutorizacaoPagamentoItemRequest $request)
     {
         $item = $autorizacao->itens()->count() + 1;
         $descricao = $request->descricao;
-        $unidade = $request->unidade;
-        $quantidade = $request->quantidade;
-
+        $unidade = 'UNIDADE';
+        $quantidade = 1;
         $dados = [
             'id_autorizacao' => $autorizacao->id,
             'item' => $item,
@@ -186,6 +193,15 @@ class AutorizacoesPagamentosController extends Controller
             'unidade' => $unidade,
             'quantidade' => $quantidade,
         ];
+
+        if ($request->has('id_veiculo')) {
+            $idVeiculo = $request->id_veiculo;
+            $dados = array_merge($dados, ['id_veiculo' => $idVeiculo]);
+        }
+        if ($request->has('id_produto')) {
+            $idProduto = $request->id_produto;
+            $dados = array_merge($dados, ['id_produto' => $idProduto]);
+        }        
 
         AutorizacaoPagamentoItem::create($dados);
         return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');

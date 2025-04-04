@@ -74,9 +74,6 @@
                     <th style="width: 45px;"></th>
                 </thead>
                 <tbody>
-                    @php
-                        $itemId = 1;
-                    @endphp
                     @foreach ($requisicao->itens as $item)
                         <tr>
                             <td>{{ $item->item }}</td>
