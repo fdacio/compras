@@ -91,7 +91,6 @@
                 <th>Código</th>
                 <th>Data</th>
                 <th>Favorecido</th>
-                <th>Veículo</th>
                 <th>Valor</th>
                 <th>Situação</th>
                 <th style="width: 15%;"></th>
@@ -107,7 +106,6 @@
                             <td>{{ $autorizacao->id }}</td>
                             <td>{{ \Carbon\Carbon::parse( $autorizacao->data )->format('d/m/Y')  }}</td>
                             <td>{{ Formatter::cpfCnpj($autorizacao->favorecido->pessoa->cpf_cnpj) . ' - ' . $autorizacao->favorecido->pessoa->nome_razao_social }}</td>
-                            <td>{{ $autorizacao->veiculo->placa . ' - ' . $autorizacao->veiculo->marca . ' - ' . $autorizacao->veiculo->modelo }}</td>
                             <td>{{ 'R$ ' . number_format($autorizacao->valor, 2, ',', '.') }}</td>
                             <td>{{ $autorizacao->situacao_nome }}</td>
                             <td class="text-right text-nowrap">
