@@ -204,7 +204,7 @@ class AutorizacoesPagamentosController extends Controller
         }        
 
         AutorizacaoPagamentoItem::create($dados);
-        return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');
+        return redirect()->route('autorizacoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');
 
     }
 
@@ -212,7 +212,7 @@ class AutorizacoesPagamentosController extends Controller
     {
         $item = AutorizacaoPagamentoItem::find($request->id_autorizacao_pagamento_item);
         $item->delete();
-        return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item deletado!');
+        return redirect()->route('autorizacoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item deletado!');
     }
 
     public function geraPdf(AutorizacaoPagamento $autorizacao) 
