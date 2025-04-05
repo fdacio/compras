@@ -71,7 +71,7 @@
 
                                     <td class="text-nowrap">
                                         <a href="{{ route('autorizacoes-pagamentos.documentos.download', $documento->id) }}" target="_blank" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-file-pdf-o text-white"></i>
+                                            <i class="fa fa-download text-white"></i>
                                         </a>   
                                         {!! Form::open([
                                             'id' => 'form_excluir_' . $documento->id,
