@@ -51,19 +51,6 @@
                 </div>
             </div>
         </div>
-        {!! Form::open([
-            'id' => 'form_autorizacao_documentos',
-            'method' => 'post',
-            'route' => 'autorizacoes-pagamentos.documentos.upload',
-            'enctype' => 'multipart/form-data',
-        ]) !!}
-        <div class="card-body">
-            {!! Form::hidden('id_autorizacao', $autorizacao->id) !!}
-            @include('autorizacoes-pagamentos.documentos.form')
-        </div>
-        <div class="card-footer">
-            {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-        </div>
-        {!! Form::close() !!}
+        @include('autorizacoes-pagamentos.documentos.form')
     </div>
 @endsection

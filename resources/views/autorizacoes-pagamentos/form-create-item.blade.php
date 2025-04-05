@@ -6,6 +6,7 @@
                 'method' => 'post',
                 'route' => ['autorizacoes-pagamentos.item.store', $autorizacao->id],
             ]) !!}
+            {!! Form::hidden('id', $autorizacao->id) !!}
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -48,10 +49,10 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-                    {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
+                    {!! Form::button('Adicionar', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
-                        'class' => 'btn btn-primary form-control',
+                        'class' => 'btn btn-primary',
                     ]) !!}
                 </div>
             </div>

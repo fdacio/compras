@@ -51,15 +51,6 @@
                 </div>
             </div>
         </div>
-        {!! Form::open([
-            'id' => 'form_autorizacao_pagamento_item',
-            'method' => 'post',
-            'route' => ['autorizacoes-pagamentos.item.store', $autorizacao->id],
-        ]) !!}
-        {!! Form::hidden('id', $autorizacao->id) !!}
-        <div class="card-body">
-            @include('autorizacoes-pagamentos.form-create-item')
-        </div>
-        {!! Form::close() !!}
+        @include('autorizacoes-pagamentos.form-create-item')
     </div>
 @endsection
