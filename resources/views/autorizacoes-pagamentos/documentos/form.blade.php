@@ -66,14 +66,11 @@
                         @else
                             @foreach ($autorizacao->documentos as $documento)
                                 <tr>
-                                    <td>{{ $documento->nome }}</td>                                    
-
+                                    <td>{{ $documento->nome }}</td>
+                                     
                                     <td class="text-nowrap">
-                                        <a href="{{ route('autorizacoes-pagamentos.documentos.download', $documento->id) }}" 
-                                            target="_blank" 
-                                            class="btn btn-primary btn-sm" 
-                                            title="Download">
-                                            <i class="fa fa-download text-white"></i/>
+                                        <a href="{{ route('autorizacoes-pagamentos.documentos.download', $documento->id) }}" target="_blank" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-download text-white"></i>
                                         </a>   
                                         {!! Form::open([
                                             'id' => 'form_excluir_' . $documento->id,
@@ -84,7 +81,6 @@
                                         {!! Form::hidden('id_autorizacao_pagamento_documento', $documento->id) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', [
                                             'class' => 'btn btn-danger modal-excluir',
-                                            
                                         ]) !!}
                                         {!! Form::close() !!}
                                     </td>
