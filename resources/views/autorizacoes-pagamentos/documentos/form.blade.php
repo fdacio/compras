@@ -69,7 +69,10 @@
                                     <td>{{ $documento->nome }}</td>
                                      
                                     <td class="text-nowrap">
-                                        <a href="{{ route('autorizacoes-pagamentos.documentos.download', $documento->id) }}" target="_blank" class="btn btn-primary btn-sm">
+                                        <a href="{{ route('autorizacoes-pagamentos.documentos.download', $documento->id) }}" 
+                                            target="_blank" 
+                                            class="btn btn-primary btn-sm"
+                                            title="Baixar documento">
                                             <i class="fa fa-download text-white"></i>
                                         </a>   
                                         {!! Form::open([
@@ -80,7 +83,8 @@
                                         ]) !!}
                                         {!! Form::hidden('id_autorizacao_pagamento_documento', $documento->id) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', [
-                                            'class' => 'btn btn-danger modal-excluir',
+                                            'class' => 'btn btn-sm btn-danger modal-excluir',
+                                            'title' => 'Excluir documento',
                                         ]) !!}
                                         {!! Form::close() !!}
                                     </td>
