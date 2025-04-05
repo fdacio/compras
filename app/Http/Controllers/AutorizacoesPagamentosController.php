@@ -227,7 +227,7 @@ class AutorizacoesPagamentosController extends Controller
     public function documentoUpload(AutorizacaoPagamentoDocumentoRequest $request, AutorizacaoPagamento $autorizacao)
     {
         $dados = [
-            'id_autorizacao' => $autorizacao->id,
+            'id_autorizacao' => $request->autorizacao->id,
             'nome' => $request->get('nome')
         ];
         if (!empty($request->file('file-documento'))) {
