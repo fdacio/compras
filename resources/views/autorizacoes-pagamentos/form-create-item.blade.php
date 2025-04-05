@@ -1,4 +1,11 @@
 <div id="step2" class="setup-content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <small class="text-danger">*Campos obrigatórios.</small>
+            </div>
+        </div>
+    </div>
     <div class="p-2 mb-2">
         <div class="card-body">
             {!! Form::open([

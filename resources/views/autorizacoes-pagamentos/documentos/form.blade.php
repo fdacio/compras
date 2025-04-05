@@ -1,4 +1,11 @@
 <div id="step3" class="setup-content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <small class="text-danger">*Campos obrigatórios.</small>
+            </div>
+        </div>
+    </div>
     <div class="p-2 mb-2">
         {!! Form::open([
             'id' => 'form_autorizacao_documentos',
@@ -11,7 +18,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="nome">Nome</label>
+                        <label for="nome">Nome<small class="text-danger p-2">*</small></label>
                         {!! Form::text('nome', isset($autorizacao) ? $autorizacao->nome : old('nome'), [
                             'placeholder' => 'Informe o nome do documento.',
                             'class' => 'form-control',
@@ -23,7 +30,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="customFileDocumento">Arquivo</label>
+                        <label for="customFileDocumento">Arquivo<small class="text-danger p-2">*</small></label>
                         <div class="custom-file">
                             <input name="file-documento" type="file" class="custom-file-input"
                                 id="customFileDocumento" data-img="img-documento" accept="application/pdf">
