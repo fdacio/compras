@@ -276,3 +276,25 @@
         </div>               
     </div>                
 </div>
+@section('scripts')
+    {!! Html::script('js/cpf.js') !!}
+    {!! Html::script('js/cep.js') !!}
+    {!! Html::script('js/cidades.js') !!}
+    <script>
+        $(document).ready(function() {
+
+            @if (!empty($favorecido->pessoa->cidade))
+                var estado = "@php echo $favorecido->pessoa->cidade->estado->sigla @endphp";
+                var cidade = "@php echo $favorecido->pessoa->cidade->nome @endphp";
+                setEstado(estado, cidade);
+            @endif
+
+            @if (!empty(old('id_municipio')))
+                var estado = $("#estado option:selected").text();
+                var idCidade = @php echo old('id_municipio') @endphp;
+                setEstadoCidadeId(estado, idCidade);
+            @endif
+
+        });
+    </script>
+@endsection
