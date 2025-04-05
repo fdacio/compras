@@ -65,8 +65,8 @@
     {!! Form::close() !!}
 
 
-    <div class="p-2">
-        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 20px;">
+    <div class="mt-2">
+        <div class="col-xs-12 col-sm-12 col-md-12">
 
             <table class="table table-striped table-hover">
                 <thead>
