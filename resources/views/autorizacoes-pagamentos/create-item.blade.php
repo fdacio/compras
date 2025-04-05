@@ -51,6 +51,8 @@
                 </div>
             </div>
         </div>
-        @include('autorizacoes-pagamentos.form-create-item')
+        <div class="card-body">
+            @include('autorizacoes-pagamentos.form-create-item')
+        </div>
     </div>
 @endsection
