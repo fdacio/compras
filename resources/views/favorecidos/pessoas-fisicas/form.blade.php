@@ -268,7 +268,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <label for="chave_pix">Chave PIX</label>
-                        {!! Form::text('operacao', isset($favorecido) ? $favorecido->chave_pix : null, [
+                        {!! Form::text('chave_pix', isset($favorecido) ? $favorecido->chave_pix : null, [
                             'class' => 'form-control',
                             'id' => 'chave_pix',
                         ]) !!}
