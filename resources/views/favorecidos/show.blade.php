@@ -65,7 +65,7 @@
                     <td>{{ $favorecido->operação }}</td>
                 </tr>
                 <tr>
-                    <th>Chave PIX</th>
+                    <th>Chave PIX:</th>
                     <td>{{ $favorecido->chave_pix }}</td>
                 <tr>
                     <th>Criado:</th>
