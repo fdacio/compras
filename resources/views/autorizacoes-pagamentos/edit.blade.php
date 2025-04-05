@@ -44,14 +44,14 @@
                         <p><b>Itens da Autorização</b></p>
                     </div>
                     <div class="stepwizard-step">
-                        <a href="{{ route('autorizacoes-pagamentos.documento.upload', $autorizacao->id) }}"
+                        <a href="{{ route('autorizacoes-pagamentos.documentos.create', $autorizacao->id) }}"
                             class="btn btn-primary btn-circle"><i class="fa fa-list-ol"></i></a>
                         <p><b>Documentos da Autorização</b></p>
                     </div>
                 </div>
             </div>
     </div>
-    {!! Form::open(array('id' => 'form_autorizacao_compra', 'method' => 'patch', 'route' => ['autorizacoes-pagamentos.update', $autorizacao->id])) !!}
+    {!! Form::open(array('id' => 'form_autorizacao_pagamento', 'method' => 'patch', 'route' => ['autorizacoes-pagamentos.update', $autorizacao->id])) !!}
     {!! Form::hidden('id', $autorizacao->id) !!}
     <div class="card-body">
         @include('autorizacoes-pagamentos.form')
