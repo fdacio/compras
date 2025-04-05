@@ -53,35 +53,42 @@
 
     <div class="mt-4 row">
         <div class="col-xs-12 col-sm-12 col-md-12">
+            <section class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <th>Nome</th>
+                        <th style="width: 45px;"></th>
+                    </thead>
+                    <tbody>
+                        @if ($autorizacao->documentos->count() == 0)
+                            <tr>
+                                <th class="text-center" colspan="2">Nenhum documento cadastrado</th>
+                            </tr>
+                        @else
+                            @foreach ($autorizacao->documentos as $item)
+                                <tr>
+                                    <td>{{ $item->nome }}</td>
 
-            <table class="table table-striped table-hover">
-                <thead>
-                    <th>Nome</th>
-                    <th style="width: 45px;"></th>
-                </thead>
-                <tbody>
-                    @foreach ($autorizacao->documentos as $item)
-                        <tr>
-                            <td>{{ $item->nome }}</td>
-
-                            <td class="text-nowrap">
-                                {!! Form::open([
-                                    'id' => 'form_excluir_' . $item->id,
-                                    'method' => 'delete',
-                                    'route' => ['autorizacoes-pagamentos.documentos.destroy', $item->id],
-                                    'style' => 'display: inline',
-                                ]) !!}
-                                {!! Form::hidden('id_autorizacao_pagamento_documento', $item->id) !!}
-                                {!! Form::button('<i class="fa fa-trash"></i>', [
-                                    'class' => 'btn btn-danger modal-excluir',
-                                    'style' => 'padding: 1px 6px;',
-                                ]) !!}
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                    <td class="text-nowrap">
+                                        {!! Form::open([
+                                            'id' => 'form_excluir_' . $item->id,
+                                            'method' => 'delete',
+                                            'route' => ['autorizacoes-pagamentos.documentos.destroy', $item->id],
+                                            'style' => 'display: inline',
+                                        ]) !!}
+                                        {!! Form::hidden('id_autorizacao_pagamento_documento', $item->id) !!}
+                                        {!! Form::button('<i class="fa fa-trash"></i>', [
+                                            'class' => 'btn btn-danger modal-excluir',
+                                            'style' => 'padding: 1px 6px;',
+                                        ]) !!}
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </section>
         </div>
     </div>
 </div>

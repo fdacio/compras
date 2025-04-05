@@ -13,7 +13,7 @@
         'route' => ['autorizacoes-pagamentos.item.store', $autorizacao->id],
     ]) !!}
     {!! Form::hidden('id', $autorizacao->id) !!}
-    
+
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -68,50 +68,58 @@
 
     <div class="mt-4 row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <th>Item</th>
-                    <th>Descrição</th>
-                    <th style="width: 45px;"></th>
-                </thead>
-                <tbody>
-                    @foreach ($autorizacao->itens as $item)
-                        <tr>
-                            <td>{{ $item->item }}</td>
-                            <td>
-                                {{ $item->descricao }}
-                                @if ($item->veiculo)
-                                    <div>
-                                        <strong>Veículo:</strong>
-                                        {{ $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo }}
-                                    </div>
-                                @endif
-                                @if ($item->produto)
-                                    <div>
-                                        <strong>Produto:</strong>
-                                        {{ $item->produto->nome . '-' . $item->produto->unidade->nome }}
-                                    </div>
-                                @endif
-                            </td>
+            <section class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <th>Item</th>
+                        <th>Descrição</th>
+                        <th style="width: 45px;"></th>
+                    </thead>
+                    <tbody>
+                        @if ($autorizacao->itens->count() == 0)
+                            <tr>
+                                <th class="text-center" colspan="3">Nenhum item cadastrado</th>
+                            </tr>
+                        @else
+                            @foreach ($autorizacao->itens as $item)
+                                <tr>
+                                    <td>{{ $item->item }}</td>
+                                    <td>
+                                        {{ $item->descricao }}
+                                        @if ($item->veiculo)
+                                            <div>
+                                                <strong>Veículo:</strong>
+                                                {{ $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo }}
+                                            </div>
+                                        @endif
+                                        @if ($item->produto)
+                                            <div>
+                                                <strong>Produto:</strong>
+                                                {{ $item->produto->nome . '-' . $item->produto->unidade->nome }}
+                                            </div>
+                                        @endif
+                                    </td>
 
-                            <td class="text-nowrap">
-                                {!! Form::open([
-                                    'id' => 'form_excluir_' . $item->id,
-                                    'method' => 'delete',
-                                    'route' => ['autorizacoes-pagamentos.del-item.destroy', $autorizacao->id],
-                                    'style' => 'display: inline',
-                                ]) !!}
-                                {!! Form::hidden('id_autorizacao_pagamento_item', $item->id) !!}
-                                {!! Form::button('<i class="fa fa-trash"></i>', [
-                                    'class' => 'btn btn-danger modal-excluir',
-                                    'style' => 'padding: 1px 6px;',
-                                ]) !!}
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                    <td class="text-nowrap">
+                                        {!! Form::open([
+                                            'id' => 'form_excluir_' . $item->id,
+                                            'method' => 'delete',
+                                            'route' => ['autorizacoes-pagamentos.del-item.destroy', $autorizacao->id],
+                                            'style' => 'display: inline',
+                                        ]) !!}
+                                        {!! Form::hidden('id_autorizacao_pagamento_item', $item->id) !!}
+                                        {!! Form::button('<i class="fa fa-trash"></i>', [
+                                            'class' => 'btn btn-danger modal-excluir',
+                                            'style' => 'padding: 1px 6px;',
+                                        ]) !!}
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </section>
         </div>
     </div>
 </div>
