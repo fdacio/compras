@@ -49,6 +49,25 @@
                     <td>{{ $favorecido->pessoa->email }}</td>
                 </tr>
                 <tr>
+                    <th>Banco:</th>
+                    <td>{{ $favorecido->banco }}</td>
+                </tr>
+                <tr>
+                    <th>Agência:</th>
+                    <td>{{ $favorecido->agencia }}</td>
+                </tr>
+                <tr>
+                    <th>Conta:</th>
+                    <td>{{ $favorecido->conta }}</td>
+                </tr>
+                <tr>
+                    <th>Operação:</th>
+                    <td>{{ $favorecido->operação }}</td>
+                </tr>
+                <tr>
+                    <th>Chave PIX</th>
+                    <td>{{ $favorecido->chave_pix }}</td>
+                <tr>
                     <th>Criado:</th>
                     <td>{{ \Carbon\Carbon::parse($favorecido->created_at)->format('d/m/Y H:i:s') }}</td>
                 </tr>

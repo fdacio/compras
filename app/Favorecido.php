@@ -8,7 +8,7 @@ class Favorecido extends Model
 {
     protected $table = 'favorecidos';
     
-    protected $fillable = ['id_pessoa'];
+    protected $fillable = ['id_pessoa', 'banco', 'agencia', 'conta', 'operacao', 'chave_pix'];
 
     public function pessoa()
     {

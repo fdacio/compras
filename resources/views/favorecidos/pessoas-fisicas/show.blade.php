@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'favorecido - Visualizar')
+@section('title', 'Favorecido - Visualizar')
 
 @section('content')
     <div class="card">
@@ -59,6 +59,26 @@
                 <tr>
                     <th>Email:</th>
                     <td>{{ $favorecido->pessoa->email }}</td>
+                </tr>
+                <tr>
+                    <th>Banco:</th>
+                    <td>{{ $favorecido->banco }}</td>
+                </tr>
+                <tr>
+                    <th>Agência:</th>
+                    <td>{{ $favorecido->agencia }}</td>
+                </tr>
+                <tr>
+                    <th>Conta:</th>
+                    <td>{{ $favorecido->conta }}</td>
+                </tr>
+                <tr>
+                    <th>Operação:</th>
+                    <td>{{ $favorecido->opercao  }}</td>
+                </tr>
+                <tr>
+                    <th>Chave PIX</th>
+                    <td>{{ $favorecido->chave_pix }}</td>
                 </tr>
                 <tr>
                     <th>Criado:</th>
