@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AutorizacaoPagamento;
+use App\AutorizacaoPagamentoDocumento;
 use App\AutorizacaoPagamentoItem;
 use App\CentroCusto;
 use App\FormaPagamento;
@@ -13,8 +14,10 @@ use App\Produto;
 use App\Reports\DemoAutorizacaoPagamentoPdf;
 use App\Veiculo;
 use Carbon\Carbon;
+use Cotacao\Http\Requests\AutorizacaoPagamentoDocumentoRequest;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AutorizacoesPagamentosController extends Controller
 {
@@ -214,6 +217,42 @@ class AutorizacoesPagamentosController extends Controller
         $item = AutorizacaoPagamentoItem::find($request->id_autorizacao_pagamento_item);
         $item->delete();
         return redirect()->route('autorizacoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item deletado!');
+    }
+
+    public function documentoCreate(AutorizacaoPagamento $autorizacao)
+    {
+        return view('autorizacoes-pagamentos.documentos.create', compact('autorizacao'));
+    }
+
+
+    public function documentoUpload(AutorizacaoPagamentoDocumentoRequest $request, AutorizacaoPagamento $autorizacao)
+    {
+        $dados = [
+            'id_autorizacao' => $autorizacao->id,
+            'nome' => $request->get('nome')
+        ];
+        if (!empty($request->file('file-documento'))) {
+            $directory = storage_path('app/');
+            $dados['arquivo'] = $directory . $request->file('file-documento')->store('autoricacoes-pagamentos');
+        }
+        AutorizacaoPagamentoDocumento::create($dados);
+        return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Documento enviado com sucesso.');
+    }
+    
+    public function documentoDownload(AutorizacaoPagamentoDocumento $documento)
+    {
+        if (File::exists($documento->arquivo)) {                    
+            return response()->download($documento->arquivo);
+        }
+        abort(404);
+    }
+    
+    public function documentoDelete(AutorizacaoPagamentoDocumento $documento)
+    {
+        $idAutorizacao = $documento->id_autorizacao;
+        $autorizacao = AutorizacaoPagamento::find($idAutorizacao);
+        $documento->delete();
+        return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Documento excluído com sucesso.');
     }
 
     public function geraPdf(AutorizacaoPagamento $autorizacao) 

@@ -43,6 +43,11 @@
                             class="btn btn-primary btn-circle"><i class="fa fa-list-ol"></i></a>
                         <p><b>Itens da Autorização</b></p>
                     </div>
+                    <div class="stepwizard-step">
+                        <a href="{{ route('autorizacoes-pagamentos.documento.upload', $autorizacao->id) }}"
+                            class="btn btn-primary btn-circle"><i class="fa fa-list-ol"></i></a>
+                        <p><b>Documentos da Autorização</b></p>
+                    </div>
                 </div>
             </div>
     </div>
