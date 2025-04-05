@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     {!! Form::button('Salvar', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
