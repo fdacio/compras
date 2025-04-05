@@ -219,7 +219,6 @@
                 </div>
             </div>
             <!-- Fim da tab Dados do Favorecido -->  
-
         </div>
     </div>
     <!-- Tab Dados Bancários -->
@@ -228,7 +227,7 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="banco">Banco<small class="text-danger p-2">*</small></label>
+                        <label for="banco">Banco</label>
                         {!! Form::tel('banco', isset($favorecido) ? $favorecido->banco : null, [
                             'class' => 'form-control banco',
                             'id' => 'banco',
@@ -237,7 +236,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">    
                     <div class="form-group">
-                        <label for="agencia">Agência<small class="text-danger p-2">*</small></label>
+                        <label for="agencia">Agência</label>
                         {!! Form::text('agencia', isset($favorecido) ? $favorecido->agencia : null, [
                             'class' => 'form-control',
                             'id' => 'agencia',
@@ -246,7 +245,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="conta">Conta<small class="text-danger p-2">*</small></label>
+                        <label for="conta">Conta</label>
                         {!! Form::text('conta', isset($favorecido) ? $favorecido->conta : null, [
                             'class' => 'form-control',
                             'id' => 'conta',
@@ -255,7 +254,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="operacao">Operação<small class="text-danger p-2">*</small></label>
+                        <label for="operacao">Operação</label>
                         {!! Form::text('operacao', isset($favorecido) ? $favorecido->operacao : null, [
                             'class' => 'form-control',
                             'id' => 'operacao',
@@ -265,7 +264,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="chave_pix">Chave PIX<small class="text-danger p-2">*</small></label>
+                        <label for="chave_pix">Chave PIX</label>
                         {!! Form::text('operacao', isset($favorecido) ? $favorecido->chave_pix : null, [
                             'class' => 'form-control',
                             'id' => 'chave_pix',

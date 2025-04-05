@@ -202,6 +202,7 @@ class FavorecidosController extends Controller
 
     public function updatePessoaFisica(FavorecidoPessoaFisicaRequest $request, Favorecido $favorecido)
     {
+        dd($request->all());
         $favorecido->update($request->all());
         $favorecido->pessoa->update($request->all());
         $pessoaFisica = $favorecido->pessoa->PessoaFisica()->first();

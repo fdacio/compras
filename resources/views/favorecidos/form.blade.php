@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <label for="cnpj">CNPJ<small class="text-danger p-2">*</small></label>
+                        <label for="cnpj">CNPJ</label>
                         <div class="input-group">
                             {!! Form::text('cnpj', isset($favorecido) ? $favorecido->pessoa->pessoaJuridica->cnpj : null, [
                                 'class' => 'form-control cnpj',
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-xs-8 col-sm-8 col-md-8">
                     <div class="form-group">
-                        <label for="razao-social">Razão Social<small class="text-danger p-2">*</small></label>
+                        <label for="razao-social">Razão Social</label>
                         {!! Form::text('razao_social', isset($favorecido) ? $favorecido->pessoa->pessoaJuridica->razao_social : null, [
                             'class' => 'form-control',
                             'id' => 'razao-social',
@@ -60,7 +60,7 @@
 
                 <div class="col-xs-8 col-sm-8 col-md-8">
                     <div class="form-group">
-                        <label for="nome-fantasia">Nome Fantasia<small class="text-danger p-2">*</small></label>
+                        <label for="nome-fantasia">Nome Fantasia</label>
                         {!! Form::text('nome_fantasia', isset($favorecido) ? $favorecido->pessoa->pessoaJuridica->nome_fantasia : null, [
                             'class' => 'form-control',
                             'id' => 'nome-fantasia',
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group">
-                        <label for="cep">CEP<small class="text-danger p-2">*</small></label>
+                        <label for="cep">CEP</label>
                         <div class="input-group">
                             {!! Form::text('cep', isset($favorecido) ? $favorecido->pessoa->cep : null, [
                                 'class' => 'form-control cep',
@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-xs-7 col-sm-7 col-md-7">
                     <div class="form-group">
-                        <label for="logradouro">Logradouro<small class="text-danger p-2">*</small></label>
+                        <label for="logradouro">Logradouro</label>
                         {!! Form::text('logradouro', isset($favorecido) ? $favorecido->pessoa->logradouro : null, [
                             'class' => 'form-control',
                             'id' => 'logradouro',
@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2">
                     <div class="form-group">
-                        <label for="numero">Número<small class="text-danger p-2">*</small></label>
+                        <label for="numero">Número</label>
                         {!! Form::text('numero', isset($favorecido) ? $favorecido->pessoa->numero : null, [
                             'class' => 'form-control',
                             'id' => 'numero',
@@ -117,7 +117,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="bairro">Bairro<small class="text-danger p-2">*</small></label>
+                        <label for="bairro">Bairro</label>
                         {!! Form::text('bairro', isset($favorecido) ? $favorecido->pessoa->bairro : null, [
                             'class' => 'form-control',
                             'id' => 'bairro',
@@ -128,7 +128,7 @@
             <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <label for="estado">UF<small class="text-danger p-2">*</small></label>
+                        <label for="estado">UF</label>
                         {!! Form::select(
                             'estado',
                             $estados,
@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-xs-8 col-sm-8 col-md-8">
                     <div class="form-group">
-                        <label for="cidade">Cidade<small class="text-danger p-2">*</small></label>
+                        <label for="cidade">Cidade</label>
                         {!! Form::select(
                             'id_municipio',
                             $cidades,
@@ -188,7 +188,7 @@
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="banco">Banco<small class="text-danger p-2">*</small></label>
+                        <label for="banco">Banco</label>
                         {!! Form::tel('banco', isset($favorecido) ? $favorecido->banco : null, [
                             'class' => 'form-control banco',
                             'id' => 'banco',
@@ -197,7 +197,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">    
                     <div class="form-group">
-                        <label for="agencia">Agência<small class="text-danger p-2">*</small></label>
+                        <label for="agencia">Agência</label>
                         {!! Form::text('agencia', isset($favorecido) ? $favorecido->agencia : null, [
                             'class' => 'form-control',
                             'id' => 'agencia',
@@ -206,7 +206,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="conta">Conta<small class="text-danger p-2">*</small></label>
+                        <label for="conta">Conta</label>
                         {!! Form::text('conta', isset($favorecido) ? $favorecido->conta : null, [
                             'class' => 'form-control',
                             'id' => 'conta',
@@ -215,7 +215,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="operacao">Operação<small class="text-danger p-2">*</small></label>
+                        <label for="operacao">Operação</label>
                         {!! Form::text('operacao', isset($favorecido) ? $favorecido->operacao : null, [
                             'class' => 'form-control',
                             'id' => 'operacao',
@@ -225,7 +225,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <label for="chave_pix">Chave PIX<small class="text-danger p-2">*</small></label>
+                        <label for="chave_pix">Chave PIX</label>
                         {!! Form::text('operacao', isset($favorecido) ? $favorecido->chave_pix : null, [
                             'class' => 'form-control',
                             'id' => 'chave_pix',
