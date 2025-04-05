@@ -1,5 +1,5 @@
 <div id="step3" class="setup-content">
-    <div class="card mb-2">
+    <div class="p-2 mb-2">
         {!! Form::open([
             'id' => 'form_autorizacao_documentos',
             'method' => 'post',
