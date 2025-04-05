@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Autorização de Pagamento - Editar')
+@section('title', 'Autorização de Pagamento - Documento')
 
 @section('content')
     <div class="card">
@@ -40,19 +40,19 @@
                     </div>
                     <div class="stepwizard-step">
                         <a href="{{ route('autorizacoes-pagamentos.item.create', $autorizacao->id) }}"
-                            class="btn btn-primary btn-circle"><i class="fa fa-list-ol"></i></a>
+                            class="btn btn-outline-secondary btn-light btn-circle"><i class="fa fa-list-ol"></i></a>
                         <p><b>Itens da Autorização</b></p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="{{ route('autorizacoes-pagamentos.documentos.create', $autorizacao->id) }}"
-                            class="btn btn-outline-secondary btn-light btn-circle"><i class="fa fa-file-text-o"></i></a>
+                            class="btn btn-primary btn-circle"><i class="fa fa-file-text-o"></i></a>
                         <p><b>Documentos da Autorização</b></p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            @include('autorizacoes-pagamentos.form-create-item')
+            @include('autorizacoes-pagamentos.documentos.form')
         </div>
     </div>
 @endsection

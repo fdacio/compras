@@ -20,8 +20,10 @@
                             ]) !!}
                         </div>
                     @else
-                        <label for="servico">Descrição do Serviço<small class="text-danger p-2">*</small></label>
-                        <textarea id="servico" name="servico" rows="4" class="form-control"></textarea>
+                        <div class="form-group">
+                            <label for="servico">Descrição do Serviço<small class="text-danger p-2">*</small></label>
+                            <textarea id="servico" name="servico" rows="4" class="form-control"></textarea>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -74,9 +76,6 @@
                     <th style="width: 45px;"></th>
                 </thead>
                 <tbody>
-                    @php
-                        $itemId = 1;
-                    @endphp
                     @foreach ($requisicao->itens as $item)
                         <tr>
                             <td>{{ $item->item }}</td>

@@ -83,4 +83,9 @@ class AutorizacaoPagamento extends Model
     {
         return $this->hasMany(AutorizacaoPagamentoItem::class, 'id_autorizacao', 'id')->orderBy('autorizacoes_pagamentos_itens.item', 'asc');
     }
+
+    public function documentos() 
+    {
+        return $this->hasMany(AutorizacaoPagamentoDocumento::class, 'id_autorizacao', 'id')->orderBy('autorizacoes_pagamentos_documentos.id', 'asc');
+    }
 }

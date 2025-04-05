@@ -2,8 +2,8 @@
 @section('title', 'Autorização de Pagamento - Editar')
 
 @section('content')
-<div class="card">
-    <div class="card-header">
+    <div class="card">
+        <div class="card-header">
             <h2>Editar Autorização de Pagamento</h2>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
@@ -34,27 +34,36 @@
             <div class="stepwizard" style="margin-top: 20px;">
                 <div class="stepwizard-row setup-panel">
                     <div class="stepwizard-step">
-                        <a href="{{ route('autorizacoes-pagamentos.edit', $autorizacao->id) }}" class="btn btn-primary btn-circle"><i
-                                class="fa fa-file-text-o"></i></a>
+                        <a href="{{ route('autorizacoes-pagamentos.edit', $autorizacao->id) }}"
+                            class="btn btn-primary btn-circle"><i class="fa fa-file-text-o"></i></a>
                         <p><b>Cabeçalho da Autorização</b></p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="{{ route('autorizacoes-pagamentos.item.create', $autorizacao->id) }}"
                             class="btn btn-outline-secondary btn-light btn-circle"><i class="fa fa-list-ol"></i></a>
-                        <p><b>Itens da Requisição</b></p>
+                        <p><b>Itens da Autorização</b></p>
+                    </div>
+                    <div class="stepwizard-step">
+                        <a href="{{ route('autorizacoes-pagamentos.documentos.create', $autorizacao->id) }}"
+                            class="btn btn-outline-secondary btn-light btn-circle"><i class="fa fa-file-text-o"></i></a>
+                        <p><b>Documentos da Autorização</b></p>
                     </div>
                 </div>
             </div>
+        </div>
+        {!! Form::open([
+            'id' => 'form_autorizacao_pagamento',
+            'method' => 'patch',
+            'route' => ['autorizacoes-pagamentos.update', $autorizacao->id],
+        ]) !!}
+        {!! Form::hidden('id', $autorizacao->id) !!}
+        <div class="card-body">
+            @include('autorizacoes-pagamentos.form')
+        </div>
+        <div class="card-footer">
+            {!! Form::submit('Alterar', ['class' => 'btn btn-primary']) !!}
+            <a class="btn btn-danger" href="{{ route('autorizacoes-pagamentos.index') }}">Cancelar</a>
+        </div>
+        {!! Form::close() !!}
     </div>
-    {!! Form::open(array('id' => 'form_autorizacao_compra', 'method' => 'patch', 'route' => ['autorizacoes-pagamentos.update', $autorizacao->id])) !!}
-    {!! Form::hidden('id', $autorizacao->id) !!}
-    <div class="card-body">
-        @include('autorizacoes-pagamentos.form')
-    </div>
-    <div class="card-footer">
-        {!! Form::submit('Alterar', ['class' => 'btn btn-primary']) !!}
-        <a class="btn btn-danger" href="{{ route('autorizacoes-pagamentos.index') }}">Cancelar</a>
-    </div>
-    {!! Form::close() !!}
-</div>
 @endsection

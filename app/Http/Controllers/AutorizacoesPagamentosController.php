@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\AutorizacaoPagamento;
+use App\AutorizacaoPagamentoDocumento;
 use App\AutorizacaoPagamentoItem;
 use App\CentroCusto;
 use App\FormaPagamento;
+use App\Http\Requests\AutorizacaoPagamentoDocumentoRequest;
 use App\Http\Requests\AutorizacaoPagamentoItemRequest;
 use App\Http\Requests\AutorizacaoPagamentoRequest;
 use App\Pessoa;
+use App\Produto;
 use App\Reports\DemoAutorizacaoPagamentoPdf;
 use App\Veiculo;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AutorizacoesPagamentosController extends Controller
 {
@@ -169,16 +174,22 @@ class AutorizacoesPagamentosController extends Controller
 
     public function itemCreate(AutorizacaoPagamento $autorizacao)
     {
-        return view('autorizacoes-pagamentos.create-item', compact('autorizacao'));
+        $itens = [];
+        $produtos = Produto::get()->map(function($produto) {
+            return ['id' => $produto->id, 'nome' => $produto->nome . ' - ' . $produto->unidade->nome];
+        })->sortBy('nome')->pluck('nome', 'id');
+        $veiculos = Veiculo::get()->map(function($veiculo) {
+            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
+        })->sortBy('descricao')->pluck('descricao', 'id');
+        return view('autorizacoes-pagamentos.create-item', compact('autorizacao', 'produtos', 'itens', 'veiculos'));
     }
 
     public function itemStore(AutorizacaoPagamento $autorizacao, AutorizacaoPagamentoItemRequest $request)
     {
         $item = $autorizacao->itens()->count() + 1;
         $descricao = $request->descricao;
-        $unidade = $request->unidade;
-        $quantidade = $request->quantidade;
-
+        $unidade = 'UNIDADE';
+        $quantidade = 1;
         $dados = [
             'id_autorizacao' => $autorizacao->id,
             'item' => $item,
@@ -187,16 +198,61 @@ class AutorizacoesPagamentosController extends Controller
             'quantidade' => $quantidade,
         ];
 
+        if ($request->has('id_veiculo')) {
+            $idVeiculo = $request->id_veiculo;
+            $dados = array_merge($dados, ['id_veiculo' => $idVeiculo]);
+        }
+        if ($request->has('id_produto')) {
+            $idProduto = $request->id_produto;
+            $dados = array_merge($dados, ['id_produto' => $idProduto]);
+        }        
+
         AutorizacaoPagamentoItem::create($dados);
-        return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');
+        return redirect()->route('autorizacoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');
 
     }
 
-    public function destroyItem(AutorizacaoPagamentoItemRequest $request, AutorizacaoPagamento $autorizacao)
+    public function destroyItem(Request $request, AutorizacaoPagamento $autorizacao)
     {
         $item = AutorizacaoPagamentoItem::find($request->id_autorizacao_pagamento_item);
         $item->delete();
-        return redirect()->route('autorizacaoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item deletado!');
+        return redirect()->route('autorizacoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item deletado!');
+    }
+
+    public function documentoCreate(AutorizacaoPagamento $autorizacao)
+    {
+        return view('autorizacoes-pagamentos.documentos.create', compact('autorizacao'));
+    }
+
+    public function documentoUpload(AutorizacaoPagamentoDocumentoRequest $request)
+    {
+        $autorizacao = AutorizacaoPagamento::find($request->id_autorizacao);
+        $dados = [
+            'id_autorizacao' => $request->id_autorizacao,
+            'nome' => $request->get('nome')
+        ];
+        if (!empty($request->file('file-documento'))) {
+            $directory = storage_path('app/');
+            $dados['arquivo'] = $directory . $request->file('file-documento')->store('autoricacoes-pagamentos');
+        }
+        AutorizacaoPagamentoDocumento::create($dados);
+        return redirect()->route('autorizacoes-pagamentos.documentos.create', $autorizacao->id)->with('success', 'Documento enviado com sucesso.');
+    }
+    
+    public function documentoDownload(AutorizacaoPagamentoDocumento $documento)
+    {
+        if (File::exists($documento->arquivo)) {                    
+            return response()->download($documento->arquivo);
+        }
+        abort(404);
+    }
+    
+    public function documentoDestroy(AutorizacaoPagamentoDocumento $documento)
+    {
+        $idAutorizacao = $documento->id_autorizacao;
+        $autorizacao = AutorizacaoPagamento::find($idAutorizacao);
+        $documento->delete();
+        return redirect()->route('autorizacoes-pagamentos.documentos.create', $autorizacao->id)->with('success', 'Documento excluído com sucesso.');
     }
 
     public function geraPdf(AutorizacaoPagamento $autorizacao) 
