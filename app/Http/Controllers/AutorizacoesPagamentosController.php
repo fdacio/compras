@@ -224,7 +224,6 @@ class AutorizacoesPagamentosController extends Controller
         return view('autorizacoes-pagamentos.documentos.create', compact('autorizacao'));
     }
 
-
     public function documentoUpload(AutorizacaoPagamentoDocumentoRequest $request, AutorizacaoPagamento $autorizacao)
     {
         $dados = [
