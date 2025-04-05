@@ -65,9 +65,8 @@
     {!! Form::close() !!}
 
 
-    <div class="mt-2">
+    <div class="mt-4 row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-
             <table class="table table-striped table-hover">
                 <thead>
                     <th>Item</th>
