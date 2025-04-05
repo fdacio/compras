@@ -236,7 +236,7 @@ class AutorizacoesPagamentosController extends Controller
             $dados['arquivo'] = $directory . $request->file('file-documento')->store('autoricacoes-pagamentos');
         }
         AutorizacaoPagamentoDocumento::create($dados);
-        return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Documento enviado com sucesso.');
+        return redirect()->route('autorizacoes-pagamentos.documentos.create', $autorizacao->id)->with('success', 'Documento enviado com sucesso.');
     }
     
     public function documentoDownload(AutorizacaoPagamentoDocumento $documento)
@@ -252,7 +252,7 @@ class AutorizacoesPagamentosController extends Controller
         $idAutorizacao = $documento->id_autorizacao;
         $autorizacao = AutorizacaoPagamento::find($idAutorizacao);
         $documento->delete();
-        return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Documento excluído com sucesso.');
+        return redirect()->route('autorizacoes-pagamentos.documentos.create', $autorizacao->id)->with('success', 'Documento excluído com sucesso.');
     }
 
     public function geraPdf(AutorizacaoPagamento $autorizacao) 
