@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('autorizacoes-pagamentos/{autorizacao}/del-item', 'AutorizacoesPagamentosController@destroyItem')->name('autorizacoes-pagamentos.del-item.destroy');
 
     Route::get('autorizacoes-pagamentos/documentos/create/{autorizacao}', 'AutorizacoesPagamentosController@documentoCreate')->name('autorizacoes-pagamentos.documentos.create');
-    Route::post('autorizacoes-pagamentos/documentos/upload/{autorizacao}', 'AutorizacoesPagamentosController@documentoUpload')->name('autorizacoes-pagamentos.documentos.upload');
+    Route::post('autorizacoes-pagamentos/documentos/upload', 'AutorizacoesPagamentosController@documentoUpload')->name('autorizacoes-pagamentos.documentos.upload');
     Route::get('autorizacoes-pagamentos/documentos/download/{documento}', 'AutorizacoesPagamentosController@documentoDownload')->name('autorizacoes-pagamentos.documentos.download');
     Route::delete('autorizacoes-pagamentos/documentos/destroy/{documento}', 'AutorizacoesPagamentosController@documentoDestroy')->name('autorizacoes-pagamentos.documentos.destroy');
 });
