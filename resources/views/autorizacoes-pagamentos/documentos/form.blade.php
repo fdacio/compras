@@ -37,7 +37,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     {!! Form::button('Salvar', [
                         'type' => 'submit',
-                        'id' => 'btn-adicionar',
+                        'id' => 'btn-salvar-documento',
                         'class' => 'btn btn-primary',
                     ]) !!}
                 </div>
