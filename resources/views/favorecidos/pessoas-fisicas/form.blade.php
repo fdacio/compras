@@ -294,7 +294,6 @@
                 var idCidade = @php echo old('id_municipio') @endphp;
                 setEstadoCidadeId(estado, idCidade);
             @endif
-
         });
     </script>
 @endsection
