@@ -56,38 +56,22 @@
 
             <table class="table table-striped table-hover">
                 <thead>
-                    <th>Item</th>
-                    <th>Descrição</th>
+                    <th>Nome</th>
                     <th style="width: 45px;"></th>
                 </thead>
                 <tbody>
-                    @foreach ($autorizacao->itens as $item)
+                    @foreach ($autorizacao->documentos as $item)
                         <tr>
-                            <td>{{ $item->item }}</td>
-                            <td>
-                                {{ $item->descricao }}
-                                @if ($item->veiculo)
-                                    <div>
-                                        <strong>Veículo:</strong>
-                                        {{ $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo }}
-                                    </div>
-                                @endif
-                                @if ($item->produto)
-                                    <div>
-                                        <strong>Produto:</strong>
-                                        {{ $item->produto->nome . '-' . $item->produto->unidade->nome }}
-                                    </div>
-                                @endif
-                            </td>
+                            <td>{{ $item->nome }}</td>
 
                             <td class="text-nowrap">
                                 {!! Form::open([
                                     'id' => 'form_excluir_' . $item->id,
                                     'method' => 'delete',
-                                    'route' => ['autorizacoes-pagamentos.del-item.destroy', $autorizacao->id],
+                                    'route' => ['autorizacoes-pagamentos.documentos.destroy', $item->id],
                                     'style' => 'display: inline',
                                 ]) !!}
-                                {!! Form::hidden('id_autorizacao_pagamento_item', $item->id) !!}
+                                {!! Form::hidden('id_autorizacao_pagamento_documento', $item->id) !!}
                                 {!! Form::button('<i class="fa fa-trash"></i>', [
                                     'class' => 'btn btn-danger modal-excluir',
                                     'style' => 'padding: 1px 6px;',
