@@ -224,10 +224,11 @@ class AutorizacoesPagamentosController extends Controller
         return view('autorizacoes-pagamentos.documentos.create', compact('autorizacao'));
     }
 
-    public function documentoUpload(AutorizacaoPagamentoDocumentoRequest $request, AutorizacaoPagamento $autorizacao)
+    public function documentoUpload(AutorizacaoPagamentoDocumentoRequest $request)
     {
+        $autorizacao = AutorizacaoPagamento::find($request->id_autorizacao);
         $dados = [
-            'id_autorizacao' => $request->autorizacao->id,
+            'id_autorizacao' => $request->id_autorizacao,
             'nome' => $request->get('nome')
         ];
         if (!empty($request->file('file-documento'))) {
