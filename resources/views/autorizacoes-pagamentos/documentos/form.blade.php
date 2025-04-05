@@ -19,7 +19,6 @@
             <div class="form-group">
                 <label for="nome">Nome<small class="text-danger p-2">*</small></label>
                 {!! Form::text('nome', isset($autorizacao) ? $autorizacao->nome : old('nome'), [
-                    'placeholder' => 'Informe o nome do documento.',
                     'class' => 'form-control',
                     'id' => 'nome',
                 ]) !!}
