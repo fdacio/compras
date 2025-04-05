@@ -247,7 +247,7 @@ class AutorizacoesPagamentosController extends Controller
         abort(404);
     }
     
-    public function documentoDelete(AutorizacaoPagamentoDocumento $documento)
+    public function documentoDestroy(AutorizacaoPagamentoDocumento $documento)
     {
         $idAutorizacao = $documento->id_autorizacao;
         $autorizacao = AutorizacaoPagamento::find($idAutorizacao);
