@@ -116,4 +116,5 @@
             });
         });
     </script>
+    {!! Html::script('js/modal-excluir.js') !!}
 @endsection
