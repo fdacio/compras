@@ -64,18 +64,22 @@
                                 <th class="text-center" colspan="2">Nenhum documento cadastrado</th>
                             </tr>
                         @else
-                            @foreach ($autorizacao->documentos as $item)
+                            @foreach ($autorizacao->documentos as $documento)
                                 <tr>
-                                    <td>{{ $item->nome }}</td>
+                                    <td>{{ $documento->nome }}</td>
+                                     
 
                                     <td class="text-nowrap">
+                                        <a href="{{ route('autorizacoes-pagamentos.documentos.download', $documento->id) }}" target="_blank" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-file-pdf-o text-white"></i>
+                                        </a>   
                                         {!! Form::open([
-                                            'id' => 'form_excluir_' . $item->id,
+                                            'id' => 'form_excluir_' . $documento->id,
                                             'method' => 'delete',
-                                            'route' => ['autorizacoes-pagamentos.documentos.destroy', $item->id],
+                                            'route' => ['autorizacoes-pagamentos.documentos.destroy', $documento->id],
                                             'style' => 'display: inline',
                                         ]) !!}
-                                        {!! Form::hidden('id_autorizacao_pagamento_documento', $item->id) !!}
+                                        {!! Form::hidden('id_autorizacao_pagamento_documento', $documento->id) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', [
                                             'class' => 'btn btn-danger modal-excluir',
                                             'style' => 'padding: 1px 6px;',
