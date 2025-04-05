@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link active" id="tabs-dados-favorecido-tab" data-toggle="pill" href="#tabs-dados-favorecido" role="tab"
-            aria-controls="tabs-dados-favorecido" aria-selected="true">Dados do Favorecido</a>
+        <a class="nav-link active" id="tabs-dados-favorecido-tab" data-toggle="pill" href="#tabs-dados-favorecido"
+            role="tab" aria-controls="tabs-dados-favorecido" aria-selected="true">Dados do Favorecido</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="tabs-dados-bancarios-tab" data-toggle="pill" href="#tabs-dados-bancarios" role="tab"
@@ -173,8 +173,8 @@
                             ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'estado'],
                         ) !!}
                     </div>
-                </div>  
-                
+                </div>
+
                 <div class="col-xs-8 col-sm-8 col-md-8">
                     <div class="form-group">
                         <label for="cidade">Cidade<small class="text-danger p-2">*</small></label>
@@ -218,7 +218,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Fim da tab Dados do Favorecido -->  
+            <!-- Fim da tab Dados do Favorecido -->
         </div>
     </div>
     <!-- Tab Dados Bancários -->
@@ -234,7 +234,7 @@
                         ]) !!}
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">    
+                <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="agencia">Agência</label>
                         {!! Form::text('agencia', isset($favorecido) ? $favorecido->agencia : null, [
@@ -243,6 +243,8 @@
                         ]) !!}
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="conta">Conta</label>
@@ -259,9 +261,10 @@
                             'class' => 'form-control',
                             'id' => 'operacao',
                         ]) !!}
-
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <label for="chave_pix">Chave PIX</label>
@@ -270,10 +273,10 @@
                             'id' => 'chave_pix',
                         ]) !!}
                     </div>
-                </div>               
+                </div>
             </div>
-        </div>               
-    </div>                
+        </div>
+    </div>
 </div>
 @section('scripts')
     {!! Html::script('js/cpf.js') !!}
