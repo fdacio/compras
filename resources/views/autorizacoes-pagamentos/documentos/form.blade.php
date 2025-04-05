@@ -84,7 +84,7 @@
                                         {!! Form::hidden('id_autorizacao_pagamento_documento', $documento->id) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', [
                                             'class' => 'btn btn-danger modal-excluir',
-                                            'title' => 'Excluir',
+                                            
                                         ]) !!}
                                         {!! Form::close() !!}
                                     </td>
