@@ -24,6 +24,8 @@ class RequisicaoCompraItemRequest extends FormRequest
      */
     public function rules()
     {
+        $idRequisicao = request('id_requisicao');
+        dd($idRequisicao);
         return [
             'descricao' => 'required|string|max:200',
             'quantidade_solicitada' => 'required|integer',
