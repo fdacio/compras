@@ -15,8 +15,6 @@
                                 'placeholder' => 'Selecione o Produto',
                                 'id' => 'produtos',
                                 'class' => 'form-control select',
-                                'style' => 'width: 100%;',
-                                'required' => 'required',
                             ]) !!}
                         </div>
                     @else
