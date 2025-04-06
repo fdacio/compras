@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Reports;
 
 use App\Reports\ReportPdf;
@@ -20,7 +21,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Cell(80, 5, utf8_decode('Data:'), 'LTR');
         $this->Cell(80, 5, utf8_decode('Tipo:'), 'LTR');
 
-        $this->Ln();     
+        $this->Ln();
 
         $this->SetFont('Arial', '', 8);
         $this->Cell(30, 5, $requisicao->id, 'LBR');
@@ -48,7 +49,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Cell(190, 5, utf8_decode($requisicao->solicitante->nome), 'LBR');
 
         $this->Ln();
-        
+
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(100, 5, utf8_decode('Veículo'), 'LTRB', 0, 'C');
         $this->Ln();
@@ -90,7 +91,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->SetFont('Arial', 'B', 10);
         if ($requisicao->urgente) {
             $this->MultiCell(90, 30, utf8_decode('URGENTE'), 'LTRB', 'C');
-        } else {   
+        } else {
             $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'C');
         }
 
@@ -98,19 +99,23 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(190, 5, utf8_decode('Itens da requisição'), 1, 0, 'C');
 
-        $this->Ln();   
+        $this->Ln();
 
         $this->SetWidths([20, 70, 30, 40, 30]);
-        $this->setBorders(['L', 'L', 'L', 'L', 'LR']);   
+        $this->setBorders(['L', 'L', 'L', 'L', 'LR']);
         $this->Row([utf8_decode('Item'), utf8_decode('Produto/Serviço'), utf8_decode('Unidade'), utf8_decode('Quantidade solicitada'), utf8_decode('Quantidade a cotar')]);
         $this->setBorders(NULL);
 
         $this->SetFont('Arial', '', 8);
-        foreach ($requisicao->itens as $item) {
-            $this->Row([$item->item, utf8_decode($item->descricao), utf8_decode($item->unidade), utf8_decode($item->quantidade_solicitada), utf8_decode($item->quantidade_a_cotar)]);
+        if ($requisicao->itens->isEmpty()) {
+            $this->Cell(190, 50, utf8_decode('Nenhum item encontrado'), 'LTRB', 0, 'C');
+        } else {
+            foreach ($requisicao->itens as $item) {
+                $this->Row([$item->item, utf8_decode($item->descricao), utf8_decode($item->unidade), utf8_decode($item->quantidade_solicitada), utf8_decode($item->quantidade_a_cotar)]);
+            }
+            $this->Ln();
         }
-        $this->Ln();
-        
+
         $x = $this->GetX();
         $y = $this->GetY();
 
@@ -120,7 +125,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Cell(10, 5, '', 0);
         $this->Cell(90, 5, utf8_decode('Local de Entrega'), 'LTR', 0, 'C', true);
         $this->Ln();
-        
+
         $this->SetFont('Arial', '', 6);
         $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'L');
         $this->SetXY($x + 90, $y + 5);
@@ -129,8 +134,5 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->setBorders(['LR']);
         $this->Row([utf8_decode($requisicao->local_entrega)]);
         $this->Ln();
-        
     }
 }
-
-?>
