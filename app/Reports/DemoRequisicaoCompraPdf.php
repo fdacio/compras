@@ -14,6 +14,33 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         parent::__construct($title);
     }
 
+    public function Header()
+    {
+        if ($this->isHeader) {
+
+            $x1 = $this->GetX();
+            $y1 = $this->GetY();
+
+            if ($this->logo) {
+                $this->Image($this->logo, 12, 12, 30, 20);
+            }
+
+            $this->SetFont('Arial', 'B', 12);
+            $this->setX(45);
+            $this->SetFont('Arial', 'B', 12);
+            if ($this->getTitleHeader() != "") {
+                $this->Cell(190, 5, $this->getTitleHeader(), 0, 1, 'C');
+                $this->Ln(5);
+            }
+            $y2 = $this->GetY();
+            $this->Rect($x1, $y1, 190, $y2 - $y1);
+
+            $this->Ln();
+        }
+    }
+
+
+
     public function setContent(RequisicaoCompra $requisicao)
     {
         $this->SetFont('Arial', 'B', 6);
@@ -134,6 +161,8 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->SetWidths([90]);
         $this->setBorders(['LTR']);
         $this->Row([utf8_decode($requisicao->local_entrega)]);
+
+
         $this->Ln();
     }
 }
