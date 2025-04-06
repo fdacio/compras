@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Reports;
 
 use App\AutorizacaoPagamento;
@@ -101,6 +102,12 @@ class DemoAutorizacaoPagamentoPdf extends ReportPdf
         } else {
             foreach ($autorizacao->itens as $item) {
                 $this->Row([$item->item, utf8_decode($item->descricao)]);
+                if ($item->veiculo) {
+                    $this->Row(["", utf8_decode($item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo)]);
+                }
+                if ($item->produto) {
+                    $this->Row(["", utf8_decode($item->produto->nome . '-' . $item->produto->unidade->nome)]);
+                }
             }
         }
         $this->SetFont('Arial', 'B', 6);
@@ -135,7 +142,5 @@ class DemoAutorizacaoPagamentoPdf extends ReportPdf
         $this->Row([utf8_decode($autorizacao->obsrvacao)]);
         $this->Rect(($x + 100), ($y + 5), 90, 30);
         $this->Ln();
-
     }
 }
-?>
