@@ -101,13 +101,15 @@ class DemoAutorizacaoPagamentoPdf extends ReportPdf
             $this->Ln();
         } else {
             foreach ($autorizacao->itens as $item) {
-                $this->Row([$item->item, utf8_decode($item->descricao)]);
+                $descricao = $item->descricao;
                 if ($item->veiculo) {
-                    $this->Row(["", utf8_decode($item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo)]);
+                    $descricao .= "\n" . utf8_decode("Veículo: " . $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo);
                 }
                 if ($item->produto) {
-                    $this->Row(["", utf8_decode($item->produto->nome . '-' . $item->produto->unidade->nome)]);
+                    $descricao .= "\n" . utf8_decode("produto: " . $item->produto->nome . '-' . $item->produto->unidade->nome);
                 }
+                
+                $this->Row([$item->item, utf8_decode($descricao)]);
             }
         }
         $this->SetFont('Arial', 'B', 6);
