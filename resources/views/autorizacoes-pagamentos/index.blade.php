@@ -23,18 +23,6 @@
         <div class="card-body">
             <form action="{{ route('autorizacoes-pagamentos.index') }}" method="get" class="form-filter">
                 <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="id-veiculo">Veículo</label>
-                        <div class="input-group">
-                            {!! Form::select('id_veiculo', $veiculos, request('id_veiculo'), [
-                                'placeholder' => 'Todos',
-                                'class' => 'form-control select',
-                                'id' => 'id_veiculo',
-                            ]) !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2">
                         <div class="form-group">
                             <label for="pessoa">Pessoa</label>

@@ -30,16 +30,12 @@ class AutorizacoesPagamentosController extends Controller
     {
         $autorizacoes = AutorizacaoPagamento::orderBy('id', 'desc');
         $favorecido = request()->get('id_favorecido');
-        $veiculo = request()->get('id_veiculo');
         $cnpjCpf = request()->get('cnpj_cpf');
         $razaoSocialNome = request()->get('razao_social_nome');
         $pessoa = request()->get('pessoa');
 
         if (!empty($favorecido)) {
             $autorizacoes =  $autorizacoes->where('id_favorecido', $favorecido);
-        }
-        if (!empty($veiculo)) {
-            $autorizacoes =  $autorizacoes->where('id_veiculo', $veiculo);
         }
         if (!empty($cnpjCpf)) {
             $cnpjCpf = str_replace(['.', '-', '/'], '', $cnpjCpf);
@@ -79,13 +75,9 @@ class AutorizacoesPagamentosController extends Controller
             });
         }
 
-        $veiculos = Veiculo::get()->map(function($veiculo) {
-            return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
-        })->sortBy('descricao')->pluck('descricao', 'id');
-
         $autorizacoes = $autorizacoes->paginate(10);
 
-        return view('autorizacoes-pagamentos.index', compact('autorizacoes', 'veiculos'));
+        return view('autorizacoes-pagamentos.index', compact('autorizacoes'));
     }
 
     /**
