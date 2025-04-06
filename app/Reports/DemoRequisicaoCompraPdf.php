@@ -108,8 +108,8 @@ class DemoRequisicaoCompraPdf extends ReportPdf
 
         $this->SetFont('Arial', '', 8);
         if ($requisicao->itens->isEmpty()) {
+            $this->Cell(190, 5, utf8_decode('Nenhum item encontrado'), 'LTRB', 1);
             $this->Ln();
-            $this->Cell(190, 50, utf8_decode('Nenhum item encontrado'), 'LTRB', 1);
         } else {
             foreach ($requisicao->itens as $item) {
                 $this->Row([$item->item, utf8_decode($item->descricao), utf8_decode($item->unidade), utf8_decode($item->quantidade_solicitada), utf8_decode($item->quantidade_a_cotar)]);
