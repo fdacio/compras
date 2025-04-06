@@ -31,8 +31,8 @@ class RequisicaoCompraItemRequest extends FormRequest
         if ($requisicao->tipo == 'PRODUTO') {  
             return [
                 'id_produto' => 'required|integer',
-                'quantidade_solicitada' => 'required|integer',
-                'quantidade_a_cotar' => 'required|integer'
+                'quantidade_solicitada' => 'required|integer|min:1',
+                'quantidade_a_cotar' => 'required|integer|min:1'
             ];
 
         } 
@@ -40,8 +40,8 @@ class RequisicaoCompraItemRequest extends FormRequest
         if ($requisicao->tipo == 'SERVICO') {  
             return [
                 'descricao' => 'required|string|max:200',
-                'quantidade_solicitada' => 'required|integer',
-                'quantidade_a_cotar' => 'required|integer'
+                'quantidade_solicitada' => 'required|integer|min:1',
+                'quantidade_a_cotar' => 'required|integer|min:1'
             ];
         }
 
@@ -56,8 +56,10 @@ class RequisicaoCompraItemRequest extends FormRequest
             'id_produto.required' => 'Informe o produto.',
             'quantidade_solicitada.required' => 'O campo quantidade solicitada é obrigatório.',
             'quantidade_solicitada.integer' => 'O campo quantidade solicitada deve ser um número inteiro.',
+            'quantidade_solicitada.min' => 'O campo quantidade solicitada inválido.',
             'quantidade_a_cotar.required' => 'O campo quantidade a cotar é obrigatório.',
-            'quantidade_a_cotar.integer' => 'O campo quantidade a cotar deve ser um número inteiro.'
+            'quantidade_a_cotar.integer' => 'O campo quantidade a cotar deve ser um número inteiro.',
+            'quantidade_a_cotar.min' => 'O campo quantidade a cotar inválido.'
         ];
     }
 }
