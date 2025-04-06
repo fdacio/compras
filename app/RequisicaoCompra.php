@@ -14,8 +14,9 @@ class RequisicaoCompra extends Model
         'id_veiculo', 
         'data', 
         'tipo', 
-        'autorizacao_cotacao', 
-        'local_entrega'];
+        'local_entrega',
+        'urgente'
+    ];
     
     const TIPOS = [
         [

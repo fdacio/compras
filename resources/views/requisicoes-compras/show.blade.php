@@ -50,9 +50,14 @@
                             <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}</td>
                         </tr>
                         <tr>
-                            <th class="col-md-2">Local de entrega</th>
+                            <th class="col-md-2">Local de entrega:</th>
                             <td>{{ $requisicao->local_entrega }}</td>
                         </tr>
+                        <tr>
+                            <th class="col-md-2">Urgente:</th>
+                            <td>{{ ($requisicao->urgente) ? "Sim" : "Não"}}</td>
+                        </tr>
+                        <tr>
                             <th>Criado:</th>
                             <td>{{ \Carbon\Carbon::parse($requisicao->created_at)->format('d/m/Y H:i:s') }}</td>
                         </tr>

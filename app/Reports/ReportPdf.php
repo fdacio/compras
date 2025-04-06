@@ -128,16 +128,17 @@ abstract class ReportPdf extends Fpdf
             $this->SetFont('Arial', 'B', 12);
             $this->Ln(3);
             $this->setX(45);
-            $this->Cell(140, 5, utf8_decode($this->header1), 0, 1, 'L');
-            $this->setX(45);
-            $this->SetFont('Arial', 'B', 12);
-            $this->Cell(140, 5, utf8_decode($this->header2), 0, 1, 'L');
-            $this->Ln();
             $this->SetFont('Arial', 'B', 12);
             if ($this->getTitleHeader() != "") {
                 $this->Cell(190, 5, $this->getTitleHeader(), 0, 1, 'C');
                 $this->Ln(5);
             }
+            $this->setX(45);
+            $this->Cell(140, 5, utf8_decode($this->header1), 0, 1, 'L');
+            $this->setX(45);
+            $this->SetFont('Arial', 'B', 12);
+            $this->Cell(140, 5, utf8_decode($this->header2), 0, 1, 'L');
+            $this->Ln();
 
             $y2 = $this->GetY();
             $this->Rect($x1, $y1, 190, $y2 - $y1);

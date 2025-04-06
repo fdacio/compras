@@ -64,5 +64,20 @@
             </div>
         </div>
     </div>
-
+    <div class="row">    
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+                {!! Form::checkbox(
+                    'urgente',                     
+                    old('urgente') ? old('urgente') : true,
+                    (isset($requisicao->urgente) && $requisicao->urgente == 1) ? "checked" : old('urgente'),                    
+                    [
+                        'class' => 'checkbox', 
+                        'id' => 'urgente'
+                    ]
+                )!!}
+                <label for="urgente">Urgente</label>
+            </div>
+        </div>  
+ 
 </div>
