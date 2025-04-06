@@ -30,7 +30,7 @@ class DemoAutorizacaoPagamentoPdf extends ReportPdf
                 $this->Cell(190, 5, $this->getTitleHeader(), 0, 1, 'C');
                 $this->Ln(5);
             }
-            $this->Rect($x1, $y1, 190, 40);
+            $this->Rect($x1, $y1, 190, 20);
             $this->Ln();
         }
     }
