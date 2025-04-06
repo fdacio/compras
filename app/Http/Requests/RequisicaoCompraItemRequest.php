@@ -39,7 +39,7 @@ class RequisicaoCompraItemRequest extends FormRequest
         
         if ($requisicao->tipo == 'SERVICO') {  
             return [
-                'descricao' => 'required|string|max:200',
+                'servico' => 'required|string|max:200',
                 'quantidade_solicitada' => 'required|integer|min:1',
                 'quantidade_a_cotar' => 'required|integer|min:1'
             ];
@@ -51,8 +51,8 @@ class RequisicaoCompraItemRequest extends FormRequest
     public function messages()
     {
         return [
-            'descricao.required' => 'Informe a descrição do serviço.',
-            'descricao.max' => 'O campo descrição do serviço máximo 200 caracteres.',
+            'servico.required' => 'Informe a descrição do serviço.',
+            'servico.max' => 'O campo descrição do serviço máximo 200 caracteres.',
             'id_produto.required' => 'Informe o produto.',
             'quantidade_solicitada.required' => 'O campo quantidade solicitada é obrigatório.',
             'quantidade_solicitada.integer' => 'O campo quantidade solicitada deve ser um número inteiro.',
