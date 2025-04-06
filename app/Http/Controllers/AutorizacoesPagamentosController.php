@@ -265,6 +265,8 @@ class AutorizacoesPagamentosController extends Controller
     public function autorizar(AutorizacaoPagamento $autorizacao)
     {
         $autorizacao->situacao = AutorizacaoPagamento::SITUACAO_AUTORIZADO;
+        $autorizacao->id_usuario_autorizacao = auth()->user()->id;
+        $autorizacao->data_autorizacao = Carbon::now();
         $autorizacao->save();
         return redirect()->route('autorizacoes-pagamentos.index')->with('success', 'Autorização de Pagamento autorizada com sucesso.');
     }

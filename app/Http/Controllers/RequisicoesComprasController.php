@@ -217,4 +217,14 @@ class RequisicoesComprasController extends Controller
         $demo->setContent($requisicao);
         $demo->download();
     }
+
+    public function autorizar(RequisicaoCompra $requisicao)
+    {
+        $requisicao->situacao = RequisicaoCompra::SITUACAO_AUTORIZADO;
+        $requisicao->id_usuario_autorizacao = auth()->user()->id;
+        $requisicao->data_autorizacao = Carbon::now();
+        $requisicao->save();
+        return redirect()->route('autorizacoes-pagamentos.index')->with('success', 'Requisição de Compra autorizada com sucesso.');
+    }
+
 }
