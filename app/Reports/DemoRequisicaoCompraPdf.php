@@ -49,37 +49,37 @@ class DemoRequisicaoCompraPdf extends ReportPdf
 
         $this->Ln();
         
-        $this->SetFont('Arial', 'B', 6);
+        $this->SetFont('Arial', 'B', 8);
         $this->Cell(90, 5, utf8_decode('Veículo:'), 'LTRB', 0, 'C');
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(20, 5, utf8_decode('Ano:'), 'LTR');
         $this->SetFont('Arial', '', 8);
-        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->ano), 'LTR');
+        $this->Cell(80, 5, utf8_decode($requisicao->veiculo->ano), 'LTR');
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(20, 5, utf8_decode('Placa:'), 'LTR');
         $this->SetFont('Arial', '', 8);
-        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->placa), 'LTR');
+        $this->Cell(80, 5, utf8_decode($requisicao->veiculo->placa), 'LTR');
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(20, 5, utf8_decode('Chassi:'), 'LTR');
         $this->SetFont('Arial', '', 8);
-        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->chassi), 'LTR');
+        $this->Cell(80, 5, utf8_decode($requisicao->veiculo->chassi), 'LTR');
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(20, 5, utf8_decode('Cidade:'), 'LTR');
         $this->SetFont('Arial', '', 8);
-        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->centroCusto->nome), 'LTR');
+        $this->Cell(80, 5, utf8_decode($requisicao->veiculo->centroCusto->nome), 'LTR');
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(20, 5, utf8_decode('Empresa:'), 'LTR');
-        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->empresa->pessoa->nomeRazaoSocial), 'LTR');
+        $this->Cell(80, 5, utf8_decode($requisicao->veiculo->empresa->pessoa->nomeRazaoSocial), 'LTR');
         $this->Ln();
         
         $this->SetFont('Arial', 'B', 8);
