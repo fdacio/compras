@@ -159,6 +159,8 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->setBorders(['LTR']);
         $this->Row([utf8_decode($requisicao->local_entrega)]);
 
+        $this->Rect(($x + 90), ($y + 5), 90, 30);
+
 
         $this->Ln();
     }
