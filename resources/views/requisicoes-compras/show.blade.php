@@ -38,6 +38,20 @@
                             <td>{{ $requisicao->tipo_nome }}</td>
                         </tr>
                         <tr>
+                            <th class="col-md-2">Situação:</th>
+                            <td>{{ $requisicao->situacao_nome }}</td>
+                        </tr>
+                        @if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADO)
+                            <tr>
+                                <th class="col-md-2">Usuário Autorizador:</th>
+                                <td>{{ $requisicao->usuarioAutorizacao->nome }}</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-2">Data da Autorização:</th>
+                                <td>{{ \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') }}</td>
+                            </tr>
+                        @endif    
+                        <tr>
                             <th class="col-md-2">Requisitante:</th>
                             <td>{{ $requisicao->requisitante->nome }}</td>
                         </tr>

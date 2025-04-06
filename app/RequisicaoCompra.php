@@ -15,6 +15,8 @@ class RequisicaoCompra extends Model
         'data', 
         'tipo', 
         'situacao',
+        'id_usuario_autorizacao',
+        'data_autorizacao',
         'local_entrega',
         'urgente'
     ];
@@ -61,7 +63,7 @@ class RequisicaoCompra extends Model
         }
         return $tipoNome;
     }
-    
+
     public function getSituacaoNomeAttribute()
     {
         $situacao = $this->situacao;
@@ -88,6 +90,11 @@ class RequisicaoCompra extends Model
     public function veiculo()
     {
         return $this->belongsTo(Veiculo::class, 'id_veiculo');
+    }
+
+    public function usuarioAutorizacao()
+    {
+        return $this->belongsTo(User::class, 'id_usuario_autorizacao');
     }
 
     public function itens()
