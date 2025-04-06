@@ -43,11 +43,11 @@
                         @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
                             <tr>
                                 <th class="col-md-2">Usuário Autorizador:</th>
-                                <td>{{ $requisicao->usuarioAutorizacao->name }}</td>
+                                <td>{{ ($requisicao->usuarioAutorizacao) ? $requisicao->usuarioAutorizacao->name : "Usuário não cadastrado" }}</td>
                             </tr>
                             <tr>
                                 <th class="col-md-2">Data da Autorização:</th>
-                                <td>{{ \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') }}</td>
+                                <td>{{ ($requisicao->data_autorizacao) ? \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') : "" }}</td>
                             </tr>
                         @endif
                         <tr>
