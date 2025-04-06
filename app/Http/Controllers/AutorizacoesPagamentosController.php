@@ -261,4 +261,11 @@ class AutorizacoesPagamentosController extends Controller
         $demo->setContent($autorizacao);
         $demo->download();
     }
+
+    public function autorizar(AutorizacaoPagamento $autorizacao)
+    {
+        $autorizacao->situacao = AutorizacaoPagamento::SITUACAO_AUTORIZADO;
+        $autorizacao->save();
+        return redirect()->route('autorizacoes-pagamentos.index')->with('success', 'Autorização de Pagamento autorizada com sucesso.');
+    }
 }

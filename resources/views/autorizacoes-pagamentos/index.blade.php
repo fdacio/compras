@@ -26,11 +26,11 @@
                     <div class="form-group col-md-12">
                         <label for="id-veiculo">Veículo</label>
                         <div class="input-group">
-                            {!! Form::select('id_veiculo', $veiculos, request('id_veiculo'),
-                                ['placeholder' => 'Todos', 
-                                'class' => 'form-control select', 
-                                'id' => 'id_veiculo'],
-                            ) !!}
+                            {!! Form::select('id_veiculo', $veiculos, request('id_veiculo'), [
+                                'placeholder' => 'Todos',
+                                'class' => 'form-control select',
+                                'id' => 'id_veiculo',
+                            ]) !!}
                         </div>
                     </div>
                 </div>
@@ -61,8 +61,7 @@
                     </div>
                     <div class="col-xs-5 col-sm-5 col-md-5">
                         <div class="form-group">
-                            <label for="razao-social-nome">Nome Favorecido<small
-                                    class="text-danger p-2">*</small></label>
+                            <label for="razao-social-nome">Nome Favorecido<small class="text-danger p-2">*</small></label>
                             {!! Form::text('razao_social_nome', request('razao_social_nome'), [
                                 'class' => 'form-control',
                                 'id' => 'razao-social-nome',
@@ -104,17 +103,37 @@
                     @foreach ($autorizacoes as $autorizacao)
                         <tr>
                             <td>{{ $autorizacao->id }}</td>
-                            <td>{{ \Carbon\Carbon::parse( $autorizacao->data )->format('d/m/Y')  }}</td>
-                            <td>{{ Formatter::cpfCnpj($autorizacao->favorecido->pessoa->cpf_cnpj) . ' - ' . $autorizacao->favorecido->pessoa->nome_razao_social }}</td>
+                            <td>{{ \Carbon\Carbon::parse($autorizacao->data)->format('d/m/Y') }}</td>
+                            <td>{{ Formatter::cpfCnpj($autorizacao->favorecido->pessoa->cpf_cnpj) . ' - ' . $autorizacao->favorecido->pessoa->nome_razao_social }}
+                            </td>
                             <td>{{ 'R$ ' . number_format($autorizacao->valor, 2, ',', '.') }}</td>
                             <td>{{ $autorizacao->situacao_nome }}</td>
                             <td class="text-right text-nowrap">
-                                <a href="{{ route('autorizacoes-pagamentos.show', $autorizacao->id) }}" class="btn btn-info btn-sm"
-                                    title="Visualizar"><i class="fa fa-eye"></i></a>
-                                <a href="{{ route('autorizacoes-pagamentos.edit', $autorizacao->id) }}" class="btn btn-primary btn-sm"
-                                    title="Editar"><i class="fa fa-pencil"></i></a>
+
+                                <a href="{{ route('autorizacoes-pagamentos.show', $autorizacao->id) }}"
+                                    class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye"></i></a>
+
+                                <a href="{{ route('autorizacoes-pagamentos.edit', $autorizacao->id) }}"
+                                    class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
+
                                 @if ($autorizacoes->total() > 0)
-                                    {!! Form::open(['id' => 'form_excluir_' . $autorizacao->id, 'method' => 'delete', 'route' => ['autorizacoes-pagamentos.destroy', $autorizacao->id], 'style' => 'display: inline']) !!}
+                                    {!! Form::open([
+                                        'id' => 'form_autorizar_' . $autorizacao->id,
+                                        'method' => 'path',
+                                        'route' => ['autorizacoes-pagamentos.autorizar', $autorizacao->id],
+                                        'style' => 'display: inline',
+                                    ]) !!}
+                                    {!! Form::button('<i class="fa fa-check"></i>', ['class' => 'btn btn-success btn-sm modal-autorizar']) !!}
+                                    {!! Form::close() !!}
+                                @endif
+
+                                @if ($autorizacoes->total() > 0)
+                                    {!! Form::open([
+                                        'id' => 'form_excluir_' . $autorizacao->id,
+                                        'method' => 'delete',
+                                        'route' => ['autorizacoes-pagamentos.destroy', $autorizacao->id],
+                                        'style' => 'display: inline',
+                                    ]) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir']) !!}
                                     {!! Form::close() !!}
                                 @endif
@@ -135,6 +154,7 @@
 @if ($autorizacoes->total() > 0)
     @section('scripts')
         {!! Html::script('js/modal-excluir.js') !!}
+        {!! Html::script('js/modal-autorizar.js') !!}
     @endsection
 @endif
 
