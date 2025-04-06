@@ -101,3 +101,5 @@ $('#favorecidos').select2({
     }
 
 });
+
+$('.btn-cnpj-cpf').trigger('click');
