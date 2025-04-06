@@ -110,7 +110,7 @@
                                 <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}"
                                     class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
 
-                                @if ($autorizacoes->total() > 0)
+                                @if ($requisicoes->total() > 0)
                                     {!! Form::open([
                                         'id' => 'form_autorizar_' . $requisicao->id,
                                         'method' => 'put',
@@ -121,8 +121,7 @@
                                     {!! Form::close() !!}
                                 @endif
 
-
-                                    @if ($requisicoes->total() > 0)
+                                @if ($requisicoes->total() > 0)
                                     {!! Form::open([
                                         'id' => 'form_excluir_' . $requisicao->id,
                                         'method' => 'delete',
