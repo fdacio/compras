@@ -125,6 +125,7 @@
 
         @if (!empty($autorizacao))
             $('#pessoa').val('@php echo $autorizacao->favorecido->pessoa->tipo_pessoa @endphp');
+            $('.btn-cnpj-cpf').trigger('click');
         @endif
 
         $('#pessoa').on('change', function() {
