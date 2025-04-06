@@ -85,7 +85,7 @@
                         </tr>
                         <tr>
                             <th class="col-md-2">Operação:</th>
-                            <td>{{ $autorizacao->oparacao }}
+                            <td>{{ $autorizacao->operacao }}
                             </td>
                         </tr>
                         <tr>
