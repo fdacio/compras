@@ -85,7 +85,7 @@
                                 <tr>
                                     <td>{{ $item->item }}</td>
                                     <td>
-                                        {{ $item->descricao }}
+                                        <p>{{ $item->descricao }}</p>
                                         @if ($item->veiculo)
                                             <div>
                                                 <strong>Veículo:</strong>
