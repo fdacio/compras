@@ -39,12 +39,12 @@ class CheckPermissao
         $routeName = $request->route()->getName();
         $nivelUsuario = Auth::user()->tipo->id;
         
-        if ($nivelUsuario == 1) {
-            $verificarPermissao = true;
-        } elseif ($nivelUsuario == 2 && in_array($routeName, $routesAdmin)) {
+        if ($nivelUsuario == 1 || $nivelUsuario == 2) {
+            $verificarPermissao = false;
+        } elseif ($nivelUsuario == 3 && in_array($routeName, $routesAdmin)) {
             $verificarPermissao = true;
         } else {
-            $verificarPermissao = false;
+            $verificarPermissao = true;
         }
 
         if ($verificarPermissao) {
