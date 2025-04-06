@@ -85,6 +85,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         
         $this->SetFont('Arial', '', 8);
         $this->MultiCell(90, 30, utf8_decode($requisicao->local_entrega), 'LTRB', 'L');
+        $this->SetXY($x + 90, $y);
         $this->Cell(10, 5, '', 0);
         $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'L');
         $this->Ln();
