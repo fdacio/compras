@@ -36,22 +36,18 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         }
     }
 
-
-
     public function setContent(RequisicaoCompra $requisicao)
     {
         $this->SetFont('Arial', 'B', 6);
         $this->Cell(30, 5, utf8_decode('Número'), 'LTR');
         $this->Cell(80, 5, utf8_decode('Data'), 'LTR');
         $this->Cell(80, 5, utf8_decode('Tipo'), 'LTR');
-
         $this->Ln();
 
         $this->SetFont('Arial', '', 8);
         $this->Cell(30, 5, $requisicao->id, 'LBR');
         $this->Cell(80, 5, Carbon::parse($requisicao->data)->format('d/m/Y'), 'LBR');
         $this->Cell(80, 5, utf8_decode($requisicao->tipo_nome), 'LBR');
-
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 6);
