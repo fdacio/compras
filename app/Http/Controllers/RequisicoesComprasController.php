@@ -224,7 +224,7 @@ class RequisicoesComprasController extends Controller
         $requisicao->id_usuario_autorizacao = auth()->user()->id;
         $requisicao->data_autorizacao = Carbon::now();
         $requisicao->save();
-        return redirect()->route('autorizacoes-pagamentos.index')->with('success', 'Requisição de Compra autorizada com sucesso.');
+        return redirect()->route('requisicoes-compras.index')->with('success', 'Requisição de Compra autorizada com sucesso.');
     }
 
 }
