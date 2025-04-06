@@ -108,7 +108,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
 
         $this->SetFont('Arial', '', 8);
         if ($requisicao->itens->isEmpty()) {
-            $this->Cell(190, 5, utf8_decode('Nenhum item encontrado'), 'LTRB', 1);
+            $this->Cell(190, 5, utf8_decode('Nenhum item informado'), 'LTRB', 1);
             $this->Ln();
         } else {
             foreach ($requisicao->itens as $item) {
@@ -131,8 +131,9 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'L');
         $this->SetXY($x + 90, $y + 5);
         $this->Cell(10, 5, '', 0);
+        $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'L');
         $this->SetWidths([90]);
-        $this->setBorders(['LR']);
+        $this->setBorders(['']);
         $this->Row([utf8_decode($requisicao->local_entrega)]);
         $this->Ln();
     }
