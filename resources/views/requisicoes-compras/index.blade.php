@@ -83,6 +83,7 @@
                 <th>Requisitante</th>
                 <th>Solicitante</th>
                 <th>Veículo</th>
+                <th>Tipo</th>
                 <th style="width: 15%;"></th>
             </thead>
             <tbody>
@@ -98,6 +99,7 @@
                             <td>{{ $requisicao->requisitante->nome }}</td>
                             <td>{{ $requisicao->solicitante->nome }}</td>
                             <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}</td>
+                            <td>{{ $requisicao->tipo_nome }}</td>
                             <td class="text-right text-nowrap">
                                 <a href="{{ route('requisicoes-compras.show', $requisicao->id) }}" class="btn btn-info btn-sm"
                                     title="Visualizar"><i class="fa fa-eye"></i></a>
