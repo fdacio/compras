@@ -72,20 +72,19 @@ $('#favorecidos').select2({
 });
 
 function setDadosBancarios(favorecido) {
-    console.log($('#banco').length);
-    if ($('#banco') != undefined && $('#banco').length == 0) {
+    if ($('#banco') != undefined && $('#banco').val() == "") {
         $('#banco').val(favorecido.banco);
     }
-    if ($('#agencia') != undefined && $('#agencia').length == 0) {
+    if ($('#agencia') != undefined && $('#agencia').val() == "") {
         $('#agencia').val(favorecido.agencia);
     }
-    if ($('#conta') != undefined && $('#conta').length == 0) {
+    if ($('#conta') != undefined && $('#conta').val() == "") {
         $('#conta').val(favorecido.conta);
     }
-    if ($('#operacao') != undefined && $('#operacao').length == 0) {
+    if ($('#operacao') != undefined && $('#operacao').val() == "") {
         $('#operacao').val(favorecido.operacao);
     }
-    if ($('#chave-pix') != undefined && $('#chave-pix').length == 0) {
+    if ($('#chave-pix') != undefined && $('#chave-pix').val() == "") {
         $('#chave-pix').val(favorecido.chave_pix);
     }
 }
