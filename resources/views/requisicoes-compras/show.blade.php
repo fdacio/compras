@@ -41,7 +41,7 @@
                             <th class="col-md-2">Situação:</th>
                             <td>{{ $requisicao->situacao_nome }}</td>
                         </tr>
-                        @if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADO)
+                        @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
                             <tr>
                                 <th class="col-md-2">Usuário Autorizador:</th>
                                 <td>{{ $requisicao->usuarioAutorizacao->nome }}</td>
