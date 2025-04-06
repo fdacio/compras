@@ -67,3 +67,8 @@
         {!! Form::close() !!}
     </div>
 @endsection
+@section('scripts')
+    <script>
+        $('.btn-cnpj-cpf').trigger('click');
+    </script>
+@endsection

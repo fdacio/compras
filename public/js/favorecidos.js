@@ -17,22 +17,9 @@ $('.btn-cnpj-cpf').on('click', function () {
         var texto = (favorecido.pessoa.pessoa_juridica != undefined) ? favorecido.pessoa.pessoa_juridica.razao_social : favorecido.pessoa.pessoa_fisica.nome;
         $('select[id=favorecidos]').append('<option value="' + favorecido.id + '" selected="selected">' + texto + '</option>');
         $('#id_favorecido').val(favorecido.id);
-        if ($('#banco') != undefined) {
-            $('#banco').val(favorecido.banco);
-        }
-        if ($('#agencia') != undefined) {
-            $('#agencia').val(favorecido.agencia);
-        }
-        if ($('#conta') != undefined) {
-            $('#conta').val(favorecido.conta);
-        }
-        if ($('#operacao') != undefined) {
-            $('#operacao').val(favorecido.operacao);
-        }
-        if ($('#chave-pix') != undefined) {
-            $('#chave-pix').val(favorecido.chave_pix);
-        }
 
+        setDadosBancarios(favorecido);
+        
     }).done(function () {
         setTimeout(function () {
             button.attr('disabled', false);
@@ -81,25 +68,23 @@ $('#favorecidos').select2({
     var cnpjCpf = e.params.data.cnpj_cpf;
     var id = e.params.data.id;
     var favorecido = e.params.data.favorecido;
-    
-    $('#cnpj-cpf').val(cnpjCpf).trigger('mask');
-    $('#id_favorecido').val(id);
-    if ($('#banco') != undefined) {
-        $('#banco').val(favorecido.banco);
-    }
-    if ($('#agencia') != undefined) {
-        $('#agencia').val(favorecido.agencia);
-    }
-    if ($('#conta') != undefined) {
-        $('#conta').val(favorecido.conta);
-    }
-    if ($('#operacao') != undefined) {
-        $('#operacao').val(favorecido.operacao);
-    }
-    if ($('#chave-pix') != undefined) {
-        $('#chave-pix').val(favorecido.chave_pix);
-    }
-
+    setDadosBancarios(favorecido);
 });
 
-$('.btn-cnpj-cpf').trigger('click');
+function setDadosBancarios(favorecido) {
+    if ($('#banco') != undefined && $('#banco').length == 0) {
+        $('#banco').val(favorecido.banco);
+    }
+    if ($('#agencia') != undefined && $('#agencia').length == 0) {
+        $('#agencia').val(favorecido.agencia);
+    }
+    if ($('#conta') != undefined && $('#conta').length == 0) {
+        $('#conta').val(favorecido.conta);
+    }
+    if ($('#operacao') != undefined && $('#operacao').length == 0) {
+        $('#operacao').val(favorecido.operacao);
+    }
+    if ($('#chave-pix') != undefined && $('#chave-pix').length == 0) {
+        $('#chave-pix').val(favorecido.chave_pix);
+    }
+}
