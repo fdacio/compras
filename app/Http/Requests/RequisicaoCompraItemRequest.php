@@ -34,7 +34,6 @@ class RequisicaoCompraItemRequest extends FormRequest
                 'quantidade_solicitada' => 'required|integer|min:1',
                 'quantidade_a_cotar' => 'required|integer|min:1'
             ];
-
         } 
         
         if ($requisicao->tipo == 'SERVICO') {  
