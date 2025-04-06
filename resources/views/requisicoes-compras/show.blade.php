@@ -11,19 +11,18 @@
             <ul class="nav nav-tabs mb-2" id="tabs-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="tabs-cabecalho-tab" data-toggle="pill" href="#tabs-cabecalho" role="tab"
-                        aria-controls="tabs-cabecalho"
-                        aria-selected="true">Cabeçalho</a>
+                        aria-controls="tabs-cabecalho" aria-selected="true">Cabeçalho</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tabs-itens-tab" data-toggle="pill" href="#tabs-itens" role="tab"
-                        aria-controls="tabs-itens"
-                        aria-selected="false">Itens</a>
+                        aria-controls="tabs-itens" aria-selected="false">Itens</a>
                 </li>
             </ul>
             <!-- Começo das tabs-->
             <div class="tab-content" id="tabs-tabContent">
                 <!-- Tab Cabeçalho-->
-                <div class="tab-pane fade show active" id="tabs-cabecalho" role="tabpanel" aria-labelledby="tabs-cabecalho-tab">
+                <div class="tab-pane fade show active" id="tabs-cabecalho" role="tabpanel"
+                    aria-labelledby="tabs-cabecalho-tab">
                     <table class="table table-striped table-hover">
                         <tr>
                             <th class="col-md-2">ID:</th>
@@ -50,7 +49,7 @@
                                 <th class="col-md-2">Data da Autorização:</th>
                                 <td>{{ \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') }}</td>
                             </tr>
-                        @endif    
+                        @endif
                         <tr>
                             <th class="col-md-2">Requisitante:</th>
                             <td>{{ $requisicao->requisitante->nome }}</td>
@@ -61,7 +60,8 @@
                         </tr>
                         <tr>
                             <th class="col-md-2">Veículo:</th>
-                            <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}</td>
+                            <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}
+                            </td>
                         </tr>
                         <tr>
                             <th class="col-md-2">Local de entrega:</th>
@@ -69,7 +69,7 @@
                         </tr>
                         <tr>
                             <th class="col-md-2">Urgente:</th>
-                            <td>{{ ($requisicao->urgente) ? "Sim" : "Não"}}</td>
+                            <td>{{ $requisicao->urgente ? 'Sim' : 'Não' }}</td>
                         </tr>
                         <tr>
                             <th>Criado:</th>
@@ -98,26 +98,34 @@
                                         <th class="col-md-2 text-center">Quantidade a cotar</th>
                                     </tr>
                                 </thead>
-                                @foreach ($requisicao->itens as $item)
-                                <!-- Table row dos itens -->
+                                @if ($requisicoes->total() == 0)
                                     <tr>
-                                        <td>{{ $item->item }}</td>
-                                        <td class="text-center">{{ $item->descricao }}</td>
-                                        <td class="text-center">{{ $item->unidade }}</td>
-                                        <td class="text-center">{{ $item->quantidade_solicitada }}</td>
-                                        <td class="text-center">{{ $item->quantidade_a_cotar }}</td>
+                                        <th class="text-center" colspan="6">Nenhuma requisição encontrada</th>
                                     </tr>
-                                @endforeach
+                                @else
+                                    @foreach ($requisicao->itens as $item)
+                                        <!-- Table row dos itens -->
+                                        <tr>
+                                            <td>{{ $item->item }}</td>
+                                            <td class="text-center">{{ $item->descricao }}</td>
+                                            <td class="text-center">{{ $item->unidade }}</td>
+                                            <td class="text-center">{{ $item->quantidade_solicitada }}</td>
+                                            <td class="text-center">{{ $item->quantidade_a_cotar }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </table>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}" class="btn btn-primary" title="Editar">Editar</a>
+            <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}" class="btn btn-primary"
+                title="Editar">Editar</a>
             <a class="btn btn-danger" href="{{ route('requisicoes-compras.index') }}">Voltar</a>
-            <a href="{{ route('requisicoes-compras.gera.pdf', $requisicao->id) }}" class="btn btn-success" title="download" target="_blank">Demonstrativo</a>
+            <a href="{{ route('requisicoes-compras.gera.pdf', $requisicao->id) }}" class="btn btn-success" title="download"
+                target="_blank">Demonstrativo</a>
         </div>
     </div>
 @endsection
