@@ -40,7 +40,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::orderBy('id', 'asc');
+        $users = User::where('id_tipo', '!=', TipoUsuario::NIVEL_MANUTENCAO)->orderBy('id', 'asc');
+
         $nome = request()->get('nome');
         if (!empty($nome)) {
             $users =  $users->where('name', 'LIKE', '%' . $nome . '%');
