@@ -52,7 +52,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $tipos = TipoUsuario::pluck('nome', 'id');
+        $tipos = TipoUsuario::where('id_tipo', '!=', TipoUsuario::NIVEL_MANUTENCAO)->pluck('nome', 'id');
         return view('user.create', compact('tipos'));
     }
 
@@ -71,7 +71,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $tipos = TipoUsuario::pluck('nome', 'id');
+        $tipos = TipoUsuario::where('id_tipo', '!=', TipoUsuario::NIVEL_MANUTENCAO)->pluck('nome', 'id');
         return view('user.edit', compact('user', 'tipos'));
     }
 

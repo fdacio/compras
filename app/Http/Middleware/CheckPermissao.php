@@ -27,11 +27,6 @@ class CheckPermissao
             'user.update',
             'user.destroy',
             'tipos-usuarios.index',
-            'tipos-usuarios.create',
-            'tipos-usuarios.store',
-            'tipos-usuarios.edit',
-            'tipos-usuarios.update',
-            'tipos-usuarios.destroy',
             'requisicoes-compras.autorizar',
             'autorizacoes-pagamentos.autorizar',            
         ];
