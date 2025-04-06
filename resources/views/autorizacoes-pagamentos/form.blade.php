@@ -114,6 +114,9 @@
 </div>
 
 @section('scripts')
+    
+    {!! Html::script('js/favorecidos.js') !!}
+    
     <script>
         $('#form_contaspagar').submit(function() {
             $(this).find('input[type=submit]').prop('disabled', true).attr('value', 'Aguarde...');
@@ -125,6 +128,7 @@
 
         @if (!empty($autorizacao))
             $('#pessoa').val('@php echo $autorizacao->favorecido->pessoa->tipo_pessoa @endphp');
+            console.log("Triegger Btn CNPJ CPF");
             $('.btn-cnpj-cpf').trigger('click');
         @endif
 
@@ -147,6 +151,6 @@
 
     </script>
 
-    {!! Html::script('js/favorecidos.js') !!}
+    
 
 @endsection
