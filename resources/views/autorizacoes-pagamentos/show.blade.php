@@ -17,6 +17,10 @@
                     <a class="nav-link" id="tabs-itens-tab" data-toggle="pill" href="#tabs-itens" role="tab"
                         aria-controls="tabs-itens" aria-selected="false">Itens</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tabs-documentos-tab" data-toggle="pill" href="#tabs-documentos" role="tab"
+                        aria-controls="tabs-documentos" aria-selected="false">Documentos</a>
+                </li>
             </ul>
             <!-- Começo das tabs-->
             <div class="tab-content" id="tabs-tabContent">
