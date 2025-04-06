@@ -119,7 +119,7 @@
                                 @if ($autorizacoes->total() > 0)
                                     {!! Form::open([
                                         'id' => 'form_autorizar_' . $autorizacao->id,
-                                        'method' => 'path',
+                                        'method' => 'put',
                                         'route' => ['autorizacoes-pagamentos.autorizar', $autorizacao->id],
                                         'style' => 'display: inline',
                                     ]) !!}
