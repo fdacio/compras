@@ -19,7 +19,7 @@ $('.btn-cnpj-cpf').on('click', function () {
         $('#id_favorecido').val(favorecido.id);
 
         setDadosBancarios(favorecido);
-        
+
     }).done(function () {
         setTimeout(function () {
             button.attr('disabled', false);
@@ -72,6 +72,7 @@ $('#favorecidos').select2({
 });
 
 function setDadosBancarios(favorecido) {
+    console.log($('#banco').length);
     if ($('#banco') != undefined && $('#banco').length == 0) {
         $('#banco').val(favorecido.banco);
     }
