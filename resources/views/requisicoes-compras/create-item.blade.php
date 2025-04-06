@@ -51,7 +51,7 @@
         'method' => 'post',
         'route' => ['requisicoes-compras.item.store', $requisicao->id],
     ]) !!}
-    {!! Form::hidden('id', $requisicao->id) !!}
+    {!! Form::hidden('id_requisicao', $requisicao->id) !!}
     <div class="card-body">
         @include('requisicoes-compras.form-create-item')
     </div>
