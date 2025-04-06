@@ -98,7 +98,7 @@
                                         <th class="col-md-2 text-center">Quantidade a cotar</th>
                                     </tr>
                                 </thead>
-                                @if ($requisicoes->itens->count() == 0)
+                                @if ($requisicao->itens->count() == 0)
                                     <tr>
                                         <th class="text-center" colspan="6">Nenhuma requisição encontrada</th>
                                     </tr>
