@@ -140,6 +140,17 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             }
             $this->Ln();
         }
+        $this->SetFont('Arial', 'B', 6);
+        $this->Cell(60, 5, utf8_decode('Situação:'), 'LTR');
+        $this->Cell(70, 5, utf8_decode('Usuário Autorizador:'), 'LTR');
+        $this->Cell(60, 5, utf8_decode('Data da Autorização:'), 'LTR');
+        $this->Ln();
+
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(60, 5, $requisicao->situacao_nome, 'LBR');
+        $this->Cell(70, 5, utf8_decode($requisicao->usuarioAutorizacao->name), 'LBR');
+        $this->Cell(60, 5, Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y'), 'LBR');
+        $this->Ln();
 
         $x = $this->GetX();
         $y = $this->GetY();
@@ -158,10 +169,8 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->SetWidths([90]);
         $this->setBorders(['']);
         $this->Row([utf8_decode($requisicao->local_entrega)]);
-
         $this->Rect(($x + 100), ($y + 5), 90, 30);
-
-
         $this->Ln();
+
     }
 }

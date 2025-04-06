@@ -44,7 +44,7 @@
                         @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
                             <tr>
                                 <th class="col-md-2">Usuário Autorizador:</th>
-                                <td>{{ $requisicao->usuarioAutorizacao->nome }}</td>
+                                <td>{{ $requisicao->usuarioAutorizacao->name }}</td>
                             </tr>
                             <tr>
                                 <th class="col-md-2">Data da Autorização:</th>
