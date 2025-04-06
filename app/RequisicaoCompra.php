@@ -14,10 +14,29 @@ class RequisicaoCompra extends Model
         'id_veiculo', 
         'data', 
         'tipo', 
+        'situacao',
         'local_entrega',
         'urgente'
     ];
-    
+    const SITUACAO_PENDENTE = 'PENDENTE';
+    const SITUACAO_AUTORIZADO = 'AUTORIZADO';
+    const SITUACAO_CANCELADO = 'CANCELADO';   
+
+    const SITUACOES = [
+        [
+            'label' => 'Pendente',
+            'value' => self::SITUACAO_PENDENTE
+        ],
+        [
+            'label' => 'Autorizado',
+            'value' => self::SITUACAO_AUTORIZADO
+        ],
+        [
+            'label' => 'Cancelado',
+            'value' => self::SITUACAO_CANCELADO
+        ],
+    ];
+
     const TIPOS = [
         [
             'label' => 'Produto',
@@ -41,6 +60,19 @@ class RequisicaoCompra extends Model
             }
         }
         return $tipoNome;
+    }
+    
+    public function getSituacaoNomeAttribute()
+    {
+        $situacao = $this->situacao;
+        $situacaoNome = '';
+        foreach (self::SITUACOES as $item) {
+            if ($item['value'] == $situacao) {
+                $situacaoNome = $item['label'];
+                break;
+            }
+        }
+        return $situacaoNome;
     }
 
     public function requisitante()
