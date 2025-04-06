@@ -123,7 +123,7 @@
                                         'route' => ['autorizacoes-pagamentos.autorizar', $autorizacao->id],
                                         'style' => 'display: inline',
                                     ]) !!}
-                                    {!! Form::button('<i class="fa fa-check"></i>', ['class' => 'btn btn-success btn-sm modal-autorizar']) !!}
+                                    {!! Form::button('<i class="fa fa-check"></i>', ['class' => 'btn btn-success btn-sm modal-autorizar', 'title' => 'Autorizar']) !!}
                                     {!! Form::close() !!}
                                 @endif
 
@@ -134,7 +134,7 @@
                                         'route' => ['autorizacoes-pagamentos.destroy', $autorizacao->id],
                                         'style' => 'display: inline',
                                     ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir']) !!}
+                                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir', 'title' => 'Excluir']) !!}
                                     {!! Form::close() !!}
                                 @endif
                             </td>
