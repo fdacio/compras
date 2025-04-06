@@ -41,9 +41,9 @@ class DemoRequisicaoCompraPdf extends ReportPdf
     public function setContent(RequisicaoCompra $requisicao)
     {
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(30, 5, utf8_decode('Número:'), 'LTR');
-        $this->Cell(80, 5, utf8_decode('Data:'), 'LTR');
-        $this->Cell(80, 5, utf8_decode('Tipo:'), 'LTR');
+        $this->Cell(30, 5, utf8_decode('Número'), 'LTR');
+        $this->Cell(80, 5, utf8_decode('Data'), 'LTR');
+        $this->Cell(80, 5, utf8_decode('Tipo'), 'LTR');
 
         $this->Ln();
 
@@ -55,7 +55,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(190, 5, utf8_decode('Requisitante:'), 'LTR');
+        $this->Cell(190, 5, utf8_decode('Requisitante'), 'LTR');
 
         $this->Ln();
 
@@ -65,7 +65,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(190, 5, utf8_decode('Solicitante:'), 'LTR');
+        $this->Cell(190, 5, utf8_decode('Solicitante'), 'LTR');
 
         $this->Ln();
 
@@ -132,7 +132,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
 
         $this->SetFont('Arial', '', 8);
         if ($requisicao->itens->isEmpty()) {
-            $this->Cell(190, 5, utf8_decode('Nenhum item informado'), 'LTRB', 1);
+            $this->Cell(190, 5, utf8_decode('Nenhum item informado'), 'LTRB', 0);
             $this->Ln();
         } else {
             foreach ($requisicao->itens as $item) {
@@ -141,15 +141,16 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             $this->Ln();
         }
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(60, 5, utf8_decode('Situação:'), 'LTR');
-        $this->Cell(70, 5, utf8_decode('Usuário Autorizador:'), 'LTR');
-        $this->Cell(60, 5, utf8_decode('Data da Autorização:'), 'LTR');
+        $this->Cell(60, 5, utf8_decode('Situação'), 'LTR');
+        $this->Cell(70, 5, utf8_decode('Usuário Autorizador'), 'LTR');
+        $this->Cell(60, 5, utf8_decode('Data da Autorização'), 'LTR');
         $this->Ln();
 
         $this->SetFont('Arial', '', 8);
         $this->Cell(60, 5, $requisicao->situacao_nome, 'LBR');
         $this->Cell(70, 5, utf8_decode($requisicao->usuarioAutorizacao->name), 'LBR');
         $this->Cell(60, 5, Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y'), 'LBR');
+        $this->Ln();
         $this->Ln();
 
         $x = $this->GetX();
