@@ -85,7 +85,7 @@
                                 <tr>
                                     <td>{{ $item->item }}</td>
                                     <td>
-                                        <p>{{ $item->descricao }}</p>
+                                        <p style="white-space: pre-wrap">{{ $item->descricao }}</p>
                                         @if ($item->veiculo)
                                             <div>
                                                 <strong>Veículo:</strong>
