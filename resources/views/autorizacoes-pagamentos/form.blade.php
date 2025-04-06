@@ -128,10 +128,10 @@
         @endif
 
         $('#pessoa').on('change', function() {
-            setCnpjCpffavorecido($(this).val());
+            setCnpjCpfFavorecido($(this).val());
         });
 
-        function setCnpjCpffavorecido(tipo) {
+        function setCnpjCpfFavorecido(tipo) {
             if (tipo == 'PJ') {
                 $('#cnpj-cpf').mask('99.999.999/9999-99').trigger('keyup');
                 $('label[for="cnpj-cpf"]').html('CNPJ Favorecido<small class="text-danger p-2">*</small>');
@@ -142,7 +142,7 @@
                 $('label[for="favorecidos"]').html('Nome Favorecido');
             }
         }
-        setCnpjCpffavorecido($('#pessoa').val());
+        setCnpjCpfFavorecido($('#pessoa').val());
 
     </script>
 

@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-Use App\Favorecido;
-Use App\Http\Requests\FavorecidoPessoaJuridicaRequest;
-Use App\Http\Requests\FavorecidoPessoaFisicaRequest;
-Use App\Pessoa;
-Use App\PessoaFisica;
-Use App\PessoaJuridica;
-Use App\Uf;
-Use App\Municipio;
-Use Exception;
-Use Illuminate\Support\Facades\DB;
+use App\Favorecido;
+use App\Http\Requests\FavorecidoPessoaJuridicaRequest;
+use App\Http\Requests\FavorecidoPessoaFisicaRequest;
+use App\Pessoa;
+use App\PessoaFisica;
+use App\PessoaJuridica;
+use App\Uf;
+use App\Municipio;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class FavorecidosController extends Controller
 {
-      /**
+    /**
      * Mostrando uma listagem dos recursoso
      *
      * @return \Illuminate\Http\Response
      */
-    public function index ()
+    public function index()
     {
         $favorecidos = Favorecido::orderBy('id', 'asc');
         $tipoPessoa = request()->get('pessoa');
@@ -28,7 +28,7 @@ class FavorecidosController extends Controller
         if ($tipoPessoa == Pessoa::TIPO_PESSOA_JURIDICA) {
             $cnpj = request()->get('cpf_cnpj');
             $razaoSocial = request()->get('nome_razao_social');
-            if(!empty($cnpj)) {
+            if (!empty($cnpj)) {
                 $cnpj = str_replace(['.', '-', '/'], '', $cnpj);
                 $favorecidos = $favorecidos->whereHas('pessoa', function ($query) use ($cnpj) {
                     $query->whereHas('pessoaJuridica', function ($query) use ($cnpj) {
@@ -36,7 +36,7 @@ class FavorecidosController extends Controller
                     });
                 });
             }
-            if(!empty($razaoSocial)) {
+            if (!empty($razaoSocial)) {
                 $favorecidos = $favorecidos->whereHas('pessoa', function ($query) use ($razaoSocial) {
                     $query->whereHas('pessoaJuridica', function ($query) use ($razaoSocial) {
                         $query->where('razao_social', 'LIKE', '%' . $razaoSocial . '%');
@@ -44,11 +44,11 @@ class FavorecidosController extends Controller
                 });
             }
         }
-    
-        if ($tipoPessoa == Pessoa::TIPO_PESSOA_FISICA){
+
+        if ($tipoPessoa == Pessoa::TIPO_PESSOA_FISICA) {
             $cpf = request()->get('cpf_cnpj');
             $nome = request()->get('nome_razao_social');
-            if(!empty($cpf)) {
+            if (!empty($cpf)) {
                 $cpf = str_replace(['.', '-'], '', $cpf);
                 $favorecidos = $favorecidos->whereHas('pessoa', function ($query) use ($cpf) {
                     $query->whereHas('pessoaFisica', function ($query) use ($cpf) {
@@ -56,7 +56,7 @@ class FavorecidosController extends Controller
                     });
                 });
             }
-            if(!empty($nome)) {
+            if (!empty($nome)) {
                 $favorecidos = $favorecidos->whereHas('pessoa', function ($query) use ($nome) {
                     $query->whereHas('pessoaFisica', function ($query) use ($nome) {
                         $query->where('nome', 'LIKE', '%' . $nome . '%');
@@ -125,7 +125,6 @@ class FavorecidosController extends Controller
 
             DB::commit();
             return redirect()->route('favorecidos.index')->with('success', 'Favorecido cadastrado com sucesso!');
-
         } catch (Exception $e) {
             return redirect()->route('favorecidos.index')->withInput()->with('danger', 'Error:' . $e->getMessage());
             DB::rollBack();
@@ -134,12 +133,12 @@ class FavorecidosController extends Controller
 
     public function show(Favorecido $favorecido)
     {
-            if ($favorecido->pessoa->tipo_pessoa == Pessoa::TIPO_PESSOA_JURIDICA) {
-                return view('favorecidos.show', compact('favorecido'));
-            }
-            if ($favorecido->pessoa->tipo_pessoa == Pessoa::TIPO_PESSOA_FISICA) {
-                return view('favorecidos.pessoas-fisicas.show', compact('favorecido'));
-            }
+        if ($favorecido->pessoa->tipo_pessoa == Pessoa::TIPO_PESSOA_JURIDICA) {
+            return view('favorecidos.show', compact('favorecido'));
+        }
+        if ($favorecido->pessoa->tipo_pessoa == Pessoa::TIPO_PESSOA_FISICA) {
+            return view('favorecidos.pessoas-fisicas.show', compact('favorecido'));
+        }
     }
 
     public function edit(Favorecido $favorecido)
@@ -175,7 +174,7 @@ class FavorecidosController extends Controller
 
     public function storePessoaFisica(FavorecidoPessoaFisicaRequest $request)
     {
-        try{
+        try {
             DB::beginTransaction();
             $cpf = $request->get('cpf');
             $cpf = str_replace(['.', '-'], '', $cpf);
@@ -186,15 +185,15 @@ class FavorecidosController extends Controller
                 $pessoaFisica = $pessoa->pessoaFisica()->create($request->all());
             }
             $dadosFavorecido = [
-                'id_pessoa' =>$pessoaFisica->id_pessoa,
+                'id_pessoa' => $pessoaFisica->id_pessoa,
             ];
 
             $dadosFavorecido = array_merge($dadosFavorecido, $request->all());
             Favorecido::create($dadosFavorecido);
 
             DB::commit();
-            return redirect()->route('favorecidos.index')->with('success' , 'Favorecido cadastrado com sucesso');
-        } catch(Exception $e) {
+            return redirect()->route('favorecidos.index')->with('success', 'Favorecido cadastrado com sucesso');
+        } catch (Exception $e) {
             return redirect()->route('favorecidos.pessoa.fisica.create')->withInput()->with('danger', 'Error:' . $e->getMessage());
             DB::rollback();
         }
