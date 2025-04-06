@@ -81,7 +81,7 @@ $('#favorecidos').select2({
     var cnpjCpf = e.params.data.cnpj_cpf;
     var id = e.params.data.id;
     var favorecido = e.params.data.favorecido;
-    console.log(favorecido);
+    
     $('#cnpj-cpf').val(cnpjCpf).trigger('mask');
     $('#id_favorecido').val(id);
     if ($('#banco') != undefined) {
