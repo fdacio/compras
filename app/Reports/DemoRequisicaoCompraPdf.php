@@ -148,8 +148,8 @@ class DemoRequisicaoCompraPdf extends ReportPdf
 
         $this->SetFont('Arial', '', 8);
         $this->Cell(60, 5, $requisicao->situacao_nome, 'LBR');
-        $this->Cell(70, 5, utf8_decode($requisicao->usuarioAutorizacao->name), 'LBR');
-        $this->Cell(60, 5, Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y'), 'LBR');
+        $this->Cell(70, 5, utf8_decode(($requisicao->usuarioAutorizacao) ? $requisicao->usuarioAutorizacao->name : ''), 'LBR');
+        $this->Cell(60, 5, ($requisicao->data_autorizacao) ? Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') : '', 'LBR');
         $this->Ln();
         $this->Ln();
 
