@@ -51,6 +51,17 @@ class DemoAutorizacaoPagamentoPdf extends ReportPdf
         $this->Cell(140, 5, utf8_decode(Formatter::cpfCnpj($autorizacao->favorecido->pessoa->cpf_cnpj) . ' - ' . $autorizacao->favorecido->pessoa->nome_razao_social), 'LBR');
         $this->Ln();
 
+        $this->SetFont('Arial', 'B', 6);
+        $this->Cell(80, 5, utf8_decode('Centro de Custo'), 'LTR');
+        $this->Cell(80, 5, utf8_decode('Forma de Pagamento'), 'LTR');
+        $this->Cell(30, 5, utf8_decode('Valor'), 'LTR');
+        $this->Ln();
+
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(80, 5, utf8_decode($autorizacao->centroCusto->nome), 'LBR');
+        $this->Cell(80, 5, utf8_decode($autorizacao->formaPagamento->nome), 'LBR');
+        $this->Cell(30, 5, Formatter::valorTotal($autorizacao->valor), 'LBR', 0, 'R');
+        $this->Ln();
     }
 }
 ?>
