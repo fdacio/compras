@@ -103,10 +103,10 @@ class DemoAutorizacaoPagamentoPdf extends ReportPdf
             foreach ($autorizacao->itens as $item) {
                 $descricao = $item->descricao;
                 if ($item->veiculo) {
-                    $descricao .= "\n" . utf8_decode("Veículo: " . $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo);
+                    $descricao .= "\n" . "Veículo: " . $item->veiculo->placa . '-' . $item->veiculo->marca . ' ' . $item->veiculo->modelo;
                 }
                 if ($item->produto) {
-                    $descricao .= "\n" . utf8_decode("produto: " . $item->produto->nome . '-' . $item->produto->unidade->nome);
+                    $descricao .= "\n" . "Produto: " . $item->produto->nome . '-' . $item->produto->unidade->nome;
                 }
                 
                 $this->Row([$item->item, utf8_decode($descricao)]);
