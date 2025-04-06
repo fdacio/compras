@@ -50,12 +50,34 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Ln();
         
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(190, 5, utf8_decode('Veículo:'), 'LTR');
-
+        $this->Cell(190, 5, utf8_decode('Veículo:'), 'LTRB');
         $this->Ln();
-        $this->SetFont('Arial', '', 8);
-        $this->Cell(190, 5, utf8_decode($requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo), 'LBR');
 
+        $this->SetFont('Arial', 'B', 6);
+        $this->Cell(20, 5, utf8_decode('Ano:'), 'LTR');
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->ano), 'LTR');
+        $this->Ln();
+
+        $this->Cell(20, 5, utf8_decode('Placa:'), 'LTR');
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->placa), 'LTR');
+        $this->Ln();
+
+        $this->Cell(20, 5, utf8_decode('Chassi:'), 'LTR');
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->chassi), 'LTR');
+        $this->Ln();
+
+
+        $this->Cell(20, 5, utf8_decode('Cidade:'), 'LTR');
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(70, 5, utf8_decode($requisicao->veiculo->centroCusto->nome), 'LTR');
+        $this->Ln();
+
+
+        $this->Cell(40, 5, utf8_decode('Empresa:'), 'LTR');
+        $this->Cell(70, 5, utf8_decode($requisicao->empresa->pessoa->nomeRazaoSocial), 'LTR');
         $this->Ln();
         
         $this->SetFont('Arial', 'B', 8);
@@ -78,13 +100,13 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $y = $this->GetY();
 
         $this->SetFillColor(190, 190, 190);
-        $this->SetFont('Arial', 'B', 6);
+        $this->SetFont('Arial', 'B', 8);
         $this->Cell(90, 5, utf8_decode('Autorização de cotação'), 'LTR', 0, 'C', true);
         $this->Cell(10, 5, '', 0);
         $this->Cell(90, 5, utf8_decode('Local entrega'), 'LTR', 0, 'C', true);
         $this->Ln();
         
-        $this->SetFont('Arial', '', 8);
+        $this->SetFont('Arial', '', 6);
         $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'L');
         $this->SetXY($x + 90, $y + 5);
         $this->Cell(10, 5, '', 0);
