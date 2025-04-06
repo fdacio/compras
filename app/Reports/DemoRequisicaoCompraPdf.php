@@ -26,15 +26,15 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             }
 
             $this->SetFont('Arial', 'B', 12);
-            $this->SetFont('Arial', 'B', 12);
             if ($this->getTitleHeader() != "") {
+                $this->Ln(5);
                 $this->Cell(190, 5, $this->getTitleHeader(), 0, 1, 'C');
                 $this->Ln(5);
             }
             $y2 = $this->GetY();
             $this->Rect($x1, $y1, 190, 40);
 
-            $this->Ln();
+            $this->Ln(20);
         }
     }
 
