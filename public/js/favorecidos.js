@@ -13,29 +13,24 @@ $('.btn-cnpj-cpf').on('click', function () {
         }
         $('span.text-danger').html('');
         var nomeRazaoSocial = (favorecido.pessoa.pessoa_juridica != undefined) ? favorecido.pessoa.pessoa_juridica.razao_social : favorecido.pessoa.pessoa_fisica.nome;
-        var banco = favorecido.banco;
-        var agencia = favorecido.agencia;
-        var conta = favorecido.conta;
-        var operacao = favorecido.operacao;
-        var chavePix = favorecido.chave_pix;
         $('#razao-social-nome').val(nomeRazaoSocial);
         var texto = (favorecido.pessoa.pessoa_juridica != undefined) ? favorecido.pessoa.pessoa_juridica.razao_social : favorecido.pessoa.pessoa_fisica.nome;
         $('select[id=favorecidos]').append('<option value="' + favorecido.id + '" selected="selected">' + texto + '</option>');
         $('#id_favorecido').val(favorecido.id);
         if ($('#banco') != undefined) {
-            $('#banco').val(banco);
+            $('#banco').val(favorecido.banco);
         }
         if ($('#agencia') != undefined) {
-            $('#agencia').val(agencia);
+            $('#agencia').val(favorecido.agencia);
         }
         if ($('#conta') != undefined) {
-            $('#conta').val(conta);
+            $('#conta').val(favorecido.conta);
         }
         if ($('#operacao') != undefined) {
-            $('#operacao').val(operacao);
+            $('#operacao').val(favorecido.operacao);
         }
         if ($('#chave-pix') != undefined) {
-            $('#chave-pix').val(chavePix);
+            $('#chave-pix').val(favorecido.chave_pix);
         }
 
     }).done(function () {
@@ -102,7 +97,7 @@ $('#favorecidos').select2({
         $('#operacao').val(favorecido.operacao);
     }
     if ($('#chave-pix') != undefined) {
-        $('#chave-pix').val(favorecido.chavePix);
+        $('#chave-pix').val(favorecido.chave_pix);
     }
 
 });
