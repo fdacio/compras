@@ -77,17 +77,18 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $x = $this->GetX();
         $y = $this->GetY();
 
+        $this->SetFillColor(190, 190, 190);
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(90, 5, utf8_decode('Local entrega'), 'LTR');
+        $this->Cell(90, 5, utf8_decode('Autorização de cotação'), 'LTR', 0, 'C', true);
         $this->Cell(10, 5, '', 0);
-        $this->Cell(90, 5, utf8_decode('Autorização de cotação'), 'LTR', 0, 'C');
+        $this->Cell(90, 5, utf8_decode('Local entrega'), 'LTR', 0, 'C', true);
         $this->Ln();
         
         $this->SetFont('Arial', '', 8);
-        $this->MultiCell(90, 30, utf8_decode($requisicao->local_entrega), 'LTRB', 'L');
+        $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'L');
         $this->SetXY($x + 90, $y + 5);
         $this->Cell(10, 5, '', 0);
-        $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'L');
+        $this->MultiCell(90, 30, utf8_decode($requisicao->local_entrega), 'LTRB', 'L');
         $this->Ln();
         
     }
