@@ -39,7 +39,7 @@ class CheckPermissao
         } elseif ($nivelUsuario == 3 && in_array($routeName, $routesAdmin)) {
             $verificarPermissao = true;
         } else {
-            $verificarPermissao = true;
+            $verificarPermissao = false;
         }
 
         if ($verificarPermissao) {
