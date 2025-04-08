@@ -17,7 +17,7 @@ class CreateProdutosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_unidade');
             $table->string('nome', 150);
-            $table->decimal('valor_unitario', 15, 2);
+            $table->decimal('valor_unitario', 15, 2)->nullable();
             $table->foreign('id_unidade')->references('id')->on('unidades');
             $table->timestamps();
         });

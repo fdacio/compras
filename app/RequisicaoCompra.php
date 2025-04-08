@@ -17,6 +17,7 @@ class RequisicaoCompra extends Model
         'situacao',
         'id_usuario_autorizacao',
         'data_autorizacao',
+        'observacao',
         'local_entrega',
         'urgente'
     ];

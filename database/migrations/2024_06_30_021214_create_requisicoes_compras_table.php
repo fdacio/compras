@@ -17,11 +17,11 @@ class CreateRequisicoesComprasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_requisitante');
             $table->unsignedBigInteger('id_solicitante');
-            $table->unsignedBigInteger('id_veiculo');
+            $table->unsignedBigInteger('id_veiculo')->nullable();
             $table->date('data');
             $table->enum('tipo', ['PRODUTO', 'SERVICO']);
-            $table->string('autorizacao_cotacao', 500)->nullable();
-            $table->string('local_entrega', 500)->nullable();
+            $table->text('observacao')->nullable();
+            $table->text('local_entrega')->nullable();
             $table->foreign('id_requisitante')->references('id')->on('centros_custos');
             $table->foreign('id_solicitante')->references('id')->on('solicitantes');
             $table->foreign('id_veiculo')->references('id')->on('veiculos');

@@ -7,16 +7,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-10 col-sm-10 col-md-10">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="nome">Nome<small class="text-danger p-2">*</small></label>
                 {!! Form::text('nome', isset($produto) ? $produto->nome : old('nome'), ['class' => 'form-control', 'id' => 'nome']) !!}
-            </div>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-            <div class="form-group">
-                <label for="valor-unitario">Valor Unitário</label>
-                {!! Form::text('valor_unitario', isset($produto) ? 'R$ ' . number_format($produto->valor_unitario, '2', ',', '.') : old('valor_unitario'), ['class' => 'form-control real text-right', 'id' => 'valor-unitario']) !!}
             </div>
         </div>
     </div>

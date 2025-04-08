@@ -95,7 +95,8 @@
                         </tr>
                         <tr>
                             <th class="col-md-2">Observação:</th>
-                            <td>{{ $autorizacao->observacao }}
+                            <td>
+                                <p style="white-space: pre-wrap">{{ $autorizacao->observacao }}</p>
                             </td>
                         </tr>
                         <tr>

@@ -21,7 +21,7 @@ class CreateAutorizacoesPagamentosTable extends Migration
             $table->date('data');
             $table->decimal('valor', 10, 2);
             $table->enum('situacao', ['PENDENTE', 'AUTORIZADO', 'CANCELADO']);
-            $table->string('observacao', 500)->nullable();
+            $table->text('observacao')->nullable();
             $table->string('banco', 60)->nullable();
             $table->string('agencia', 20)->nullable();
             $table->string('conta', 30)->nullable();

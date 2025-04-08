@@ -27,9 +27,9 @@ class RequisicaoCompraRequest extends FormRequest
             'tipo' => 'required|string',
             'id_requisitante' => 'required|integer',
             'id_solicitante' => 'required|integer',
-            'id_veiculo' => 'required|integer',
-            'autorizacao_cotacao' => 'nullable|string',
+            'id_veiculo' => 'nullable|integer',
             'local_entrega' => 'nullable|string',
+            'observacao' => 'nullable|string',
         ];
     }
 
@@ -40,7 +40,6 @@ class RequisicaoCompraRequest extends FormRequest
             'tipo.required' => 'Informe o Tipo',
             'id_requisitante.required' => 'Informe o Requisitante',
             'id_solicitante.required' => 'Informe o Solicitante',
-            'id_veiculo.required' => 'Informe o Veículo',
         ];
     }
 

@@ -65,7 +65,15 @@
                         </tr>
                         <tr>
                             <th class="col-md-2">Local de entrega:</th>
-                            <td>{{ $requisicao->local_entrega }}</td>
+                            <td>
+                                <p style="white-space: pre-wrap">{{ $requisicao->local_entrega }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="col-md-2">Observação:</th>
+                            <td>
+                                <p style="white-space: pre-wrap">{{ $requisicao->obsrvacao }}</p>
+                            </td>
                         </tr>
                         <tr>
                             <th class="col-md-2">Urgente:</th>

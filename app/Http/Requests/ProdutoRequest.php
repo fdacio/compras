@@ -23,11 +23,9 @@ class ProdutoRequest extends FormRequest
      */
     public function rules()
     {
-        $id = request()->get('id');
         return [
             'nome' => ["required", "string", "max:150"],
             'descricao' => 'nullable|string',
-            'valor_unitario' => 'required',
             'id_unidade' => 'required|integer',
         ];
     }
@@ -37,7 +35,6 @@ class ProdutoRequest extends FormRequest
         return [
             'nome.required' => 'Informe o Nome',
             'nome.max' => 'Nome quantidade máxima de 150 caractéres',
-            'valor_unitario.required' => 'Informe o Valor Unitário',
             'id_unidade.required' => 'Informe a Unidade',
         ];
     }
