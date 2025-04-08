@@ -77,7 +77,9 @@
                     @foreach ($requisicao->itens as $item)
                         <tr>
                             <td>{{ $item->item }}</td>
-                            <td><p style="white-space: pre-wrap">{{ $item->descricao }}</p></td>
+                            <td>
+                                <p style="white-space: pre-wrap">{{ $item->descricao }}</p>
+                            </td>
                             <td>{{ $item->unidade }}</td>
                             <td class="text-right">
                                 <span class="quantidade-solicitada">{{ $item->quantidade_solicitada }}</span>
@@ -103,6 +105,11 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="card-footer">
+            <a href="{{ route('requisicoes-compras.gera.pdf', $requisicao->id) }}" class="btn btn-success"
+                title="download" target="_blank">Demonstrativo</a>
+
         </div>
     </div>
 </div>
