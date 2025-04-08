@@ -70,7 +70,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Ln();
 
 
-        if ($requisicao->veiculo()) {
+        if ($requisicao->veiculo) {
 
             $this->SetFont('Arial', 'B', 8);
             $this->Cell(100, 5, utf8_decode('Veículo'), 'LTRB', 0, 'C');
