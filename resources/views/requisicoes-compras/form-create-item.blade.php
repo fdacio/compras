@@ -77,7 +77,7 @@
                     @foreach ($requisicao->itens as $item)
                         <tr>
                             <td>{{ $item->item }}</td>
-                            <td>{{ $item->descricao }}</td>
+                            <td><p style="white-space: pre-wrap">{{ $item->descricao }}</p></td>
                             <td>{{ $item->unidade }}</td>
                             <td class="text-right">
                                 <span class="quantidade-solicitada">{{ $item->quantidade_solicitada }}</span>
