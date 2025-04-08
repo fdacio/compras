@@ -110,6 +110,8 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             $this->Ln();
 
         } else {
+            $x = $this->GetX();
+            $y = $this->GetY();
             $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'C');
         }
 
