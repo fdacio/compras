@@ -124,7 +124,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         if ($requisicao->urgente) {
             $this->SetAligns(['C']);
             $this->SetFont('Arial', 'B', 10);
-            $this->Row([utf8_decode('\n' . 'URGENTE' . '\n')]);
+            $this->Row([utf8_decode("\n" . 'URGENTE' . "\n")]);
         } else {
             $this->Row([' ']);
         }
