@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group">
-                        <label for="cep">CEP<small class="text-danger p-2">*</small></label>
+                        <label for="cep">CEP</label>
                         <div class="input-group">
                             {!! Form::text('cep', isset($favorecido) ? $favorecido->pessoa->cep : null, [
                                 'class' => 'form-control cep',
@@ -124,7 +124,7 @@
                 </div>
                 <div class="col-xs-7 col-sm-7 col-md-7">
                     <div class="form-group">
-                        <label for="logradouro">Logradouro<small class="text-danger p-2">*</small></label>
+                        <label for="logradouro">Logradouro</label>
                         {!! Form::text('logradouro', isset($favorecido) ? $favorecido->pessoa->logradouro : null, [
                             'class' => 'form-control',
                             'id' => 'logradouro',
@@ -133,7 +133,7 @@
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2">
                     <div class="form-group">
-                        <label for="numero">Número<small class="text-danger p-2">*</small></label>
+                        <label for="numero">Número</label>
                         {!! Form::text('numero', isset($favorecido) ? $favorecido->pessoa->numero : null, [
                             'class' => 'form-control',
                             'id' => 'numero',
@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="bairro">Bairro<small class="text-danger p-2">*</small></label>
+                        <label for="bairro">Bairro</label>
                         {!! Form::text('bairro', isset($favorecido) ? $favorecido->pessoa->bairro : null, [
                             'class' => 'form-control',
                             'id' => 'bairro',
@@ -165,7 +165,7 @@
             <div class='row'>
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <label for="estado">UF<small class="text-danger p-2">*</small></label>
+                        <label for="estado">UF</label>
                         {!! Form::select(
                             'estado',
                             $estados,
@@ -177,7 +177,7 @@
 
                 <div class="col-xs-8 col-sm-8 col-md-8">
                     <div class="form-group">
-                        <label for="cidade">Cidade<small class="text-danger p-2">*</small></label>
+                        <label for="cidade">Cidade</label>
                         {!! Form::select(
                             'id_municipio',
                             $cidades,

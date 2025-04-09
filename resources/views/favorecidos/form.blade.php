@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <label for="cnpj">CNPJ</label>
+                        <label for="cnpj">CNPJ<small class="text-danger p-2">*</small></label>
                         <div class="input-group">
                             {!! Form::text('cnpj', isset($favorecido) ? $favorecido->pessoa->pessoaJuridica->cnpj : null, [
                                 'class' => 'form-control cnpj',
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-xs-8 col-sm-8 col-md-8">
                     <div class="form-group">
-                        <label for="razao-social">Razão Social</label>
+                        <label for="razao-social">Razão Social<small class="text-danger p-2">*</small></label>
                         {!! Form::text('razao_social', isset($favorecido) ? $favorecido->pessoa->pessoaJuridica->razao_social : null, [
                             'class' => 'form-control',
                             'id' => 'razao-social',
@@ -60,7 +60,7 @@
 
                 <div class="col-xs-8 col-sm-8 col-md-8">
                     <div class="form-group">
-                        <label for="nome-fantasia">Nome Fantasia</label>
+                        <label for="nome-fantasia">Nome Fantasia<small class="text-danger p-2">*</small></label>
                         {!! Form::text('nome_fantasia', isset($favorecido) ? $favorecido->pessoa->pessoaJuridica->nome_fantasia : null, [
                             'class' => 'form-control',
                             'id' => 'nome-fantasia',
