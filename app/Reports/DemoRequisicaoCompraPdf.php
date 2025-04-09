@@ -73,69 +73,63 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         if ($requisicao->veiculo) {
 
             $this->SetFont('Arial', 'B', 8);
-            $this->Cell(100, 5, utf8_decode('Veículo'), 'LTRB', 0, 'C');
+            $this->Cell(190, 5, utf8_decode('Veículo'), 'LTRB', 0, 'C');
             $this->Ln();
-
-            $x = $this->GetX();
-            $y = $this->GetY();
 
             $this->SetFont('Arial', 'B', 8);
             $this->Cell(20, 5, utf8_decode('Ano:'), 'LTR');
             $this->SetFont('Arial', '', 8);
-            $this->Cell(80, 5, utf8_decode($requisicao->veiculo->ano), 'LTR');
+            $this->Cell(170, 5, utf8_decode($requisicao->veiculo->ano), 'LTR');
             $this->Ln();
 
             $this->SetFont('Arial', 'B', 8);
             $this->Cell(20, 5, utf8_decode('Placa:'), 'LTR');
             $this->SetFont('Arial', '', 8);
-            $this->Cell(80, 5, utf8_decode($requisicao->veiculo->placa), 'LTR');
+            $this->Cell(170, 5, utf8_decode($requisicao->veiculo->placa), 'LTR');
             $this->Ln();
 
             $this->SetFont('Arial', 'B', 8);
             $this->Cell(20, 5, utf8_decode('Marca/Modelo:'), 'LTR');
             $this->SetFont('Arial', '', 8);
-            $this->Cell(80, 5, utf8_decode($requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo), 'LTR');
+            $this->Cell(170, 5, utf8_decode($requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo), 'LTR');
             $this->Ln();
 
             $this->SetFont('Arial', 'B', 8);
             $this->Cell(20, 5, utf8_decode('Chassi:'), 'LTR');
             $this->SetFont('Arial', '', 8);
-            $this->Cell(80, 5, utf8_decode($requisicao->veiculo->chassi), 'LTR');
+            $this->Cell(170, 5, utf8_decode($requisicao->veiculo->chassi), 'LTR');
             $this->Ln();
 
             $this->SetFont('Arial', 'B', 8);
             $this->Cell(20, 5, utf8_decode('Cidade:'), 'LTR');
             $this->SetFont('Arial', '', 8);
-            $this->Cell(80, 5, utf8_decode($requisicao->veiculo->centroCusto->nome), 'LTR');
+            $this->Cell(170, 5, utf8_decode($requisicao->veiculo->centroCusto->nome), 'LTR');
             $this->Ln();
 
             $this->SetFont('Arial', 'B', 8);
             $this->Cell(20, 5, utf8_decode('Empresa:'), 'LTR');
             $this->SetFont('Arial', '', 8);
-            $this->Cell(80, 5, utf8_decode($requisicao->veiculo->empresa->pessoa->nomeRazaoSocial), 'LTR');
-            $this->Ln();
+            $this->Cell(170, 5, utf8_decode($requisicao->veiculo->empresa->pessoa->nomeRazaoSocial), 'LTR');
+        } 
 
-        } else {
-            $x = $this->GetX();
-            $y = $this->GetY();
-            $this->MultiCell(100, 40, utf8_decode(''), 'LTRB', 'C');
-        }
-
-        $this->SetXY($x + 100, $y);
-        $this->SetFont('Arial', 'B', 10);
-        if ($requisicao->urgente) {
-            $this->MultiCell(90, 40, utf8_decode('URGENTE'), 'LTRB', 'C');
-        } else {
-            $this->MultiCell(90, 40, utf8_decode(''), 'LTRB', 'C');
-        }
+        $this->Ln();
 
         $this->SetFont('Arial', 'B', 6);
         $this->Cell(190, 5, utf8_decode('Observação'), 'LTR');
         $this->Ln();
         $this->SetFont('Arial', '', 8);
         $this->SetWidths([190]);
-        $this->setBorders(['LRB']);
+        $this->SetBorders(['LRB']);
         $this->Row([utf8_decode($requisicao->observacao)]);
+        $this->SetBorders(['LRT']);
+        if ($requisicao->urgente) {
+            $this->SetAligns(['C']);
+            $this->SetFont('Arial', 'B', 8);
+            $this->Row([utf8_decode('URGENTE')]);
+        } else {
+            $this->Row([utf8_decode('')]);
+        }
+
         
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(190, 5, utf8_decode('Itens da Requisição'), 1, 0, 'C');
@@ -143,6 +137,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
 
         $this->SetWidths([20, 70, 30, 40, 30]);
         $this->setBorders(['L', 'L', 'L', 'L', 'LR']);
+        $this->SetAligns(['L', 'L', 'L', 'R', 'R']);
         $this->Row([utf8_decode('Item'), utf8_decode('Produto/Serviço'), utf8_decode('Unidade'), utf8_decode('Quantidade solicitada'), utf8_decode('Quantidade a cotar')]);
         $this->setBorders(NULL);
 
