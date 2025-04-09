@@ -115,10 +115,10 @@
                                         <!-- Table row dos itens -->
                                         <tr>
                                             <td>{{ $item->item }}</td>
-                                            <td class="text-center"><p style="white-space: pre-wrap">{{ $item->descricao }}</p></td>
-                                            <td class="text-center">{{ $item->unidade }}</td>
-                                            <td class="text-center">{{ $item->quantidade_solicitada }}</td>
-                                            <td class="text-center">{{ $item->quantidade_a_cotar }}</td>
+                                            <td class="text"><p style="white-space: pre-wrap">{{ $item->descricao }}</p></td>
+                                            <td class="text">{{ $item->unidade }}</td>
+                                            <td class="text-right">{{ $item->quantidade_solicitada }}</td>
+                                            <td class="text-right">{{ $item->quantidade_a_cotar }}</td>
                                         </tr>
                                     @endforeach
                                 @endif
