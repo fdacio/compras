@@ -98,7 +98,7 @@
                             <td>{{ \Carbon\Carbon::parse($requisicao->data)->format('d/m/Y') }}</td>
                             <td>{{ $requisicao->requisitante->nome }}</td>
                             <td>{{ $requisicao->solicitante->nome }}</td>
-                            <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}
+                            <td>{{ ($requisicao->veiculo) ? ($requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo) : "" }}
                             </td>
                             <td>{{ $requisicao->tipo_nome }}</td>
                             <td>{{ $requisicao->situacao_nome }}</td>
