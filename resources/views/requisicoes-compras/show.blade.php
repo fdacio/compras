@@ -100,10 +100,10 @@
                                 <thead>
                                     <tr>
                                         <th class="col-md-2">Item</th>
-                                        <th class="col-md-2 text-center">Produto/Serviço</th>
-                                        <th class="col-md-2 text-center">Unidade</th>
-                                        <th class="col-md-2 text-center">Quantidade solicitada</th>
-                                        <th class="col-md-2 text-center">Quantidade a cotar</th>
+                                        <th class="col-md-2">Produto/Serviço</th>
+                                        <th class="col-md-2">Unidade</th>
+                                        <th class="col-md-2">Quantidade solicitada</th>
+                                        <th class="col-md-2">Quantidade a cotar</th>
                                     </tr>
                                 </thead>
                                 @if ($requisicao->itens->count() == 0)
