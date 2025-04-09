@@ -110,24 +110,23 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             $this->Cell(20, 5, utf8_decode('Empresa:'), 'LTR');
             $this->SetFont('Arial', '', 8);
             $this->Cell(170, 5, utf8_decode($requisicao->veiculo->empresa->pessoa->nomeRazaoSocial), 'LTR');
+            $this->Ln();
         } 
-
-        $this->Ln();
 
         $this->SetFont('Arial', 'B', 6);
         $this->Cell(190, 5, utf8_decode('Observação'), 'LTR');
         $this->Ln();
         $this->SetFont('Arial', '', 8);
         $this->SetWidths([190]);
-        $this->SetBorders(['LRB']);
+        $this->SetBorders(['LR']);
         $this->Row([utf8_decode($requisicao->observacao)]);
-        $this->SetBorders(['LRT']);
+        $this->SetBorders(['LRB']);
         if ($requisicao->urgente) {
             $this->SetAligns(['C']);
-            $this->SetFont('Arial', 'B', 8);
-            $this->Row([utf8_decode('URGENTE')]);
+            $this->SetFont('Arial', 'B', 10);
+            $this->Row([utf8_decode('\n' . 'URGENTE' . '\n')]);
         } else {
-            $this->Row([utf8_decode('')]);
+            $this->Row([' ']);
         }
 
         
