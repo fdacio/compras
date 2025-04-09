@@ -122,7 +122,6 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         } else {
             $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'C');
         }
-        $this->Ln();
 
         $this->SetFont('Arial', '', 6);
         $this->Cell(190, 5, utf8_decode('Observação'), 'LTR');
