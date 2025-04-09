@@ -99,8 +99,8 @@
                                 <!-- Table head dos itens -->
                                 <thead>
                                     <tr>
-                                        <th class="col-md-2 col-1">Item</th>
-                                        <th class="col-md-2 col-5">Produto/Serviço</th>
+                                        <th class="col-md-1 col-1">Item</th>
+                                        <th class="col-md-5 col-5">Produto/Serviço</th>
                                         <th class="col-md-2 col-2">Unidade</th>
                                         <th class="col-md-2 col-2">Quantidade solicitada</th>
                                         <th class="col-md-2 col-2">Quantidade a cotar</th>
