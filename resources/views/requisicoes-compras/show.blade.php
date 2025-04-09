@@ -51,7 +51,7 @@
                             </tr>
                         @endif
                         <tr>
-                            <th class="col-md-2">Requisitante:</th>
+                            <th class="col-md-2">Centro de Custo:</th>
                             <td>{{ $requisicao->requisitante->nome }}</td>
                         </tr>
                         <tr>

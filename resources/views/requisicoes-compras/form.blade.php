@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="id_requisitante">Requisitante<small class="text-danger p-2">*</small></label>
+                <label for="id_requisitante">Centro de Custo<small class="text-danger p-2">*</small></label>
                 {!! Form::select('id_requisitante', $requisitantes, isset($requisicao) ? $requisicao->id_requisitante : old('id_requisitante'), [
                     'placeholder' => 'Selecione',
                     'class' => 'form-control select',

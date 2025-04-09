@@ -79,7 +79,7 @@
             <thead>
                 <th>Código</th>
                 <th>Data</th>
-                <th>Requisitante</th>
+                <th>Centro de Custo</th>
                 <th>Solicitante</th>
                 <th>Veículo</th>
                 <th>Tipo</th>

@@ -51,7 +51,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 6);
-        $this->Cell(190, 5, utf8_decode('Requisitante'), 'LTR');
+        $this->Cell(190, 5, utf8_decode('Centro de Custo'), 'LTR');
 
         $this->Ln();
 
