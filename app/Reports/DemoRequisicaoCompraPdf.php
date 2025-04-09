@@ -92,7 +92,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             $this->Ln();
 
             $this->SetFont('Arial', 'B', 8);
-            $this->Cell(20, 5, utf8_decode('Descrição:'), 'LTR');
+            $this->Cell(20, 5, utf8_decode('Marca/Modelo:'), 'LTR');
             $this->SetFont('Arial', '', 8);
             $this->Cell(80, 5, utf8_decode($requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo), 'LTR');
             $this->Ln();
