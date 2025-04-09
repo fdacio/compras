@@ -112,10 +112,10 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         } else {
             $x = $this->GetX();
             $y = $this->GetY();
-            $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'C');
+            $this->MultiCell(100, 30, utf8_decode(''), 'LTRB', 'C');
         }
 
-        $this->SetXY($x + 100, $y - 5);
+        $this->SetXY($x + 100, $y);
         $this->SetFont('Arial', 'B', 10);
         if ($requisicao->urgente) {
             $this->MultiCell(90, 30, utf8_decode('URGENTE'), 'LTRB', 'C');
