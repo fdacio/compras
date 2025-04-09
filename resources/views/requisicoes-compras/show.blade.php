@@ -60,7 +60,7 @@
                         </tr>
                         <tr>
                             <th class="col-md-2">Veículo:</th>
-                            <td>{{ $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo }}
+                            <td>{{ ($requisicao->veiculo) ? $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo : "" }}
                             </td>
                         </tr>
                         <tr>
