@@ -92,6 +92,12 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             $this->Ln();
 
             $this->SetFont('Arial', 'B', 8);
+            $this->Cell(20, 5, utf8_decode('Descrição:'), 'LTR');
+            $this->SetFont('Arial', '', 8);
+            $this->Cell(80, 5, utf8_decode($requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo), 'LTR');
+            $this->Ln();
+
+            $this->SetFont('Arial', 'B', 8);
             $this->Cell(20, 5, utf8_decode('Chassi:'), 'LTR');
             $this->SetFont('Arial', '', 8);
             $this->Cell(80, 5, utf8_decode($requisicao->veiculo->chassi), 'LTR');
@@ -112,15 +118,15 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         } else {
             $x = $this->GetX();
             $y = $this->GetY();
-            $this->MultiCell(100, 30, utf8_decode(''), 'LTRB', 'C');
+            $this->MultiCell(100, 40, utf8_decode(''), 'LTRB', 'C');
         }
 
         $this->SetXY($x + 100, $y);
         $this->SetFont('Arial', 'B', 10);
         if ($requisicao->urgente) {
-            $this->MultiCell(90, 30, utf8_decode('URGENTE'), 'LTRB', 'C');
+            $this->MultiCell(90, 40, utf8_decode('URGENTE'), 'LTRB', 'C');
         } else {
-            $this->MultiCell(90, 30, utf8_decode(''), 'LTRB', 'C');
+            $this->MultiCell(90, 40, utf8_decode(''), 'LTRB', 'C');
         }
 
         $this->SetFont('Arial', 'B', 6);
