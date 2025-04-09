@@ -99,11 +99,11 @@
                                 <!-- Table head dos itens -->
                                 <thead>
                                     <tr>
-                                        <th class="col-md-2">Item</th>
-                                        <th class="col-md-2">Produto/Serviço</th>
-                                        <th class="col-md-2">Unidade</th>
-                                        <th class="col-md-2">Quantidade solicitada</th>
-                                        <th class="col-md-2">Quantidade a cotar</th>
+                                        <th class="col-md-2 col-1">Item</th>
+                                        <th class="col-md-2 col-5">Produto/Serviço</th>
+                                        <th class="col-md-2 col-2">Unidade</th>
+                                        <th class="col-md-2 col-2">Quantidade solicitada</th>
+                                        <th class="col-md-2 col-2">Quantidade a cotar</th>
                                     </tr>
                                 </thead>
                                 @if ($requisicao->itens->count() == 0)
