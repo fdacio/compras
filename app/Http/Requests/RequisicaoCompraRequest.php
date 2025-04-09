@@ -43,6 +43,12 @@ class RequisicaoCompraRequest extends FormRequest
         ];
     }
 
+    protected function prepareForValidation()
+    {
+        $urgente = $this->urgente ? 1 : 0;
 
-    
+        $this->merge([
+            'urgente' => $urgente
+        ]);
+    }
 }
