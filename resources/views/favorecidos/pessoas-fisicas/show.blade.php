@@ -46,7 +46,7 @@
                 </tr>
                 <tr>
                     <th>Cidade:</th>
-                    <td>{{ $favorecido->pessoa->cidade->nome . ' - ' . $favorecido->pessoa->cidade->estado->nome }}</td>
+                    <td>{{ ($favorecido->pessoa->cidade) ? $favorecido->pessoa->cidade->nome . ' - ' . $favorecido->pessoa->cidade->estado->nome : ""}}</td>
                 </tr>
                 <tr>
                     <th>Telefone:</th>
