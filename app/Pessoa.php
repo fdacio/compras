@@ -50,7 +50,10 @@ class Pessoa extends Model
         if (!empty($this->attributes['cep'])) {
             $enderecoCompleto .= ' - CEP: ' . $this->attributes['cep'];
         }        
-        $enderecoCompleto .= '  ' . $this->cidade->nome . '-' . $this->cidade->estado->sigla;
+        if  (!empty($this->cidade)) {
+            $enderecoCompleto .= '  ' . $this->cidade->nome . '-' . $this->cidade->estado->sigla;
+        }  
+         
         return $enderecoCompleto;
     }
 
