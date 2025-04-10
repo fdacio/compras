@@ -144,7 +144,11 @@ class FavorecidosController extends Controller
     public function edit(Favorecido $favorecido)
     {
         $estados = Uf::pluck('sigla', 'id');
-        $cidades = Municipio::where('id_uf', $favorecido->pessoa->cidade->id)->pluck('nome', 'id');
+        if ($favorecido->pessoa->cidade) {
+            $cidades = Municipio::where('id_uf', $favorecido->pessoa->cidade->id)->pluck('nome', 'id');
+        } else {
+            $cidades = [];
+        }
         if ($favorecido->pessoa->tipo_pessoa == Pessoa::TIPO_PESSOA_JURIDICA) {
             return view('favorecidos.edit', compact('favorecido', 'estados', 'cidades'));
         }
