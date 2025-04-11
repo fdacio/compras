@@ -45,4 +45,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\TipoUsuario', 'id_tipo');
     }
+
+    public function centrosCustos() 
+    {
+        return $this->hasMany(UserCentroCusto::class, 'id_user', 'id');
+    }
+
 }
