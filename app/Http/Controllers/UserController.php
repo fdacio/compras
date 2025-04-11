@@ -98,6 +98,7 @@ class UserController extends Controller
 
     public function centrosCustosUpdate(Request $request, User $user)
     {
+        dd($request->centros_custos);
         $user->centrosCustos()->sync($request->centros_custos);
         return redirect()->route('user.centros-custos.edit', $user)->with('success', 'Centros de custos atualizados com sucesso!');
     }
