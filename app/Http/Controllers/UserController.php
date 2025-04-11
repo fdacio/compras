@@ -109,15 +109,17 @@ class UserController extends Controller
 
             if (isset($request->centros_custos)) {
                 foreach ($request->centros_custos as $centroCusto) {
-                    $dados = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];
-                    UserCentroCusto::create($dados);
+                    $dados[] = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];
+                    
                 }
+                dd($dados);
+                UserCentroCusto::create($dados);
             }
 
             DB::commit();
 
             return redirect()->route('user.index')->with('success', 'Centros de custos atualizados com sucesso!');
-            
+
         } catch (Exception $e) {
             DB::rollback();
             return redirect()->route('user.centros-custos.edit', $user->id)->with('danger', 'Não foi possível registrar os centros de custos: ' . $e->getMessage());
