@@ -100,7 +100,7 @@ class UserController extends Controller
 
     public function centrosCustosUpdate(Request $request, User $user)
     {
-        dd($user);
+        
         try {
 
             DB::beginTransaction();
@@ -117,6 +117,7 @@ class UserController extends Controller
             DB::commit();
 
             return redirect()->route('user.index')->with('success', 'Centros de custos atualizados com sucesso!');
+            
         } catch (Exception $e) {
             DB::rollback();
             return redirect()->route('user.centros-custos.edit', $user->id)->with('danger', 'Não foi possível registrar os centros de custos: ' . $e->getMessage());

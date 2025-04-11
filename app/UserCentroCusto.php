@@ -8,8 +8,8 @@ class UserCentroCusto extends Model
 {
     protected $table = 'users_centros_custos';
     protected $fillable = [
-        'user_id',
-        'centro_custo_id',
+        'id_user',
+        'id_centro_custo',
     ];
     
     public function user()
