@@ -13,7 +13,7 @@ class AlterRequisicoesComprasAddFkEmpresaTable extends Migration
      */
     public function up()
     {
-        Schema::table('requisicaoes_compras', function (Blueprint $table) {
+        Schema::table('requisicoes_compras', function (Blueprint $table) {
             $table->foreign('id_empresa')->references('id')->on('empresas');
         });
     }
@@ -25,7 +25,7 @@ class AlterRequisicoesComprasAddFkEmpresaTable extends Migration
      */
     public function down()
     {
-        Schema::table('requisicaoes_compras', function (Blueprint $table) {
+        Schema::table('requisicoes_compras', function (Blueprint $table) {
             $table->dropForeign(['id_empresa']);
         });
     }
