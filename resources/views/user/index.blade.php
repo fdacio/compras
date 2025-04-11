@@ -68,7 +68,7 @@
                     <a href="{{ route('user.centros-custos.edit', $user->id) }}" class="btn btn-sm btn-success" title="Centros de Custos"><i class="fa fa-file-o"></i></a>
                     @if($users->total() > 0)
                     {!! Form::open(['id' => 'form_excluir_' . $user->id, 'method' => 'delete', 'route' => ['user.destroy', $user->id], 'style'=>'display: inline']) !!}
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger modal-excluir']) !!}
+                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-sm btn-danger modal-excluir']) !!}
                     {!! Form::close() !!}
                     @endif
                 </td>
