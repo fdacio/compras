@@ -91,6 +91,7 @@ class UserController extends Controller
     public function centrosCustosEdit(User $user)
     {
         $centrosCustosUser = $user->centrosCustos();
+        dd($centrosCustosUser);
         $centrosCustos = CentroCusto::orderBy('nome')->get();
         return view('user.centros-custos.edit', compact('user', 'centrosCustosUser', 'centrosCustos'));
     }
