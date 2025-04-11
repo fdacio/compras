@@ -6,6 +6,7 @@ use App\CentroCusto;
 use App\Http\Requests\UserRequest;
 use App\TipoUsuario;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -94,7 +95,7 @@ class UserController extends Controller
         return view('user.centros-custos.edit', compact('user', 'centrosCustosUser', 'centrosCustos'));
     }
 
-    public function centrosCustosUpdate(UserRequest $request, User $user)
+    public function centrosCustosUpdate(Request $request, User $user)
     {
         $user->centrosCustos()->sync($request->centros_custos);
         return redirect()->route('user.centros-custos.edit', $user)->with('success', 'Centros de custos atualizados com sucesso!');
