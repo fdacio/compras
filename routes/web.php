@@ -23,10 +23,14 @@ Route::get('/perfil', 'UserController@perfil')->name('perfil' );
 Route::get('/edit-password', 'UserController@editPassword')->name('edit.password' );
 Route::put('/user-password-update', 'UserController@passwordUpdate')->name('user.password.update' );
 
-Route::resource('user', 'UserController');
-Route::resource('tipos-usuarios', 'TiposUsuariosController');
 
 Route::group(['middleware' => ['auth', 'check.permissao']], function () {
+    
+    Route::resource('user', 'UserController');
+    Route::get('user/centros-custos/{user}/edit', 'UserController@centrosCustosEdit')->name('user.centros-custos.edit');
+    Route::put('user/centros-custos/{user}/update', 'UserController@centrosCustosUpdate')->name('user.centros-custos.update');
+
+    Route::resource('tipos-usuarios', 'TiposUsuariosController');
 
     Route::resource('centros-custos', 'CentrosCustosController');
     Route::resource('solicitantes', 'SolicitantesController');
