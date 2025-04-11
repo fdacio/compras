@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function centrosCustos() 
     {
-        return $this->belongsToMany(UserCentroCusto::class, 'user_centro_custo', 'user_id', 'centro_custo_id')
+        return $this->belongsToMany(UserCentroCusto::class, 'users_centros_custos', 'id_user', 'id_centro_custo')
             ->withPivot('id')
             ->withTimestamps();
     }
