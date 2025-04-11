@@ -100,6 +100,7 @@ class UserController extends Controller
 
     public function centrosCustosUpdate(Request $request, User $user)
     {
+        dd($user);
         try {
 
             DB::beginTransaction();
