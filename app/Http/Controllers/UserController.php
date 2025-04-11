@@ -6,6 +6,7 @@ use App\CentroCusto;
 use App\Http\Requests\UserRequest;
 use App\TipoUsuario;
 use App\User;
+use App\UserCentroCusto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -90,8 +91,7 @@ class UserController extends Controller
 
     public function centrosCustosEdit(User $user)
     {
-        $centrosCustosUser = $user->centrosCustos();
-        dd($centrosCustosUser);
+        $centrosCustosUser = UserCentroCusto::where('id_user', $user->id)->get();
         $centrosCustos = CentroCusto::orderBy('nome')->get();
         return view('user.centros-custos.edit', compact('user', 'centrosCustosUser', 'centrosCustos'));
     }
