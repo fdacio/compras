@@ -7,8 +7,10 @@ use App\Http\Requests\UserRequest;
 use App\TipoUsuario;
 use App\User;
 use App\UserCentroCusto;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -98,9 +100,26 @@ class UserController extends Controller
 
     public function centrosCustosUpdate(Request $request, User $user)
     {
-        dd($request->centros_custos);
-        $user->centrosCustos()->sync($request->centros_custos);
-        return redirect()->route('user.centros-custos.edit', $user)->with('success', 'Centros de custos atualizados com sucesso!');
+        try {
+
+            DB::beginTransaction();
+
+            UserCentroCusto::where('id_user', $user->id)->delete();
+
+            if (isset($request->centros_custos)) {
+                foreach ($request->centros_custos as $centroCusto) {
+                    $dados = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];
+                    UserCentroCusto::create($dados);
+                }
+            }
+
+            DB::commit();
+
+            return redirect()->route('user.index')->with('success', 'Centros de custos atualizados com sucesso!');
+        } catch (Exception $e) {
+            DB::rollback();
+            return redirect()->route('user.centros-custos.edit', $user->id)->with('danger', 'Não foi possível registrar os centros de custos: ' . $e->getMessage());
+        }
     }
 
 }
