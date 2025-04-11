@@ -112,7 +112,6 @@ class UserController extends Controller
                     $dados[] = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];
                     
                 }
-                dd($dados);
                 UserCentroCusto::create($dados);
             }
 
