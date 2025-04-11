@@ -4,7 +4,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3>Usuário - Centros de Custos</h3>
+            <h3>Editar Usuário</h3>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
@@ -17,11 +17,10 @@
                     </ul>
                 </div>
             @endif
-            <h3>{{ $user->nome . " - " . $user->tipo->nome }}</h3>
         </div>
-        {!! Form::open(['id' => 'form_user_centros_custos', 'method' => 'put', 'route' => ['user.centros-custos.update', $user->id]]) !!}
+        {!! Form::open(['id' => 'form_user', 'method' => 'patch', 'route' => ['user.update', $user->id], 'autocomplete' => 'off']) !!}
         <div class="card-body">
-            @include('user.centros-custos.form')
+            @include('user.form')
         </div>
         <div class="card-footer">
             {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
