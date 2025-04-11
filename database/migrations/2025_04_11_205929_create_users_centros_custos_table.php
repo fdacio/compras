@@ -15,10 +15,10 @@ class CreateUsersCentrosCustosTable extends Migration
     {
         Schema::create('users_centros_custos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('centro_custo_id')->index();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('centro_custo_id')->references('id')->on('centros_custos');
+            $table->unsignedInteger('id_user')->index();
+            $table->unsignedBigInteger('id_centro_custo')->index();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_centro_custo')->references('id')->on('centros_custos');
             $table->timestamps();
         });
     }
