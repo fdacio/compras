@@ -53,6 +53,14 @@ class DemoAutorizacaoPagamentoPdf extends ReportPdf
         $this->Ln();
 
         $this->SetFont('Arial', 'B', 6);
+        $this->Cell(190, 5, utf8_decode('Empresa'), 'LTR');
+        $this->Ln();
+        $this->SetFont('Arial', '', 8);
+        $this->Cell(190, 5, utf8_decode($autorizacao->empresa->pessoa->nome_razao_social), 'LBR');
+        $this->Ln();
+
+
+        $this->SetFont('Arial', 'B', 6);
         $this->Cell(80, 5, utf8_decode('Centro de Custo'), 'LTR');
         $this->Cell(80, 5, utf8_decode('Forma de Pagamento'), 'LTR');
         $this->Cell(30, 5, utf8_decode('Valor'), 'LTR');

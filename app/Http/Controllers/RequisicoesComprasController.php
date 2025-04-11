@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CentroCusto;
+use App\Empresa;
 use App\Http\Requests\RequisicaoCompraItemRequest;
 use App\Http\Requests\RequisicaoCompraRequest;
 use App\Produto;
@@ -58,18 +59,18 @@ class RequisicoesComprasController extends Controller
     public function create()
     {
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
-
+        $empresas = Empresa::get()->map(function ($empresa) {
+            return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
+        })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $veiculos = Veiculo::get()->map(function($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
-
         $tipos = collect(RequisicaoCompra::TIPOS)->map(function($tipo) {
             return ['tipo' => $tipo['value'], 'descricao' => $tipo['label']];
         })->pluck('descricao', 'tipo');
 
-        return view('requisicoes-compras.create', compact('requisitantes', 'solicitantes', 'veiculos', 'tipos'));
+        return view('requisicoes-compras.create', compact('requisitantes', 'solicitantes', 'empresas',   'veiculos', 'tipos'));
     }
 
     /**
@@ -113,18 +114,18 @@ class RequisicoesComprasController extends Controller
     public function edit(RequisicaoCompra $requisicao)
     {
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
-
+        $empresas = Empresa::get()->map(function ($empresa) {
+            return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
+        })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $veiculos = Veiculo::get()->map(function($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
-
         $tipos = collect(RequisicaoCompra::TIPOS)->map(function($tipo) {
             return ['tipo' => $tipo['value'], 'descricao' => $tipo['label']];
         })->pluck('descricao', 'tipo');
 
-        return view('requisicoes-compras.edit', compact('requisicao', 'requisitantes', 'solicitantes', 'veiculos', 'tipos'));
+        return view('requisicoes-compras.edit', compact('requisicao', 'requisitantes', 'solicitantes', 'empresas', 'veiculos', 'tipos'));
         
     }
 

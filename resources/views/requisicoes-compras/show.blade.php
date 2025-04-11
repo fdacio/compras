@@ -37,19 +37,9 @@
                             <td>{{ $requisicao->tipo_nome }}</td>
                         </tr>
                         <tr>
-                            <th class="col-md-3">Situação:</th>
-                            <td>{{ $requisicao->situacao_nome }}</td>
-                        </tr>
-                        @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
-                            <tr>
-                                <th class="col-md-3">Usuário Autorizador:</th>
-                                <td>{{ ($requisicao->usuarioAutorizacao) ? $requisicao->usuarioAutorizacao->name : "Usuário não cadastrado" }}</td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-3">Data da Autorização:</th>
-                                <td>{{ ($requisicao->data_autorizacao) ? \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') : "" }}</td>
-                            </tr>
-                        @endif
+                            <th>Empresa:</th>
+                            <td>{{ $requisicao->empresa->pessoa->nome_razao_social }}</td>
+                        </tr>                        
                         <tr>
                             <th class="col-md-3">Centro de Custo:</th>
                             <td>{{ $requisicao->requisitante->nome }}</td>
@@ -69,6 +59,20 @@
                                 <p style="white-space: pre-wrap">{{ $requisicao->local_entrega }}</p>
                             </td>
                         </tr>
+                        <tr>
+                            <th class="col-md-3">Situação:</th>
+                            <td>{{ $requisicao->situacao_nome }}</td>
+                        </tr>
+                        @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
+                            <tr>
+                                <th class="col-md-3">Usuário Autorizador:</th>
+                                <td>{{ ($requisicao->usuarioAutorizacao) ? $requisicao->usuarioAutorizacao->name : "Usuário não cadastrado" }}</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-3">Data da Autorização:</th>
+                                <td>{{ ($requisicao->data_autorizacao) ? \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') : "" }}</td>
+                            </tr>
+                        @endif
                         <tr>
                             <th class="col-md-3">Observação:</th>
                             <td>

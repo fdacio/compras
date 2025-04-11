@@ -18,7 +18,19 @@
                 ) !!}
             </div>
         </div>
-    </div>    
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="id_empresa">Empresa<small class="text-danger p-2">*</small></label>
+                {!! Form::select('id_empresa', $empresas, isset($requisicao) ? $requisicao->id_empresa : old('id_empresa'), [
+                    'placeholder' => 'Selecione',
+                    'class' => 'form-control select',
+                    'id' => 'id_empresa',
+                ]) !!}
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">

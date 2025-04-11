@@ -6,6 +6,7 @@ use App\AutorizacaoPagamento;
 use App\AutorizacaoPagamentoDocumento;
 use App\AutorizacaoPagamentoItem;
 use App\CentroCusto;
+use App\Empresa;
 use App\FormaPagamento;
 use App\Http\Requests\AutorizacaoPagamentoDocumentoRequest;
 use App\Http\Requests\AutorizacaoPagamentoItemRequest;
@@ -89,8 +90,11 @@ class AutorizacoesPagamentosController extends Controller
     {
         $favorecidos = [];
         $centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $empresas = Empresa::get()->map(function ($empresa) {
+            return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
+        })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $formasPagamentos = FormaPagamento::pluck('nome', 'id');
-        return view('autorizacoes-pagamentos.create', compact('favorecidos', 'centrosCusto', 'formasPagamentos'));
+        return view('autorizacoes-pagamentos.create', compact('favorecidos', 'centrosCusto', 'empresas', 'formasPagamentos'));
 
     }
 
@@ -136,8 +140,11 @@ class AutorizacoesPagamentosController extends Controller
     {
         $favorecidos = [];
         $centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $empresas = Empresa::get()->map(function ($empresa) {
+            return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
+        })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
         $formasPagamentos = FormaPagamento::pluck('nome', 'id');
-        return view('autorizacoes-pagamentos.edit', compact('favorecidos', 'centrosCusto', 'formasPagamentos', 'autorizacao'));
+        return view('autorizacoes-pagamentos.edit', compact('favorecidos', 'centrosCusto', 'empresas',  'formasPagamentos', 'autorizacao'));
     }
 
     /**

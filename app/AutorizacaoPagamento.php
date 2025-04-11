@@ -12,6 +12,7 @@ class AutorizacaoPagamento extends Model
         'id_favorecido',
         'id_centro_custo',
         'id_forma_pagamento',
+        'id_empresa',
         'data',
         'valor',
         'situacao',
@@ -69,6 +70,11 @@ class AutorizacaoPagamento extends Model
     public function centroCusto()
     {
         return $this->belongsTo(CentroCusto::class, 'id_centro_custo');
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'id_empresa');
     }
 
     public function formaPagamento()

@@ -11,6 +11,7 @@ class RequisicaoCompra extends Model
     protected $fillable = [
         'id_requisitante', 
         'id_solicitante', 
+        'id_empresa',
         'id_veiculo', 
         'data', 
         'tipo', 
@@ -89,6 +90,11 @@ class RequisicaoCompra extends Model
     public function solicitante()
     {
         return $this->belongsTo(Solicitante::class, 'id_solicitante');
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'id_empresa');
     }
 
     public function veiculo()

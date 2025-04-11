@@ -26,6 +26,7 @@ class AutorizacaoPagamentoRequest extends FormRequest
         return [
             'id_favorecido' => 'required|integer',
             'id_centro_custo' => 'required|integer',
+            'id_empresa' => 'required|integer',
             'id_forma_pagamento' => 'required|integer',
             'valor' => 'required|numeric|between:0.00001,99999999999.9999',
             'observacao' => 'nullable|string',
@@ -43,6 +44,7 @@ class AutorizacaoPagamentoRequest extends FormRequest
         return [
             'id_favorecido.required' => 'Informe o Favorecido',
             'id_centro_custo.required' => 'Informe o Centro de Custo',
+            'id_empresa.required' => 'Informe a Empresa',
             'id_forma_pagamento.required' => 'Informe a Forma de Pagamento',
             'valor.required' => 'Informe o Valor',
             'valor.numeric' => 'Valor Inválido',

@@ -37,26 +37,14 @@
                             <td>{{ \Carbon\Carbon::parse($autorizacao->data)->format('d/m/Y') }}</td>
                         </tr>
                         <tr>
-                            <th class="col-md-3">Situação:</th>
-                            <td>{{ $autorizacao->situacao_nome }}</td>
-                        </tr>
-                        @if ($autorizacao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
-                            <tr>
-                                <th class="col-md-3">Usuário Autorizador:</th>
-                                <td>{{ $autorizacao->usuarioAutorizacao ? $autorizacao->usuarioAutorizacao->name : 'Usuário não cadastrado' }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-3">Data da Autorização:</th>
-                                <td>{{ $autorizacao->data_autorizacao ? \Carbon\Carbon::parse($autorizacao->data_autorizacao)->format('d/m/Y') : '' }}
-                                </td>
-                            </tr>
-                        @endif
-                        <tr>
                             <th class="col-md-3">Favorecido:</th>
                             <td>{{ Formatter::cpfCnpj($autorizacao->favorecido->pessoa->cpf_cnpj) . ' - ' . $autorizacao->favorecido->pessoa->nome_razao_social }}
                             </td>
                         </tr>
+                        <tr>
+                            <th>Empresa:</th>
+                            <td>{{ $autorizacao->empresa->pessoa->nome_razao_social }}</td>
+                        </tr>                        
                         <tr>
                             <th class="col-md-3">Centro de Custo:</th>
                             <td>{{ $autorizacao->centroCusto->nome }}</td>
@@ -93,6 +81,22 @@
                             <td>{{ $autorizacao->chave_pix }}
                             </td>
                         </tr>
+                        <tr>
+                            <th class="col-md-3">Situação:</th>
+                            <td>{{ $autorizacao->situacao_nome }}</td>
+                        </tr>
+                        @if ($autorizacao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
+                            <tr>
+                                <th class="col-md-3">Usuário Autorizador:</th>
+                                <td>{{ $autorizacao->usuarioAutorizacao ? $autorizacao->usuarioAutorizacao->name : 'Usuário não cadastrado' }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-3">Data da Autorização:</th>
+                                <td>{{ $autorizacao->data_autorizacao ? \Carbon\Carbon::parse($autorizacao->data_autorizacao)->format('d/m/Y') : '' }}
+                                </td>
+                            </tr>
+                        @endif
                         <tr>
                             <th class="col-md-3">Observação:</th>
                             <td>
