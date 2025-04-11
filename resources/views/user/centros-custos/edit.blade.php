@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             @endif
-            <h3>{{ $user->nome . " - " . $user->tipo->nome }}</h3>
+            <h3>{{ $user->name . " - " . $user->tipo->nome }}</h3>
         </div>
         {!! Form::open(['id' => 'form_user_centros_custos', 'method' => 'put', 'route' => ['user.centros-custos.update', $user->id]]) !!}
         <div class="card-body">
