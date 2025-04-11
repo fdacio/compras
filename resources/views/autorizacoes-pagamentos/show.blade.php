@@ -100,8 +100,16 @@
                             </td>
                         </tr>
                         <tr>
+                            <th>Usuário que Criou:</th>
+                            <td>{{ ($autorizacao->usuarioCriou) ? $autorizacao->usuarioCriou->nome : ""}}</td>
+                        </tr>
+                        <tr>
                             <th>Criado:</th>
                             <td>{{ \Carbon\Carbon::parse($autorizacao->created_at)->format('d/m/Y H:i:s') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Usuário que Alterou:</th>
+                            <td>{{ ($autorizacao->usuarioAlterou) ? $autorizacao->usuarioAlterou->nome : ""}}</td>
                         </tr>
                         <tr>
                             <th>Alterado:</th>

@@ -82,7 +82,12 @@ class RequisicoesComprasController extends Controller
     {
         $dados = $request->all();
         $hoje = Carbon::now();
-        $dados = array_merge($dados, ['data' => $hoje]);
+        $dados = array_merge($dados, 
+            [
+                'data' => $hoje,
+                'id_usuario_cadastrou' => auth()->user()->id,
+                'id_usuario_alterou' => auth()->user()->id,
+            ]);
         $requisicao = RequisicaoCompra::create($dados);
         return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Requisição de Compras cadastrado com sucesso.');
 
@@ -133,6 +138,7 @@ class RequisicoesComprasController extends Controller
     public function update(RequisicaoCompraRequest $request, RequisicaoCompra $requisicao)
     {
         $requisicao->update($request->all());
+        $requisicao->id_usuario_alterou = auth()->user()->id;
         return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Requisição de Compras atualizado com sucesso.');
     }
 
@@ -208,8 +214,6 @@ class RequisicoesComprasController extends Controller
         $item->delete();
         return redirect()->route('requisicoes-compras.item.create', $requisicao->id)->with('success', 'Item deletado!');
     }
-
-
 
     public function geraPdf(RequisicaoCompra $requisicao) 
     {

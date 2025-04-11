@@ -104,7 +104,13 @@ class AutorizacoesPagamentosController extends Controller
     {
         $dados = $request->all();
         $hoje = Carbon::now();
-        $dados = array_merge($dados, ['data' => $hoje, 'situacao' => AutorizacaoPagamento::SITUACAO_PENDENTE]);
+        $dados = array_merge($dados, 
+            [
+                'data' => $hoje, 
+                'situacao' => AutorizacaoPagamento::SITUACAO_PENDENTE,
+                'id_usuario_cadastrou' => auth()->user()->id,
+                'id_usuario_alterou' => auth()->user()->id,
+            ]);
         $autorizacao = AutorizacaoPagamento::create($dados);
         return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Autorização de Pagamento cadastrado com sucesso.');
     }
@@ -143,6 +149,7 @@ class AutorizacoesPagamentosController extends Controller
      */
     public function update(AutorizacaoPagamentoRequest $request, AutorizacaoPagamento $autorizacao)
     {
+        $autorizacao->id_usuario_alterou = auth()->user()->id;
         $autorizacao->update($request->all());
         return redirect()->route('autorizacoes-pagamentos.edit', $autorizacao->id)->with('success', 'Atualização de Pagamento atualizada com sucesso.');
     }

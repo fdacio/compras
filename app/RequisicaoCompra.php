@@ -19,7 +19,10 @@ class RequisicaoCompra extends Model
         'data_autorizacao',
         'observacao',
         'local_entrega',
-        'urgente'
+        'urgente',
+        'id_usuario_cadastrou',
+        'id_usuario_alterou',
+
     ];
     const SITUACAO_PENDENTE = 'PENDENTE';
     const SITUACAO_AUTORIZADO = 'AUTORIZADO';
@@ -96,6 +99,16 @@ class RequisicaoCompra extends Model
     public function usuarioAutorizacao()
     {
         return $this->belongsTo(User::class, 'id_usuario_autorizacao');
+    }
+
+    public function usuarioCadastrou()
+    {
+        return $this->belongsTo(User::class, 'id_usuario_cadastrou');
+    }
+
+    public function usuarioAlterou()
+    {
+        return $this->belongsTo(User::class, 'id_usuario_alterou');
     }
 
     public function itens()

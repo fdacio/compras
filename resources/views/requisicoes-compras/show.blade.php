@@ -80,9 +80,16 @@
                             <td>{{ $requisicao->urgente ? 'Sim' : 'Não' }}</td>
                         </tr>
                         <tr>
+                            <th>Usuário que Criou:</th>
+                            <td>{{ ($requisicao->usuariosCriou) ? $requisicao->usuariosCriou->nome : "" }}</td>
+                        </tr>
+                        <tr>
                             <th>Criado:</th>
                             <td>{{ \Carbon\Carbon::parse($requisicao->created_at)->format('d/m/Y H:i:s') }}</td>
                         </tr>
+                        <tr>
+                            <th>Usuário que Alterou:</th>
+                            <td>{{ ($requisicao->usuariosAlterou) ? $requisicao->usuariosAlterou->name : "" }}</td>
                         <tr>
                             <th>Alterado:</th>
                             <td>{{ \Carbon\Carbon::parse($requisicao->updated_at)->format('d/m/Y H:i:s') }}</td>

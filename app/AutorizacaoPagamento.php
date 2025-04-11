@@ -25,6 +25,8 @@ class AutorizacaoPagamento extends Model
         'data_autorizacao',
         'paga',
         'data_pagamento',
+        'id_usuario_cadastrou',
+        'id_usuario_alterou',
     ];
 
     const SITUACAO_PENDENTE = 'PENDENTE';
@@ -77,6 +79,16 @@ class AutorizacaoPagamento extends Model
     public function usuarioAutorizacao()
     {
         return $this->belongsTo(User::class, 'id_usuario_autorizacao');
+    }
+    
+    public function usuarioCadastrou()
+    {
+        return $this->belongsTo(User::class, 'id_usuario_cadastrou');
+    }
+
+    public function usuarioAlterou()
+    {
+        return $this->belongsTo(User::class, 'id_usuario_alterou');
     }
 
     public function itens() 
