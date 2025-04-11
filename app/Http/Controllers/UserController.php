@@ -109,9 +109,9 @@ class UserController extends Controller
             
             if (isset($request->centros_custos)) {
                 foreach ($request->centros_custos as $centroCusto) {
-                    $dados[] = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];                    
+                    $dados = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];                    
+                    UserCentroCusto::create($dados);
                 }
-                UserCentroCusto::create($dados);
             }
 
             DB::commit();
