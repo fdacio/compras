@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover">
+<table class="table table-sm">
     @foreach ($centrosCustos as $centroCusto)
     <tr>
         <td> 
