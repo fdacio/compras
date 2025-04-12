@@ -25,9 +25,9 @@ class RequisicaoCompraRequest extends FormRequest
     {
         return [
             'tipo' => 'required|string',
+            'id_empresa' => 'required|integer',
             'id_requisitante' => 'required|integer',
             'id_solicitante' => 'required|integer',
-            'id_empresa' => 'required|integer',
             'id_veiculo' => 'nullable|integer',
             'local_entrega' => 'nullable|string',
             'observacao' => 'nullable|string',
