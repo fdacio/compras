@@ -24,11 +24,12 @@
         </ul>
     </li>
 
+    <li class="nav-item"> <a href="{{ route('requisicoes-compras.index') }}" class="nav-link"><i
+                class="fa fa-file-text-o"></i> <span class="nav-label">Requisições de Compras</span></a></li>
+
     <li class="nav-item"> <a href="{{ route('autorizacoes-pagamentos.index') }}" class="nav-link"><i
                 class="fa fa-calendar-check-o"></i> <span class="nav-label">Autorizações de Pagamentos</span></a></li>
 
-    <li class="nav-item"> <a href="{{ route('requisicoes-compras.index') }}" class="nav-link"><i
-                class="fa fa-file-text-o"></i> <span class="nav-label">Requisições de Compras</span></a></li>
 
     <li class="nav-item"> <a href="#" data-toggle="collapse" data-target="#e-commerce"
             class="collapsed nav-link"><i class="fa fa-file-pdf-o"></i> <span class="nav-label">Relatórios</span><span
