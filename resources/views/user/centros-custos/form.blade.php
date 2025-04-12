@@ -1,4 +1,4 @@
-<table class="table table-sm form-check">
+<table class="table table-sm">
     @foreach ($centrosCustos as $centroCusto)
     <tr>
         <td> 
