@@ -12,12 +12,29 @@ use App\Solicitante;
 use App\Veiculo;
 use App\Reports\DemoRequisicaoCompraPdf;
 use App\RequisicaoCompraItem;
+use App\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
 class RequisicoesComprasController extends Controller
 {
+    private $requisicoes;
+    private $requisitantes;
+    
+    public function __construct()
+    {
+        $user = User::get(auth()->user()->id);
+        if ($user->tipo->id == 3) {
+            $centrosCustosUser = $user->centrosCustos()->pluck('id');
+            $this->requisicoes = RequisicaoCompra::whereIn('id_requisitante', $centrosCustosUser)->orderBy('id', 'desc');
+            $this->requisitantes = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');
+        } else {
+            $this->requisicoes = RequisicaoCompra::orderBy('id', 'desc');
+            $this->requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,22 +42,25 @@ class RequisicoesComprasController extends Controller
      */
     public function index()
     {
-        $requisicoes = RequisicaoCompra::orderBy('id', 'desc');
         $requisitante = request()->get('id_requisitante');
         $solicitante = request()->get('id_solicitante');
         $veiculo = request()->get('id_veiculo');
-
+        
+        $requisicoes = $this->requisicoes;
+                
         if (!empty($requisitante)) {
             $requisicoes =  $requisicoes->where('id_requisitante', $requisitante);
         }
+        
         if (!empty($solicitante)) {
             $requisicoes =  $requisicoes->where('id_solicitante', $solicitante);
         }
+        
         if (!empty($veiculo)) {
             $requisicoes =  $requisicoes->where('id_veiculo', $veiculo);
         }
 
-        $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $requisitantes = $this->requisitantes;
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
         $veiculos = Veiculo::get()->map(function($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
@@ -58,7 +78,7 @@ class RequisicoesComprasController extends Controller
      */
     public function create()
     {
-        $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $requisitantes = $this->requisitantes;
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
         $empresas = Empresa::get()->map(function ($empresa) {
             return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
@@ -113,7 +133,7 @@ class RequisicoesComprasController extends Controller
      */
     public function edit(RequisicaoCompra $requisicao)
     {
-        $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+        $requisitantes = $this->requisitantes;
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
         $empresas = Empresa::get()->map(function ($empresa) {
             return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];

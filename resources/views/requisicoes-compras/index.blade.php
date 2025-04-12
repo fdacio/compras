@@ -24,7 +24,7 @@
             <form action="{{ route('requisicoes-compras.index') }}" method="get" class="form-filter">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="id-requisitante">Requisitante</label>
+                        <label for="id-requisitante">Centro de Custo</label>
                         <div class="input-group">
                             {!! Form::select('id_requisitante', $requisitantes, request('id_requisitante'), [
                                 'placeholder' => 'Todos',
