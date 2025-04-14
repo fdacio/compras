@@ -31,7 +31,7 @@ class AutorizacoesPagamentosController extends Controller
         $this->middleware('autorizacao-pagamento.check.permissao')->only(['edit', 'update', 'destroy']);
 
         $this->middleware(function ($request, $next) {
-            $user = User::get(auth()->user()->id);
+            $user = User::findOrFail(auth()->user()->id);
             if ($user->tipo->id == 3) {
                 $centrosCustosUser = $user->centrosCustos()->pluck('id');
                 $this->autorizacoes = AutorizacaoPagamento::whereIn('id_centro_custo', $centrosCustosUser)->orderBy('id', 'desc');

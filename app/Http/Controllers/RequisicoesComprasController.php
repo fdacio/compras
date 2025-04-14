@@ -28,7 +28,7 @@ class RequisicoesComprasController extends Controller
         $this->middleware('requisicao-compra.check.permissao')->only(['edit', 'update', 'destroy']);
 
         $this->middleware(function ($request, $next) {
-            $user = User::get(auth()->user()->id);
+            $user = User::findOrFail(auth()->user()->id);
             if ($user->tipo->id == 3) {
                 $centrosCustosUser = $user->centrosCustos()->pluck('id');
                 $this->requisicoes = RequisicaoCompra::whereIn('id_requisitante', $centrosCustosUser)->orderBy('id', 'desc');
