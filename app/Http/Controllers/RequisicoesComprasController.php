@@ -21,18 +21,24 @@ class RequisicoesComprasController extends Controller
 {
     private $requisicoes;
     private $requisitantes;
-    
+
     public function __construct()
     {
-        $user = User::get(auth()->user()->id);
-        if ($user->tipo->id == 3) {
-            $centrosCustosUser = $user->centrosCustos()->pluck('id');
-            $this->requisicoes = RequisicaoCompra::whereIn('id_requisitante', $centrosCustosUser)->orderBy('id', 'desc');
-            $this->requisitantes = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');
-        } else {
-            $this->requisicoes = RequisicaoCompra::orderBy('id', 'desc');
-            $this->requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-        }
+
+        $this->middleware('requisicao-compra.check.permissao')->only(['edit', 'update', 'destroy']);
+
+        $this->middleware(function ($request, $next) {
+            $user = User::get(auth()->user()->id);
+            if ($user->tipo->id == 3) {
+                $centrosCustosUser = $user->centrosCustos()->pluck('id');
+                $this->requisicoes = RequisicaoCompra::whereIn('id_requisitante', $centrosCustosUser)->orderBy('id', 'desc');
+                $this->requisitantes = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');
+            } else {
+                $this->requisicoes = RequisicaoCompra::orderBy('id', 'desc');
+                $this->requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+            }
+            return $next($request);
+        });
     }
 
     /**
@@ -45,24 +51,24 @@ class RequisicoesComprasController extends Controller
         $requisitante = request()->get('id_requisitante');
         $solicitante = request()->get('id_solicitante');
         $veiculo = request()->get('id_veiculo');
-        
+
         $requisicoes = $this->requisicoes;
-                
+
         if (!empty($requisitante)) {
             $requisicoes =  $requisicoes->where('id_requisitante', $requisitante);
         }
-        
+
         if (!empty($solicitante)) {
             $requisicoes =  $requisicoes->where('id_solicitante', $solicitante);
         }
-        
+
         if (!empty($veiculo)) {
             $requisicoes =  $requisicoes->where('id_veiculo', $veiculo);
         }
 
         $requisitantes = $this->requisitantes;
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
-        $veiculos = Veiculo::get()->map(function($veiculo) {
+        $veiculos = Veiculo::get()->map(function ($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
 
@@ -83,10 +89,10 @@ class RequisicoesComprasController extends Controller
         $empresas = Empresa::get()->map(function ($empresa) {
             return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
         })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
-        $veiculos = Veiculo::get()->map(function($veiculo) {
+        $veiculos = Veiculo::get()->map(function ($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
-        $tipos = collect(RequisicaoCompra::TIPOS)->map(function($tipo) {
+        $tipos = collect(RequisicaoCompra::TIPOS)->map(function ($tipo) {
             return ['tipo' => $tipo['value'], 'descricao' => $tipo['label']];
         })->pluck('descricao', 'tipo');
 
@@ -103,15 +109,16 @@ class RequisicoesComprasController extends Controller
     {
         $dados = $request->all();
         $hoje = Carbon::now();
-        $dados = array_merge($dados, 
+        $dados = array_merge(
+            $dados,
             [
                 'data' => $hoje,
                 'id_usuario_cadastrou' => auth()->user()->id,
                 'id_usuario_alterou' => auth()->user()->id,
-            ]);
+            ]
+        );
         $requisicao = RequisicaoCompra::create($dados);
         return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Requisição de Compras cadastrado com sucesso.');
-
     }
 
     /**
@@ -138,15 +145,14 @@ class RequisicoesComprasController extends Controller
         $empresas = Empresa::get()->map(function ($empresa) {
             return ['id' => $empresa->id, 'nome_razao_social' => $empresa->pessoa->nome_razao_social];
         })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
-        $veiculos = Veiculo::get()->map(function($veiculo) {
+        $veiculos = Veiculo::get()->map(function ($veiculo) {
             return ['id' => $veiculo->id, 'descricao' => 'Placa: ' . $veiculo->placa . ' - ' . $veiculo->marca . ' - ' . $veiculo->modelo];
         })->sortBy('descricao')->pluck('descricao', 'id');
-        $tipos = collect(RequisicaoCompra::TIPOS)->map(function($tipo) {
+        $tipos = collect(RequisicaoCompra::TIPOS)->map(function ($tipo) {
             return ['tipo' => $tipo['value'], 'descricao' => $tipo['label']];
         })->pluck('descricao', 'tipo');
 
         return view('requisicoes-compras.edit', compact('requisicao', 'requisitantes', 'solicitantes', 'empresas', 'veiculos', 'tipos'));
-        
     }
 
     /**
@@ -180,16 +186,16 @@ class RequisicoesComprasController extends Controller
     }
 
 
-    public function itemCreate(RequisicaoCompra $requisicao) 
+    public function itemCreate(RequisicaoCompra $requisicao)
     {
         $itens = [];
-        $produtos = Produto::get()->map(function($produto) {
+        $produtos = Produto::get()->map(function ($produto) {
             return ['id' => $produto->id, 'nome' => $produto->nome . ' - ' . $produto->unidade->nome];
         })->sortBy('nome')->pluck('nome', 'id');
         return view('requisicoes-compras.create-item', compact('requisicao', 'produtos', 'itens'));
-    } 
+    }
 
-    public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request) 
+    public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request)
     {
         $item = 1;
         $descricao = "";
@@ -204,7 +210,6 @@ class RequisicoesComprasController extends Controller
             $quantidade_solicitada = $request->quantidade_solicitada;
             $quantidade_a_cotar = $request->quantidade_a_cotar;
             $item = $requisicao->itens()->count() + 1;
-
         }
 
         if ($requisicao->tipo == 'SERVICO') {
@@ -226,7 +231,6 @@ class RequisicoesComprasController extends Controller
 
         RequisicaoCompraItem::create($dados);
         return redirect()->route('requisicoes-compras.item.create', $requisicao->id)->with('success', 'Item da Requisição de Compra cadastrado com sucesso.');
-
     }
 
     public function destroyItem(Request $request, RequisicaoCompra $requisicao)
@@ -236,7 +240,7 @@ class RequisicoesComprasController extends Controller
         return redirect()->route('requisicoes-compras.item.create', $requisicao->id)->with('success', 'Item deletado!');
     }
 
-    public function geraPdf(RequisicaoCompra $requisicao) 
+    public function geraPdf(RequisicaoCompra $requisicao)
     {
         $demo = new DemoRequisicaoCompraPdf('Requisição de Compra');
         $demo->setContent($requisicao);
@@ -251,5 +255,4 @@ class RequisicoesComprasController extends Controller
         $requisicao->save();
         return redirect()->route('requisicoes-compras.index')->with('success', 'Requisição de Compra autorizada com sucesso.');
     }
-
 }

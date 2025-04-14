@@ -59,5 +59,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'auth.access' => \App\Http\Middleware\AuthAccess::class,
         'check.permissao' => \App\Http\Middleware\CheckPermissao::class,
+        'autorizacao-pagamento.check.permissao' => \App\Http\Middleware\AutorizacaoPagamentoCheckPermissao::class,
+        'requisicao-compra.check.permissao' => \App\Http\Middleware\RequisicaoCompraCheckPermissao::class,
     ];
 }

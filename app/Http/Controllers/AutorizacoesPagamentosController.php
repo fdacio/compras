@@ -28,15 +28,22 @@ class AutorizacoesPagamentosController extends Controller
     
     public function __construct()
     {
-        $user = User::get(auth()->user()->id);
-        if ($user->tipo->id == 3) {
-            $centrosCustosUser = $user->centrosCustos()->pluck('id');
-            $this->autorizacoes = AutorizacaoPagamento::whereIn('id_centro_custo', $centrosCustosUser)->orderBy('id', 'desc');
-            $this->centrosCusto = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');
-        } else {
-            $this->autorizacoes = AutorizacaoPagamento::orderBy('id', 'desc');
-            $this->centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
-        }
+        $this->middleware('autorizacao-pagamento.check.permissao')->only(['edit', 'update', 'destroy']);
+
+        $this->middleware(function ($request, $next) {
+            $user = User::get(auth()->user()->id);
+            if ($user->tipo->id == 3) {
+                $centrosCustosUser = $user->centrosCustos()->pluck('id');
+                $this->autorizacoes = AutorizacaoPagamento::whereIn('id_centro_custo', $centrosCustosUser)->orderBy('id', 'desc');
+                $this->centrosCusto = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');
+            } else {
+                $this->autorizacoes = AutorizacaoPagamento::orderBy('id', 'desc');
+                $this->centrosCusto = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
+            }
+            return $next($request);
+        });
+
+     
     }
 
 
