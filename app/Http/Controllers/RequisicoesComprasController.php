@@ -30,7 +30,7 @@ class RequisicoesComprasController extends Controller
         $this->middleware(function ($request, $next) {
             $user = User::findOrFail(auth()->user()->id);
             if ($user->tipo->id == 3) {
-                $centrosCustosUser = $user->centrosCustos()->pluck('id');
+                $centrosCustosUser = $user->centrosCustos()->pluck('id_centro_custo')->toArray();
                 $this->requisicoes = RequisicaoCompra::whereIn('id_requisitante', $centrosCustosUser)->orderBy('id', 'desc');
                 $this->requisitantes = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');
             } else {
