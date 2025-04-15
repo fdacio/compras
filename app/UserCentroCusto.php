@@ -12,13 +12,5 @@ class UserCentroCusto extends Model
         'id_centro_custo',
     ];
     
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
-    public function centroCusto()
-    {
-        return $this->belongsTo(CentroCusto::class);
-    }
 }
