@@ -43,6 +43,11 @@ Route::group(['middleware' => ['auth', 'check.permissao']], function () {
     Route::post('empresas/pessoa/fisica/store', 'EmpresasController@storePessoaFisica')->name('empresas.pessoa.fisica.store');
     Route::match(['put', 'patch'], 'empresas/pessoa/fisica/{empresa}/update', 'EmpresasController@updatePessoaFisica')->name('empresas.pessoa.fisica.update');
     
+    Route::resource('fornecedores', 'FornecedoresController', ['parameters' => ['fornecedores' => 'fornecedor']]);
+    Route::get('fornecedores/pessoa/fisica/create', 'FornecedoresController@createPessoaFisica')->name('fornecedores.pessoa.fisica.create');
+    Route::post('fornecedores/pessoa/fisica/store', 'FornecedoresController@storePessoaFisica')->name('fornecedores.pessoa.fisica.store');
+    Route::match(['put', 'patch'], 'fornecedores/pessoa/fisica/{fornecedor}/update', 'FornecedoresController@updatePessoaFisica')->name('fornecedores.pessoa.fisica.update');
+
     Route::resource('favorecidos', 'FavorecidosController', ['parameters' => ['favorecidos' => 'favorecido']]);
     Route::get('favorecidos/pessoa/fisica/create', 'FavorecidosController@createPessoaFisica')->name('favorecidos.pessoa.fisica.create');
     Route::post('favorecidos/pessoa/fisica/store', 'FavorecidosController@storePessoaFisica')->name('favorecidos.pessoa.fisica.store');
