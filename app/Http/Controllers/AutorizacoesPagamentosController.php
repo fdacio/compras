@@ -34,6 +34,7 @@ class AutorizacoesPagamentosController extends Controller
             $user = User::findOrFail(auth()->user()->id);
             if ($user->tipo->id == 3) {
                 $centrosCustosUser = $user->centrosCustos()->pluck('id');
+                dd($centrosCustosUser);
                 $this->autorizacoes = AutorizacaoPagamento::whereIn('id_centro_custo', $centrosCustosUser)->orderBy('id', 'desc');
                 $this->centrosCusto = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');
             } else {
