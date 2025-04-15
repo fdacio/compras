@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function centrosCustos() 
     {
-        return $this->hasMany(UserCentroCusto::class, 'id_user', 'id');
+        return $this->belongsToMany(UserCentroCusto::class, 'users_centros_custos', 'id_user', 'id_centro_custo');
     }
 
 }
