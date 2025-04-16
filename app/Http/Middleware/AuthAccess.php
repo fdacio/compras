@@ -20,7 +20,7 @@ class AuthAccess
         $user = User::find(Auth::user()->id);
         
         if ($user->status == 0) {
-            return redirect('/logut');
+            return redirect('/logout');
         }
         return $next($request);
     }
