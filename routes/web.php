@@ -24,7 +24,7 @@ Route::get('/edit-password', 'UserController@editPassword')->name('edit.password
 Route::put('/user-password-update', 'UserController@passwordUpdate')->name('user.password.update' );
 
 
-Route::group(['middleware' => ['auth', 'check.permissao']], function () {
+Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], function () {
     
     Route::resource('user', 'UserController');
     Route::get('user/centros-custos/{user}/edit', 'UserController@centrosCustosEdit')->name('user.centros-custos.edit');

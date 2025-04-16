@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +17,10 @@ class AuthAccess
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->tipo->id > 2) {
-            return redirect('/home')->with('error', 'Acesso não permitido');
+        $user = User::find(Auth::user()->id);
+        
+        if ($user->status == 0) {
+            return redirect('/logut');
         }
         return $next($request);
     }
