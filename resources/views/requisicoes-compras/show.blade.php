@@ -37,7 +37,7 @@
                             <td>{{ $requisicao->tipo_nome }}</td>
                         </tr>
                         <tr>
-                            <th>Empresa:</th>
+                            <th>Contrato:</th>
                             <td>{{ $requisicao->empresa->pessoa->nome_razao_social }}</td>
                         </tr>                        
                         <tr>
