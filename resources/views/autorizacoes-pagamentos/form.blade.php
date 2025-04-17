@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <label for="id_empresa">Empresa<small class="text-danger p-2">*</small></label>
+                <label for="id_empresa">Contrato<small class="text-danger p-2">*</small></label>
                 {!! Form::select('id_empresa', $empresas, isset($autorizacao) ? $autorizacao->id_empresa : old('id_empresa'), [
                     'placeholder' => 'Selecione',
                     'class' => 'form-control select',

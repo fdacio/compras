@@ -42,7 +42,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>Empresa:</th>
+                            <th>Contrato:</th>
                             <td>{{ $autorizacao->empresa->pessoa->nome_razao_social }}</td>
                         </tr>                        
                         <tr>
