@@ -16,6 +16,7 @@
             <li class="nav-item"><a href="{{ route('centros-custos.index') }}" class="nav-link">Centros de Custos</a></li>
             <li class="nav-item"><a href="{{ route('solicitantes.index') }}" class="nav-link">Solicitantes</a></li>
             <li class="nav-item"><a href="{{ route('empresas.index') }}" class="nav-link">Empresas</a></li>
+            <li class="nav-item"><a href="{{ route('fornecedores.index') }}" class="nav-link">Fornecedores</a></li>
             <li class="nav-item"><a href="{{ route('favorecidos.index') }}" class="nav-link">Favorecidos</a></li>
             <li class="nav-item"><a href="{{ route('frotas.index') }}" class="nav-link">Frotas</a></li>
             <li class="nav-item"><a href="{{ route('veiculos.index') }}" class="nav-link">Veículos</a></li>
