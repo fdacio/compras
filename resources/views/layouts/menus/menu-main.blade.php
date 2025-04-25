@@ -15,13 +15,13 @@
         <ul class="navbar-nav sub-menu collapse p-1" id="cadastros-gerais">
             <li class="nav-item"><a href="{{ route('centros-custos.index') }}" class="nav-link">Centros de Custos</a>
             </li>
-            <li class="nav-item"><a href="{{ route('solicitantes.index') }}" class="nav-link">Solicitantes</a></li>
-            <li class="nav-item"><a href="{{ route('empresas.index') }}" class="nav-link">Empresas</a></li>
-            <li class="nav-item"><a href="{{ route('fornecedores.index') }}" class="nav-link">Fornecedores</a></li>
-            <li class="nav-item"><a href="{{ route('favorecidos.index') }}" class="nav-link">Favorecidos</a></li>
-            <li class="nav-item"><a href="{{ route('frotas.index') }}" class="nav-link">Frotas</a></li>
-            <li class="nav-item"><a href="{{ route('veiculos.index') }}" class="nav-link">Veículos</a></li>
-            <li class="nav-item"><a href="{{ route('produtos.index') }}" class="nav-link">Produtos</a></li>
+            <li class="nav-item ml-2"><a href="{{ route('solicitantes.index') }}" class="nav-link">Solicitantes</a></li>
+            <li class="nav-item ml-2"><a href="{{ route('empresas.index') }}" class="nav-link">Empresas</a></li>
+            <li class="nav-item ml-2"><a href="{{ route('fornecedores.index') }}" class="nav-link">Fornecedores</a></li>
+            <li class="nav-item ml-2"><a href="{{ route('favorecidos.index') }}" class="nav-link">Favorecidos</a></li>
+            <li class="nav-item ml-2"><a href="{{ route('frotas.index') }}" class="nav-link">Frotas</a></li>
+            <li class="nav-item ml-2"><a href="{{ route('veiculos.index') }}" class="nav-link">Veículos</a></li>
+            <li class="nav-item ml-2"><a href="{{ route('produtos.index') }}" class="nav-link">Produtos</a></li>
         </ul>
     </li>
 
@@ -31,14 +31,14 @@
                 class="fa fa-chevron-left pull-right"></span> </a>
         <ul class="navbar-nav sub-menu collapse p-1" id="requisicoes-compras">
 
-            <li class="nav-item"> <a href="{{ route('requisicoes-compras.index') }}" class="nav-link"><i
+            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.index') }}" class="nav-link"><i
                         class="fa fa-search"></i> <span class="nav-label">Consultar</span></a></li>
 
-            <li class="nav-item"> <a href="{{ route('requisicoes-compras.cotacoes') }}" class="nav-link"><i
+            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.cotacoes') }}" class="nav-link"><i
                 class="fa fa-file-text-o"></i> <span class="nav-label">Cotações</span></a></li>
 
-            <li class="nav-item"> <a href="{{ route('requisicoes-compras.autorizacoes') }}" class="nav-link"><i
-                    class="fa fa-file-text-o"></i> <span class="nav-label">Autorizações</span></a></li>
+            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.autorizacoes') }}" class="nav-link"><i
+                    class="fa fa-check"></i> <span class="nav-label">Autorizações</span></a></li>
         </ul>
     </li>
 

@@ -60,7 +60,9 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::post('requisicoes-compras/item/store/{requisicao}', 'RequisicoesComprasController@itemStore')->name('requisicoes-compras.item.store');
     Route::get('requisicoes-compras/gera-pdf/{requisicao}', 'RequisicoesComprasController@geraPdf')->name('requisicoes-compras.gera.pdf');
     Route::delete('requisicoes-compras/{requisicao}/del-item', 'RequisicoesComprasController@destroyItem')->name('requisicoes-compras.del-item.destroy');
+    Route::put('requisicoes-compras/{requisicao}/cancelar', 'RequisicoesComprasController@cancelar')->name('requisicoes-compras.cancelar');
     Route::put('requisicoes-compras/{requisicao}/autorizar', 'RequisicoesComprasController@autorizar')->name('requisicoes-compras.autorizar');
+    Route::put('requisicoes-compras/{requisicao}/cotar', 'RequisicoesComprasController@cotar')->name('requisicoes-compras.cotar');
     Route::get('requisicoes-compras/autorizacoes', 'RequisicoesComprasController@autorizacoes')->name('requisicoes-compras.autorizacoes');
     Route::get('requisicoes-compras/cotacoes', 'CotacoesController@cotacoes')->name('requisicoes-compras.cotacoes');
 

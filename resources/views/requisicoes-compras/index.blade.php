@@ -112,23 +112,24 @@
 
                                 @if ($requisicoes->total() > 0)
                                     {!! Form::open([
-                                        'id' => 'form_autorizar_' . $requisicao->id,
+                                        'id' => 'form_cotar_' . $requisicao->id,
                                         'method' => 'put',
-                                        'route' => ['requisicoes-compras.autorizar', $requisicao->id],
+                                        'route' => ['requisicoes-compras.cotar', $requisicao->id],
                                         'style' => 'display: inline',
                                     ]) !!}
-                                    {!! Form::button('<i class="fa fa-check"></i>', ['class' => 'btn btn-success btn-sm modal-autorizar', 'title' => 'Autorizar']) !!}
+                                    {!! Form::button('<i class="fa fa-attach_money"></i>', ['class' => 'btn btn-success btn-sm modal-cotar-requisicao', 'title' => 'Autorizar']) !!}
                                     {!! Form::close() !!}
                                 @endif
 
                                 @if ($requisicoes->total() > 0)
                                     {!! Form::open([
-                                        'id' => 'form_excluir_' . $requisicao->id,
-                                        'method' => 'delete',
-                                        'route' => ['requisicoes-compras.destroy', $requisicao->id],
+                                        'id' => 'form_cancelar_' . $requisicao->id,
+                                        'method' => 'put',
+                                        'route' => ['requisicoes-compras.cancelar', $requisicao->id],
                                         'style' => 'display: inline',
+                                        'title' => 'Cancelar',
                                     ]) !!}
-                                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir']) !!}
+                                    {!! Form::button('<i class="fa fa-highlight_off"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao']) !!}
                                     {!! Form::close() !!}
                                 @endif
 
@@ -148,7 +149,7 @@
 
 @if ($requisicoes->total() > 0)
     @section('scripts')
-        {!! Html::script('js/modal-excluir.js') !!}
-        {!! Html::script('js/modal-autorizar.js') !!}
+        {!! Html::script('js/modal-cancelar-requisicao.js') !!}
+        {!! Html::script('js/modal-cotar-requisicao.js') !!}
     @endsection
 @endif

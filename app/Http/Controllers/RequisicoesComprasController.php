@@ -52,7 +52,7 @@ class RequisicoesComprasController extends Controller
         $solicitante = request()->get('id_solicitante');
         $veiculo = request()->get('id_veiculo');
 
-        $requisicoes = $this->requisicoes;
+        $requisicoes = $this->requisicoes->where('situacao', '==', RequisicaoCompra::SITUACAO_PENDENTE);
 
         if (!empty($requisitante)) {
             $requisicoes =  $requisicoes->where('id_requisitante', $requisitante);
@@ -185,6 +185,12 @@ class RequisicoesComprasController extends Controller
         }
     }
 
+    public function cancelar(RequisicaoCompra $requisicao)
+    {
+        $requisicao->situacao = RequisicaoCompra::SITUACAO_CANCELADO;
+        $requisicao->save();
+        return redirect()->route('requisicoes-compras.index')->with('success', 'Cadastro de Requisição de Compra cancelado com sucesso.');
+    }
 
     public function itemCreate(RequisicaoCompra $requisicao)
     {
