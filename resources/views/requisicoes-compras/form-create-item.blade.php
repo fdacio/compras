@@ -25,7 +25,7 @@
                     @endif
                 </div>
 
-                <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="col-xs-2 col-sm-2 col-md-2">
                     <div class="form-group">
                         <label for="quantidade-solicitada">Quantidade Solicitada<small
                                 class="text-danger p-2">*</small></label>
@@ -36,7 +36,7 @@
                         ]) !!}
                     </div>
                 </div>
-                <div class="col-xs-4 col-sm-4 col-md-4 text-right">
+                <div class="col-xs-2 col-sm-2 col-md-2 text-right">
                     {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
