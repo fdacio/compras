@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 text-right">
-                    <label></label>
+                    <label>{{ " "}}</label>
                     {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
