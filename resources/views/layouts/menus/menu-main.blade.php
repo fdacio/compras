@@ -34,7 +34,7 @@
             <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.index') }}" class="nav-link"><i
                         class="fa fa-search"></i> <span class="nav-label">Consultar</span></a></li>
 
-            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.cotacoes') }}" class="nav-link"><i
+            <li class="nav-item ml-2"> <a href="{{ route('cotacoes.index') }}" class="nav-link"><i
                         class="fa fa-file-text-o"></i> <span class="nav-label">Cotações</span></a></li>
 
             <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.autorizacoes') }}" class="nav-link"><i
