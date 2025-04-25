@@ -19,7 +19,7 @@
         @endif
     </div>
     <div class="card-body">
-        <form action="{{ route('centros-custos.index') }}" method="get" class="form-filter">
+        <form action="{{ route('cotacoes.index') }}" method="get" class="form-filter">
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="numero_requisicao">Número da Requisição</label>

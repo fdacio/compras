@@ -267,8 +267,7 @@ class RequisicoesComprasController extends Controller
 
     public function autorizacoes()
     {
-        //$requisicao->situacao = RequisicaoCompra::SITUACAO_EM_COTACAO;
-        //$requisicao->save();
-        return redirect()->route('requisicoes-compras.index')->with('warning', '<<AQUI VAI AQUI SERÃO LISTADAS AS REQUISIÇÕES QUE JÁ FORAM COTADAS, E AGUARDAM AUTORIZAÇÃO PARA A COMPRA>>.');
+        $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_COTADA);
+        return view('requisicoes-compras.autorizacoes', compact('requirequisicoesicao'));
     }
 }
