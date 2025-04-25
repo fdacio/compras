@@ -22,6 +22,7 @@ class AuthAccess
         if ($user->status == 0) {
             return redirect('/logout');
         }
+        
         return $next($request);
     }
 }

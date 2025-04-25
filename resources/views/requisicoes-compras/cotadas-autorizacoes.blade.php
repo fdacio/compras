@@ -45,10 +45,6 @@
             </form>
         </div>
         <div class="card-footer">
-            <div class="text-right mb-2">
-                <a href="{{ route('requisicoes-compras.create') }}" class="btn btn-primary"><i
-                        class="fa fa-plus mr-2"></i>Cadastrar</a>
-            </div>
         </div>
     </div>
     <section class="table-responsive">

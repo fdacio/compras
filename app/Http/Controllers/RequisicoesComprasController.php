@@ -263,8 +263,11 @@ class RequisicoesComprasController extends Controller
      */
     public function cotadasAutorizacoes()
     {
-        dd($this->requisicoes);
-        $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_COTADA);
+        $requisicoes = $this->requisicoes->whereIn('situacao', [
+            RequisicaoCompra::SITUACAO_COTADA, 
+            RequisicaoCompra::SITUACAO_AGUARDANDO_AUTORIZACAO,
+            RequisicaoCompra::SITUACAO_AUTORIZADO])
+           ->orderBy('id', 'desc');
         $requisicoes = $requisicoes->paginate(10);
         return view('requisicoes-compras.cotadas-autorizacoes', compact('requisicoes'));
     }
