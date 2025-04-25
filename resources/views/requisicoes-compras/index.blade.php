@@ -117,7 +117,7 @@
                                         'route' => ['requisicoes-compras.cotar', $requisicao->id],
                                         'style' => 'display: inline',
                                     ]) !!}
-                                    {!! Form::button('<i class="fa fa-attach-money"></i>', ['class' => 'btn btn-success btn-sm modal-cotar-requisicao', 'cotar' => 'Autorizar']) !!}
+                                    {!! Form::button('<i class="fa fa-tty"></i>', ['class' => 'btn btn-success btn-sm modal-cotar-requisicao', 'title' => 'Cotar']) !!}
                                     {!! Form::close() !!}
                                 @endif
 
@@ -129,7 +129,7 @@
                                         'style' => 'display: inline',
                                         
                                     ]) !!}
-                                    {!! Form::button('<i class="fa fa-highlight-off"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar',]) !!}
+                                    {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar',]) !!}
                                     {!! Form::close() !!}
                                 @endif
 
