@@ -139,8 +139,8 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Ln();
 
         $this->SetWidths([20, 110, 30, 30]);
-        $this->setBorders(['L', 'L', 'L', 'L', 'LR']);
-        $this->SetAligns(['L', 'L', 'L', 'R', 'R']);
+        $this->setBorders(['L', 'L', 'L', 'LR']);
+        $this->SetAligns(['L', 'L', 'L', 'R']);
         $this->Row([utf8_decode('Item'), utf8_decode('Produto/Serviço'), utf8_decode('Unidade'), utf8_decode('Quantidade solicitada'), utf8_decode('Quantidade a cotar')]);
         $this->setBorders(NULL);
 
