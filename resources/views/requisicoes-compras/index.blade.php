@@ -90,7 +90,7 @@
                 <th>Solicitante</th>
                 <th>Veículo</th>
                 <th>Tipo</th>
-                <th>Situção</th>
+                <th>Situação</th>
                 <th style="width: 15%;"></th>
             </thead>
             <tbody>
