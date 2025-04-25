@@ -249,15 +249,6 @@ class RequisicoesComprasController extends Controller
         $demo->download();
     }
 
-    public function autorizar(RequisicaoCompra $requisicao)
-    {
-        $requisicao->situacao = RequisicaoCompra::SITUACAO_AUTORIZADO;
-        $requisicao->id_usuario_autorizacao = auth()->user()->id;
-        $requisicao->data_autorizacao = Carbon::now();
-        $requisicao->save();
-        return redirect()->route('requisicoes-compras.index')->with('success', 'Requisição de Compra autorizada com sucesso.');
-    }
-
     public function cotar(RequisicaoCompra $requisicao)
     {
         //$requisicao->situacao = RequisicaoCompra::SITUACAO_EM_COTACAO;
@@ -267,8 +258,18 @@ class RequisicoesComprasController extends Controller
 
     public function autorizacoes()
     {
+        dd($this->requisicoes);
         $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_COTADA);
         $requisicoes = $requisicoes->paginate(10);
         return view('requisicoes-compras.autorizacoes', compact('requisicoes'));
+    }
+
+    public function autorizar(RequisicaoCompra $requisicao)
+    {
+        $requisicao->situacao = RequisicaoCompra::SITUACAO_AUTORIZADO;
+        $requisicao->id_usuario_autorizacao = auth()->user()->id;
+        $requisicao->data_autorizacao = Carbon::now();
+        $requisicao->save();
+        return redirect()->route('requisicoes-compras.index')->with('success', 'Requisição de Compra autorizada com sucesso.');
     }
 }
