@@ -37,7 +37,7 @@
             <li class="nav-item ml-2"> <a href="{{ route('cotacoes.index') }}" class="nav-link"><i
                         class="fa fa-file-text-o"></i> <span class="nav-label">Cotações</span></a></li>
 
-            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.autorizacoes') }}" class="nav-link"><i
+            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.autorizacao') }}" class="nav-link"><i
                         class="fa fa-check"></i> <span class="nav-label">Autorizações</span></a></li>
         </ul>
     </li>

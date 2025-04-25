@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::put('requisicoes-compras/{requisicao}/cancelar', 'RequisicoesComprasController@cancelar')->name('requisicoes-compras.cancelar');
     Route::put('requisicoes-compras/{requisicao}/autorizar', 'RequisicoesComprasController@autorizar')->name('requisicoes-compras.autorizar');
     Route::put('requisicoes-compras/{requisicao}/cotar', 'RequisicoesComprasController@cotar')->name('requisicoes-compras.cotar');
-    Route::get('requisicoes-compras/autorizacao', 'RequisicoesComprasController@autorizacoes')->name('requisicoes-compras.autorizacoes');
+    Route::get('requisicoes-compras/autorizacao', 'RequisicoesComprasController@autorizacao')->name('requisicoes-compras.autorizacao');
    
     Route::resource('cotacoes', 'CotacoesController', ['parameters' => ['cotacaoes' => 'cotacao']]);
     Route::get('cotacoes', 'CotacoesController@index')->name('cotacoes.index');

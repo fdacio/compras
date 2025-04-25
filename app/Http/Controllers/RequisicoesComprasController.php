@@ -265,7 +265,7 @@ class RequisicoesComprasController extends Controller
         return redirect()->route('requisicoes-compras.index')->with('warning', '<<AQUI VAI ENVIAR PARA A TELA DE COTAÇÃO>>.');
     }
 
-    public function autorizacoes()
+    public function autorizacao()
     {
         $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_COTADA);
         $requisicoes = $requisicoes->paginate(10);
