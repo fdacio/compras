@@ -141,7 +141,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->SetWidths([20, 110, 30, 30]);
         $this->setBorders(['L', 'L', 'L', 'LR']);
         $this->SetAligns(['L', 'L', 'L', 'R']);
-        $this->Row([utf8_decode('Item'), utf8_decode('Produto/Serviço'), utf8_decode('Unidade'), utf8_decode('Quantidade solicitada'), utf8_decode('Quantidade a cotar')]);
+        $this->Row([utf8_decode('Item'), utf8_decode('Produto/Serviço'), utf8_decode('Unidade'), utf8_decode('Quantidade solicitada')]);
         $this->setBorders(NULL);
 
         $this->SetFont('Arial', '', 8);
@@ -150,7 +150,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
             $this->Ln();
         } else {
             foreach ($requisicao->itens as $item) {
-                $this->Row([$item->item, utf8_decode($item->descricao), utf8_decode($item->unidade), utf8_decode($item->quantidade_solicitada), utf8_decode($item->quantidade_a_cotar)]);
+                $this->Row([$item->item, utf8_decode($item->descricao), utf8_decode($item->unidade), utf8_decode($item->quantidade_solicitada)]);
             }
         }
         $this->SetFont('Arial', 'B', 6);
