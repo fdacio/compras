@@ -37,71 +37,74 @@
                     </div>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 pt-1 text-right">
-                    {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
-                        'type' => 'submit',
-                        'id' => 'btn-adicionar',
-                        'class' => 'btn btn-primary form-control',
-                    ]) !!}
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+
+                        {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
+                            'type' => 'submit',
+                            'id' => 'btn-adicionar',
+                            'class' => 'btn btn-primary form-control',
+                        ]) !!}
+                    </div>
                 </div>
+                {!! Form::close() !!}
             </div>
-            {!! Form::close() !!}
+        </div>
+        <div class="card">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 20px;">
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <th>Item</th>
+                        <th>Produto/Serviço</th>
+                        <th>Unidade</th>
+                        <th class="text-right">Quantidade Solicitada</th>
+                        <th style="width: 45px;"></th>
+                    </thead>
+                    <tbody>
+                        @foreach ($requisicao->itens as $item)
+                            <tr>
+                                <td>{{ $item->item }}</td>
+                                <td>
+                                    <p style="white-space: pre-wrap">{{ $item->descricao }}</p>
+                                </td>
+                                <td>{{ $item->unidade }}</td>
+                                <td class="text-right">
+                                    <span class="quantidade-solicitada">{{ $item->quantidade_solicitada }}</span>
+                                </td>
+                                <td class="text-nowrap">
+                                    {!! Form::open([
+                                        'id' => 'form_excluir_' . $item->id,
+                                        'method' => 'delete',
+                                        'route' => ['requisicoes-compras.del-item.destroy', $requisicao->id],
+                                        'style' => 'display: inline',
+                                    ]) !!}
+                                    {!! Form::hidden('id_requisicao_compra_item', $item->id) !!}
+                                    {!! Form::button('<i class="fa fa-trash"></i>', [
+                                        'class' => 'btn btn-danger modal-excluir',
+                                        'style' => 'padding: 1px 6px;',
+                                    ]) !!}
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a href="{{ route('requisicoes-compras.gera.pdf', $requisicao->id) }}" class="btn btn-success"
+                    title="download" target="_blank">Demonstrativo</a>
+
+            </div>
         </div>
     </div>
-    <div class="card">
-        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 20px;">
+    @section('scripts')
+        <script>
+            $(document).ready(function() {
+                $("#")
 
-            <table class="table table-striped table-hover">
-                <thead>
-                    <th>Item</th>
-                    <th>Produto/Serviço</th>
-                    <th>Unidade</th>
-                    <th class="text-right">Quantidade Solicitada</th>
-                    <th style="width: 45px;"></th>
-                </thead>
-                <tbody>
-                    @foreach ($requisicao->itens as $item)
-                        <tr>
-                            <td>{{ $item->item }}</td>
-                            <td>
-                                <p style="white-space: pre-wrap">{{ $item->descricao }}</p>
-                            </td>
-                            <td>{{ $item->unidade }}</td>
-                            <td class="text-right">
-                                <span class="quantidade-solicitada">{{ $item->quantidade_solicitada }}</span>
-                            </td>
-                            <td class="text-nowrap">
-                                {!! Form::open([
-                                    'id' => 'form_excluir_' . $item->id,
-                                    'method' => 'delete',
-                                    'route' => ['requisicoes-compras.del-item.destroy', $requisicao->id],
-                                    'style' => 'display: inline',
-                                ]) !!}
-                                {!! Form::hidden('id_requisicao_compra_item', $item->id) !!}
-                                {!! Form::button('<i class="fa fa-trash"></i>', [
-                                    'class' => 'btn btn-danger modal-excluir',
-                                    'style' => 'padding: 1px 6px;',
-                                ]) !!}
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <div class="card-footer">
-            <a href="{{ route('requisicoes-compras.gera.pdf', $requisicao->id) }}" class="btn btn-success"
-                title="download" target="_blank">Demonstrativo</a>
+            });
+        </script>
 
-        </div>
-    </div>
-</div>
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $("#")
-
-        });
-    </script>
-
-    {!! Html::script('js/modal-excluir.js') !!}
-@endsection
+        {!! Html::script('js/modal-excluir.js') !!}
+    @endsection
