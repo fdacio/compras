@@ -150,7 +150,7 @@
                     'route' => ['requisicoes-compras.cotar', $requisicao->id],
                     'style' => 'display: inline',
                 ]) !!}
-                {!! Form::button('<i class="fa fa-tty"></i> Cotar', ['class' => 'btn btn-success btn-sm modal-cotar-requisicao', 'title' => 'Cotar']) !!}
+                {!! Form::button('<i class="fa fa-tty"></i> Cotar', ['class' => 'btn btn-success modal-cotar-requisicao', 'title' => 'Cotar']) !!}
                 {!! Form::close() !!}
             </div>        
         </div>
