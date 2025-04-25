@@ -268,6 +268,7 @@ class RequisicoesComprasController extends Controller
     public function autorizacoes()
     {
         $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_COTADA);
-        return view('requisicoes-compras.autorizacoes', compact('requirequisicoesicao'));
+        $requisicoes = $requisicoes->paginate(10);
+        return view('requisicoes-compras.autorizacoes', compact('requisicoes'));
     }
 }
