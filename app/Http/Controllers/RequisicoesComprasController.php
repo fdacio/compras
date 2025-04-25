@@ -256,12 +256,17 @@ class RequisicoesComprasController extends Controller
         return redirect()->route('requisicoes-compras.index')->with('warning', '<<AQUI VAI ENVIAR PARA A TELA DE COTAÇÃO>>.');
     }
 
-    public function autorizacoes()
+    /**
+     * @return \Illuminate\Http\Response
+     * Retorna as requisições de compras que estão com a situação "COTADA"
+     * e que o usuário para o administração possa autorizar
+     */
+    public function cotadasAutorizacoes()
     {
         dd($this->requisicoes);
         $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_COTADA);
         $requisicoes = $requisicoes->paginate(10);
-        return view('requisicoes-compras.autorizacoes', compact('requisicoes'));
+        return view('requisicoes-compras.cotadas-autorizacoes', compact('requisicoes'));
     }
 
     public function autorizar(RequisicaoCompra $requisicao)
