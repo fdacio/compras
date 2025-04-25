@@ -27,7 +27,7 @@
 
                 <div class="col-xs-2 col-sm-2 col-md-2">
                     <div class="form-group">
-                        <label for="quantidade-solicitada">Quantidade Solicitada<small
+                        <label for="quantidade-solicitada" class="text-nowrap">Quantidade Solicitada<small
                                 class="text-danger p-2">*</small></label>
                         {!! Form::text('quantidade_solicitada', old('quantidade_solicitada'), [
                             'id' => 'quantidade-solicitada',
@@ -37,6 +37,7 @@
                     </div>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 text-right">
+                    <label></label>
                     {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
