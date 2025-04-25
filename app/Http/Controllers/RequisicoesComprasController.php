@@ -201,14 +201,12 @@ class RequisicoesComprasController extends Controller
         $descricao = "";
         $unidade = "";
         $quantidade_solicitada = 0;
-        $quantidade_a_cotar = 0;
 
         if ($requisicao->tipo == 'PRODUTO') {
             $produto = Produto::find($request->id_produto);
             $descricao = $produto->nome;
             $unidade = $produto->unidade->nome;
             $quantidade_solicitada = $request->quantidade_solicitada;
-            $quantidade_a_cotar = $request->quantidade_a_cotar;
             $item = $requisicao->itens()->count() + 1;
         }
 
@@ -216,7 +214,6 @@ class RequisicoesComprasController extends Controller
             $descricao = $request->servico;
             $unidade = "UNIDADE";
             $quantidade_solicitada = $request->quantidade_solicitada;
-            $quantidade_a_cotar = $request->quantidade_a_cotar;
             $item = $requisicao->itens()->count() + 1;
         }
 
@@ -226,7 +223,6 @@ class RequisicoesComprasController extends Controller
             'descricao' => $descricao,
             'unidade' => $unidade,
             'quantidade_solicitada' => $quantidade_solicitada,
-            'quantidade_a_cotar' => $quantidade_a_cotar,
         ];
 
         RequisicaoCompraItem::create($dados);
@@ -254,5 +250,19 @@ class RequisicoesComprasController extends Controller
         $requisicao->data_autorizacao = Carbon::now();
         $requisicao->save();
         return redirect()->route('requisicoes-compras.index')->with('success', 'Requisição de Compra autorizada com sucesso.');
+    }
+
+    public function cotar(RequisicaoCompra $requisicao)
+    {
+        //$requisicao->situacao = RequisicaoCompra::SITUACAO_EM_COTACAO;
+        //$requisicao->save();
+        return redirect()->route('requisicoes-compras.index')->with('warning', '<<AQUI VAI ENVIAR PARA A TELA DE COTAÇÃO>>.');
+    }
+
+    public function autorizacoes()
+    {
+        //$requisicao->situacao = RequisicaoCompra::SITUACAO_EM_COTACAO;
+        //$requisicao->save();
+        return redirect()->route('requisicoes-compras.index')->with('warning', '<<AQUI VAI AQUI SERÃO LISTADAS AS REQUISIÇÕES QUE JÁ FORAM COTADAS, E AGUARDAM AUTORIZAÇÃO PARA A COMPRA>>.');
     }
 }

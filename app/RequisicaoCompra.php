@@ -27,7 +27,10 @@ class RequisicaoCompra extends Model
     ];
     const SITUACAO_PENDENTE = 'PENDENTE';
     const SITUACAO_AUTORIZADO = 'AUTORIZADO';
-    const SITUACAO_CANCELADO = 'CANCELADO';   
+    const SITUACAO_CANCELADO = 'CANCELADO';  
+    const SITUACAO_EM_COTACAO = 'EM_COTACAO';
+    const SITUACAO_COTADA = 'COTADA';   
+    const SITUACAO_AGUARDANDO_AUTORIZACAO = 'AGUARDANDO_AUTORIZACAO';   
 
     const SITUACOES = [
         [
@@ -41,6 +44,18 @@ class RequisicaoCompra extends Model
         [
             'label' => 'Cancelado',
             'value' => self::SITUACAO_CANCELADO
+        ],
+        [
+            'label' => 'Em Cotação',
+            'value' => self::SITUACAO_EM_COTACAO
+        ],
+        [
+            'label' => 'Cotada',
+            'value' => self::SITUACAO_COTADA
+        ],
+        [
+            'label' => 'Aguardando Autorização',
+            'value' => self::SITUACAO_AGUARDANDO_AUTORIZACAO
         ],
     ];
 

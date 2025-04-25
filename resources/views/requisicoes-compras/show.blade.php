@@ -111,15 +111,14 @@
                                 <thead>
                                     <tr>
                                         <th class="col-md-1 col-1">Item</th>
-                                        <th class="col-md-5 col-5">Produto/Serviço</th>
+                                        <th class="col-md-5 col-7">Produto/Serviço</th>
                                         <th class="col-md-3 col-2">Unidade</th>
                                         <th class="col-md-3 col-2">Quantidade solicitada</th>
-                                        <th class="col-md-3 col-2">Quantidade a cotar</th>
                                     </tr>
                                 </thead>
                                 @if ($requisicao->itens->count() == 0)
                                     <tr>
-                                        <th class="text-center" colspan="6">Nenhuma requisição encontrada</th>
+                                        <th class="text-center" colspan="6">Nenhum item informado</th>
                                     </tr>
                                 @else
                                     @foreach ($requisicao->itens as $item)
@@ -129,7 +128,6 @@
                                             <td class="text"><p style="white-space: pre-wrap">{{ $item->descricao }}</p></td>
                                             <td class="text">{{ $item->unidade }}</td>
                                             <td class="text-right">{{ $item->quantidade_solicitada }}</td>
-                                            <td class="text-right">{{ $item->quantidade_a_cotar }}</td>
                                         </tr>
                                     @endforeach
                                 @endif

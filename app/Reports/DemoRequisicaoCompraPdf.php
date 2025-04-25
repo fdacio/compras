@@ -138,7 +138,7 @@ class DemoRequisicaoCompraPdf extends ReportPdf
         $this->Cell(190, 5, utf8_decode('Itens da Requisição'), 1, 0, 'C');
         $this->Ln();
 
-        $this->SetWidths([20, 70, 30, 40, 30]);
+        $this->SetWidths([20, 110, 30, 30]);
         $this->setBorders(['L', 'L', 'L', 'L', 'LR']);
         $this->SetAligns(['L', 'L', 'L', 'R', 'R']);
         $this->Row([utf8_decode('Item'), utf8_decode('Produto/Serviço'), utf8_decode('Unidade'), utf8_decode('Quantidade solicitada'), utf8_decode('Quantidade a cotar')]);

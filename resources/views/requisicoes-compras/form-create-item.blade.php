@@ -7,7 +7,7 @@
                 'route' => ['requisicoes-compras.item.store', $requisicao->id],
             ]) !!}
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="col-xs-8 col-sm-8 col-md-8">
                     @if ($requisicao->tipo == 'PRODUTO')
                         <div class="form-group">
                             <label for="produtos">Produto<small class="text-danger p-2">*</small></label>
@@ -24,9 +24,8 @@
                         </div>
                     @endif
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
+
+                <div class="col-xs-4 col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="quantidade-solicitada">Quantidade Solicitada<small
                                 class="text-danger p-2">*</small></label>
@@ -37,20 +36,7 @@
                         ]) !!}
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group">
-                        <label for="quantidade-a-cotar">Quantidade a Cotar<small
-                                class="text-danger p-2">*</small></label>
-                        {!! Form::text('quantidade_a_cotar', old('quantidade_a_cotar'), [
-                            'id' => 'quantidade-a-cotar',
-                            'maxlength' => '15',
-                            'class' => 'form-control quantidade text-right',
-                        ]) !!}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                <div class="col-xs-4 col-sm-4 col-md-4 text-right">
                     {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
@@ -70,7 +56,6 @@
                     <th>Produto/Serviço</th>
                     <th>Unidade</th>
                     <th class="text-right">Quantidade Solicitada</th>
-                    <th class="text-right">Quantidade a Cotar</th>
                     <th style="width: 45px;"></th>
                 </thead>
                 <tbody>
@@ -83,9 +68,6 @@
                             <td>{{ $item->unidade }}</td>
                             <td class="text-right">
                                 <span class="quantidade-solicitada">{{ $item->quantidade_solicitada }}</span>
-                            </td>
-                            <td class="text-right">
-                                <span class="quantidade-a-cotar">{{ $item->quantidade_a_cotar }}</span>
                             </td>
                             <td class="text-nowrap">
                                 {!! Form::open([
