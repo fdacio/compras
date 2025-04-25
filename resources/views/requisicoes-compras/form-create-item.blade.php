@@ -36,8 +36,7 @@
                         ]) !!}
                     </div>
                 </div>
-                <div class="col-xs-2 col-sm-2 col-md-2 text-right">
-                    <label>{{ echo(" ") }}</label>
+                <div class="col-xs-2 col-sm-2 col-md-2 pt-1 text-right">
                     {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
