@@ -19,6 +19,13 @@
                     {{ session('danger') }}
                 </div>
             @endif
+            @if (session('warning'))
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
+                            aria-hidden="true">&times;</span></button>
+                    {{ session('warning') }}
+                </div>
+            @endif
         </div>
         <div class="card-body">
             <form action="{{ route('requisicoes-compras.index') }}" method="get" class="form-filter">
