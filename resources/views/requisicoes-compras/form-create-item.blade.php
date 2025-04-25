@@ -7,7 +7,7 @@
                 'route' => ['requisicoes-compras.item.store', $requisicao->id],
             ]) !!}
             <div class="row">
-                <div class="col-xs-8 col-sm-8 col-md-8">
+                <div class="col-xs-7 col-sm-7 col-md-7">
                     @if ($requisicao->tipo == 'PRODUTO')
                         <div class="form-group">
                             <label for="produtos">Produto<small class="text-danger p-2">*</small></label>
@@ -25,7 +25,7 @@
                     @endif
                 </div>
 
-                <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group">
                         <label for="quantidade-solicitada" class="text-nowrap">Quantidade Solicitada<small
                                 class="text-danger p-2">*</small></label>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="col-xs-2 col-sm-2 col-md-2 text-right">
-                    <label>{{ " "}}</label>
+                    <label>{{ echo(" ") }}</label>
                     {!! Form::button('Adicionar<i class="fa fa-plus ml-2"></i>', [
                         'type' => 'submit',
                         'id' => 'btn-adicionar',
