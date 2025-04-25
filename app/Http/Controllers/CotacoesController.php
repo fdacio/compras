@@ -20,4 +20,10 @@ class CotacoesController extends Controller
         $cotacoes = $cotacoes->paginate(10);
         return view('cotacoes.index', compact('cotacoes')); 
     }
+
+    public function edit(Cotacao $cotacao)
+    {
+        // Aqui você pode adicionar a lógica para editar uma cotação específica
+        return view('cotacoes.edit', compact('cotacao'));
+    }
 }
