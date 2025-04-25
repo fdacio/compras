@@ -27,7 +27,7 @@
 
     <li class="nav-item"> <a href="#" data-toggle="collapse" data-target="#requisicoes-compras"
             class="collapsed nav-link">
-            <i class="fa fa-edit"></i> <span class="nav-label">Requisições de Compras</span>
+            <i class="fa fa-file-text"></i> <span class="nav-label">Requisições de Compras</span>
             <span class="fa fa-chevron-left pull-right"></span> </a>
         <ul class="navbar-nav sub-menu collapse p-1" id="requisicoes-compras">
 
