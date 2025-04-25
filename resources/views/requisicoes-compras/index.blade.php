@@ -89,7 +89,7 @@
             <tbody>
                 @if ($requisicoes->total() == 0)
                     <tr>
-                        <th class="text-center" colspan="6">Nenhuma requisição encontrada</th>
+                        <th class="text-center" colspan="10">Nenhuma requisição encontrada</th>
                     </tr>
                 @else
                     @foreach ($requisicoes as $requisicao)
