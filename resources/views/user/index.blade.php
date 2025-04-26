@@ -67,8 +67,8 @@
                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
                     <a href="{{ route('user.centros-custos.edit', $user->id) }}" class="btn btn-sm btn-success" title="Centros de Custos"><i class="fa fa-file-o"></i></a>
                     @if($users->total() > 0)
-                    {!! Form::open(['id' => 'form_excluir_' . $user->id, 'method' => 'delete', 'route' => ['user.destroy', $user->id], 'style'=>'display: inline']) !!}
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-sm btn-danger modal-excluir']) !!}
+                    {!! Form::open(['id' => 'form_desativar_' . $user->id, 'method' => 'put', 'route' => ['user.desativar', $user->id], 'style'=>'display: inline']) !!}
+                    {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-sm btn-danger modal-desativar-user', 'title' => 'Desativar']) !!}
                     {!! Form::close() !!}
                     @endif
                 </td>
@@ -87,6 +87,6 @@
 
 @if($users->total() > 0)
 @section('scripts')
-{!! Html::script('js/modal-excluir.js') !!}
+{!! Html::script('js/modal-desativar-user.js') !!}
 @endsection
 @endif

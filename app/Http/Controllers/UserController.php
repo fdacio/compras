@@ -18,9 +18,8 @@ class UserController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('auth.access')->except(['perfil', 'editPassword', 'passwordUpdate']);
-
     }
-    
+
     public function perfil()
     {
         $user = Auth::user();
@@ -68,7 +67,7 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function show(User $user) 
+    public function show(User $user)
     {
         return view('user.show', compact('user'));
     }
@@ -87,8 +86,19 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        $user->delete();
-        return redirect()->route('user.index')->with('success', 'Deletado com sucesso!');
+        try {
+            $user->delete();
+            return redirect()->route('user.index')->with('success', 'Deletado com sucesso!');
+        } catch (Exception $e) {
+            return redirect()->route('user.index')->with('danger', 'Não foi possível deletar o usuário: ' . $e->getMessage());
+        }
+    }
+
+    public function desativar(User $user)
+    {
+        $user->status = 0;
+        $user->update();
+        return redirect()->route('user.index')->with('success', 'Desativado com sucesso!');
     }
 
     public function centrosCustosEdit(User $user)
@@ -100,16 +110,16 @@ class UserController extends Controller
 
     public function centrosCustosUpdate(Request $request, User $user)
     {
-        
+
         try {
 
             DB::beginTransaction();
 
             UserCentroCusto::where('id_user', $user->id)->delete();
-            
+
             if (isset($request->centros_custos)) {
                 foreach ($request->centros_custos as $centroCusto) {
-                    $dados = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];                    
+                    $dados = ['id_user' => $user->id, 'id_centro_custo' => $centroCusto];
                     UserCentroCusto::create($dados);
                 }
             }
@@ -117,11 +127,9 @@ class UserController extends Controller
             DB::commit();
 
             return redirect()->route('user.index')->with('success', 'Centros de custos atualizados com sucesso!');
-
         } catch (Exception $e) {
             DB::rollback();
             return redirect()->route('user.centros-custos.edit', $user->id)->with('danger', 'Não foi possível registrar os centros de custos: ' . $e->getMessage());
         }
     }
-
 }

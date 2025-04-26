@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCotacoesTable extends Migration
+class CreateCotacoesFornecedoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateCotacoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cotacoes', function (Blueprint $table) {
+        Schema::create('cotacoes_fornecedores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_requisicao');
-            $table->date('data');
-            $table->boolean('finalizada')->default(false);
+            $table->unsignedBigInteger('id_cotacao');
+            $table->unsignedBigInteger('id_fornecedor');
             $table->unsignedBigInteger('id_usuario_cadastrou')->nullable();
-            $table->unsignedBigInteger('id_usuario_alterou')->nullable();
-            $table->foreign('id_requisicao')->references('id')->on('requisicoes_compras');
+            $table->foreign('id_cotacao')->references('id')->on('cotacoes');
+            $table->foreign('id_fornecedor')->references('id')->on('fornecedores');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateCotacoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cotacoes');
+        Schema::dropIfExists('cotacoes_fornecedores');
     }
 }

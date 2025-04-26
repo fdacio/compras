@@ -27,6 +27,7 @@ Route::put('/user-password-update', 'UserController@passwordUpdate')->name('user
 Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], function () {
     
     Route::resource('user', 'UserController');
+    Route::put('user/{user}/desativar', 'UserController@desativar')->name('user.desativar');
     Route::get('user/centros-custos/{user}/edit', 'UserController@centrosCustosEdit')->name('user.centros-custos.edit');
     Route::put('user/centros-custos/{user}/update', 'UserController@centrosCustosUpdate')->name('user.centros-custos.update');
 
