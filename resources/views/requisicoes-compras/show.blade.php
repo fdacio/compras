@@ -85,7 +85,7 @@
                         </tr>
                         <tr>
                             <th>Usuário que Cadastrou:</th>
-                            <td>{{ ($requisicao->usuariosCadastrou) ? $requisicao->usuariosCadastrou->name : "" }}</td>
+                            <td>{{ ($requisicao->usuarioCadastrou) ? $requisicao->usuarioCadastrou->name : "" }}</td>
                         </tr>
                         <tr>
                             <th>Criado:</th>
