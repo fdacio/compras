@@ -113,7 +113,7 @@
         </div>
     </div>
 @endsection
-@if($cotacao->fornecedores->total() > 0)
+@if($cotacao->fornecedores->count() > 0)
 @section('scripts')
 {!! Html::script('js/modal-excluir.js') !!}
 @endsection
