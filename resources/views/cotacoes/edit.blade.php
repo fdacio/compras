@@ -19,6 +19,8 @@
             @endif
         </div>
         <div class="card-body">
+
+            <!-- Requisição -->
             <div id="accordion-dadosRequisicao" class="accordion">
                 <div class="card">
                     <div class="card-header border-0">
@@ -33,6 +35,8 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Fornecedor -->
             {!! Form::open([
                 'id' => 'form_cotacao_fornecedor',
                 'method' => 'post',
@@ -70,6 +74,8 @@
 
             </div>
             {!! Form::close() !!}
+
+            <!-- Itens-->
             <div class="table-responsive">
                 <table class="table table-sm table-striped table-bordered table-hover" id="tabela_cotacao_fornecedor">
                     <tbody>
@@ -84,9 +90,33 @@
                                         <div id="itens-{{ $item->id}}" class="collapse hide"
                                             data-parent="#accordion-itens-{{ $item->id}}">
                                             <div class="card-body">
-                                                @foreach ($item->itens as $i)   
-                                                {{$i->item .'-'. $i->descricao}}
-                                                @endforeach
+                                                <table class="table table-sm table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center col-xs-1 col-sm-1 col-md-1">Item</th>
+                                                            <th class="text-center col-xs-7 col-sm-7 col-md-7">Descrição</th>
+                                                            <th class="text-center col-xs-2 col-sm-2 col-md-2">Unidade</th>
+                                                            <th class="text-center col-xs-2 col-sm-2 col-md-2">Qtde.Solicitada</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($item->itens as $i)
+                                                            <tr>
+                                                                <td class="text-center col-xs-1 col-sm-1 col-md-1">
+                                                                    {{$i->item}}
+                                                                </td>
+                                                                <td class="text-center col-xs-7 col-sm-7 col-md-7">
+                                                                    {{$i->descricao}}
+                                                                </td>
+                                                                <td class="text-center col-xs-2 col-sm-2 col-md-2">
+                                                                    {{$i->unidade}}
+                                                                </td>
+                                                                <td class="text-center col-xs-2 col-sm-2 col-md-2">
+                                                                    {{$i->quantidade_solicitada}}
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
                                             </div>
                                         </div>
                                     </div>
