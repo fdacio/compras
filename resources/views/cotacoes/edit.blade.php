@@ -93,25 +93,25 @@
                                                 <table class="table table-sm table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-center col-xs-1 col-sm-1 col-md-1">Item</th>
-                                                            <th class="text-center col-xs-7 col-sm-7 col-md-7">Descrição</th>
-                                                            <th class="text-center col-xs-2 col-sm-2 col-md-2">Unidade</th>
-                                                            <th class="text-center col-xs-2 col-sm-2 col-md-2">Qtde.Solicitada</th>
+                                                            <th class="col-xs-1 col-sm-1 col-md-1">Item</th>
+                                                            <th class="col-xs-7 col-sm-7 col-md-7">Descrição</th>
+                                                            <th class="col-xs-2 col-sm-2 col-md-2">Unidade</th>
+                                                            <th class="col-xs-2 col-sm-2 col-md-2">Qtde.Solicitada</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($item->itens as $i)
                                                             <tr>
-                                                                <td class="text-center col-xs-1 col-sm-1 col-md-1">
+                                                                <td class="col-xs-1 col-sm-1 col-md-1">
                                                                     {{$i->item}}
                                                                 </td>
-                                                                <td class="text-center col-xs-7 col-sm-7 col-md-7">
+                                                                <td class="col-xs-7 col-sm-7 col-md-7">
                                                                     {{$i->descricao}}
                                                                 </td>
-                                                                <td class="text-center col-xs-2 col-sm-2 col-md-2">
+                                                                <td class="col-xs-2 col-sm-2 col-md-2">
                                                                     {{$i->unidade}}
                                                                 </td>
-                                                                <td class="text-center col-xs-2 col-sm-2 col-md-2">
+                                                                <td class="col-xs-2 col-sm-2 col-md-2">
                                                                     {{$i->quantidade_solicitada}}
                                                                 </td>
                                                             </tr>
