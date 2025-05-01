@@ -76,15 +76,10 @@
                         @foreach ($cotacao->fornecedores as $item)
                             <tr>
                                 <td>
-                                    {{ $item->fornecedor->pessoa->nome_razao_social }}
-
                                     <div id="accordion-itens-{{ $item->id}}" class="accordion">
-                                        <div class="card-header border-0">
-                                            <a class="card-link" data-toggle="collapse"
-                                                href="#itens-{{ $item->id}}">
-                                                Itens
-                                            </a>
-                                        </div>
+                                        <a class="card-link" data-toggle="collapse" href="#itens-{{ $item->id}}">
+                                            {{ $item->fornecedor->pessoa->nome_razao_social }}
+                                        </a>
                                         <div id="itens-{{ $item->id}}" class="collapse hide"
                                             data-parent="#accordion-itens-{{ $item->id}}">
                                             <div class="card-body">
