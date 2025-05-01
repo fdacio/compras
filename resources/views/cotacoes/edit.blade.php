@@ -111,12 +111,13 @@
                                                                 <td class="col-xs-2 col-sm-2 col-md-2">
                                                                     {{$i->unidade}}
                                                                 </td>
-                                                                <td class="col-xs-2 col-sm-2 col-md-2">
+                                                                <td class="text-right col-xs-2 col-sm-2 col-md-2">
                                                                     {{$i->quantidade_solicitada}}
                                                                 </td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
+                                                </table>     
                                             </div>
                                         </div>
                                     </div>
