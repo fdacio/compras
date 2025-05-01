@@ -159,21 +159,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($cotacao->fornecedores as $fornecedor)
+                        @foreach ($cotacao->fornecedores as $item)
                             <tr>
-                                <td>{{ $fornecedor->pessoa->nome_razao_social }}</td>
-                                <td>{{ \Carbon\Carbon::parse($fornecedor->pivot->data)->format('d/m/Y') }}</td>
-                                <td>{{ number_format($fornecedor->pivot->valor_total, 2, ',', '.') }}</td>
+                                <td>{{ $item->fornecedor->pessoa->nome_razao_social }}</td>
                                 <td class="text-center">
                                     {!! Form::open([
                                         'method' => 'delete',
-                                        'route' => ['cotacoes.fornecedor.destroy', $cotacao->id, $fornecedor->id],
+                                        'route' => ['cotacoes.fornecedor.destroy', $item->id],
                                         'style' => 'display:inline'
                                     ]) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', [
                                         'type' => 'submit',
                                         'class' => 'btn btn-danger btn-sm',
-                                        'onclick' => "return confirm('Você tem certeza que deseja excluir este fornecedor?')"
                                     ]) !!}
                                     {!! Form::close() !!}
                                 </td>
