@@ -30,7 +30,7 @@
                     </div>
                     <div id="dadosRequisicao" class="collapse hide" data-parent="#accordion-dadosRequisicao">
                         <div class="card-body">
-                            @include('cotacoes.dados-requisicao');
+                            @include('cotacoes.dados-requisicao')
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                                                                 <div>{{ $i->descricao }}</div>
                                                                 <div class="row">
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                                                        <small>Qtde Cotada</small>
+                                                                        <small class="d-block">Qtde.Cotada</small>
                                                                         <input
                                                                             type="text"
                                                                             name="quantidade_cotada[{{ $i->id }}]"
@@ -116,7 +116,7 @@
                                                                             value="{{ $i->quantidade_cotada }}" />
                                                                     </div>
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                                                        <small>Qtde Atendida</small>
+                                                                        <small class="d-block">Qtde.Atendida</small>
                                                                         <input
                                                                             type="text"
                                                                             name="quantidade_atendida[{{ $i->id }}]"
@@ -125,7 +125,7 @@
                                                                             value="{{ $i->quantidade_atendida }}" />
                                                                     </div>
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                                                        <small>Valor Unitário</small>
+                                                                        <small class="d-block">Valor Unitário</small>
                                                                         <input
                                                                             type="text"
                                                                             name="valor_unitario[{{ $i->id }}]"
