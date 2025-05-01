@@ -9,6 +9,7 @@ use App\Fornecedor;
 use App\RequisicaoCompra;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CotacoesController extends Controller
 {
@@ -69,11 +70,19 @@ class CotacoesController extends Controller
      */
     public function storeFornecedor(Request $request, Cotacao $cotacao)
     {
+        $idFornecedor = $request->id_fornecedor;
+        $idCotacao = $cotacao->id;
         $request->validate([
-            'id_fornecedor' => 'required|unique:cotacoes_fornecedores,id_fornecedor,id_cotacao,' . $request->id_fornecedor . "," . $cotacao->id,
+            'id_fornecedor' => [
+                'required',
+                Rule::unique('cotacoes_fornecedores')->where(function ($query) use($idCotacao, $idFornecedor) {
+                    return $query->where('id_cotacao', $idCotacao)->where('id_fornecedor', $idFornecedor);
+                  })
+            ],
         ],[
             'id_fornecedor.required' => 'O campo Fornecedor é obrigatório.',
             'id_fornecedor.exists' => 'Fornecedor não encontrado.', 
+            'id_fornecedor.unique' => 'Fornecedor já informado.', 
         ]);
 
         $cotacaoFornecedor = CotacaoFornecedor::create([
