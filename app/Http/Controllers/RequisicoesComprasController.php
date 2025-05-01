@@ -165,8 +165,14 @@ class RequisicoesComprasController extends Controller
      */
     public function update(RequisicaoCompraRequest $request, RequisicaoCompra $requisicao)
     {
-        $requisicao->update($request->all());
-        $requisicao->id_usuario_alterou = auth()->user()->id;
+        $dados = $request->all();
+        $dados = array_merge(
+            $dados,
+            [
+                'id_usuario_alterou' => auth()->user()->id,
+            ]
+        );
+        $requisicao->update($dados);
         return redirect()->route('requisicoes-compras.edit', $requisicao->id)->with('success', 'Requisição de Compras atualizado com sucesso.');
     }
 
@@ -254,8 +260,10 @@ class RequisicoesComprasController extends Controller
     {
         $cotacao = Cotacao::where('id_requisicao', $requisicao->id)->first();
         if (!$cotacao) {
-            $requisicao->situacao = RequisicaoCompra::SITUACAO_EM_COTACAO;
-            $requisicao->save();
+            $dados = [
+                'situacao' => RequisicaoCompra::SITUACAO_EM_COTACAO,
+            ];
+            $requisicao->update($dados);
             $cotacao = new Cotacao();
             $cotacao->id_requisicao = $requisicao->id;
             $cotacao->id_usuario_cadastrou = auth()->user()->id;
