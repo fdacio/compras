@@ -57,7 +57,7 @@
             @foreach ($cotacoes as $cotacao)
             <tr>
                 <td>{{ $cotacao->id }}</td>
-                <td>{{ \Carbon\Carbon::parse($cotacao-->data)->format('d/m/Y') }}</td>
+                <td>{{ \Carbon\Carbon::parse($cotacao->data)->format('d/m/Y') }}</td>
                 <td>{{ $cotacao->requisicao->id }}</td>
                 <td>{{ $cotacao->requisicao->requisitante->nome }}</td>
                 <td>{{ $cotacao->requisicao->solicitante->nome }}</td>                
