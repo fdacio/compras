@@ -37,38 +37,43 @@
             </div>
 
             <!-- Fornecedor -->
-            {!! Form::open([
-                'id' => 'form_cotacao_fornecedor',
-                'method' => 'post',
-                'route' => ['cotacoes.fornecedor.store', $cotacao->id],
-            ]) !!}
-            <div class="form my-2">
-                <div class="row">
-                    <div class="col-xs-10 col-sm-10 col-md-10">
-                        <div class="form-group">
-                            <label for="fornecedor">Fornecedor</label>
-                            {!! Form::select('id_fornecedor', $fornecedores, old('id_fornecedor'), [
-                                'placeholder' => 'Selecione',
-                                'class' => 'form-control select',
-                                'id' => 'fornecedor',
-                            ]) !!}
+            <div class="card">
+                <div class="card-body">
+                    <h2>Fornecedores</h2>
+                    {!! Form::open([
+                        'id' => 'form_cotacao_fornecedor',
+                        'method' => 'post',
+                        'route' => ['cotacoes.fornecedor.store', $cotacao->id],
+                    ]) !!}
+                    <div class="form my-2">
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                <div class="form-group">
+                                    <label for="fornecedor">Fornecedor</label>
+                                    {!! Form::select('id_fornecedor', $fornecedores, old('id_fornecedor'), [
+                                        'placeholder' => 'Selecione',
+                                        'class' => 'form-control select',
+                                        'id' => 'fornecedor',
+                                    ]) !!}
 
+                                </div>
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    {!! Form::button('<i class="fa fa-plus mr-2"></i> Adicionar', [
+                                        'type' => 'submit',
+                                        'id' => 'btn-adicionar',
+                                        'class' => 'btn btn-primary form-control',
+                                    ]) !!}
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <div class="form-group">
-                            <label>&nbsp;</label>
-                            {!! Form::button('<i class="fa fa-plus mr-2"></i> Adicionar', [
-                                'type' => 'submit',
-                                'id' => 'btn-adicionar',
-                                'class' => 'btn btn-primary form-control',
-                            ]) !!}
-                        </div>
-                    </div>
+                    {!! Form::close() !!}
                 </div>
-
             </div>
-            {!! Form::close() !!}
 
             <!-- Itens-->
             @foreach ($cotacao->fornecedores as $item)
