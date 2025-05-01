@@ -55,7 +55,7 @@ class CotacoesController extends Controller
         try {
             DB::beginTransaction();
             $cotacao->requisicao->update(['situacao' => RequisicaoCompra::SITUACAO_PENDENTE]);
-            //$cotacao->fornecedores()->itens()->delete();
+            dd($cotacao->fornecedores()->itens());
             $cotacao->fornecedores()->delete();
             $cotacao->delete();
             DB::commit();
