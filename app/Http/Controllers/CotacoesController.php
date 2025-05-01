@@ -101,7 +101,7 @@ class CotacoesController extends Controller
     public function destroyFornecedor(CotacaoFornecedor $item)
     {
         $cotacao = $item->cotacao;
-        dd($item);
+        dd(request(), $item);
         $cotacao->fornecedores()->itens()->where('id_cotacao_fornecedor', $item->id)->delete();
         $item->delete();
         return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação excluído com sucesso.');
