@@ -75,7 +75,8 @@
                     <tbody>
                         @foreach ($cotacao->fornecedores as $item)
                             <tr>
-                                <td>
+                                <td class="col-xs-11 col-sm-11 col-md-11">
+
                                     <div id="accordion-itens-{{ $item->id}}" class="accordion">
                                         <a class="card-link" data-toggle="collapse" href="#itens-{{ $item->id}}">
                                             {{ $item->fornecedor->pessoa->nome_razao_social }}
@@ -89,8 +90,9 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center col-xs-1 col-sm-1 col-md-1">
                                     {!! Form::open([
                                         'method' => 'delete',
                                         'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
