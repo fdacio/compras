@@ -55,7 +55,7 @@ class CotacoesController extends Controller
         try {
             DB::beginTransaction();
             $cotacao->requisicao->update(['situacao' => RequisicaoCompra::SITUACAO_PENDENTE]);
-            CotacaoFornecedorItem::where('id_cotacao_fornecedor', $cotacao->fornecedores->pluck('id'))->delete();
+            CotacaoFornecedorItem::whereIn('id_cotacao_fornecedor', $cotacao->fornecedores->pluck('id'))->delete();
             CotacaoFornecedor::where('id_cotacao', $cotacao->id)->delete();
             Cotacao::destroy($cotacao->id);
             DB::commit();
