@@ -77,7 +77,7 @@
             <!-- Itens-->
             @foreach ($cotacao->fornecedores as $item)
                 <div class="card my-2">
-                    <div class="card-body">
+                    <div class="card-header border-0">
                         <div class="row">
                             <div class="col-xs-11 col-sm-11 col-md-11">
 
