@@ -72,7 +72,7 @@
 
             <!-- Itens-->
             @foreach ($cotacao->fornecedores as $item)
-                <div class="row">
+                <div class="row card">
                     <div class="col-xs-11 col-sm-11 col-md-11">
 
                         <div id="accordion-itens-{{ $item->id }}" class="accordion">
