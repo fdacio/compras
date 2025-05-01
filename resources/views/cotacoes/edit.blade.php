@@ -19,12 +19,13 @@
             @endif
         </div>
         <div class="card-body">
-            <div id="accordion-dadosRequisicao">
+            <div id="accordion-dadosRequisicao" class="accordion">
                 <div class="card">
                     <div class="card-header border-0">
                         Requisição Nº {{ $cotacao->requisicao->id }}
                         <a class="card-link" data-toggle="collapse" href="#dadosRequisicao">
                             <i class="fa fa-chevron-down float-right"></i>
+                            <i class="fa fa-chevron-up float-right" aria-hidden="true"></i>
                         </a>
                     </div>
                     <div id="dadosRequisicao" class="collapse hide" data-parent="#accordion-dadosRequisicao">
