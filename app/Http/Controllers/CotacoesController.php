@@ -55,9 +55,9 @@ class CotacoesController extends Controller
         try {
             DB::beginTransaction();
             $cotacao->requisicao->update(['situacao' => RequisicaoCompra::SITUACAO_PENDENTE]);
-            dd($cotacao->fornecedores()->get()->itens);
-            $cotacao->fornecedores()->delete();
-            $cotacao->delete();
+            CotacaoFornecedorItem::where('id_cotacao_fornecedor', $cotacao->fornecedores->pluck('id'))->delete();
+            CotacaoFornecedor::where('id_cotacao', $cotacao->id)->delete();
+            Cotacao::destroy($cotacao->id);
             DB::commit();
             return redirect()->route('cotacoes.index')->with('success', 'Cadastro de Cotação excluído oom sucesso.');
         } catch (Exception $e) {
