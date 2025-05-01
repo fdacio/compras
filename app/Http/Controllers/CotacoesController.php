@@ -9,6 +9,7 @@ use App\Fornecedor;
 use App\RequisicaoCompra;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class CotacoesController extends Controller
@@ -52,12 +53,15 @@ class CotacoesController extends Controller
     public function destroy(Cotacao $cotacao)
     {
         try {
+            DB::beginTransaction();
+            $cotacao->requisicao()->update(['situacao' => RequisicaoCompra::SITUACAO_PENDENTE]);
             $cotacao->fornecedores()->itens()->delete();
             $cotacao->fornecedores()->delete();
             $cotacao->delete();
-            $cotacao->requisicao()->update(['situacao' => RequisicaoCompra::SITUACAO_PENDENTE]);
+            DB::commit();
             return redirect()->route('cotacoes.index')->with('success', 'Cadastro de Cotação excluído oom sucesso.');
         } catch (Exception $e) {
+            DB::rollBack();
             return redirect()->route('cotacoes.index')->with('danger', 'Não é possível excluir Cotação. Há vínculos com outros registros.');
         }
     }
@@ -75,14 +79,14 @@ class CotacoesController extends Controller
         $request->validate([
             'id_fornecedor' => [
                 'required',
-                Rule::unique('cotacoes_fornecedores')->where(function ($query) use($idCotacao, $idFornecedor) {
+                Rule::unique('cotacoes_fornecedores')->where(function ($query) use ($idCotacao, $idFornecedor) {
                     return $query->where('id_cotacao', $idCotacao)->where('id_fornecedor', $idFornecedor);
-                  })
+                })
             ],
-        ],[
+        ], [
             'id_fornecedor.required' => 'O campo Fornecedor é obrigatório.',
-            'id_fornecedor.exists' => 'Fornecedor não encontrado.', 
-            'id_fornecedor.unique' => 'Fornecedor já informado.', 
+            'id_fornecedor.exists' => 'Fornecedor não encontrado.',
+            'id_fornecedor.unique' => 'Fornecedor já informado.',
         ]);
 
         $cotacaoFornecedor = CotacaoFornecedor::create([
@@ -109,9 +113,16 @@ class CotacoesController extends Controller
 
     public function destroyFornecedor(Request $request, Cotacao $cotacao)
     {
-        $cotacaoFornecedor = CotacaoFornecedor::find($request->id_cotacao_fornecedor);
-        $cotacaoFornecedor->itens()->where('id_cotacao_fornecedor', $cotacaoFornecedor->id)->delete();
-        $cotacaoFornecedor->delete();
-        return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação excluído com sucesso.');
+        try {
+            DB::beginTransaction();
+            $cotacaoFornecedor = CotacaoFornecedor::find($request->id_cotacao_fornecedor);
+            $cotacaoFornecedor->itens()->where('id_cotacao_fornecedor', $cotacaoFornecedor->id)->delete();
+            $cotacaoFornecedor->delete();
+            DB::commit();
+            return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação excluído com sucesso.');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('cotacoes.edit', $cotacao->id)->with('danger', 'Não é possível excluir Fornecedor da Cotação. Há vínculos com outros registros.');
+        }
     }
 }
