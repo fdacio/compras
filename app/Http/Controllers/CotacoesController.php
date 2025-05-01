@@ -83,6 +83,7 @@ class CotacoesController extends Controller
         ]);
 
         foreach ($cotacao->requisicao->itens() as $item) {
+            dd($item);
             $dados = [
                 'id_cotacao_fornecedor' =>  $cotacaoFornecedor->id,
                 'item' => $item->item,
