@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Requisição de Compra - Cotação')
+@section('title', 'Cotação - Editar')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h2>Requisição de Compra - Cotação</h2>
+            <h2>Editar Cotação</h2>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
