@@ -137,8 +137,12 @@
                     <div class="col-xs-5 col-sm-5 col-md-5">
                         <div class="form-group">
                             <label>&nbsp;</label>
-                            <button class="btn btn-success">Adicionar</button>
-                        </div>
+                            {!! Form::button('<i class="fa fa-plus mr-2"></i> Adicionar', [
+                                'type' => 'submit',
+                                'id' => 'btn-adicionar',
+                                'class' => 'btn btn-primary form-control',
+                            ]) !!}
+                            </div>
                     </div>        
                 </div>
 
