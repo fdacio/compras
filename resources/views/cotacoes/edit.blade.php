@@ -125,7 +125,11 @@
                                 'id_fornecedor',
                                 $fornecedores,
                                 old('id_fornecedor'),
-                                ['class' => 'form-control select2', 'id' => 'fornecedor'],
+                                [
+                                    'placeholder' => 'Selecione',
+                                    'class' => 'form-control select', 
+                                    'id' => 'fornecedor'
+                                ],
                             ) !!}
 
                         </div>
