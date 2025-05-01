@@ -115,7 +115,7 @@ class CotacoesController extends Controller
     {
         try {
             DB::beginTransaction();
-            CotacaoFornecedorItem::whereIn('id_cotacao_fornecedor', $cotacao->fornecedores->pluck('id'))->delete();
+            CotacaoFornecedorItem::whereIn('id_cotacao_fornecedor', $request->id_cotacao_fornecedor)->delete();
             $cotacaoFornecedor = CotacaoFornecedor::find($request->id_cotacao_fornecedor);
             $cotacaoFornecedor->delete();
             DB::commit();
