@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CentroCusto;
+use App\Cotacao;
 use App\Empresa;
 use App\Http\Requests\RequisicaoCompraItemRequest;
 use App\Http\Requests\RequisicaoCompraRequest;
@@ -251,9 +252,18 @@ class RequisicoesComprasController extends Controller
 
     public function cotar(RequisicaoCompra $requisicao)
     {
-        //$requisicao->situacao = RequisicaoCompra::SITUACAO_EM_COTACAO;
-        //$requisicao->save();
-        return redirect()->route('requisicoes-compras.index')->with('warning', '<<AQUI VAI ENVIAR PARA A TELA DE COTAÇÃO>>.');
+        $cotacao = Cotacao::where('id_requisicao', $requisicao->id)->first();
+        if (!$cotacao) {
+            $requisicao->situacao = RequisicaoCompra::SITUACAO_EM_COTACAO;
+            $requisicao->save();
+            $cotacao = new Cotacao();
+            $cotacao->id_requisicao = $requisicao->id;
+            $cotacao->id_usuario_cadastrou = auth()->user()->id;
+            $cotacao->id_usuario_alterou = auth()->user()->id;
+            $cotacao->data = Carbon::now();
+            $cotacao->save();
+        }
+        return redirect()->route('cotacoes.edit', $cotacao->id);
     }
 
     /**
