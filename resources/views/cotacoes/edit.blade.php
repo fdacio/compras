@@ -75,7 +75,26 @@
                     <tbody>
                         @foreach ($cotacao->fornecedores as $item)
                             <tr>
-                                <td>{{ $item->fornecedor->pessoa->nome_razao_social }}</td>
+                                <td>
+                                    {{ $item->fornecedor->pessoa->nome_razao_social }}
+
+                                    <div id="accordion-itens-{{ $item->id}}" class="accordion">
+                                        <div class="card-header border-0">
+                                            <a class="card-link" data-toggle="collapse"
+                                                href="#itens-{{ $item->id}}">
+                                                Itens
+                                            </a>
+                                        </div>
+                                        <div id="itens-{{ $item->id}}" class="collapse hide"
+                                            data-parent="#accordion-itens-{{ $item->id}}">
+                                            <div class="card-body">
+                                                @foreach ($item->itens as $i)   
+                                                {{$i->item - $i->descricao}}
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="text-center">
                                     {!! Form::open([
                                         'method' => 'delete',
