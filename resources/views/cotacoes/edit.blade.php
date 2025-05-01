@@ -72,61 +72,63 @@
 
             <!-- Itens-->
             @foreach ($cotacao->fornecedores as $item)
-                <div class="row card">
-                    <div class="col-xs-11 col-sm-11 col-md-11">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-xs-11 col-sm-11 col-md-11">
 
-                        <div id="accordion-itens-{{ $item->id }}" class="accordion">
-                            <a class="card-link" data-toggle="collapse" href="#itens-{{ $item->id }}">
-                                {{ $item->fornecedor->pessoa->nome_razao_social }}
-                            </a>
-                            <div id="itens-{{ $item->id }}" class="collapse hide"
-                                data-parent="#accordion-itens-{{ $item->id }}">
-                                <div class="card-body">
-                                    <table class="table table-sm table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-xs-1 col-sm-1 col-md-1">Item</th>
-                                                <th class="col-xs-7 col-sm-7 col-md-7">Descrição</th>
-                                                <th class="col-xs-2 col-sm-2 col-md-2">Unidade</th>
-                                                <th class="col-xs-2 col-sm-2 col-md-2">Qtde.Solicitada</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($item->itens as $i)
+                            <div id="accordion-itens-{{ $item->id }}" class="accordion">
+                                <a class="card-link" data-toggle="collapse" href="#itens-{{ $item->id }}">
+                                    {{ $item->fornecedor->pessoa->nome_razao_social }}
+                                </a>
+                                <div id="itens-{{ $item->id }}" class="collapse hide"
+                                    data-parent="#accordion-itens-{{ $item->id }}">
+                                    <div class="card-body">
+                                        <table class="table table-sm table-bordered">
+                                            <thead>
                                                 <tr>
-                                                    <td class="col-xs-1 col-sm-1 col-md-1">
-                                                        {{ $i->item }}
-                                                    </td>
-                                                    <td class="col-xs-7 col-sm-7 col-md-7">
-                                                        {{ $i->descricao }}
-                                                    </td>
-                                                    <td class="col-xs-2 col-sm-2 col-md-2">
-                                                        {{ $i->unidade }}
-                                                    </td>
-                                                    <td class="text-right col-xs-2 col-sm-2 col-md-2">
-                                                        {{ $i->quantidade_solicitada }}
-                                                    </td>
+                                                    <th class="col-xs-1 col-sm-1 col-md-1">Item</th>
+                                                    <th class="col-xs-7 col-sm-7 col-md-7">Descrição</th>
+                                                    <th class="col-xs-2 col-sm-2 col-md-2">Unidade</th>
+                                                    <th class="col-xs-2 col-sm-2 col-md-2">Qtde.Solicitada</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($item->itens as $i)
+                                                    <tr>
+                                                        <td class="col-xs-1 col-sm-1 col-md-1">
+                                                            {{ $i->item }}
+                                                        </td>
+                                                        <td class="col-xs-7 col-sm-7 col-md-7">
+                                                            {{ $i->descricao }}
+                                                        </td>
+                                                        <td class="col-xs-2 col-sm-2 col-md-2">
+                                                            {{ $i->unidade }}
+                                                        </td>
+                                                        <td class="text-right col-xs-2 col-sm-2 col-md-2">
+                                                            {{ $i->quantidade_solicitada }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </div>
-                    <div class="text-center col-xs-1 col-sm-1 col-md-1">
-                        {!! Form::open([
-                            'method' => 'delete',
-                            'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
-                            'style' => 'display:inline',
-                        ]) !!}
-                        {!! Form::hidden('id_cotacao_fornecedor', $item->id) !!}
-                        {!! Form::button('<i class="fa fa-trash"></i>', [
-                            'type' => 'submit',
-                            'class' => 'btn btn-danger btn-sm modal-excluir',
-                        ]) !!}
-                        {!! Form::close() !!}
+                        </div>
+                        <div class="text-center col-xs-1 col-sm-1 col-md-1">
+                            {!! Form::open([
+                                'method' => 'delete',
+                                'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
+                                'style' => 'display:inline',
+                            ]) !!}
+                            {!! Form::hidden('id_cotacao_fornecedor', $item->id) !!}
+                            {!! Form::button('<i class="fa fa-trash"></i>', [
+                                'type' => 'submit',
+                                'class' => 'btn btn-danger btn-sm modal-excluir',
+                            ]) !!}
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                 </div>
             @endforeach
