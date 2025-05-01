@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::get('requisicoes-compras/cotadas/autorizacoes', 'RequisicoesComprasController@cotadasAutorizacoes')->name('requisicoes-compras.cotadas.autorizacoes');
    
     Route::get('cotacoes', 'CotacoesController@index')->name('cotacoes.index');
+    Route::get('cotacoes/show/cotacao', 'CotacoesController@show')->name('cotacoes.show');
     Route::get('cotacoes/{cotacao}/edit', 'CotacoesController@edit', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.edit');
 
     Route::resource('autorizacoes-pagamentos', 'AutorizacoesPagamentosController', ['parameters' => ['autorizacoes-pagamentos' => 'autorizacao']]);
