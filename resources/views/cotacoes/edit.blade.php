@@ -149,7 +149,7 @@
             </div>
             {!! Form::close() !!}
             <div class="table-responsive">
-                <table class="table-sm table-striped table-bordered table-hover" id="tabela_cotacao_fornecedor">
+                <table class="table table-sm table-striped table-bordered table-hover" id="tabela_cotacao_fornecedor">
                     <tbody>
                         @foreach ($cotacao->fornecedores as $item)
                             <tr>
