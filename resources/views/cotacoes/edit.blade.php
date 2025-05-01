@@ -114,8 +114,7 @@
             {!! Form::open([
                 'id' => 'form_cotacao_fornecedor',
                 'method' => 'post',
-                'route' => 'cotacoes.fornecedor.store',
-                $cotacao->id,
+                'route' => ['cotacoes.fornecedor.store', $cotacao->id]
             ]) !!}
             <div class="card-body">
                 <div class="row">
