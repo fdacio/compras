@@ -35,28 +35,23 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Fornecedor -->
             {!! Form::open([
                 'id' => 'form_cotacao_fornecedor',
                 'method' => 'post',
-                'route' => ['cotacoes.fornecedor.store', $cotacao->id]
+                'route' => ['cotacoes.fornecedor.store', $cotacao->id],
             ]) !!}
             <div class="form my-2">
                 <div class="row">
                     <div class="col-xs-10 col-sm-10 col-md-10">
                         <div class="form-group">
                             <label for="fornecedor">Fornecedor</label>
-                            {!! Form::select(
-                                'id_fornecedor',
-                                $fornecedores,
-                                old('id_fornecedor'),
-                                [
-                                    'placeholder' => 'Selecione',
-                                    'class' => 'form-control select', 
-                                    'id' => 'fornecedor'
-                                ],
-                            ) !!}
+                            {!! Form::select('id_fornecedor', $fornecedores, old('id_fornecedor'), [
+                                'placeholder' => 'Selecione',
+                                'class' => 'form-control select',
+                                'id' => 'fornecedor',
+                            ]) !!}
 
                         </div>
                     </div>
@@ -68,84 +63,78 @@
                                 'id' => 'btn-adicionar',
                                 'class' => 'btn btn-primary form-control',
                             ]) !!}
-                            </div>
-                    </div>        
+                        </div>
+                    </div>
                 </div>
 
             </div>
             {!! Form::close() !!}
 
             <!-- Itens-->
-            <div class="table-responsive">
-                <table class="table table-sm table-striped table-bordered table-hover" id="tabela_cotacao_fornecedor">
-                    <tbody>
-                        @foreach ($cotacao->fornecedores as $item)
-                            <tr>
-                                <td class="col-xs-11 col-sm-11 col-md-11">
+            @foreach ($cotacao->fornecedores as $item)
+                <div class="row">
+                    <div class="col-xs-11 col-sm-11 col-md-11">
 
-                                    <div id="accordion-itens-{{ $item->id}}" class="accordion">
-                                        <a class="card-link" data-toggle="collapse" href="#itens-{{ $item->id}}">
-                                            {{ $item->fornecedor->pessoa->nome_razao_social }}
-                                        </a>
-                                        <div id="itens-{{ $item->id}}" class="collapse hide"
-                                            data-parent="#accordion-itens-{{ $item->id}}">
-                                            <div class="card-body">
-                                                <table class="table table-sm table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="col-xs-1 col-sm-1 col-md-1">Item</th>
-                                                            <th class="col-xs-7 col-sm-7 col-md-7">Descrição</th>
-                                                            <th class="col-xs-2 col-sm-2 col-md-2">Unidade</th>
-                                                            <th class="col-xs-2 col-sm-2 col-md-2">Qtde.Solicitada</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($item->itens as $i)
-                                                            <tr>
-                                                                <td class="col-xs-1 col-sm-1 col-md-1">
-                                                                    {{$i->item}}
-                                                                </td>
-                                                                <td class="col-xs-7 col-sm-7 col-md-7">
-                                                                    {{$i->descricao}}
-                                                                </td>
-                                                                <td class="col-xs-2 col-sm-2 col-md-2">
-                                                                    {{$i->unidade}}
-                                                                </td>
-                                                                <td class="text-right col-xs-2 col-sm-2 col-md-2">
-                                                                    {{$i->quantidade_solicitada}}
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>     
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div id="accordion-itens-{{ $item->id }}" class="accordion">
+                            <a class="card-link" data-toggle="collapse" href="#itens-{{ $item->id }}">
+                                {{ $item->fornecedor->pessoa->nome_razao_social }}
+                            </a>
+                            <div id="itens-{{ $item->id }}" class="collapse hide"
+                                data-parent="#accordion-itens-{{ $item->id }}">
+                                <div class="card-body">
+                                    <table class="table table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-1 col-sm-1 col-md-1">Item</th>
+                                                <th class="col-xs-7 col-sm-7 col-md-7">Descrição</th>
+                                                <th class="col-xs-2 col-sm-2 col-md-2">Unidade</th>
+                                                <th class="col-xs-2 col-sm-2 col-md-2">Qtde.Solicitada</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($item->itens as $i)
+                                                <tr>
+                                                    <td class="col-xs-1 col-sm-1 col-md-1">
+                                                        {{ $i->item }}
+                                                    </td>
+                                                    <td class="col-xs-7 col-sm-7 col-md-7">
+                                                        {{ $i->descricao }}
+                                                    </td>
+                                                    <td class="col-xs-2 col-sm-2 col-md-2">
+                                                        {{ $i->unidade }}
+                                                    </td>
+                                                    <td class="text-right col-xs-2 col-sm-2 col-md-2">
+                                                        {{ $i->quantidade_solicitada }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
-                                </td>
-                                <td class="text-center col-xs-1 col-sm-1 col-md-1">
-                                    {!! Form::open([
-                                        'method' => 'delete',
-                                        'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
-                                        'style' => 'display:inline'
-                                    ]) !!}
-                                    {!! Form::hidden('id_cotacao_fornecedor', $item->id) !!}
-                                    {!! Form::button('<i class="fa fa-trash"></i>', [
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-danger btn-sm modal-excluir',
-                                    ]) !!}
-                                    {!! Form::close() !!}
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>    
+                    </div>
+                    <div class="text-center col-xs-1 col-sm-1 col-md-1">
+                        {!! Form::open([
+                            'method' => 'delete',
+                            'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
+                            'style' => 'display:inline',
+                        ]) !!}
+                        {!! Form::hidden('id_cotacao_fornecedor', $item->id) !!}
+                        {!! Form::button('<i class="fa fa-trash"></i>', [
+                            'type' => 'submit',
+                            'class' => 'btn btn-danger btn-sm modal-excluir',
+                        ]) !!}
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection
-@if($cotacao->fornecedores->count() > 0)
-@section('scripts')
-{!! Html::script('js/modal-excluir.js') !!}
-@endsection
+@if ($cotacao->fornecedores->count() > 0)
+    @section('scripts')
+        {!! Html::script('js/modal-excluir.js') !!}
+    @endsection
 @endif
