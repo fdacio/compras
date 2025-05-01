@@ -26,7 +26,7 @@
                             Requisição Nº {{ $cotacao->requisicao->id }}
                         </a>
                     </div>
-                    <div id="dadosRequisicao" class="collapse show" data-parent="#accordion-dadosRequisicao">
+                    <div id="dadosRequisicao" class="collapse hide" data-parent="#accordion-dadosRequisicao">
                         <div class="card-body">
                             <table class="table-sm">
                                 <tr>
