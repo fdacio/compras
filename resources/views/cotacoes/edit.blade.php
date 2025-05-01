@@ -37,9 +37,8 @@
             </div>
 
             <!-- Fornecedor -->
-            <div class="card">
+            <div class="card my-2">
                 <div class="card-body">
-                    <h2>Fornecedores</h2>
                     {!! Form::open([
                         'id' => 'form_cotacao_fornecedor',
                         'method' => 'post',
