@@ -209,9 +209,9 @@ footer {
 .card-header .fa-chevron-up{
     display: none;
 }
-.card-header.collapsed .fa-chevron-up{
+.card-header.collapse.show .fa-chevron-up{
     display: inline-block;
 }
-.card-header.collapsed .fa-chevron-down{
+.card-header.collapse.hide .fa-chevron-down{
     display: none;
 }
