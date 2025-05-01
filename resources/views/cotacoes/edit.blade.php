@@ -153,9 +153,7 @@
                     <thead>
                         <tr>
                             <th>Fornecedor</th>
-                            <th>Data</th>
-                            <th>Valor Total</th>
-                            <th>Ações</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
