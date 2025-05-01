@@ -22,8 +22,9 @@
             <div id="accordion-dadosRequisicao">
                 <div class="card">
                     <div class="card-header border-0">
+                        Requisição Nº {{ $cotacao->requisicao->id }}
                         <a class="card-link" data-toggle="collapse" href="#dadosRequisicao">
-                            Requisição Nº {{ $cotacao->requisicao->id }}
+                            <i class="fa fa-chevron-down float-right"></i>
                         </a>
                     </div>
                     <div id="dadosRequisicao" class="collapse hide" data-parent="#accordion-dadosRequisicao">
