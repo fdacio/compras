@@ -89,7 +89,7 @@
                                             data-parent="#accordion-itens-{{ $item->id}}">
                                             <div class="card-body">
                                                 @foreach ($item->itens as $i)   
-                                                {{$i->item - $i->descricao}}
+                                                {{$i->item .'-'. $i->descricao}}
                                                 @endforeach
                                             </div>
                                         </div>
