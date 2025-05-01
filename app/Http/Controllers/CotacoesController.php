@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Cotacao;
+use App\CotacaoFornecedor;
+use App\Fornecedor;
 use App\RequisicaoCompra;
 use Exception;
 use Illuminate\Http\Request;
@@ -23,10 +25,41 @@ class CotacoesController extends Controller
         return view('cotacoes.index', compact('cotacoes'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
     public function edit(Cotacao $cotacao)
     {
-        // Aqui você pode adicionar a lógica para editar uma cotação específica
-        return view('cotacoes.edit', compact('cotacao'));
+        $fornecedores = Fornecedor::get()->map(function ($fornecedor) {
+            return ['id' => $fornecedor->id, 'nome_razao_social' => $fornecedor->pessoa->nome_razao_social];
+        })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
+
+        return view('cotacoes.edit', compact('cotacao', 'fornecedores'));
+    }
+
+    /**
+     * Store a fornecedor newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeFornecedor(Request $request, Cotacao $cotacao)
+    {
+        $request->validate([
+            'id_fornecedor' => 'required|exists:fornecedores,id',
+        ]);
+
+        CotacaoFornecedor::create([
+            'id_cotacao' => $cotacao->id,
+            'id_fornecedor' => $request->id_fornecedor,
+            'id_usuario_cadastrou' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação cadastrado com sucesso.');
     }
 
     /**

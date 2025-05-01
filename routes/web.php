@@ -67,9 +67,11 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::get('requisicoes-compras/cotadas/autorizacoes', 'RequisicoesComprasController@cotadasAutorizacoes')->name('requisicoes-compras.cotadas.autorizacoes');
    
     Route::get('cotacoes', 'CotacoesController@index')->name('cotacoes.index');
-    Route::get('cotacoes/{cotacao}', 'CotacoesController@show')->name('cotacoes.show');
-    Route::delete('cotacoes/{cotacao}', 'CotacoesController@destroy')->name('cotacoes.destroy');
+    Route::get('cotacoes/{cotacao}', 'CotacoesController@show', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.show');
+    Route::delete('cotacoes/{cotacao}', 'CotacoesController@destroy', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.destroy');
     Route::get('cotacoes/{cotacao}/edit', 'CotacoesController@edit', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.edit');
+    Route::post('cotacoes/{cotacao}/fornecedor', 'CotacoesController@storeFornecedor', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.fornecedor.store');   
+    Route::delete('cotacoes/fornecedor/{cotacaoFornecedor}', 'CotacoesController@destroyFornecedor', ['parameters' => ['cotacoes_fornecedores' => 'cotacaoFornecedor']])->name('cotacoes.fornecedor.destroy');   
 
     Route::resource('autorizacoes-pagamentos', 'AutorizacoesPagamentosController', ['parameters' => ['autorizacoes-pagamentos' => 'autorizacao']]);
     Route::get('autorizacoes-pagamentos/item/create/{autorizacao}', 'AutorizacoesPagamentosController@itemCreate')->name('autorizacoes-pagamentos.item.create');

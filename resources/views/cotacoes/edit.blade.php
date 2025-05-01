@@ -20,7 +20,7 @@
         </div>
         <div class="card-body">
             <div id="accordion-dadosRequisicao">
-                <div class="card">
+                <div class="card border-0">
                     <div class="card-header">
                         <a class="card-link" data-toggle="collapse" href="#dadosRequisicao">
                             Requisição Nº {{ $cotacao->requisicao->id }}
