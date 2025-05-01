@@ -61,6 +61,7 @@ class CotacoesController extends Controller
             DB::commit();
             return redirect()->route('cotacoes.index')->with('success', 'Cadastro de Cotação excluído oom sucesso.');
         } catch (Exception $e) {
+            dd($e);
             DB::rollBack();
             return redirect()->route('cotacoes.index')->with('danger', 'Não é possível excluir Cotação. Há vínculos com outros registros.');
         }
