@@ -63,7 +63,7 @@
                                     {!! Form::button('<i class="fa fa-plus mr-2"></i> Adicionar', [
                                         'type' => 'submit',
                                         'id' => 'btn-adicionar',
-                                        'class' => 'btn btn-primary form-control',
+                                        'class' => 'btn btn-sm btn-primary form-control',
                                     ]) !!}
                                 </div>
                             </div>
