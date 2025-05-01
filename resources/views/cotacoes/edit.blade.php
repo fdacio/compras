@@ -104,7 +104,36 @@
                                                                 {{ $i->item }}
                                                             </td>
                                                             <td class="col-xs-7 col-sm-7 col-md-7">
-                                                                {{ $i->descricao }}
+                                                                <div>{{ $i->descricao }}</div>
+                                                                <div class="row">
+                                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                                        <strong>Qtde Cotada:</strong>
+                                                                        <input
+                                                                            type="number"
+                                                                            name="quantidade_cotada[{{ $i->id }}]"
+                                                                            id="quantidade_cotada[{{ $i->id }}]"
+                                                                            class="form-control text-right"
+                                                                            value="{{ $i->quantidade_cotada }}" />
+                                                                    </div>
+                                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                                        <strong>Qtde Atendida:</strong>
+                                                                        <input
+                                                                            type="number"
+                                                                            name="quantidade_cotada[{{ $i->id }}]"
+                                                                            id="quantidade_cotada[{{ $i->id }}]"
+                                                                            class="form-control text-right"
+                                                                            value="{{ $i->quantidade_atendida }}" />
+                                                                    </div>
+                                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                                        <strong>Valor Unitário:</strong>
+                                                                        <input
+                                                                            type="number"
+                                                                            name="quantidade_cotada[{{ $i->id }}]"
+                                                                            id="quantidade_cotada[{{ $i->id }}]"
+                                                                            class="form-control text-right"
+                                                                            value="{{ $i->valor_unitario }}" />
+                                                                    </div>
+                                                                </div>
                                                             </td>
                                                             <td class="col-xs-2 col-sm-2 col-md-2">
                                                                 {{ $i->unidade }}
