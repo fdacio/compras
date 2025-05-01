@@ -136,7 +136,7 @@
                     </div>
                     <div class="col-xs-5 col-sm-5 col-md-5">
                         <div class="form-group">
-                            <label></label>
+                            <label>&nbsp;</label>
                             <button class="btn btn-success">Adicionar</button>
                         </div>
                     </div>        
