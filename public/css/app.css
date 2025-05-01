@@ -209,9 +209,9 @@ footer {
 .accordion .fa-chevron-up{
     display: none;
 }
-.accordion.collapse.show .fa-chevron-up{
+.accordion.show .fa-chevron-up{
     display: inline-block;
 }
-.accordion.collapse.hide .fa-chevron-down{
+.accordion.hide .fa-chevron-down{
     display: none;
 }
