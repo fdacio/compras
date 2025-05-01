@@ -101,7 +101,7 @@
                                 </tr>
                                 <tr>
                                     <th>Usuário que Alterou:</th>
-                                    <td>{{ $cotacao->requisicao->usuarioAlterou ? $requisicao->usuarioAlterou->name : '' }}</td>
+                                    <td>{{ $cotacao->requisicao->usuarioAlterou ? $cotacao->requisicao->usuarioAlterou->name : '' }}</td>
                                 <tr>
                                     <th>Alterado:</th>
                                     <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->updated_at)->format('d/m/Y H:i:s') }}</td>
