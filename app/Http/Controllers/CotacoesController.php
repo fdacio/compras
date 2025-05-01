@@ -82,7 +82,7 @@ class CotacoesController extends Controller
             'id_usuario_cadastrou' => auth()->user()->id,
         ]);
 
-        foreach ($cotacao->requisicao->itens() as $item) {
+        foreach ($cotacao->requisicao->itens as $item) {
             dd($item);
             $dados = [
                 'id_cotacao_fornecedor' =>  $cotacaoFornecedor->id,
