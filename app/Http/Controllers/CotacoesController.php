@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cotacao;
 use App\CotacaoFornecedor;
+use App\CotacaoFornecedorItem;
 use App\Fornecedor;
 use App\RequisicaoCompra;
 use Exception;
@@ -42,30 +43,6 @@ class CotacoesController extends Controller
     }
 
     /**
-     * Store a fornecedor newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeFornecedor(Request $request, Cotacao $cotacao)
-    {
-        $request->validate([
-            'id_fornecedor' => 'required|unique:cotacoes_fornecedores,id_fornecedor',
-        ],[
-            'id_fornecedor.required' => 'O campo Fornecedor é obrigatório.',
-            'id_fornecedor.exists' => 'Fornecedor não encontrado.', 
-        ]);
-
-        CotacaoFornecedor::create([
-            'id_cotacao' => $cotacao->id,
-            'id_fornecedor' => $request->id_fornecedor,
-            'id_usuario_cadastrou' => auth()->user()->id,
-        ]);
-
-        return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação cadastrado com sucesso.');
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -82,5 +59,50 @@ class CotacoesController extends Controller
         } catch (Exception $e) {
             return redirect()->route('cotacoes.index')->with('danger', 'Não é possível excluir Cotação. Há vínculos com outros registros.');
         }
+    }
+
+    /**
+     * Store a fornecedor newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeFornecedor(Request $request, Cotacao $cotacao)
+    {
+        $request->validate([
+            'id_fornecedor' => 'required|unique:cotacoes_fornecedores,id_fornecedor',
+        ],[
+            'id_fornecedor.required' => 'O campo Fornecedor é obrigatório.',
+            'id_fornecedor.exists' => 'Fornecedor não encontrado.', 
+        ]);
+
+        $cotacaoFornecedor = CotacaoFornecedor::create([
+            'id_cotacao' => $cotacao->id,
+            'id_fornecedor' => $request->id_fornecedor,
+            'id_usuario_cadastrou' => auth()->user()->id,
+        ]);
+
+        foreach ($cotacao->requisicao()->itens() as $item) {
+            $dados = [
+                'id_cotacao_fornecedor' =>  $cotacaoFornecedor->id,
+                'item' => $item->item,
+                'descricao' => $item->descricao,
+                'unidade' => $item->unidade,
+                'quantidade_solicitada' => $item->quantidade_solicitada,
+                'quantidade_cotada' => $item->quantidade_solicitada,
+                'quantidade_atendida' => $item->quantidade_solicitada,
+            ];
+            CotacaoFornecedorItem::create($dados);
+        }
+
+        return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação cadastrado com sucesso.');
+    }
+
+    public function destroyFornecedor(Request $request, CotacaoFornecedor $item)
+    {
+        $cotacao = $item->cotacao;
+        $cotacao->fornecedores()->itens()->where('id_cotacao_fornecedor', $item->id)->delete();
+        $item->delete();
+        return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação excluído com sucesso.');
     }
 }
