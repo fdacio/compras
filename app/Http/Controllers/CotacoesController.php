@@ -98,10 +98,9 @@ class CotacoesController extends Controller
         return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação cadastrado com sucesso.');
     }
 
-    public function destroyFornecedor(CotacaoFornecedor $item)
+    public function destroyFornecedor(Request $request, Cotacao $cotacao)
     {
-        $cotacao = $item->cotacao;
-        dd(request(), $item);
+        dd($request, $cotacao);
         $cotacao->fornecedores()->itens()->where('id_cotacao_fornecedor', $item->id)->delete();
         $item->delete();
         return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação excluído com sucesso.');

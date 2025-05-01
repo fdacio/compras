@@ -157,9 +157,10 @@
                                 <td class="text-center">
                                     {!! Form::open([
                                         'method' => 'delete',
-                                        'route' => ['cotacoes.fornecedor.destroy', $item->id],
+                                        'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
                                         'style' => 'display:inline'
                                     ]) !!}
+                                    {!! Form::hidden('id_cotacao_fornecedor', $item->id) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', [
                                         'type' => 'submit',
                                         'class' => 'btn btn-danger btn-sm',
