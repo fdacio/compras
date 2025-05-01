@@ -116,7 +116,7 @@
                 'method' => 'post',
                 'route' => ['cotacoes.fornecedor.store', $cotacao->id]
             ]) !!}
-            <div class="card-body">
+            <div class="form">
                 <div class="row">
                     <div class="col-xs-7 col-sm-7 col-md-7">
                         <div class="form-group">
