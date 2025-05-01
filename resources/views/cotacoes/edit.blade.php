@@ -101,7 +101,7 @@
                                     {!! Form::hidden('id_cotacao_fornecedor', $item->id) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', [
                                         'type' => 'submit',
-                                        'class' => 'btn btn-danger btn-sm',
+                                        'class' => 'btn btn-danger btn-sm modal-excluir',
                                     ]) !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -109,7 +109,12 @@
                         @endforeach
                     </tbody>
                 </table>
-
+            </div>    
         </div>
     </div>
 @endsection
+@if($cotacao->fornecedores->total() > 0)
+@section('scripts')
+{!! Html::script('js/modal-excluir.js') !!}
+@endsection
+@endif
