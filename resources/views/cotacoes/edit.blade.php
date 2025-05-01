@@ -9,7 +9,7 @@
                 <div class="alert alert-danger alert-dismissable ''">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
                             aria-hidden="true">&times;</span></button>
-                    <strong>Ops!</strong> Verifique os erros.<br><br>
+                    <small>Ops!</small> Verifique os erros.<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -107,30 +107,30 @@
                                                                 <div>{{ $i->descricao }}</div>
                                                                 <div class="row">
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                                                        <strong>Qtde Cotada:</strong>
+                                                                        <small>Qtde Cotada</small>
                                                                         <input
-                                                                            type="number"
+                                                                            type="text"
                                                                             name="quantidade_cotada[{{ $i->id }}]"
                                                                             id="quantidade_cotada[{{ $i->id }}]"
-                                                                            class="form-control text-right"
+                                                                            class="form-control text-right quantidade"
                                                                             value="{{ $i->quantidade_cotada }}" />
                                                                     </div>
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                                                        <strong>Qtde Atendida:</strong>
+                                                                        <small>Qtde Atendida</small>
                                                                         <input
-                                                                            type="number"
-                                                                            name="quantidade_cotada[{{ $i->id }}]"
-                                                                            id="quantidade_cotada[{{ $i->id }}]"
-                                                                            class="form-control text-right"
+                                                                            type="text"
+                                                                            name="quantidade_atendida[{{ $i->id }}]"
+                                                                            id="quantidade_atendida[{{ $i->id }}]"
+                                                                            class="form-control text-right quantidade"
                                                                             value="{{ $i->quantidade_atendida }}" />
                                                                     </div>
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
-                                                                        <strong>Valor Unitário:</strong>
+                                                                        <small>Valor Unitário</small>
                                                                         <input
-                                                                            type="number"
-                                                                            name="quantidade_cotada[{{ $i->id }}]"
-                                                                            id="quantidade_cotada[{{ $i->id }}]"
-                                                                            class="form-control text-right"
+                                                                            type="text"
+                                                                            name="valor_unitario[{{ $i->id }}]"
+                                                                            id="valor_unitario[{{ $i->id }}]"
+                                                                            class="form-control text-right real"
                                                                             value="{{ $i->valor_unitario }}" />
                                                                     </div>
                                                                 </div>
