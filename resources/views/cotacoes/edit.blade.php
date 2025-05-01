@@ -47,64 +47,64 @@
                                 </tr>
                                 <tr>
                                     <th class="col-md-3">Centro de Custo:</th>
-                                    <td>{{ $requisicao->requisitante->nome }}</td>
+                                    <td>{{ $cotacao->requisicao->requisitante->nome }}</td>
                                 </tr>
                                 <tr>
                                     <th class="col-md-3">Solicitante:</th>
-                                    <td>{{ $requisicao->solicitante->nome }}</td>
+                                    <td>{{ $cotacao->requisicao->solicitante->nome }}</td>
                                 </tr>
                                 <tr>
                                     <th class="col-md-3">Veículo:</th>
-                                    <td>{{ $requisicao->veiculo ? $requisicao->veiculo->placa . ' - ' . $requisicao->veiculo->marca . ' - ' . $requisicao->veiculo->modelo : '' }}
+                                    <td>{{ $cotacao->requisicao->veiculo ? $cotacao->requisicao->veiculo->placa . ' - ' . $cotacao->requisicao->veiculo->marca . ' - ' . $cotacao->requisicao->veiculo->modelo : '' }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="col-md-3">Local de entrega:</th>
                                     <td>
-                                        <p style="white-space: pre-wrap">{{ $requisicao->local_entrega }}</p>
+                                        <p style="white-space: pre-wrap">{{ $cotacao->requisicao->local_entrega }}</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="col-md-3">Situação:</th>
-                                    <td>{{ $requisicao->situacao_nome }}</td>
+                                    <td>{{ $cotacao->requisicao->situacao_nome }}</td>
                                 </tr>
-                                @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
+                                @if ($cotacao->requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
                                     <tr>
                                         <th class="col-md-3">Usuário Autorizador:</th>
-                                        <td>{{ $requisicao->usuarioAutorizacao ? $requisicao->usuarioAutorizacao->name : 'Usuário não cadastrado' }}
+                                        <td>{{ $cotacao->requisicao->usuarioAutorizacao ? $requisicao->usuarioAutorizacao->name : 'Usuário não cadastrado' }}
                                         </td>
                                     </tr>
                                     <tr>
                                         <th class="col-md-3">Data da Autorização:</th>
-                                        <td>{{ $requisicao->data_autorizacao ? \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') : '' }}
+                                        <td>{{ $cotacao->requisicao->data_autorizacao ? \Carbon\Carbon::parse($requisicao->data_autorizacao)->format('d/m/Y') : '' }}
                                         </td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <th class="col-md-3">Observação:</th>
                                     <td>
-                                        <p style="white-space: pre-wrap">{{ $requisicao->obsrvacao }}</p>
+                                        <p style="white-space: pre-wrap">{{ $cotacao->requisicao->obsrvacao }}</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th class="col-md-3">Urgente:</th>
-                                    <td>{{ $requisicao->urgente ? 'Sim' : 'Não' }}</td>
+                                    <td>{{ $cotacao->requisicao->urgente ? 'Sim' : 'Não' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Usuário que Cadastrou:</th>
-                                    <td>{{ $requisicao->usuariosCadastrou ? $requisicao->usuariosCadastrou->name : '' }}
+                                    <td>{{ $cotacao->requisicao->usuariosCadastrou ? $requisicao->usuariosCadastrou->name : '' }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Criado:</th>
-                                    <td>{{ \Carbon\Carbon::parse($requisicao->created_at)->format('d/m/Y H:i:s') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->created_at)->format('d/m/Y H:i:s') }}</td>
                                 </tr>
                                 <tr>
                                     <th>Usuário que Alterou:</th>
-                                    <td>{{ $requisicao->usuarioAlterou ? $requisicao->usuarioAlterou->name : '' }}</td>
+                                    <td>{{ $cotacao->requisicao->usuarioAlterou ? $requisicao->usuarioAlterou->name : '' }}</td>
                                 <tr>
                                     <th>Alterado:</th>
-                                    <td>{{ \Carbon\Carbon::parse($requisicao->updated_at)->format('d/m/Y H:i:s') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->updated_at)->format('d/m/Y H:i:s') }}</td>
                                 </tr>
 
                             </table>
