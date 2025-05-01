@@ -93,14 +93,17 @@
                                 </tr>
                                 <tr>
                                     <th>Criado:</th>
-                                    <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->created_at)->format('d/m/Y H:i:s') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->created_at)->format('d/m/Y H:i:s') }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Usuário que Alterou:</th>
-                                    <td>{{ $cotacao->requisicao->usuarioAlterou ? $cotacao->requisicao->usuarioAlterou->name : '' }}</td>
+                                    <td>{{ $cotacao->requisicao->usuarioAlterou ? $cotacao->requisicao->usuarioAlterou->name : '' }}
+                                    </td>
                                 <tr>
                                     <th>Alterado:</th>
-                                    <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->updated_at)->format('d/m/Y H:i:s') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->updated_at)->format('d/m/Y H:i:s') }}
+                                    </td>
                                 </tr>
 
                             </table>
@@ -108,6 +111,31 @@
                     </div>
                 </div>
             </div>
+            {!! Form::open([
+                'id' => 'form_cotacao_fornecedor',
+                'method' => 'post',
+                'route' => 'cotacao.fornecedor.store',
+                $cotacao->id,
+            ]) !!}
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-7 col-sm-7 col-md-7">
+                        <div class="form-group">
+                            <label for="fornecedor">Fornecedor</label>
+                            {!! Form::select(
+                                'id_fornecedor',
+                                $fornecedores,
+                                old('id_fornecedor'),
+                                ['class' => 'form-control select2', 'id' => 'fornecedor'],
+                            ) !!}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {!! Form::close() !!}
+
         </div>
     </div>
 @endsection
