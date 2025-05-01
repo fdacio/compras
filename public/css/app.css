@@ -206,3 +206,12 @@ footer {
     line-height: 1.428571429;
     border-radius: 20px;
 }
+.card-header .fa-chevron-up{
+    display: none;
+}
+.card-header.collapsed .fa-chevron-up{
+    display: inline-block;
+}
+.card-header.collapsed .fa-chevron-down{
+    display: none;
+}
