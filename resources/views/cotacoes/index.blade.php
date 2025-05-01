@@ -33,8 +33,6 @@
             </div>
         </form>
     </div>
-    <div class="card-footer">
-    </div>
 </div>
 
 <section class="table-responsive">
