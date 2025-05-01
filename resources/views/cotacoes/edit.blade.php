@@ -4,7 +4,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h2>Editar Cotação</h2>
+            <h2>Editar Cotação Nº {{ $cotacao->id }}</h2>
             @if (count($errors) > 0)
                 <div class="alert alert-danger alert-dismissable ''">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
