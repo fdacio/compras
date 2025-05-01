@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
    
     Route::get('cotacoes', 'CotacoesController@index')->name('cotacoes.index');
     Route::get('cotacoes/{cotacao}', 'CotacoesController@show')->name('cotacoes.show');
-    Route::delete('cotacoes/{cotacao}', 'CotacoesController@show')->name('cotacoes.destroy');
+    Route::delete('cotacoes/{cotacao}', 'CotacoesController@destroy')->name('cotacoes.destroy');
     Route::get('cotacoes/{cotacao}/edit', 'CotacoesController@edit', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.edit');
 
     Route::resource('autorizacoes-pagamentos', 'AutorizacoesPagamentosController', ['parameters' => ['autorizacoes-pagamentos' => 'autorizacao']]);

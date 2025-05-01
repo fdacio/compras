@@ -20,6 +20,11 @@ class Cotacao extends Model
         return $this->belongsTo('App\RequisicaoCompra', 'id_requisicao');
     }
 
+    public function fornecedores()
+    {
+        return $this->hasMany('App\CotacaoFornecedor', 'id_cotacao');
+    }
+
     public function usuarioCadastrou()
     {
         return $this->belongsTo('App\User', 'id_usuario_cadastrou');
