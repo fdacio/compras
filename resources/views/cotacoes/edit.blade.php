@@ -148,6 +148,39 @@
 
             </div>
             {!! Form::close() !!}
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="tabela_cotacao_fornecedor">
+                    <thead>
+                        <tr>
+                            <th>Fornecedor</th>
+                            <th>Data</th>
+                            <th>Valor Total</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($cotacao->fornecedores as $fornecedor)
+                            <tr>
+                                <td>{{ $fornecedor->pessoa->nome_razao_social }}</td>
+                                <td>{{ \Carbon\Carbon::parse($fornecedor->pivot->data)->format('d/m/Y') }}</td>
+                                <td>{{ number_format($fornecedor->pivot->valor_total, 2, ',', '.') }}</td>
+                                <td class="text-center">
+                                    {!! Form::open([
+                                        'method' => 'delete',
+                                        'route' => ['cotacoes.fornecedor.destroy', $cotacao->id, $fornecedor->id],
+                                        'style' => 'display:inline'
+                                    ]) !!}
+                                    {!! Form::button('<i class="fa fa-trash"></i>', [
+                                        'type' => 'submit',
+                                        'class' => 'btn btn-danger btn-sm',
+                                        'onclick' => "return confirm('Você tem certeza que deseja excluir este fornecedor?')"
+                                    ]) !!}
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
         </div>
     </div>

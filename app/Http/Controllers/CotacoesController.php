@@ -50,7 +50,10 @@ class CotacoesController extends Controller
     public function storeFornecedor(Request $request, Cotacao $cotacao)
     {
         $request->validate([
-            'id_fornecedor' => 'required|exists:fornecedores,id',
+            'id_fornecedor' => 'required|unique:cotacoes_fornecedores,id_fornecedor',
+        ],[
+            'id_fornecedor.required' => 'O campo Fornecedor é obrigatório.',
+            'id_fornecedor.exists' => 'Fornecedor não encontrado.', 
         ]);
 
         CotacaoFornecedor::create([
