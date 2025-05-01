@@ -25,12 +25,12 @@ class RequisicaoCompra extends Model
         'id_usuario_alterou',
 
     ];
-    const SITUACAO_PENDENTE = 'PENDENTE';
-    const SITUACAO_AUTORIZADO = 'AUTORIZADO';
-    const SITUACAO_CANCELADO = 'CANCELADO';  
-    const SITUACAO_EM_COTACAO = 'EM_COTACAO';
-    const SITUACAO_COTADA = 'COTADA';   
-    const SITUACAO_AGUARDANDO_AUTORIZACAO = 'AGUARDANDO_AUTORIZACAO';   
+    const SITUACAO_PENDENTE = "PENDENTE";
+    const SITUACAO_AUTORIZADO = "AUTORIZADO";
+    const SITUACAO_CANCELADO = "CANCELADO";  
+    const SITUACAO_EM_COTACAO = "EM_COTACAO";
+    const SITUACAO_COTADA = "COTADA";   
+    const SITUACAO_AGUARDANDO_AUTORIZACAO = "AGUARDANDO_AUTORIZACAO";   
 
     const SITUACOES = [
         [
