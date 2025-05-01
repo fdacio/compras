@@ -29,6 +29,19 @@ class CotacoesController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  CentroCusto $centroCusto
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Cotacao $cotacao)
+    {
+        return redirect()->route('cotacoes.index');
+        //return view('cotacoes.show', compact('cotacao'));
+    }
+
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
