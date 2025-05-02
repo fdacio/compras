@@ -176,15 +176,15 @@
         </div>
         <div class="card-footer">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     {!! Form::open([
                         'method' => 'put',
                         'route' => ['cotacoes.update', $cotacao->id],
                     ]) !!}
-                    {!! Form::button('<i class="fa fa-save mr-2"></i> Salvar', [
-                        'type' => 'submit',
-                        'class' => 'btn btn-primary btn-sm',
-                    ]) !!}
+
+                    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+                    <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Cancelar</a>
+
                     {!! Form::close() !!}
                 </div>
             </div>
