@@ -174,6 +174,21 @@
                 </div>
             @endforeach
         </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                    {!! Form::open([
+                        'method' => 'put',
+                        'route' => ['cotacoes.update', $cotacao->id],
+                    ]) !!}
+                    {!! Form::button('<i class="fa fa-save mr-2"></i> Salvar', [
+                        'type' => 'submit',
+                        'class' => 'btn btn-primary btn-sm',
+                    ]) !!}
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @if ($cotacao->fornecedores->count() > 0)
