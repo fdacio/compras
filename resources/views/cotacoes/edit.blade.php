@@ -73,12 +73,13 @@
                     {!! Form::close() !!}
                 </div>
             </div>
+            <!-- Fim do Fornecedor -->
 
+            <!-- Itens-->
             {!! Form::open([
                 'method' => 'put',
                 'route' => ['cotacoes.update', $cotacao->id],
             ]) !!}
-            <!-- Itens-->
             @foreach ($cotacao->fornecedores as $item)
                 <div class="card my-2">
                     <div class="card-header border-0">
@@ -161,7 +162,7 @@
 
                             </div>
                             <div class="text-center col-xs-1 col-sm-1 col-md-1">
-                                {!! Form::open([
+                                {{-- {!! Form::open([
                                     'method' => 'delete',
                                     'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
                                     'style' => 'display:inline',
@@ -171,7 +172,7 @@
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-sm modal-excluir',
                                 ]) !!}
-                                {!! Form::close() !!}
+                                {!! Form::close() !!} --}}
                             </div>
                         </div>
                     </div>
@@ -186,6 +187,8 @@
                 </div>
             </div>
             {!! Form::close() !!}
+            <!-- Fim do Itens -->
+
         </div>
     </div>
 @endsection
