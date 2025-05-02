@@ -92,6 +92,7 @@
                                     ]) !!}
                                     <div id="itens-{{ $item->id }}" class="collapse hide"
                                         data-parent="#accordion-itens-{{ $item->id }}">
+                                        <div class="card">
                                         <div class="card-body">
                                             <table class="table table-sm table-bordered">
                                                 <thead>
@@ -159,16 +160,17 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                            <div class="card-footer">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-                                                    </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
                                                 </div>
                                             </div>
                                         </div>
-                                        {!! Form::close() !!}
+                                        </div>
                                     </div>
+                                    {!! Form::close() !!}
                                 </div>
 
                             </div>
