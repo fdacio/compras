@@ -76,10 +76,6 @@
             <!-- Fim do Fornecedor -->
 
             <!-- Itens-->
-            {!! Form::open([
-                'method' => 'put',
-                'route' => ['cotacoes.update', $cotacao->id],
-            ]) !!}
             @foreach ($cotacao->fornecedores as $item)
                 <div class="card my-2">
                     <div class="card-header border-0">
@@ -90,6 +86,10 @@
                                     <a class="card-link" data-toggle="collapse" href="#itens-{{ $item->id }}">
                                         {{ $item->fornecedor->pessoa->nome_razao_social }}
                                     </a>
+                                    {!! Form::open([
+                                        'method' => 'put',
+                                        'route' => ['cotacoes.update', $cotacao->id],
+                                    ]) !!}                        
                                     <div id="itens-{{ $item->id }}" class="collapse hide"
                                         data-parent="#accordion-itens-{{ $item->id }}">
                                         <div class="card-body">
@@ -158,6 +158,14 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {!! Form::close() !!}
                                 </div>
 
                             </div>
@@ -178,18 +186,17 @@
                     </div>
                 </div>
             @endforeach 
-            <div class="card-footer">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-                        <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Cancelar</a>
-                    </div>
+            <!-- Fim do Itens -->
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Cancelar</a>
                 </div>
             </div>
-            {!! Form::close() !!}
-            <!-- Fim do Itens -->
-
         </div>
+
     </div>
 @endsection
 @if ($cotacao->fornecedores->count() > 0)
