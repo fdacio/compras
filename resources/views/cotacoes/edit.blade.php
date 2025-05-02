@@ -73,11 +73,11 @@
                     {!! Form::close() !!}
                 </div>
             </div>
+
             {!! Form::open([
                 'method' => 'put',
                 'route' => ['cotacoes.update', $cotacao->id],
             ]) !!}
-    
             <!-- Itens-->
             @foreach ($cotacao->fornecedores as $item)
                 <div class="card my-2">
@@ -176,17 +176,17 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-                    <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Cancelar</a>
+            @endforeach 
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+                        <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Cancelar</a>
+                    </div>
                 </div>
             </div>
+            {!! Form::close() !!}
         </div>
-        {!! Form::close() !!}
     </div>
 @endsection
 @if ($cotacao->fornecedores->count() > 0)
