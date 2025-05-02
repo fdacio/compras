@@ -124,6 +124,12 @@ class CotacoesController extends Controller
         return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Fornecedor da Cotação cadastrado com sucesso.');
     }
 
+    /**
+     * Remove the specified resource fornecedor from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroyFornecedor(Request $request, Cotacao $cotacao)
     {
         try {
@@ -138,4 +144,17 @@ class CotacoesController extends Controller
             return redirect()->route('cotacoes.edit', $cotacao->id)->with('danger', 'Não é possível excluir Fornecedor da Cotação. Há vínculos com outros registros.');
         }
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Frota  $frota
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Cotacao $cotacao)   
+    {
+        dd($request->all(), $cotacao);
+    }
+
 }
