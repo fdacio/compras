@@ -162,7 +162,7 @@
 
                             </div>
                             <div class="text-center col-xs-1 col-sm-1 col-md-1">
-                                {{-- {!! Form::open([
+                                {!! Form::open([
                                     'method' => 'delete',
                                     'route' => ['cotacoes.fornecedor.destroy', $cotacao->id],
                                     'style' => 'display:inline',
@@ -172,7 +172,7 @@
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-sm modal-excluir',
                                 ]) !!}
-                                {!! Form::close() !!} --}}
+                                {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
