@@ -89,7 +89,7 @@
                                     {!! Form::open([
                                         'method' => 'put',
                                         'route' => ['cotacoes.update', $cotacao->id],
-                                    ]) !!}                        
+                                    ]) !!}
                                     <div id="itens-{{ $item->id }}" class="collapse hide"
                                         data-parent="#accordion-itens-{{ $item->id }}">
                                         <div class="card-body">
@@ -113,9 +113,10 @@
                                                                 <div class="row">
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="quantidade_cotada[{{ $i->id }}]" class="text-sm mb-1">Qtde.Cotada</label>
-                                                                            <input
-                                                                                type="text"
+                                                                            <label
+                                                                                for="quantidade_cotada[{{ $i->id }}]"
+                                                                                class="text-sm mb-1">Qtde.Cotada</label>
+                                                                            <input type="text"
                                                                                 name="quantidade_cotada[{{ $i->id }}]"
                                                                                 id="quantidade_cotada[{{ $i->id }}]"
                                                                                 class="form-control form-control-sm text-right quantidade"
@@ -124,25 +125,27 @@
                                                                     </div>
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="quantidade_atendida[{{ $i->id }}]" class="text-sm mb-1">Qtde.Atendida</label>
-                                                                            <input
-                                                                                type="text"
+                                                                            <label
+                                                                                for="quantidade_atendida[{{ $i->id }}]"
+                                                                                class="text-sm mb-1">Qtde.Atendida</label>
+                                                                            <input type="text"
                                                                                 name="quantidade_atendida[{{ $i->id }}]"
                                                                                 id="quantidade_atendida[{{ $i->id }}]"
                                                                                 class="form-control form-control-sm text-right quantidade"
                                                                                 value="{{ $i->quantidade_atendida }}" />
-                                                                        </div>    
+                                                                        </div>
                                                                     </div>
                                                                     <div class="col-xs-4 col-sm-4 col-md-4">
                                                                         <div class="form-group">
-                                                                            <label for="valor_unitario[{{ $i->id }}]" class="text-sm mb-1">Valor Unitário</label>
-                                                                            <input
-                                                                                type="text"
+                                                                            <label
+                                                                                for="valor_unitario[{{ $i->id }}]"
+                                                                                class="text-sm mb-1">Valor Unitário</label>
+                                                                            <input type="text"
                                                                                 name="valor_unitario[{{ $i->id }}]"
                                                                                 id="valor_unitario[{{ $i->id }}]"
                                                                                 class="form-control form-control-sm text-right real"
                                                                                 value="{{ $i->valor_unitario }}" />
-                                                                        </div>    
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -156,16 +159,16 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+                                            <div class="card-footer">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        {!! Form::close() !!}
                                     </div>
-                                    {!! Form::close() !!}
                                 </div>
 
                             </div>
@@ -185,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-            @endforeach 
+            @endforeach
             <!-- Fim do Itens -->
         </div>
 
