@@ -18,10 +18,6 @@
                 </div>
             @endif
         </div>
-        {!! Form::open([
-            'method' => 'put',
-            'route' => ['cotacoes.update', $cotacao->id],
-        ]) !!}
         <div class="card-body">
 
             <!-- Requisição -->
@@ -77,7 +73,11 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-
+            {!! Form::open([
+                'method' => 'put',
+                'route' => ['cotacoes.update', $cotacao->id],
+            ]) !!}
+    
             <!-- Itens-->
             @foreach ($cotacao->fornecedores as $item)
                 <div class="card my-2">
