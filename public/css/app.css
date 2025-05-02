@@ -206,12 +206,6 @@ footer {
     line-height: 1.428571429;
     border-radius: 20px;
 }
-.accordion .fa-chevron-up{
-    display: none;
-}
-.accordion.show .fa-chevron-up{
-    display: inline-block;
-}
-.accordion.hide .fa-chevron-down{
-    display: none;
+.text-sm {
+    font-size: 0.8rem;
 }
