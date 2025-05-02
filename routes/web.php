@@ -61,9 +61,9 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::post('requisicoes-compras/item/store/{requisicao}', 'RequisicoesComprasController@itemStore')->name('requisicoes-compras.item.store');
     Route::get('requisicoes-compras/gera-pdf/{requisicao}', 'RequisicoesComprasController@geraPdf')->name('requisicoes-compras.gera.pdf');
     Route::delete('requisicoes-compras/{requisicao}/del-item', 'RequisicoesComprasController@destroyItem')->name('requisicoes-compras.del-item.destroy');
-    Route::put('requisicoes-compras/{requisicao}/cancelar', 'RequisicoesComprasController@cancelar')->name('requisicoes-compras.cancelar');
-    Route::put('requisicoes-compras/{requisicao}/autorizar', 'RequisicoesComprasController@autorizar')->name('requisicoes-compras.autorizar');
-    Route::put('requisicoes-compras/{requisicao}/cotar', 'RequisicoesComprasController@cotar')->name('requisicoes-compras.cotar');
+    Route::match(['PUT', 'PATCH'], 'requisicoes-compras/{requisicao}/cancelar', 'RequisicoesComprasController@cancelar')->name('requisicoes-compras.cancelar');
+    Route::match(['PUT', 'PATCH'], 'requisicoes-compras/{requisicao}/autorizar', 'RequisicoesComprasController@autorizar')->name('requisicoes-compras.autorizar');
+    Route::match(['PUT', 'PATCH'], 'requisicoes-compras/{requisicao}/cotar', 'RequisicoesComprasController@cotar')->name('requisicoes-compras.cotar');
     Route::get('requisicoes-compras/cotadas/autorizacoes', 'RequisicoesComprasController@cotadasAutorizacoes')->name('requisicoes-compras.cotadas.autorizacoes');
    
     Route::get('cotacoes', 'CotacoesController@index')->name('cotacoes.index');
@@ -72,12 +72,13 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::get('cotacoes/{cotacao}/edit', 'CotacoesController@edit', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.edit');
     Route::post('cotacoes/{cotacao}/fornecedor', 'CotacoesController@storeFornecedor', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.fornecedor.store');   
     Route::delete('cotacoes/fornecedor/{cotacao}', 'CotacoesController@destroyFornecedor', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.fornecedor.destroy');   
+    Route::match(['PUT', 'PATCH'],'cotacoes/update/{cotacao}', 'CotacoesController@update', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.update');
 
     Route::resource('autorizacoes-pagamentos', 'AutorizacoesPagamentosController', ['parameters' => ['autorizacoes-pagamentos' => 'autorizacao']]);
     Route::get('autorizacoes-pagamentos/item/create/{autorizacao}', 'AutorizacoesPagamentosController@itemCreate')->name('autorizacoes-pagamentos.item.create');
     Route::post('autorizacoes-pagamentos/item/store/{autorizacao}', 'AutorizacoesPagamentosController@itemStore')->name('autorizacoes-pagamentos.item.store');
     Route::get('autorizacoes-pagamentos/gera-pdf/{autorizacao}', 'AutorizacoesPagamentosController@geraPdf')->name('autorizacoes-pagamentos.gera.pdf');
-    Route::put('autorizacoes-pagamentos/{autorizacao}/autorizar', 'AutorizacoesPagamentosController@autorizar')->name('autorizacoes-pagamentos.autorizar');
+    Route::match(['PUT', 'PATCH'], 'autorizacoes-pagamentos/{autorizacao}/autorizar', 'AutorizacoesPagamentosController@autorizar')->name('autorizacoes-pagamentos.autorizar');
     Route::delete('autorizacoes-pagamentos/{autorizacao}/del-item', 'AutorizacoesPagamentosController@destroyItem')->name('autorizacoes-pagamentos.del-item.destroy');
 
     Route::get('autorizacoes-pagamentos/documentos/create/{autorizacao}', 'AutorizacoesPagamentosController@documentoCreate')->name('autorizacoes-pagamentos.documentos.create');
