@@ -177,7 +177,6 @@ class CotacoesController extends Controller
                 ]);
 
             }
-            CotacaoFornecedorItem::update();
             DB::commit();
             return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Valores do fornecedor informados com sucesso.');
         } catch (Exception $e) {
