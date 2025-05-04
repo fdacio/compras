@@ -63,7 +63,6 @@
 
         <div class="collapse navbar-collapse menu-responsive" id="navbarSupportedContent">
             <nav class="nav navbar-nav text-white bg-primary">
-                {{ Auth()->user()->name }}
                 @include('layouts.menus.menu-main')
             </nav>
         </div>
@@ -77,6 +76,8 @@
                 </div>
             </nav>
             <main role="main" class="col-md-10 col-lg-10 ml-sm-auto">
+                {{ Auth()->user()->name }}
+
                 @yield('content')
             </main>
         </div>
