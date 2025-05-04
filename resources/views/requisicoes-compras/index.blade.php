@@ -125,7 +125,7 @@
                                     {!! Form::close() !!}
                                 @else
                                     <a href="{{ route('requisicoes-compras.cotacao.edit', $requisicao->id) }}"
-                                        class="btn btn-primary btn-sm" title="Editar Cotação"><i class="fa fa-tty"></i></a>
+                                        class="btn btn-primary btn-sm" title="Editar Cotação"><i class="fa fa-pencil-square-o"></i></a>
                                 
                                 @endif
 
