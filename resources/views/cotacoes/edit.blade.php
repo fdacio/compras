@@ -5,16 +5,18 @@
     <div class="card">
         <div class="card-header">
             <h2>Editar Cotação Nº {{ $cotacao->id }}</h2>
-            @if (count($errors) > 0)
-                <div class="alert alert-danger alert-dismissable ''">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
                             aria-hidden="true">&times;</span></button>
-                    <small>Ops!</small> Verifique os erros.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('danger'))
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
+                            aria-hidden="true">&times;</span></button>
+                    {{ session('danger') }}
                 </div>
             @endif
         </div>
@@ -102,8 +104,9 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div id="itens-{{ $item->id }}" class="collapse hide" data-parent="#accordion-itens-{{ $item->id }}">
+
+                    <div id="itens-{{ $item->id }}" class="collapse hide"
+                        data-parent="#accordion-itens-{{ $item->id }}">
 
                         @include('cotacoes.itens-fornecedor')
 
