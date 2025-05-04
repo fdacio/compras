@@ -76,7 +76,7 @@
                 </div>
             </nav>
             <main role="main" class="col-md-10 col-lg-10 ml-sm-auto">
-                {{ Auth()->user()->name }}
+                {{ Auth()->user()->tipo->nome }}
 
                 @yield('content')
             </main>
