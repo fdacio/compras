@@ -163,16 +163,16 @@ class CotacoesController extends Controller
 
         try {
             DB::beginTransaction();
-            for ($i = 0; $i < count($quantidadesCotadas); $i++) {
+            foreach ($quantidadesCotadas as $key => $value) {
 
-                $valorUnitario = str_replace('R$', '', $valoresUnitarios[$i]);
+                $valorUnitario = str_replace('R$', '', $valoresUnitarios[$key]);
                 $valorUnitario = str_replace(' ', '', $valorUnitario);
                 $valorUnitario = str_replace('.', '', $valorUnitario);
                 $valorUnitario = str_replace(',', '.', $valorUnitario);
 
-                CotacaoFornecedorItem::where('id', $quantidadesCotadas[$i])->update([
-                    'quantidade_cotada' => $quantidadesCotadas[$i],
-                    'quantidade_atendida' => $quantidadesAtendidade[$i],
+                CotacaoFornecedorItem::where('id', $key)->update([
+                    'quantidade_cotada' => $quantidadesCotadas[$key],
+                    'quantidade_atendida' => $quantidadesAtendidade[$key],
                     'valor_unitario' => $valorUnitario,
                 ]);
 
