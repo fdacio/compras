@@ -66,7 +66,7 @@
 
         <div class="collapse navbar-collapse menu-responsive" id="navbarSupportedContent">
             <nav class="nav navbar-nav text-white bg-primary">
-                @if (Auth::user()->tipo->id === 1 || Auth::user()->tipo->id === 2)
+                @if ((Auth::user()->tipo->id === 1) || (Auth::user()->tipo->id === 2))
                     @include('layouts.menus.menu-main')
                 @else
                     @include('layouts.menus.menu-operador')
@@ -83,7 +83,6 @@
                 </div>
             </nav>
             <main role="main" class="col-md-10 col-lg-10 ml-sm-auto">
-                {{ Auth::user()->tipo->id }}
                 @yield('content')
             </main>
         </div>
