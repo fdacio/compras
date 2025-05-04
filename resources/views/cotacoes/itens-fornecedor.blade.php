@@ -67,8 +67,8 @@
     </div>
     <div class="card-footer">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                {!! Form::submit('Salvar', ['class' => 'btn btn-primary text-center']) !!}
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
             </div>
         </div>
     </div>
