@@ -114,7 +114,7 @@
                                 <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}"
                                     class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
 
-                                @if ($requisicoes->total() > 0)
+                                @if ($requisicao->situacao == App\Requisicao::SITUACAO_PENDENTE)
                                     {!! Form::open([
                                         'id' => 'form_cotar_' . $requisicao->id,
                                         'method' => 'put',
@@ -123,19 +123,23 @@
                                     ]) !!}
                                     {!! Form::button('<i class="fa fa-tty"></i>', ['class' => 'btn btn-success btn-sm modal-cotar-requisicao', 'title' => 'Cotar']) !!}
                                     {!! Form::close() !!}
+                                @else
+                                    <a href="{{ route('requisicoes-compras.cotacao.edit', $requisicao->id) }}"
+                                        class="btn btn-primary btn-sm" title="Editar Cotação"><i class="fa fa-tty"></i></a>
+                                
                                 @endif
 
-                                @if ($requisicoes->total() > 0)
-                                    {!! Form::open([
-                                        'id' => 'form_cancelar_' . $requisicao->id,
-                                        'method' => 'put',
-                                        'route' => ['requisicoes-compras.cancelar', $requisicao->id],
-                                        'style' => 'display: inline',
-                                        
-                                    ]) !!}
-                                    {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar',]) !!}
-                                    {!! Form::close() !!}
-                                @endif
+                                
+                                {!! Form::open([
+                                    'id' => 'form_cancelar_' . $requisicao->id,
+                                    'method' => 'put',
+                                    'route' => ['requisicoes-compras.cancelar', $requisicao->id],
+                                    'style' => 'display: inline',
+                                    
+                                ]) !!}
+                                {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar', 'disabled' => ($requisicao->situacao === App\Requisicao::SITUACAO_CANCELADA)]) !!}
+                                {!! Form::close() !!}
+                                
 
                             </td>
                         </tr>

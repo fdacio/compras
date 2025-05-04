@@ -272,8 +272,19 @@ class RequisicoesComprasController extends Controller
             $cotacao->id_usuario_alterou = auth()->user()->id;
             $cotacao->data = Carbon::now();
             $cotacao->save();
+            return redirect()->route('cotacoes.edit', $cotacao->id);
         }
-        return redirect()->route('cotacoes.edit', $cotacao->id);
+        return redirect()->route('requisicoes-compras.index');
+
+    }
+
+    public function cotacaoEdit(RequisicaoCompra $requisicao)
+    {
+        $cotacao = Cotacao::where('id_requisicao', $requisicao->id)->first();
+        if ($cotacao) {
+            return redirect()->route('cotacoes.edit', $cotacao->id);
+        }
+        return redirect()->route('requisicoes-compras.index');
     }
 
     /**

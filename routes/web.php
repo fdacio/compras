@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::match(['PUT', 'PATCH'], 'requisicoes-compras/{requisicao}/cancelar', 'RequisicoesComprasController@cancelar')->name('requisicoes-compras.cancelar');
     Route::match(['PUT', 'PATCH'], 'requisicoes-compras/{requisicao}/autorizar', 'RequisicoesComprasController@autorizar')->name('requisicoes-compras.autorizar');
     Route::match(['PUT', 'PATCH'], 'requisicoes-compras/{requisicao}/cotar', 'RequisicoesComprasController@cotar')->name('requisicoes-compras.cotar');
+    Route::get('requisicoes-compras/{requisicao}/cotacao/edit', 'RequisicoesComprasController@cotacaoEdit')->name('requisicoes-compras.cotacao.edit');
     Route::get('requisicoes-compras/cotadas/autorizacoes', 'RequisicoesComprasController@cotadasAutorizacoes')->name('requisicoes-compras.cotadas.autorizacoes');
    
     Route::get('cotacoes', 'CotacoesController@index')->name('cotacoes.index');
