@@ -63,7 +63,7 @@
                             <th class="col-md-3">Situação:</th>
                             <td>{{ $requisicao->situacao_nome }}</td>
                         </tr>
-                        @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADO)
+                        @if ($requisicao->situacao == \App\RequisicaoCompra::SITUACAO_AUTORIZADA)
                             <tr>
                                 <th class="col-md-3">Usuário Autorizador:</th>
                                 <td>{{ ($requisicao->usuarioAutorizacao) ? $requisicao->usuarioAutorizacao->name : "Usuário não cadastrado" }}</td>
