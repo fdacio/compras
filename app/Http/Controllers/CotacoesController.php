@@ -155,7 +155,7 @@ class CotacoesController extends Controller
     public function update(Request $request, Cotacao $cotacao)
     {
 
-        dd($request->all(), $cotacao);
+        //dd($request->all(), $cotacao);
 
         $quantidadesCotadas = $request->quantidade_cotada;
         $quantidadesAtendidade = $request->quantidade_atendida;
