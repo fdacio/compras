@@ -1,4 +1,4 @@
-<div class="card">
+<div class="cardd border-0">
     {!! Form::open([
         'method' => 'put',
         'route' => ['cotacoes.update', $cotacao->id],
