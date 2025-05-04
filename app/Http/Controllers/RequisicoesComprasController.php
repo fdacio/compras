@@ -196,7 +196,7 @@ class RequisicoesComprasController extends Controller
 
     public function cancelar(RequisicaoCompra $requisicao)
     {
-        $requisicao->situacao = RequisicaoCompra::SITUACAO_CANCELADO;
+        $requisicao->situacao = RequisicaoCompra::SITUACAO_CANCELADA;
         $requisicao->save();
         return redirect()->route('requisicoes-compras.index')->with('success', 'Cadastro de Requisição de Compra cancelado com sucesso.');
     }
@@ -297,7 +297,7 @@ class RequisicoesComprasController extends Controller
         $requisicoes = $this->requisicoes->whereIn('situacao', [
             RequisicaoCompra::SITUACAO_COTADA, 
             RequisicaoCompra::SITUACAO_AGUARDANDO_AUTORIZACAO,
-            RequisicaoCompra::SITUACAO_AUTORIZADO])
+            RequisicaoCompra::SITUACAO_AUTORIZADA])
            ->orderBy('id', 'desc');
         $requisicoes = $requisicoes->paginate(10);
         return view('requisicoes-compras.cotadas-autorizacoes', compact('requisicoes'));
@@ -305,7 +305,7 @@ class RequisicoesComprasController extends Controller
 
     public function autorizar(RequisicaoCompra $requisicao)
     {
-        $requisicao->situacao = RequisicaoCompra::SITUACAO_AUTORIZADO;
+        $requisicao->situacao = RequisicaoCompra::SITUACAO_AUTORIZADA;
         $requisicao->id_usuario_autorizacao = auth()->user()->id;
         $requisicao->data_autorizacao = Carbon::now();
         $requisicao->save();

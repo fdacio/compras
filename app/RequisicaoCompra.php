@@ -26,8 +26,8 @@ class RequisicaoCompra extends Model
 
     ];
     const SITUACAO_PENDENTE = "PENDENTE";
-    const SITUACAO_AUTORIZADO = "AUTORIZADO";
-    const SITUACAO_CANCELADO = "CANCELADO";  
+    const SITUACAO_AUTORIZADA = "AUTORIZADA";
+    const SITUACAO_CANCELADA = "CANCELADA";  
     const SITUACAO_EM_COTACAO = "EM_COTACAO";
     const SITUACAO_COTADA = "COTADA";   
     const SITUACAO_AGUARDANDO_AUTORIZACAO = "AGUARDANDO_AUTORIZACAO";   
@@ -38,12 +38,12 @@ class RequisicaoCompra extends Model
             'value' => self::SITUACAO_PENDENTE
         ],
         [
-            'label' => 'Autorizado',
-            'value' => self::SITUACAO_AUTORIZADO
+            'label' => 'Autorizada',
+            'value' => self::SITUACAO_AUTORIZADA
         ],
         [
-            'label' => 'Cancelado',
-            'value' => self::SITUACAO_CANCELADO
+            'label' => 'Cancelada',
+            'value' => self::SITUACAO_CANCELADA
         ],
         [
             'label' => 'Em Cotação',
