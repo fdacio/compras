@@ -67,9 +67,9 @@
         <div class="collapse navbar-collapse menu-responsive" id="navbarSupportedContent">
             <nav class="nav navbar-nav text-white bg-primary">
                 @if ((Auth::user()->tipo->id === 1) || (Auth::user()->tipo->id === 2))
-                    @include('layouts.menus.menu-main')
+                    @include('layouts.menus.menu-main-')
                 @else
-                    @include('layouts.menus.menu-operador')
+                    @include('layouts.menus.menu-operador-')
                 @endif
             </nav>
         </div>

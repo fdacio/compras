@@ -10,7 +10,7 @@
 
     <li class="nav-item"> <a href="#" data-toggle="collapse" data-target="#cadastros-gerais"
             class="collapsed nav-link">
-            <i class="fa fa-edit"></i> <span class="nav-label">Cadastros Gerais*</span> <span
+            <i class="fa fa-edit"></i> <span class="nav-label">Cadastros Gerais</span> <span
                 class="fa fa-chevron-left pull-right"></span> </a>
         <ul class="navbar-nav sub-menu collapse p-1" id="cadastros-gerais">
             <li class="nav-item ml-2"><a href="{{ route('centros-custos.index') }}" class="nav-link">Centros de
