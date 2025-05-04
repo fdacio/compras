@@ -63,6 +63,7 @@
 
         <div class="collapse navbar-collapse menu-responsive" id="navbarSupportedContent">
             <nav class="nav navbar-nav text-white bg-primary">
+                {{Auth()->user()}}
                 @include('layouts.menus.menu-main')
             </nav>
         </div>
