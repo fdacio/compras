@@ -69,7 +69,7 @@
                 @if ((Auth::user()->tipo->id === 1) || (Auth::user()->tipo->id === 2))
                     @include('layouts.menus.menu-main-')
                 @else
-                    @include('layouts.menus.menu-operador-')
+                    @include('layouts.menus.menu-operador')
                 @endif
             </nav>
         </div>
