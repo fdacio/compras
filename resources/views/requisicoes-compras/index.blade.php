@@ -114,7 +114,7 @@
                                 <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}"
                                     class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
 
-                                @if ($requisicao->situacao == App\Requisicao::SITUACAO_PENDENTE)
+                                @if ($requisicao->situacao == App\RequisicaoCompra::SITUACAO_PENDENTE)
                                     {!! Form::open([
                                         'id' => 'form_cotar_' . $requisicao->id,
                                         'method' => 'put',
@@ -137,7 +137,7 @@
                                     'style' => 'display: inline',
                                     
                                 ]) !!}
-                                {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar', 'disabled' => ($requisicao->situacao === App\Requisicao::SITUACAO_CANCELADA)]) !!}
+                                {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar', 'disabled' => ($requisicao->situacao === App\RequisicaoCompra::SITUACAO_CANCELADA)]) !!}
                                 {!! Form::close() !!}
                                 
 
