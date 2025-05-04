@@ -180,6 +180,7 @@ class CotacoesController extends Controller
             DB::commit();
             return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Valores do fornecedor informados com sucesso.');
         } catch (Exception $e) {
+            dd($e->getMessage());
             DB::rollBack();
             return redirect()->route('cotacoes.edit', $cotacao->id)->with('danger', 'Não foi possível atualizar os valores do fornecedor.');
         }
