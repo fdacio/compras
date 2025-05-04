@@ -152,9 +152,37 @@ class CotacoesController extends Controller
      * @param  Frota  $frota
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cotacao $cotacao)   
+    public function update(Request $request, Cotacao $cotacao)
     {
-        dd($request->all(), $cotacao);
-    }
 
+        dd($request->all(), $cotacao);
+
+        $quantidadesCotadas = $request->quantidade_cotada;
+        $quantidadesAtendidade = $request->quantidade_atendida;
+        $valoresUnitarios = $request->valor_unitario;
+
+        try {
+            DB::beginTransaction();
+            for ($i = 0; $i < count($quantidadesCotadas); $i++) {
+
+                $valorUnitario = str_replace('R$', '', $valoresUnitarios[$i]);
+                $valorUnitario = str_replace(' ', '', $valorUnitario);
+                $valorUnitario = str_replace('.', '', $valorUnitario);
+                $valorUnitario = str_replace(',', '.', $valorUnitario);
+
+                CotacaoFornecedorItem::where('id', $quantidadesCotadas[$i])->update([
+                    'quantidade_cotada' => $quantidadesCotadas[$i],
+                    'quantidade_atendida' => $quantidadesAtendidade[$i],
+                    'valor_unitario' => $valorUnitario,
+                ]);
+
+            }
+            CotacaoFornecedorItem::update();
+            DB::commit();
+            return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Valores do fornecedor informados com sucesso.');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('cotacoes.edit', $cotacao->id)->with('danger', 'Não foi possível atualizar os valores do fornecedor.');
+        }
+    }
 }
