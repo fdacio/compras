@@ -53,7 +53,9 @@ class RequisicoesComprasController extends Controller
         $solicitante = request()->get('id_solicitante');
         $veiculo = request()->get('id_veiculo');
 
-        $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_PENDENTE);
+        // $requisicoes = $this->requisicoes->where('situacao', '=', RequisicaoCompra::SITUACAO_PENDENTE);
+        $requisicoes = $this->requisicoes;
+
 
         if (!empty($requisitante)) {
             $requisicoes =  $requisicoes->where('id_requisitante', $requisitante);
