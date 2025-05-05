@@ -76,7 +76,30 @@
                 <!-- Tab de Fornecedores -->
                 <div class="tab-pane fade" id="tabs-fornecedores" role="tabpanel" aria-labelledby="tabs-fornecedores-tab">
                     <div class="card">
-                        Aqui informações sobre os fornecedores e valores cotados.
+                        @foreach ($cotacao->fornecedores as $item)
+                            <div class="card my-2">
+                                <div class="card-header border-0">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div id="accordion-itens-{{ $item->id }}" class="accordion">
+                                                <a class="card-link" data-toggle="collapse"
+                                                    href="#itens-{{ $item->id }}">
+                                                    {{ $item->fornecedor->pessoa->nome_razao_social }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="itens-{{ $item->id }}" class="collapse hide" data-parent="#accordion-itens-{{ $item->id }}">
+
+                                    @include('cotacoes.fragments.itens-fornecedor')
+
+                                </div>
+
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
                 <!-- Fim Tab de Fornecedores -->
