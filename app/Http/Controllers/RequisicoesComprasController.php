@@ -131,6 +131,14 @@ class RequisicoesComprasController extends Controller
      */
     public function edit(RequisicaoCompra $requisicao)
     {
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_CANCELADA) {
+            return redirect()->route('requisicoes-compras.index')->with('danger', 'Requisição cancelada. Não é possível editar.');
+        }
+
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADA) {
+            return redirect()->route('requisicoes-compras.index')->with('danger', 'Requisição de Compra já autorizada. Não é possível editar.');
+        }
+
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
         $empresas = Empresa::get()->map(function ($empresa) {
@@ -174,6 +182,11 @@ class RequisicoesComprasController extends Controller
      */
     public function destroy(RequisicaoCompra $requisicao)
     {
+
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADA) {
+            return redirect()->route('requisicoes-compras.index')->with('danger', 'Requisição de Compra já autorizada. Não é possível excluir.');
+        }
+
         try {
             $requisicao->delete();
             return redirect()->route('requisicoes-compras.index')->with('success', 'Cadastro de Requisição de Compra excluído oom sucesso.');
@@ -184,6 +197,14 @@ class RequisicoesComprasController extends Controller
 
     public function cancelar(RequisicaoCompra $requisicao)
     {
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_CANCELADA) {
+            return redirect()->route('requisicoes-compras.index')->with('danger', 'Requisição já cancelada. ');
+        }
+
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADA) {
+            return redirect()->route('requisicoes-compras.index')->with('danger', 'Requisição de Compra já autorizada. Não é possível cancelar.');
+        }
+
         $requisicao->situacao = RequisicaoCompra::SITUACAO_CANCELADA;
         $requisicao->save();
         return redirect()->route('requisicoes-compras.index')->with('success', 'Cadastro de Requisição de Compra cancelado com sucesso.');

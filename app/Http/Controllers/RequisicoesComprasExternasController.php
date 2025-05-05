@@ -136,6 +136,14 @@ class RequisicoesComprasExternasController extends Controller
             return redirect()->route('home');
         }
 
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_CANCELADA) {
+            return redirect()->route('requisicoes-compras-externas.index')->with('danger', 'Requisição de Compra cancelada. Não é possível editar.');
+        }
+
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADA) {
+            return redirect()->route('requisicoes-compras-externas.index')->with('danger', 'Requisição de Compra já autorizada. Não é possível editar.');
+        }
+
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
         $empresas = Empresa::get()->map(function ($empresa) {
@@ -185,6 +193,11 @@ class RequisicoesComprasExternasController extends Controller
             return redirect()->route('home');
         }
 
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADA) {
+            return redirect()->route('requisicoes-compras-externas.index')->with('danger', 'Requisição de Compra já autorizada. Não é possível excluir.');
+        }
+
+
         try {
             $requisicao->delete();
             return redirect()->route('requisicoes-compras-externas.index')->with('success', 'Cadastro de Requisição de Compra excluído oom sucesso.');
@@ -200,6 +213,15 @@ class RequisicoesComprasExternasController extends Controller
         if (!in_array($requisicao->id_requisitante, $centrosCustosUser)) {
             return redirect()->route('home');
         }
+
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_CANCELADA) {
+            return redirect()->route('requisicoes-compras-externas.index')->with('danger', 'Requisição já cancelada. ');
+        }
+
+        if ($requisicao->situacao == RequisicaoCompra::SITUACAO_AUTORIZADA) {
+            return redirect()->route('requisicoes-compras-externas.index')->with('danger', 'Requisição de Compra já autorizada. Não é possível cancelar.');
+        }
+
 
         $requisicao->situacao = RequisicaoCompra::SITUACAO_CANCELADA;
         $requisicao->save();
