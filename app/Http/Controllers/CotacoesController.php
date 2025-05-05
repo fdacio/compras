@@ -227,7 +227,7 @@ class CotacoesController extends Controller
 
         try {
             DB::beginTransaction();
-            $cotacao->update(['finalizada' => true]);
+            $cotacao->update(['finalizada' => 1]);
             $cotacao->requisicao->update(['situacao' => RequisicaoCompra::SITUACAO_COTADA]);
             DB::commit();
             return redirect()->route('cotacoes.show', $cotacao->id)->with('success', 'Cotação finalizada com sucesso.');
