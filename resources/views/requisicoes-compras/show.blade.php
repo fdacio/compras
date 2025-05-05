@@ -11,7 +11,7 @@
             <ul class="nav nav-tabs mb-2" id="tabs-tab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="tabs-cabecalho-tab" data-toggle="pill" href="#tabs-cabecalho" role="tab"
-                        aria-controls="tabs-cabecalho" aria-selected="true">Cabeçalho</a>
+                        aria-controls="tabs-cabecalho" aria-selected="true">Requisição</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tabs-itens-tab" data-toggle="pill" href="#tabs-itens" role="tab"
