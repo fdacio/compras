@@ -166,18 +166,21 @@ class CotacoesController extends Controller
     public function update(CotacaoFornecedoItemRequest $request, Cotacao $cotacao)
     {
         $quantidadesCotadas = $request->quantidade_cotada;
-        $quantidadesAtendidade = $request->quantidade_atendida;
+        $quantidadesAtendidas = $request->quantidade_atendida;
         $valoresUnitarios = $request->valor_unitario;
 
         try {
             DB::beginTransaction();
             foreach ($quantidadesCotadas as $key => $value) {
-                $valorUnitario = $this->convertMoney($valoresUnitarios[$key]);
+                $valorUnitario = $valoresUnitarios[$key];
+                $quantidadeCotada = $quantidadesCotadas[$key];
+                $quantidadeAtendida = $quantidadesAtendidas[$key];
+
                 CotacaoFornecedorItem::where('id', $key)->update([
-                    'quantidade_cotada' => $quantidadesCotadas[$key],
-                    'quantidade_atendida' => $quantidadesAtendidade[$key],
+                    'quantidade_cotada' => $quantidadeCotada,
+                    'quantidade_atendida' => $quantidadeAtendida,
                     'valor_unitario' => $valorUnitario,
-                    'valor_total' => $quantidadesAtendidade[$key] * $valorUnitario,
+                    'valor_total' => $quantidadeAtendida * $valorUnitario,
                 ]);
 
             }
