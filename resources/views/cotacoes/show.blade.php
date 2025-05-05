@@ -90,7 +90,7 @@
                             </div>
                             @include('cotacoes.fragments.dados-vencedores')
                         @else
-                            <div class="alert alert-warning">
+                            <div class="alert alert-warning card-body">
                                 <strong>Cotação ainda não finalizada.</strong>
                             </div>
                         @endif
