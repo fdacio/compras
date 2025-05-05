@@ -164,6 +164,9 @@ class CotacoesController extends Controller
      */
     public function update(Request $request, Cotacao $cotacao)
     {
+        $request->merge([
+            'valor_unitario.*' => $this->convertMoney($request->valor_unitario),
+        ]);
 
         $request->validate([
             'quantidade_cotada.*' => 'required|numeric|min:0',
@@ -182,12 +185,7 @@ class CotacoesController extends Controller
         try {
             DB::beginTransaction();
             foreach ($quantidadesCotadas as $key => $value) {
-
-                $valorUnitario = str_replace('R$', '', $valoresUnitarios[$key]);
-                $valorUnitario = str_replace(' ', '', $valorUnitario);
-                $valorUnitario = str_replace('.', '', $valorUnitario);
-                $valorUnitario = str_replace(',', '.', $valorUnitario);
-
+                $valorUnitario = $this->convertMoney($valoresUnitarios[$key]);
                 CotacaoFornecedorItem::where('id', $key)->update([
                     'quantidade_cotada' => $quantidadesCotadas[$key],
                     'quantidade_atendida' => $quantidadesAtendidade[$key],
@@ -203,6 +201,18 @@ class CotacoesController extends Controller
             DB::rollBack();
             return redirect()->route('cotacoes.edit', $cotacao->id)->with('danger', 'Não foi possível atualizar os valores do fornecedor.');
         }
+    }
+
+    private function convertMoney($valor)
+    {
+        if (empty($valor)) {
+            return 0;
+        }
+        $valor = str_replace('R$', '', $valor);
+        $valor = str_replace(' ', '', $valor);
+        $valor = str_replace('.', '', $valor);
+        $valor = str_replace(',', '.', $valor);
+        return $valor;
     }
 
     /**
