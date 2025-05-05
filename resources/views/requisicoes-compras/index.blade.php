@@ -132,7 +132,7 @@
                                 @if ($requisicao->situacao == App\RequisicaoCompra::SITUACAO_CANCELADA)
                                 {!! Form::open([
                                     'id' => 'form_excluir_' . $requisicao->id,
-                                    'method' => 'put',
+                                    'method' => 'delete',
                                     'route' => ['requisicoes-compras.destroy', $requisicao->id],
                                     'style' => 'display: inline',
                                     
