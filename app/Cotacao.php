@@ -12,7 +12,8 @@ class Cotacao extends Model
         'id_requisicao',
         'data',
         'id_usuario_cadastrou',
-        'id_usuario_alterou'
+        'id_usuario_alterou',
+        'finalizada'
     ];
 
     public function requisicao()
