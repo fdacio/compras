@@ -165,6 +165,16 @@ class CotacoesController extends Controller
     public function update(Request $request, Cotacao $cotacao)
     {
 
+        $request->validate([
+            'quantidade_cotada.*' => 'required|numeric|min:0',
+            'quantidade_atendida.*' => 'required|numeric|min:0',
+            'valor_unitario.*' => 'required|numeric|min:0',
+        ], [
+            'quantidade_cotada.*.required' => 'O campo Quantidade Cotada é obrigatório.',
+            'quantidade_atendida.*.required' => 'O campo Quantidade Atendida é obrigatório.',
+            'valor_unitario.*.required' => 'O campo Valor Unitário é obrigatório.',
+        ]);
+
         $quantidadesCotadas = $request->quantidade_cotada;
         $quantidadesAtendidade = $request->quantidade_atendida;
         $valoresUnitarios = $request->valor_unitario;
