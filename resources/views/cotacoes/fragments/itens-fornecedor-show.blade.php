@@ -20,9 +20,9 @@
                             {{ $i->item }}
                         </td>
                         <td>
-                            <div>{{ $i->descricao }}</div>
+                            {{ $i->descricao }}
                         </td>
-                        <td>>
+                        <td>
                             {{ $i->unidade }}
                         </td>
                         <td>

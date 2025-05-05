@@ -82,7 +82,7 @@
                     <div class="card">
                         <div class="card-body">
                             @foreach ($cotacao->fornecedores as $item)
-                                <div class="card-header border-0">
+                                <div class="card-header border-0 my-2">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div id="accordion-itens-{{ $item->id }}" class="accordion">
@@ -95,8 +95,7 @@
                                     </div>
                                 </div>
 
-                                <div id="itens-{{ $item->id }}" class="collapse hide"
-                                    data-parent="#accordion-itens-{{ $item->id }}">
+                                <div id="itens-{{ $item->id }}" class="collapse hide" data-parent="#accordion-itens-{{ $item->id }}">
 
                                     @include('cotacoes.fragments.itens-fornecedor-show')
 
