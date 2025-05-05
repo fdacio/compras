@@ -36,8 +36,7 @@ class CotacoesController extends Controller
      */
     public function show(Cotacao $cotacao)
     {
-        return redirect()->route('cotacoes.index');
-        //return view('cotacoes.show', compact('cotacao'));
+        return view('cotacoes.show', compact('cotacao'));
     }
 
 
