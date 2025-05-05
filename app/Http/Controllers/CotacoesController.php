@@ -6,6 +6,7 @@ use App\Cotacao;
 use App\CotacaoFornecedor;
 use App\CotacaoFornecedorItem;
 use App\Fornecedor;
+use App\Http\Requests\CotacaoFornecedoItemRequest;
 use App\Reports\DemoCotacaoPdf;
 use App\RequisicaoCompra;
 use Exception;
@@ -162,22 +163,8 @@ class CotacoesController extends Controller
      * @param  Cotacao  $cotacao    
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cotacao $cotacao)
+    public function update(CotacaoFornecedoItemRequest $request, Cotacao $cotacao)
     {
-        $request->valor_unitario->merge([
-            'valor_unitario.*' => $this->convertMoney($request->valor_unitario),
-        ]);
-
-        $request->validate([
-            'quantidade_cotada.*' => 'required|numeric|min:0',
-            'quantidade_atendida.*' => 'required|numeric|min:0',
-            'valor_unitario.*' => 'required|numeric|min:0',
-        ], [
-            'quantidade_cotada.*.required' => 'O campo Quantidade Cotada é obrigatório.',
-            'quantidade_atendida.*.required' => 'O campo Quantidade Atendida é obrigatório.',
-            'valor_unitario.*.required' => 'O campo Valor Unitário é obrigatório.',
-        ]);
-
         $quantidadesCotadas = $request->quantidade_cotada;
         $quantidadesAtendidade = $request->quantidade_atendida;
         $valoresUnitarios = $request->valor_unitario;
