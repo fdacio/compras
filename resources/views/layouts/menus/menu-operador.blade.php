@@ -6,10 +6,10 @@
             <span class="fa fa-chevron-left pull-right"></span> </a>
         <ul class="navbar-nav sub-menu collapse p-1" id="requisicoes-compras">
 
-            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.index') }}" class="nav-link"><i
+            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras-externas.index') }}" class="nav-link"><i
                         class="fa fa-search"></i> <span class="nav-label">Consultar</span></a></li>
 
-            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras.create') }}" class="nav-link"><i
+            <li class="nav-item ml-2"> <a href="{{ route('requisicoes-compras-externas.create') }}" class="nav-link"><i
                         class="fa fa-search"></i> <span class="nav-label">Cadastrar</span></a></li>
         </ul>
     </li>
