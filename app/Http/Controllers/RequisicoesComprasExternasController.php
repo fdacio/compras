@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 
 class RequisicoesComprasExternasController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -29,7 +29,7 @@ class RequisicoesComprasExternasController extends Controller
         $user = User::findOrFail(auth()->user()->id);
         $centrosCustosUser = $user->centrosCustos()->pluck('id_centro_custo')->toArray();
         $requisicoes = RequisicaoCompra::whereIn('id_requisitante', $centrosCustosUser)->orderBy('id', 'desc');
-        
+
 
         $requisitante = request()->get('id_requisitante');
         $solicitante = request()->get('id_solicitante');
@@ -58,7 +58,7 @@ class RequisicoesComprasExternasController extends Controller
         return view('requisicoes-compras-externas.index', compact('requisicoes', 'requisitantes', 'solicitantes', 'veiculos'));
     }
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -105,8 +105,7 @@ class RequisicoesComprasExternasController extends Controller
         return redirect()->route('requisicoes-compras-externas.edit', $requisicao->id)->with('success', 'Requisição de Compras cadastrado com sucesso.');
     }
 
-
-        /**
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -136,7 +135,6 @@ class RequisicoesComprasExternasController extends Controller
         if (!in_array($requisicao->id_requisitante, $centrosCustosUser)) {
             return redirect()->route('home');
         }
-
 
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
@@ -264,5 +262,4 @@ class RequisicoesComprasExternasController extends Controller
         $demo->setContent($requisicao);
         $demo->download();
     }
-
 }

@@ -182,6 +182,7 @@ class CotacoesController extends Controller
                     'quantidade_cotada' => $quantidadesCotadas[$key],
                     'quantidade_atendida' => $quantidadesAtendidade[$key],
                     'valor_unitario' => $valorUnitario,
+                    'valor_total' => $quantidadesAtendidade[$key] * $valorUnitario,
                 ]);
 
             }
