@@ -43,7 +43,7 @@ class CotacaoFornecedoItemRequest extends FormRequest
     {
 
         $this->merge([
-            'valor_unitario.*' => $this->parseMoney($this->valor_unitario),
+            'valor_unitario' => $this->parseMoney($this->valor_unitario),
         ]);
     }
 
