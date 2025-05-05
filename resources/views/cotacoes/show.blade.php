@@ -14,13 +14,18 @@
                         aria-controls="tabs-cabecalho" aria-selected="true">Cotação</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="tabs-requisicao-tab" data-toggle="pill" href="#tabs-requisicao"
-                        role="tab" aria-controls="tabs-requisicao" aria-selected="true">Requisção</a>
+                    <a class="nav-link" id="tabs-requisicao-tab" data-toggle="pill" href="#tabs-requisicao" role="tab"
+                        aria-controls="tabs-requisicao" aria-selected="true">Requisção</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tabs-fornecedores-tab" data-toggle="pill" href="#tabs-fornecedores"
                         role="tab" aria-controls="tabs-itens" aria-selected="false">Fornecedores</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tabs-vencedores-tab" data-toggle="pill" href="#tabs-vencedores" role="tab"
+                        aria-controls="tabs-itens" aria-selected="false">Vencedores</a>
+                </li>
+
             </ul>
             <!-- Começo das tabs-->
             <div class="tab-content" id="tabs-tabContent">
@@ -74,6 +79,24 @@
                         Aqui informações sobre os fornecedores e valores cotados.
                     </div>
                 </div>
+                <!-- Fim Tab de Fornecedores -->
+
+                <!-- Tab de Vencedores -->
+                <div class="tab-pane fade" id="tabs-vencedores" role="tabpanel" aria-labelledby="tabs-vencedores-tab">
+                    <div class="card">
+                        @if ($cotacao->finalizada)
+                            <div class="alert alert-success">
+                                <strong>Vencedores da Cotação:</strong>
+                            </div>
+                            @include('cotacoes.fragments.dados-vencedores')
+                        @else
+                            <div class="alert alert-warning">
+                                <strong>Cotação ainda não finalizada.</strong>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <!-- Fim Tab de Vencedores -->
             </div>
         </div>
         <div class="card-footer">
