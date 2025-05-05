@@ -50,7 +50,7 @@
         <tbody>
             @if($cotacoes->total() == 0)
             <tr>
-                <th class="text-center" colspan="6">Nenhuma cotação encontrada</th>
+                <th class="text-center" colspan="8">Nenhuma cotação encontrada</th>
             </tr>
             @else
             @foreach ($cotacoes as $cotacao)
