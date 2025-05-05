@@ -203,15 +203,15 @@ class CotacoesController extends Controller
     public function finalizar(Cotacao $cotacao)
     {
         if ($cotacao->finalizada) {
-            return redirect()->route('cotacoes.index')->with('danger', 'Cotação já finalizada.');
+            return redirect()->back()->with('danger', 'Cotação já finalizada.');
         }
 
         if ($cotacao->fornecedores->count() == 0) {
-            return redirect()->route('cotacoes.index')->with('danger', 'Não é possível finalizar Cotação sem Fornecedor.');
+            return redirect()->back()->with('danger', 'Não é possível finalizar Cotação sem Fornecedor.');
         }
         
         if ($cotacao->fornecedores->count() < 2) {
-            return redirect()->route('cotacoes.index')->with('danger', 'Não é possível finalizar Cotação com menos de 2 Fornecedores.');
+            return redirect()->back()->with('danger', 'Não é possível finalizar Cotação com menos de 2 Fornecedores.');
         }
 
         $fornecedores = $cotacao->fornecedores;
@@ -219,11 +219,10 @@ class CotacoesController extends Controller
             $itens = $fornecedor->itens;
             foreach ($itens as $item) {
                 if ($item->quantidade_cotada == 0 || $item->quantidade_atendida == 0 || $item->valor_unitario == 0) {
-                    return redirect()->route('cotacoes.index')->with('danger', 'Não é possível finalizar Cotação com valores zerados.');
+                    return redirect()->back()->with('danger', 'Não é possível finalizar Cotação com valores zerados.');
                 }
             }
         }
-
 
         try {
             DB::beginTransaction();
