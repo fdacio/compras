@@ -87,7 +87,7 @@
                         @if ($cotacao->finalizada)
                             @include('cotacoes.fragments.dados-vencedores')
                         @else
-                            <div class="card-header">
+                            <div class="card-body">
                                 <div class="alert alert-warning">
                                     <strong>Cotação ainda não finalizada.</strong>
                                 </div>
