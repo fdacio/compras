@@ -193,18 +193,6 @@ class CotacoesController extends Controller
         }
     }
 
-    private function convertMoney($valor)
-    {
-        if (empty($valor)) {
-            return 0;
-        }
-        $valor = str_replace('R$', '', $valor);
-        $valor = str_replace(' ', '', $valor);
-        $valor = str_replace('.', '', $valor);
-        $valor = str_replace(',', '.', $valor);
-        return $valor;
-    }
-
     /**
      * Finally the specified resource in storage.
      *

@@ -20,17 +20,18 @@
                 </div>
             @endif
             @if (count($errors) > 0)
-            <div class="alert alert-danger alert-dismissable ''">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                <strong>Ops!</strong> Verifique os erros.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="alert alert-danger alert-dismissable ''">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span
+                            aria-hidden="true">&times;</span></button>
+                    <strong>Ops!</strong> Verifique os erros.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
-    
+
         </div>
         <div class="card-body">
 
@@ -140,10 +141,13 @@
                             'route' => ['cotacoes.finalizar', $cotacao->id],
                             'style' => 'display: inline',
                         ]) !!}
-                        {!! Form::button('Finalizar Cotação', ['class' => 'btn btn-success modal-finalizar-cotacao', 'title' => 'Finalizar Cotação']) !!}
+                        {!! Form::button('Finalizar Cotação', [
+                            'class' => 'btn btn-success modal-finalizar-cotacao',
+                            'title' => 'Finalizar Cotação',
+                        ]) !!}
                         {!! Form::close() !!}
-                    </div>        
-        
+                    </div>
+
                 </div>
             </div>
         </div>
