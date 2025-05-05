@@ -83,7 +83,7 @@
             <a href="{{ route('cotacoes.edit', $cotacao->id) }}" class="btn btn-primary"
                 title="Editar">Editar</a>
             <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Voltar</a>
-            <a href="{{ route('cotacao.gera.pdf', $cotacao->id) }}" class="btn btn-success" title="download"
+            <a href="{{ route('cotacoes.gera.pdf', $cotacao->id) }}" class="btn btn-success" title="download"
                 target="_blank">Demonstrativo</a>
                 <div class="btn-group dropleft">
                     {!! Form::open([
