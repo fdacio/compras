@@ -143,17 +143,6 @@
             <a class="btn btn-danger" href="{{ route('requisicoes-compras-externas.index') }}">Voltar</a>
             <a href="{{ route('requisicoes-compras-externas.gera.pdf', $requisicao->id) }}" class="btn btn-success" title="download"
                 target="_blank">Demonstrativo</a>
-            <div class="btn-group dropleft">
-                {!! Form::open([
-                    'id' => 'form_cotar_' . $requisicao->id,
-                    'method' => 'put',
-                    'route' => ['requisicoes-compras-externas.cotar', $requisicao->id],
-                    'style' => 'display: inline',
-                ]) !!}
-                {!! Form::button('<i class="fa fa-tty"></i> Cotar', ['class' => 'btn btn-success modal-cotar-requisicao', 'title' => 'Cotar']) !!}
-                {!! Form::close() !!}
-            </div>        
-        </div>
     </div>
 @endsection
 @section('scripts')
