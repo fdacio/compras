@@ -23,9 +23,6 @@ class RequisicoesComprasController extends Controller
 
     public function __construct()
     {
-
-        $this->middleware('requisicao-compra.check.permissao')->only(['edit', 'update', 'destroy']);
-
         $this->middleware(function ($request, $next) {
             $user = User::findOrFail(auth()->user()->id);
             if ($user->tipo->id == 3) {

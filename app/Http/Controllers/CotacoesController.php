@@ -47,7 +47,6 @@ class CotacoesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function edit(Cotacao $cotacao)
     {
         $fornecedores = Fornecedor::get()->map(function ($fornecedor) {
@@ -149,13 +148,11 @@ class CotacoesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Frota  $frota
+     * @param  Cotacao  $cotacao    
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Cotacao $cotacao)
     {
-
-        //dd($request->all(), $cotacao);
 
         $quantidadesCotadas = $request->quantidade_cotada;
         $quantidadesAtendidade = $request->quantidade_atendida;
@@ -185,4 +182,26 @@ class CotacoesController extends Controller
             return redirect()->route('cotacoes.edit', $cotacao->id)->with('danger', 'Não foi possível atualizar os valores do fornecedor.');
         }
     }
+
+    /**
+     * Finally the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Cotacao  $cotacao    
+     * @return \Illuminate\Http\Response
+     */
+    public function finalizar(Cotacao $cotacao)
+    {
+        try {
+            DB::beginTransaction();
+            $cotacao->update(['finalizada' => true]);
+            $cotacao->requisicao->update(['situacao' => RequisicaoCompra::SITUACAO_COTADA]);
+            DB::commit();
+            return redirect()->route('cotacoes.show', $cotacao->id)->with('success', 'Cotação finalizada com sucesso.');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('cotacoes.index')->with('danger', 'Não foi possível finalizar a Cotação.');
+        }
+    }
+
 }

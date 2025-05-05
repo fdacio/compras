@@ -32,7 +32,7 @@
                     </div>
                     <div id="dadosRequisicao" class="collapse hide" data-parent="#accordion-dadosRequisicao">
                         <div class="card-body">
-                            @include('cotacoes.dados-requisicao')
+                            @include('cotacoes.fragments.dados-requisicao')
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     <div id="itens-{{ $item->id }}" class="collapse hide"
                         data-parent="#accordion-itens-{{ $item->id }}">
 
-                        @include('cotacoes.itens-fornecedor')
+                        @include('cotacoes.fragments.itens-fornecedor')
 
                     </div>
 
@@ -121,6 +121,17 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Cancelar</a>
+                    <div class="btn-group dropleft">
+                        {!! Form::open([
+                            'id' => 'form_finaliza_cotacao_' . $cotacao->id,
+                            'method' => 'put',
+                            'route' => ['cotacoes.finalizar', $cotacao->id],
+                            'style' => 'display: inline',
+                        ]) !!}
+                        {!! Form::button('Finalizar Cotação', ['class' => 'btn btn-success modal-finalizar-cotacao', 'title' => 'Finalizar Cotação']) !!}
+                        {!! Form::close() !!}
+                    </div>        
+        
                 </div>
             </div>
         </div>
@@ -130,5 +141,6 @@
 @if ($cotacao->fornecedores->count() > 0)
     @section('scripts')
         {!! Html::script('js/modal-excluir.js') !!}
+        {!! Html::script('js/modal-finalizar-cotacao.js') !!}
     @endsection
 @endif

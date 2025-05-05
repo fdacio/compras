@@ -44,6 +44,7 @@
             <th>Número da Requisição</th>
             <th>Centro de Custo</th>
             <th>Solicitante</th>
+            <th>Finalizada</th>
             <th style="width: 20%;"></th>
         </thead>
         <tbody>
@@ -59,6 +60,7 @@
                 <td>{{ $cotacao->requisicao->id }}</td>
                 <td>{{ $cotacao->requisicao->requisitante->nome }}</td>
                 <td>{{ $cotacao->requisicao->solicitante->nome }}</td>                
+                <td>{{ ($cotacao->finalizada) ? "Sim" : "Não"}}</td>                
                 <td class="text-right text-nowrap">
                     <a href="{{ route('cotacoes.show', $cotacao->id) }}" class="btn btn-sm btn-info" title="Visualizar"><i class="fa fa-eye"></i></a>
                     <a href="{{ route('cotacoes.edit', $cotacao->id) }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
