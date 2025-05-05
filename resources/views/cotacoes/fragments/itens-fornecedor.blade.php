@@ -28,7 +28,7 @@
                                             class="text-sm mb-1">Qtde.Cotada</label>
                                         <input type="text" name="quantidade_cotada[{{ $i->id }}]"
                                             id="quantidade_cotada[{{ $i->id }}]"
-                                            class="form-control form-control-sm text-right quantidade"
+                                            class="form-control form-control-sm text-right"
                                             value="{{ $i->quantidade_cotada }}" 
                                             readonly/>
                                     </div>
@@ -39,7 +39,7 @@
                                             class="text-sm mb-1">Qtde.Atendida</label>
                                         <input type="text" name="quantidade_atendida[{{ $i->id }}]"
                                             id="quantidade_atendida[{{ $i->id }}]"
-                                            class="form-control form-control-sm text-right quantidade"
+                                            class="form-control form-control-sm text-right"
                                             value="{{ $i->quantidade_atendida }}" 
                                             readonly/>
                                     </div>
