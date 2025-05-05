@@ -88,7 +88,6 @@
                             @include('cotacoes.fragments.dados-vencedores')
                         @else
                             <div class="card-header">
-                                <h4>Aqui dados dos vencedores da cotação.</h4>
                                 <div class="alert alert-warning">
                                     <strong>Cotação ainda não finalizada.</strong>
                                 </div>
