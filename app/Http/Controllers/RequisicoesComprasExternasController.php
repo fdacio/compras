@@ -216,8 +216,7 @@ class RequisicoesComprasExternasController extends Controller
     }
 
     public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request)
-    {
-        $item = 1;
+    {        
         $descricao = "";
         $unidade = "";
         $quantidade_solicitada = 0;
@@ -246,6 +245,13 @@ class RequisicoesComprasExternasController extends Controller
         ];
 
         RequisicaoCompraItem::create($dados);
+        $idx = 1;
+        foreach($requisicao->itens()->get() as $item) {
+            $item->update(['item' => $idx]);
+            $idx++;
+        }
+
+
         return redirect()->route('requisicoes-compras-externas.item.create', $requisicao->id)->with('success', 'Item da Requisição de Compra cadastrado com sucesso.');
     }
 
