@@ -137,7 +137,7 @@
                                     'style' => 'display: inline',
                                     
                                 ]) !!}
-                                {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir', 'title' => 'Excluir']) !!}
+                                {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir', 'title' => 'Excluir', 'disabled' => $requisicao->situacao == App\RequisicaoCompra::SITUACAO_AUTORIZADA ]) !!}
                                 {!! Form::close() !!}
                                 @else
                                 {!! Form::open([
@@ -147,7 +147,7 @@
                                     'style' => 'display: inline',
                                     
                                 ]) !!}
-                                {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar']) !!}
+                                {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar', 'disabled' => $requisicao->situacao == App\RequisicaoCompra::SITUACAO_AUTORIZADA]) !!}
                                 {!! Form::close() !!}
                                 @endif     
 
