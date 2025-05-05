@@ -114,6 +114,12 @@ class RequisicoesComprasExternasController extends Controller
      */
     public function show(RequisicaoCompra $requisicao)
     {
+        $user = User::findOrFail(auth()->user()->id);
+        $centrosCustosUser = $user->centrosCustos()->pluck('id_centro_custo')->toArray();
+        if (!in_array($requisicao->id_requisitante, $centrosCustosUser)) {
+            return redirect()->route('home');
+        }
+
         return view('requisicoes-compras-externas.show', compact('requisicao'));
     }
 
@@ -125,6 +131,13 @@ class RequisicoesComprasExternasController extends Controller
      */
     public function edit(RequisicaoCompra $requisicao)
     {
+        $user = User::findOrFail(auth()->user()->id);
+        $centrosCustosUser = $user->centrosCustos()->pluck('id_centro_custo')->toArray();
+        if (!in_array($requisicao->id_requisitante, $centrosCustosUser)) {
+            return redirect()->route('home');
+        }
+
+
         $requisitantes = CentroCusto::orderBy('nome', 'asc')->pluck('nome', 'id');
         $solicitantes = Solicitante::orderBy('nome', 'asc')->pluck('nome', 'id');
         $empresas = Empresa::get()->map(function ($empresa) {
@@ -168,6 +181,12 @@ class RequisicoesComprasExternasController extends Controller
      */
     public function destroy(RequisicaoCompra $requisicao)
     {
+        $user = User::findOrFail(auth()->user()->id);
+        $centrosCustosUser = $user->centrosCustos()->pluck('id_centro_custo')->toArray();
+        if (!in_array($requisicao->id_requisitante, $centrosCustosUser)) {
+            return redirect()->route('home');
+        }
+
         try {
             $requisicao->delete();
             return redirect()->route('requisicoes-compras-externas.index')->with('success', 'Cadastro de Requisição de Compra excluído oom sucesso.');
@@ -178,6 +197,12 @@ class RequisicoesComprasExternasController extends Controller
 
     public function cancelar(RequisicaoCompra $requisicao)
     {
+        $user = User::findOrFail(auth()->user()->id);
+        $centrosCustosUser = $user->centrosCustos()->pluck('id_centro_custo')->toArray();
+        if (!in_array($requisicao->id_requisitante, $centrosCustosUser)) {
+            return redirect()->route('home');
+        }
+
         $requisicao->situacao = RequisicaoCompra::SITUACAO_CANCELADA;
         $requisicao->save();
         return redirect()->route('requisicoes-compras-externas.index')->with('success', 'Cadastro de Requisição de Compra cancelado com sucesso.');
