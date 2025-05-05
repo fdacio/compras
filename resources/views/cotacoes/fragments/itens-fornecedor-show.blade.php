@@ -35,7 +35,10 @@
                             {{ $i->quantidade_atendida }}
                         </td>
                         <td>
-                            {{ $i->valor_unitario  }}
+                            {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.')  }}
+                        </td>
+                        <td>
+                            {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
                         </td>
                     </tr>
                 @endforeach
