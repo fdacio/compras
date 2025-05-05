@@ -218,8 +218,6 @@ class RequisicoesComprasController extends Controller
             $quantidade_solicitada = $request->quantidade_solicitada;
         }
 
-        $item = $requisicao->itens()->get()->max('item') + 1;
-
         $dados = [
             'id_requisicao' => $requisicao->id,
             'item' => $item,
@@ -229,6 +227,7 @@ class RequisicoesComprasController extends Controller
         ];
 
         RequisicaoCompraItem::create($dados);
+        $this->updateNumeroItem($requisicao);
         return redirect()->route('requisicoes-compras.item.create', $requisicao->id)->with('success', 'Item da Requisição de Compra cadastrado com sucesso.');
     }
 
@@ -236,8 +235,19 @@ class RequisicoesComprasController extends Controller
     {
         $item = RequisicaoCompraItem::find($request->id_requisicao_compra_item);
         $item->delete();
+        $this->updateNumeroItem($requisicao);
         return redirect()->route('requisicoes-compras.item.create', $requisicao->id)->with('success', 'Item deletado!');
     }
+
+    private function updateNumeroItem(RequisicaoCompra $requisicao)
+    {
+        $idx = 1;
+        foreach($requisicao->itens()->get() as $item) {
+            $item->update(['item' => $idx]);
+            $idx++;
+        }
+    }
+
 
     public function geraPdf(RequisicaoCompra $requisicao)
     {

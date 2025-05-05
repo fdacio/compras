@@ -217,6 +217,7 @@ class RequisicoesComprasExternasController extends Controller
 
     public function itemStore(RequisicaoCompra $requisicao, RequisicaoCompraItemRequest $request)
     {        
+        $item = 1;
         $descricao = "";
         $unidade = "";
         $quantidade_solicitada = 0;
@@ -226,14 +227,14 @@ class RequisicoesComprasExternasController extends Controller
             $descricao = $produto->nome;
             $unidade = $produto->unidade->nome;
             $quantidade_solicitada = $request->quantidade_solicitada;
-            $item = $requisicao->itens()->count() + 1;
+            
         }
 
         if ($requisicao->tipo == 'SERVICO') {
             $descricao = $request->servico;
             $unidade = "UNIDADE";
             $quantidade_solicitada = $request->quantidade_solicitada;
-            $item = $requisicao->itens()->count() + 1;
+            
         }
 
         $dados = [
