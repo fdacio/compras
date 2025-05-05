@@ -164,7 +164,7 @@ class CotacoesController extends Controller
      */
     public function update(Request $request, Cotacao $cotacao)
     {
-        $request->prepareForValidation( [
+        $request->valor_unitario->merge([
             'valor_unitario.*' => $this->convertMoney($request->valor_unitario),
         ]);
 
