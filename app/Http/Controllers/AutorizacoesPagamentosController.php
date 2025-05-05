@@ -218,7 +218,7 @@ class AutorizacoesPagamentosController extends Controller
 
     public function itemStore(AutorizacaoPagamento $autorizacao, AutorizacaoPagamentoItemRequest $request)
     {
-        $item = $autorizacao->itens()->count() + 1;
+        $item = 1;
         $descricao = $request->descricao;
         $unidade = 'UNIDADE';
         $quantidade = 1;
@@ -240,6 +240,7 @@ class AutorizacoesPagamentosController extends Controller
         }        
 
         AutorizacaoPagamentoItem::create($dados);
+        $this->updateNumeroItem($autorizacao);
         return redirect()->route('autorizacoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item da Autorização de Pagamento cadastrado com sucesso.');
 
     }
@@ -248,7 +249,17 @@ class AutorizacoesPagamentosController extends Controller
     {
         $item = AutorizacaoPagamentoItem::find($request->id_autorizacao_pagamento_item);
         $item->delete();
+        $this->updateNumeroItem($autorizacao);
         return redirect()->route('autorizacoes-pagamentos.item.create', $autorizacao->id)->with('success', 'Item deletado!');
+    }
+
+    private function updateNumeroItem(AutorizacaoPagamento $autorizacao)
+    {
+        $idx = 1;
+        foreach($autorizacao->itens()->get() as $item) {
+            $item->update(['item' => $idx]);
+            $idx++;
+        }
     }
 
     public function documentoCreate(AutorizacaoPagamento $autorizacao)
