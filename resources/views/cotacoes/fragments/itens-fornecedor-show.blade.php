@@ -3,20 +3,20 @@
         <table class="table table-sm table-bordered">
             <thead>
                 <tr>
-                    <th>Item</th>
-                    <th>Descrição</th>
-                    <th>Unidade</th>
-                    <th>Qtde.Solicitada</th>
-                    <th>Qtde.Cotada</th>
-                    <th>Qtde.Atendida</th>
-                    <th>Vr.Unitário</th>
-                    <th>Vr.Total</th>
+                    <th class="text-left text-sm">Item</th>
+                    <th class="text-left text-sm">Descrição</th>
+                    <th class="text-left text-sm">Unidade</th>
+                    <th class="text-left text-sm">Qtde.Solicitada</th>
+                    <th class="text-left text-sm">Qtde.Cotada</th>
+                    <th class="text-left text-sm">Qtde.Atendida</th>
+                    <th class="text-left text-sm">Vr.Unitário</th>
+                    <th class="text-left text-sm">Vr.Total</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($item->itens as $i)
                     <tr class="row-itens-cotacao">
-                        <td class="text-left text-small">
+                        <td class="text-left text-sm">
                             {{ $i->item }}
                         </td>
                         <td class="text-left text-sm">
