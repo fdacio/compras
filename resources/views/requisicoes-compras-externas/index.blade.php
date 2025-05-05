@@ -113,22 +113,6 @@
 
                                 <a href="{{ route('requisicoes-compras-externas.edit', $requisicao->id) }}"
                                     class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
-
-                                @if ($requisicao->situacao == App\RequisicaoCompra::SITUACAO_PENDENTE)
-                                    {!! Form::open([
-                                        'id' => 'form_cotar_' . $requisicao->id,
-                                        'method' => 'put',
-                                        'route' => ['requisicoes-compras-externas.cotar', $requisicao->id],
-                                        'style' => 'display: inline',
-                                    ]) !!}
-                                    {!! Form::button('<i class="fa fa-tty"></i>', ['class' => 'btn btn-success btn-sm modal-cotar-requisicao', 'title' => 'Cotar']) !!}
-                                    {!! Form::close() !!}
-                                @else
-                                    <a href="{{ route('requisicoes-compras-externas.cotacao.edit', $requisicao->id) }}"
-                                        class="btn btn-success btn-sm" title="Editar Cotação"><i class="fa fa-pencil-square-o"></i></a>
-                                
-                                @endif
-
                                 
                                 {!! Form::open([
                                     'id' => 'form_cancelar_' . $requisicao->id,
@@ -157,7 +141,6 @@
 
 @if ($requisicoes->total() > 0)
     @section('scripts')
-        {!! Html::script('js/modal-cancelar-requisicao.js') !!}
-        {!! Html::script('js/modal-cotar-requisicao.js') !!}
+        {!! Html::script('js/modal-cancelar-requisicao.js') !!}        
     @endsection
 @endif
