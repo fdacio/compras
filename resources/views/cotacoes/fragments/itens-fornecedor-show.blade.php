@@ -25,19 +25,20 @@
                         <td>
                             {{ $i->unidade }}
                         </td>
-                        <td>
+                        <td class="text-right">
+                            
                             {{ $i->quantidade_solicitada }}
                         </td>
-                        <td>
+                        <td class="text-right">
                             {{ $i->quantidade_cotada }}
                         </td>
-                        <td>
+                        <td class="text-right">
                             {{ $i->quantidade_atendida }}
                         </td>
-                        <td>
+                        <td class="text-right">
                             {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.')  }}
                         </td>
-                        <td>
+                        <td class="text-right">
                             {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
                         </td>
                     </tr>
