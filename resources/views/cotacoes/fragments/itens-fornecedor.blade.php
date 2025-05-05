@@ -29,7 +29,8 @@
                                         <input type="text" name="quantidade_cotada[{{ $i->id }}]"
                                             id="quantidade_cotada[{{ $i->id }}]"
                                             class="form-control form-control-sm text-right quantidade"
-                                            value="{{ $i->quantidade_cotada }}" />
+                                            value="{{ $i->quantidade_cotada }}" 
+                                            readonly/>
                                     </div>
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4">
@@ -39,7 +40,8 @@
                                         <input type="text" name="quantidade_atendida[{{ $i->id }}]"
                                             id="quantidade_atendida[{{ $i->id }}]"
                                             class="form-control form-control-sm text-right quantidade"
-                                            value="{{ $i->quantidade_atendida }}" />
+                                            value="{{ $i->quantidade_atendida }}" 
+                                            readonly/>
                                     </div>
                                 </div>
                                 <div class="col-xs-4 col-sm-4 col-md-4">

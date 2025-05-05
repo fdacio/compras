@@ -228,6 +228,17 @@ class CotacoesController extends Controller
             DB::beginTransaction();
             $cotacao->update(['finalizada' => 1]);
             $cotacao->requisicao->update(['situacao' => RequisicaoCompra::SITUACAO_COTADA]);
+            /*
+            Aqui gerar registros dos fornecedores vencedores global com menor valor total geral 
+            ou por item com menor valor total por item
+            */
+            $fornecedoresVencedores = $cotacao->fornecedores->map(function ($fornecedor) {
+                return [
+                    'id_fornecedor' => $fornecedor->id,
+                    'id_cotacao' => $fornecedor->id_cotacao,
+                    'id_usuario_cadastrou' => auth()->user()->id,
+                ];
+            });
             DB::commit();
             return redirect()->route('cotacoes.show', $cotacao->id)->with('success', 'Cotação finalizada com sucesso.');
         } catch (Exception $e) {
