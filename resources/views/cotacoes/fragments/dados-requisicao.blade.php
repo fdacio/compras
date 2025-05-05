@@ -1,5 +1,10 @@
 <table class="table-sm">
     <tr>
+        <th class="col-md-3">Requisição Nº:</th>
+        <td>{{ $cotacao->requisicao->id }}</td>
+    </tr>
+
+    <tr>
         <th class="col-md-3">Data da Requisição:</th>
         <td>{{ \Carbon\Carbon::parse($cotacao->requisicao->data)->format('d/m/Y') }}</td>
     </tr>
