@@ -83,6 +83,8 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::delete('cotacoes/fornecedor/{cotacao}', 'CotacoesController@destroyFornecedor', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.fornecedor.destroy');   
     Route::match(['PUT', 'PATCH'],'cotacoes/update/{cotacao}', 'CotacoesController@update', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.update');
     Route::match(['PUT', 'PATCH'],'cotacoes/finaliza/{cotacao}', 'CotacoesController@finalizar', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.finalizar');
+    Route::get('cotacoes/gera-pdf/{cotacao}', 'CotacoesController@geraPdf')->name('cotacoes.gera.pdf');
+
 
     Route::resource('autorizacoes-pagamentos', 'AutorizacoesPagamentosController', ['parameters' => ['autorizacoes-pagamentos' => 'autorizacao']]);
     Route::get('autorizacoes-pagamentos/item/create/{autorizacao}', 'AutorizacoesPagamentosController@itemCreate')->name('autorizacoes-pagamentos.item.create');

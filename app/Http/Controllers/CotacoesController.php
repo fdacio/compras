@@ -6,6 +6,7 @@ use App\Cotacao;
 use App\CotacaoFornecedor;
 use App\CotacaoFornecedorItem;
 use App\Fornecedor;
+use App\Reports\DemoCotacaoPdf;
 use App\RequisicaoCompra;
 use Exception;
 use Illuminate\Http\Request;
@@ -209,6 +210,13 @@ class CotacoesController extends Controller
             DB::rollBack();
             return redirect()->route('cotacoes.index')->with('danger', 'Não foi possível finalizar a Cotação.');
         }
+    }
+
+    public function geraPdf(Cotacao $cotacao)
+    {
+        $demo = new DemoCotacaoPdf('Cotação');
+        $demo->setContent($cotacao);
+        $demo->download();
     }
 
 }
