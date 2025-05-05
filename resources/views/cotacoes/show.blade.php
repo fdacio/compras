@@ -14,19 +14,18 @@
                         aria-controls="tabs-cabecalho" aria-selected="true">Cotação</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" id="tabs-requisicao-tab" data-toggle="pill" href="#tabs-requisicao" role="tab"
-                        aria-controls="tabs-requisicao" aria-selected="true">Requisção</a>
+                    <a class="nav-link active" id="tabs-requisicao-tab" data-toggle="pill" href="#tabs-requisicao"
+                        role="tab" aria-controls="tabs-requisicao" aria-selected="true">Requisção</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="tabs-fornecedores-tab" data-toggle="pill" href="#tabs-fornecedores" role="tab"
-                        aria-controls="tabs-itens" aria-selected="false">Fornecedores</a>
+                    <a class="nav-link" id="tabs-fornecedores-tab" data-toggle="pill" href="#tabs-fornecedores"
+                        role="tab" aria-controls="tabs-itens" aria-selected="false">Fornecedores</a>
                 </li>
             </ul>
             <!-- Começo das tabs-->
             <div class="tab-content" id="tabs-tabContent">
                 <!-- Tab Cabeçalho-->
-                <div class="tab-pane fade show active" id="tabs-cabecalho" role="tabpanel"
-                    aria-labelledby="tabs-cabecalho-tab">
+                <div class="tab-pane fade show active" id="tabs-cabecalho" role="tabpanel" aria-labelledby="tabs-cabecalho-tab">
                     <table class="table table-striped table-hover">
                         <tr>
                             <th class="col-md-3">Nº:</th>
@@ -38,11 +37,11 @@
                         </tr>
                         <tr>
                             <th class="col-md-3">Finalizada:</th>
-                            <td>{{ ($cotacao->finalizada) ? "Sim" : "Não"}}</td>
+                            <td>{{ $cotacao->finalizada ? 'Sim' : 'Não' }}</td>
                         </tr>
                         <tr>
                             <th>Usuário que Cadastrou:</th>
-                            <td>{{ ($cotacao->usuarioCadastrou) ? $cotacao->usuarioCadastrou->name : "" }}</td>
+                            <td>{{ $cotacao->usuarioCadastrou ? $cotacao->usuarioCadastrou->name : '' }}</td>
                         </tr>
                         <tr>
                             <th>Criado:</th>
@@ -50,7 +49,7 @@
                         </tr>
                         <tr>
                             <th>Usuário que Alterou:</th>
-                            <td>{{ ($cotacao->usuarioAlterou) ? $cotacao->usuarioAlterou->name : "" }}</td>
+                            <td>{{ $cotacao->usuarioAlterou ? $cotacao->usuarioAlterou->name : '' }}</td>
                         <tr>
                             <th>Alterado:</th>
                             <td>{{ \Carbon\Carbon::parse($cotacao->updated_at)->format('d/m/Y H:i:s') }}</td>
@@ -59,12 +58,9 @@
                     </table>
                 </div>
                 <!-- Tab de Requisição -->
-                <div class="tab-pane fade show active" id="tabs-requisicao" role="tabpanel"
-                aria-labelledby="tabs-requisicao-tab">
+                <div class="tab-pane fade" id="tabs-requisicao" role="tabpanel" aria-labelledby="tabs-requisicao-tab">
                     <div class="card">
-                        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 20px;">
-                            @include('cotacoes.fragments.dados-requisicao')
-                        </div>
+                        @include('cotacoes.fragments.dados-requisicao')
                     </div>
                 </div>
                 <!-- Fim Tab de Requisição -->
@@ -80,24 +76,26 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ route('cotacoes.edit', $cotacao->id) }}" class="btn btn-primary"
-                title="Editar">Editar</a>
-            <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Voltar</a>
-            <a href="{{ route('cotacoes.gera.pdf', $cotacao->id) }}" class="btn btn-success" title="download"
+            <a href="{{ route('cotacoes.edit', $cotacao->id) }}" class="btn btn-primary" title="Editar">Editar</a>
+            <a href="{{ route('cotacoes.gera.pdf', $cotacao->id) }}" class="btn btn-danger" title="download"
                 target="_blank">Demonstrativo</a>
-                <div class="btn-group dropleft">
-                    {!! Form::open([
-                        'id' => 'form_finaliza_cotacao_' . $cotacao->id,
-                        'method' => 'put',
-                        'route' => ['cotacoes.finalizar', $cotacao->id],
-                        'style' => 'display: inline',
-                    ]) !!}
-                    {!! Form::button('Finalizar Cotação', ['class' => 'btn btn-success modal-finalizar-cotacao', 'title' => 'Finalizar Cotação']) !!}
-                    {!! Form::close() !!}
-                </div>        
-    </div>
+            <div class="btn-group dropleft">
+                {!! Form::open([
+                    'id' => 'form_finaliza_cotacao_' . $cotacao->id,
+                    'method' => 'put',
+                    'route' => ['cotacoes.finalizar', $cotacao->id],
+                    'style' => 'display: inline',
+                ]) !!}
+                {!! Form::button('Finalizar Cotação', [
+                    'class' => 'btn btn-success modal-finalizar-cotacao',
+                    'title' => 'Finalizar Cotação',
+                ]) !!}
+                {!! Form::close() !!}
+            </div>
+            <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Voltar</a>
+        </div>
     </div>
 @endsection
 @section('scripts')
-{!! Html::script('js/modal-finalizar-cotacao.js') !!}
+    {!! Html::script('js/modal-finalizar-cotacao.js') !!}
 @endsection
