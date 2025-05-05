@@ -21,9 +21,12 @@ class CotacoesController extends Controller
      */
     public function index()
     {
-        // Aqui você pode adicionar a lógica para buscar as cotações
-        // e retornar a view com os dados necessários.
         $cotacoes = Cotacao::orderBy('data', 'desc');
+        $numeroRequisicao = request('numero_requisicao');
+        if ($numeroRequisicao) {
+            $cotacoes = $cotacoes->where('id_requisicao', $numeroRequisicao);
+        };
+
         $cotacoes = $cotacoes->paginate(10);
         return view('cotacoes.index', compact('cotacoes'));
     }
