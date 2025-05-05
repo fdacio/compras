@@ -15,30 +15,29 @@
             </thead>
             <tbody>
                 @foreach ($item->itens as $i)
-                    <tr>
-                        <td>
+                    <tr class="row-itens-cotacao">
+                        <td class="text-left text-small">
                             {{ $i->item }}
                         </td>
-                        <td>
+                        <td class="text-left text-sm">
                             {{ $i->descricao }}
                         </td>
-                        <td>
+                        <td class="text-left text-sm">                            
                             {{ $i->unidade }}
                         </td>
-                        <td class="text-right">
-                            
+                        <td class="text-right text-sm">                            
                             {{ $i->quantidade_solicitada }}
                         </td>
-                        <td class="text-right">
+                        <td class="text-right text-sm">
                             {{ $i->quantidade_cotada }}
                         </td>
-                        <td class="text-right">
+                        <td class="text-right text-sm">
                             {{ $i->quantidade_atendida }}
                         </td>
-                        <td class="text-right">
+                        <td class="text-right text-sm">
                             {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.')  }}
                         </td>
-                        <td class="text-right">
+                        <td class="text-right text-sm">
                             {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
                         </td>
                     </tr>
