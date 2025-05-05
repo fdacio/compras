@@ -14,7 +14,7 @@
                         aria-controls="tabs-cabecalho" aria-selected="true">Cotação</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" id="tabs-requisicao-tab" data-toggle="pill" href="#tabs-requisicao"
+                    <a class="nav-link" id="tabs-requisicao-tab" data-toggle="pill" href="#tabs-requisicao"
                         role="tab" aria-controls="tabs-requisicao" aria-selected="true">Requisção</a>
                 </li>
                 <li class="nav-item">
@@ -25,37 +25,40 @@
             <!-- Começo das tabs-->
             <div class="tab-content" id="tabs-tabContent">
                 <!-- Tab Cabeçalho-->
-                <div class="tab-pane fade show active" id="tabs-cabecalho" role="tabpanel" aria-labelledby="tabs-cabecalho-tab">
-                    <table class="table table-striped table-hover">
-                        <tr>
-                            <th class="col-md-3">Nº:</th>
-                            <td>{{ $cotacao->id }}</td>
-                        </tr>
-                        <tr>
-                            <th class="col-md-3">Data:</th>
-                            <td>{{ \Carbon\Carbon::parse($cotacao->data)->format('d/m/Y') }}</td>
-                        </tr>
-                        <tr>
-                            <th class="col-md-3">Finalizada:</th>
-                            <td>{{ $cotacao->finalizada ? 'Sim' : 'Não' }}</td>
-                        </tr>
-                        <tr>
-                            <th>Usuário que Cadastrou:</th>
-                            <td>{{ $cotacao->usuarioCadastrou ? $cotacao->usuarioCadastrou->name : '' }}</td>
-                        </tr>
-                        <tr>
-                            <th>Criado:</th>
-                            <td>{{ \Carbon\Carbon::parse($cotacao->created_at)->format('d/m/Y H:i:s') }}</td>
-                        </tr>
-                        <tr>
-                            <th>Usuário que Alterou:</th>
-                            <td>{{ $cotacao->usuarioAlterou ? $cotacao->usuarioAlterou->name : '' }}</td>
-                        <tr>
-                            <th>Alterado:</th>
-                            <td>{{ \Carbon\Carbon::parse($cotacao->updated_at)->format('d/m/Y H:i:s') }}</td>
-                        </tr>
-                        <!-- Fim cabeçalho -->
-                    </table>
+                <div class="tab-pane fade show active" id="tabs-cabecalho" role="tabpanel"
+                    aria-labelledby="tabs-cabecalho-tab">
+                    <div class="card">
+                        <table class="table table-striped table-hover">
+                            <tr>
+                                <th class="col-md-3">Nº:</th>
+                                <td>{{ $cotacao->id }}</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-3">Data:</th>
+                                <td>{{ \Carbon\Carbon::parse($cotacao->data)->format('d/m/Y') }}</td>
+                            </tr>
+                            <tr>
+                                <th class="col-md-3">Finalizada:</th>
+                                <td>{{ $cotacao->finalizada ? 'Sim' : 'Não' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Usuário que Cadastrou:</th>
+                                <td>{{ $cotacao->usuarioCadastrou ? $cotacao->usuarioCadastrou->name : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Criado:</th>
+                                <td>{{ \Carbon\Carbon::parse($cotacao->created_at)->format('d/m/Y H:i:s') }}</td>
+                            </tr>
+                            <tr>
+                                <th>Usuário que Alterou:</th>
+                                <td>{{ $cotacao->usuarioAlterou ? $cotacao->usuarioAlterou->name : '' }}</td>
+                            <tr>
+                                <th>Alterado:</th>
+                                <td>{{ \Carbon\Carbon::parse($cotacao->updated_at)->format('d/m/Y H:i:s') }}</td>
+                            </tr>
+                            <!-- Fim cabeçalho -->
+                        </table>
+                    </div>
                 </div>
                 <!-- Tab de Requisição -->
                 <div class="tab-pane fade" id="tabs-requisicao" role="tabpanel" aria-labelledby="tabs-requisicao-tab">
@@ -68,9 +71,7 @@
                 <!-- Tab de Fornecedores -->
                 <div class="tab-pane fade" id="tabs-fornecedores" role="tabpanel" aria-labelledby="tabs-fornecedores-tab">
                     <div class="card">
-                        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 20px;">
-
-                        </div>
+                        Aqui informações sobre os fornecedores e valores cotados.
                     </div>
                 </div>
             </div>
