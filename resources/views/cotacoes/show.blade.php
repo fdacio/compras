@@ -85,13 +85,13 @@
                 <div class="tab-pane fade" id="tabs-vencedores" role="tabpanel" aria-labelledby="tabs-vencedores-tab">
                     <div class="card">
                         @if ($cotacao->finalizada)
-                            <div class="alert alert-success">
-                                <strong>Vencedores da Cotação:</strong>
-                            </div>
                             @include('cotacoes.fragments.dados-vencedores')
                         @else
-                            <div class="alert alert-warning card-body">
-                                <strong>Cotação ainda não finalizada.</strong>
+                            <div class="card-header">
+                                <h4>Aqui dados dos vencedores da cotação.</h4>
+                                <div class="alert alert-warning">
+                                    <strong>Cotação ainda não finalizada.</strong>
+                                </div>
                             </div>
                         @endif
                     </div>
