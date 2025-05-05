@@ -47,7 +47,7 @@ class RequisicoesComprasExternasController extends Controller
 
         $requisicoes = $requisicoes->paginate(10);
 
-        return view('requisicoes-compras.index', compact('requisicoes', 'requisitantes', 'solicitantes', 'veiculos'));
+        return view('requisicoes-compras-externas.index', compact('requisicoes', 'requisitantes', 'solicitantes', 'veiculos'));
     }
 
 
