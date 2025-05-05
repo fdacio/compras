@@ -35,7 +35,8 @@
                     </div>
 
                     <div class="form-group col-md-2 text-right">
-                        <button class="btn btn-success"><i class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
+                        <label for="">&nbsp;</label>
+                        <button class="btn btn-success form-control"><i class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
                     </div>
 
                 </div>
