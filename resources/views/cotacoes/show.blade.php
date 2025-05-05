@@ -33,42 +33,46 @@
                 <div class="tab-pane fade show active" id="tabs-cabecalho" role="tabpanel"
                     aria-labelledby="tabs-cabecalho-tab">
                     <div class="card">
-                        <table class="table table-striped table-hover">
-                            <tr>
-                                <th class="col-md-3">Nº:</th>
-                                <td>{{ $cotacao->id }}</td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-3">Data:</th>
-                                <td>{{ \Carbon\Carbon::parse($cotacao->data)->format('d/m/Y') }}</td>
-                            </tr>
-                            <tr>
-                                <th class="col-md-3">Finalizada:</th>
-                                <td>{{ $cotacao->finalizada ? 'Sim' : 'Não' }}</td>
-                            </tr>
-                            <tr>
-                                <th>Usuário que Cadastrou:</th>
-                                <td>{{ $cotacao->usuarioCadastrou ? $cotacao->usuarioCadastrou->name : '' }}</td>
-                            </tr>
-                            <tr>
-                                <th>Criado:</th>
-                                <td>{{ \Carbon\Carbon::parse($cotacao->created_at)->format('d/m/Y H:i:s') }}</td>
-                            </tr>
-                            <tr>
-                                <th>Usuário que Alterou:</th>
-                                <td>{{ $cotacao->usuarioAlterou ? $cotacao->usuarioAlterou->name : '' }}</td>
-                            <tr>
-                                <th>Alterado:</th>
-                                <td>{{ \Carbon\Carbon::parse($cotacao->updated_at)->format('d/m/Y H:i:s') }}</td>
-                            </tr>
-                            <!-- Fim cabeçalho -->
-                        </table>
+                        <div class="card-body">
+                            <table class="table table-striped table-hover">
+                                <tr>
+                                    <th class="col-md-3">Nº:</th>
+                                    <td>{{ $cotacao->id }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="col-md-3">Data:</th>
+                                    <td>{{ \Carbon\Carbon::parse($cotacao->data)->format('d/m/Y') }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="col-md-3">Finalizada:</th>
+                                    <td>{{ $cotacao->finalizada ? 'Sim' : 'Não' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Usuário que Cadastrou:</th>
+                                    <td>{{ $cotacao->usuarioCadastrou ? $cotacao->usuarioCadastrou->name : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Criado:</th>
+                                    <td>{{ \Carbon\Carbon::parse($cotacao->created_at)->format('d/m/Y H:i:s') }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Usuário que Alterou:</th>
+                                    <td>{{ $cotacao->usuarioAlterou ? $cotacao->usuarioAlterou->name : '' }}</td>
+                                <tr>
+                                    <th>Alterado:</th>
+                                    <td>{{ \Carbon\Carbon::parse($cotacao->updated_at)->format('d/m/Y H:i:s') }}</td>
+                                </tr>
+                                <!-- Fim cabeçalho -->
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- Tab de Requisição -->
                 <div class="tab-pane fade" id="tabs-requisicao" role="tabpanel" aria-labelledby="tabs-requisicao-tab">
                     <div class="card">
-                        @include('cotacoes.fragments.dados-requisicao')
+                        <div class="card-body">
+                            @include('cotacoes.fragments.dados-requisicao')
+                        </div>
                     </div>
                 </div>
                 <!-- Fim Tab de Requisição -->
@@ -76,8 +80,8 @@
                 <!-- Tab de Fornecedores -->
                 <div class="tab-pane fade" id="tabs-fornecedores" role="tabpanel" aria-labelledby="tabs-fornecedores-tab">
                     <div class="card">
-                        @foreach ($cotacao->fornecedores as $item)
-                            <div class="card my-2">
+                        <div class="card-body">
+                            @foreach ($cotacao->fornecedores as $item)
                                 <div class="card-header border-0">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -91,16 +95,16 @@
                                     </div>
                                 </div>
 
-                                <div id="itens-{{ $item->id }}" class="collapse hide" data-parent="#accordion-itens-{{ $item->id }}">
+                                <div id="itens-{{ $item->id }}" class="collapse hide"
+                                    data-parent="#accordion-itens-{{ $item->id }}">
 
-                                    @include('cotacoes.fragments.itens-fornecedor')
+                                    @include('cotacoes.fragments.itens-fornecedor-show')
 
                                 </div>
-
-                            </div>
-                        @endforeach
-
+                            @endforeach
+                        </div>
                     </div>
+
                 </div>
                 <!-- Fim Tab de Fornecedores -->
 
