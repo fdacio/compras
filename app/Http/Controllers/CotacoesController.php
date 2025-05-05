@@ -22,7 +22,7 @@ class CotacoesController extends Controller
     public function index()
     {
         $cotacoes = Cotacao::orderBy('data', 'desc');
-        $numeroRequisicao = request('numero_requisicao');
+        $numeroRequisicao = request()->get('numero_requisicao');
         if ($numeroRequisicao) {
             $cotacoes = $cotacoes->where('id_requisicao', $numeroRequisicao);
         };
