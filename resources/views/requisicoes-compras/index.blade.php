@@ -124,12 +124,22 @@
                                     {!! Form::button('<i class="fa fa-tty"></i>', ['class' => 'btn btn-success btn-sm modal-cotar-requisicao', 'title' => 'Cotar']) !!}
                                     {!! Form::close() !!}
                                 @else
+                                        
                                     <a href="{{ route('requisicoes-compras.cotacao.edit', $requisicao->id) }}"
-                                        class="btn btn-success btn-sm" title="Editar Cotação"><i class="fa fa-pencil-square-o"></i></a>
+                                        class="btn btn-success btn-sm" title="Editar Cotação" disabled={{ $requisicao->situacao == App\RequisicaoCompra::SITUACAO_CANCELADA }}><i class="fa fa-pencil-square-o"></i></a>
                                 
                                 @endif
-
-                                
+                                @if ($requisicao->situacao == App\RequisicaoCompra::SITUACAO_CANCELADA)
+                                {!! Form::open([
+                                    'id' => 'form_excluir_' . $requisicao->id,
+                                    'method' => 'put',
+                                    'route' => ['requisicoes-compras.destroy', $requisicao->id],
+                                    'style' => 'display: inline',
+                                    
+                                ]) !!}
+                                {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir', 'title' => 'Excluir']) !!}
+                                {!! Form::close() !!}
+                                @else
                                 {!! Form::open([
                                     'id' => 'form_cancelar_' . $requisicao->id,
                                     'method' => 'put',
@@ -137,9 +147,9 @@
                                     'style' => 'display: inline',
                                     
                                 ]) !!}
-                                {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar', 'disabled' => ($requisicao->situacao === App\RequisicaoCompra::SITUACAO_CANCELADA)]) !!}
+                                {!! Form::button('<i class="fa fa-close"></i>', ['class' => 'btn btn-danger btn-sm modal-cancelar-requisicao', 'title' => 'Cancelar']) !!}
                                 {!! Form::close() !!}
-                                
+                                @endif     
 
                             </td>
                         </tr>
@@ -159,5 +169,6 @@
     @section('scripts')
         {!! Html::script('js/modal-cancelar-requisicao.js') !!}
         {!! Html::script('js/modal-cotar-requisicao.js') !!}
+        {!! Html::script('js/modal-excluir.js') !!}
     @endsection
 @endif
