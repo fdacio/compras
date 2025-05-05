@@ -57,6 +57,9 @@ class CotacoesController extends Controller
      */
     public function edit(Cotacao $cotacao)
     {
+        if ($cotacao->finalizada) {
+            return redirect()->route('cotacoes.index')->with('danger', 'Não é possível editar uma Cotação já finalizada.');
+        }
         $fornecedores = Fornecedor::get()->map(function ($fornecedor) {
             return ['id' => $fornecedor->id, 'nome_razao_social' => $fornecedor->pessoa->nome_razao_social];
         })->sortBy('nome_razao_social')->pluck('nome_razao_social', 'id');
@@ -200,6 +203,10 @@ class CotacoesController extends Controller
      */
     public function finalizar(Cotacao $cotacao)
     {
+        if ($cotacao->finalizada) {
+            return redirect()->route('cotacoes.index')->with('danger', 'Cotação já finalizada.');
+        }
+
         try {
             DB::beginTransaction();
             $cotacao->update(['finalizada' => true]);

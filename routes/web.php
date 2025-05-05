@@ -67,13 +67,6 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::get('requisicoes-compras/{requisicao}/cotacao/edit', 'RequisicoesComprasController@cotacaoEdit')->name('requisicoes-compras.cotacao.edit');
     Route::get('requisicoes-compras/cotadas/autorizacoes', 'RequisicoesComprasController@cotadasAutorizacoes')->name('requisicoes-compras.cotadas.autorizacoes');
 
-    /**Requisições de compras externas */
-    Route::resource('requisicoes-compras-externas', 'RequisicoesComprasExternasController', ['parameters' => ['requisicoes-compras-externas' => 'requisicao']]);
-    Route::get('requisicoes-compras-externas/item/create/{requisicao}', 'RequisicoesComprasExternasController@itemCreate')->name('requisicoes-compras-externas.item.create');
-    Route::post('requisicoes-compras-externas/item/store/{requisicao}', 'RequisicoesComprasExternasController@itemStore')->name('requisicoes-compras-externas.item.store');
-    Route::get('requisicoes-compras-externas/gera-pdf/{requisicao}', 'RequisicoesComprasExternasController@geraPdf')->name('requisicoes-compras-externas.gera.pdf');
-    Route::delete('requisicoes-compras-externas/{requisicao}/del-item', 'RequisicoesComprasExternasController@destroyItem')->name('requisicoes-compras-externas.del-item.destroy');
-    Route::match(['PUT', 'PATCH'], 'requisicoes-compras-externas/{requisicao}/cancelar', 'RequisicoesComprasExternasController@cancelar')->name('requisicoes-compras-externas.cancelar');
 
     Route::get('cotacoes', 'CotacoesController@index')->name('cotacoes.index');
     Route::get('cotacoes/{cotacao}', 'CotacoesController@show', ['parameters' => ['cotacoes' => 'cotacao']])->name('cotacoes.show');
@@ -97,4 +90,15 @@ Route::group(['middleware' => ['auth', 'auth.access', 'check.permissao']], funct
     Route::post('autorizacoes-pagamentos/documentos/upload', 'AutorizacoesPagamentosController@documentoUpload')->name('autorizacoes-pagamentos.documentos.upload');
     Route::get('autorizacoes-pagamentos/documentos/download/{documento}', 'AutorizacoesPagamentosController@documentoDownload')->name('autorizacoes-pagamentos.documentos.download');
     Route::delete('autorizacoes-pagamentos/documentos/destroy/{documento}', 'AutorizacoesPagamentosController@documentoDestroy')->name('autorizacoes-pagamentos.documentos.destroy');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    /**Requisições de compras externas */
+    Route::resource('requisicoes-compras-externas', 'RequisicoesComprasExternasController', ['parameters' => ['requisicoes-compras-externas' => 'requisicao']]);
+    Route::get('requisicoes-compras-externas/item/create/{requisicao}', 'RequisicoesComprasExternasController@itemCreate')->name('requisicoes-compras-externas.item.create');
+    Route::post('requisicoes-compras-externas/item/store/{requisicao}', 'RequisicoesComprasExternasController@itemStore')->name('requisicoes-compras-externas.item.store');
+    Route::get('requisicoes-compras-externas/gera-pdf/{requisicao}', 'RequisicoesComprasExternasController@geraPdf')->name('requisicoes-compras-externas.gera.pdf');
+    Route::delete('requisicoes-compras-externas/{requisicao}/del-item', 'RequisicoesComprasExternasController@destroyItem')->name('requisicoes-compras-externas.del-item.destroy');
+    Route::match(['PUT', 'PATCH'], 'requisicoes-compras-externas/{requisicao}/cancelar', 'RequisicoesComprasExternasController@cancelar')->name('requisicoes-compras-externas.cancelar');
+
 });

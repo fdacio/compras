@@ -23,6 +23,10 @@ class AuthAccess
             return redirect('/logout');
         }
         
+        if ($user->tipo->id == 3) {
+            return redirect()->route('home');
+        }
+
         return $next($request);
     }
 }
