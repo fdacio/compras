@@ -81,7 +81,7 @@
                                 <a href="{{ route('requisicoes-compras.show', $requisicao->id) }}"
                                     class="btn btn-info btn-sm" title="Visualizar Requisição"><i class="fa fa-eye"></i></a>
 
-                                <a href="{{ route('cotacoes.show', $requisicao->cotacao->id) }}"
+                                <a href="{{ route('requisicoes-compras.cotacao.show', $requisicao->id) }}"
                                     class="btn btn-info btn-sm" title="Visualizar Cotação"><i class="fa fa-eye"></i></a>
     
 

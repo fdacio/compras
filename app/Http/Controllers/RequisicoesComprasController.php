@@ -306,6 +306,16 @@ class RequisicoesComprasController extends Controller
         return redirect()->route('requisicoes-compras.index');
     }
 
+    public function cotacaoShow(RequisicaoCompra $requisicao) 
+    {
+        $cotacao = Cotacao::where('id_requisicao', $requisicao->id)->first();
+        if ($cotacao) {
+            return redirect()->route('cotacoes.show', $cotacao->id);
+        }
+        return redirect()->route('requisicoes-compras.index');
+
+    }
+
     /**
      * @return \Illuminate\Http\Response
      * Retorna as requisições de compras que estão com a situação "COTADA"
