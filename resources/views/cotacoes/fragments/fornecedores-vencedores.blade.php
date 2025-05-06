@@ -1,6 +1,6 @@
 <div class="card-body">
     @foreach ($cotacao->fornecedoresVencedores as $fornecedor)
-        <div class="card">
+        <div class="card-body">
             <div class="alert alert-success">
                 <strong>
                     {{ $fornecedor->fornecedor->pessoa->nome_razao_social }}
