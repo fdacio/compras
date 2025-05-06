@@ -257,7 +257,7 @@ class CotacoesController extends Controller
         $menorValor = collect($listaFornecedoresCandidatos)->sortBy('valor_total')->first();
         $vencedores = [];
         foreach ($listaFornecedoresCandidatos as $key => $fornecedorCandidato) {
-            if ($fornecedorCandidato['valor_total'] == $menorValor->valor_total) {
+            if ($fornecedorCandidato['valor_total'] == $menorValor['valor_total']) {
                 $vencedores[] = [
                     'id_fornecedor' => $fornecedorCandidato['id_fornecedor'],
                     'valor_total' => $fornecedorCandidato['valor_total'],
