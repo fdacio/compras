@@ -14,6 +14,7 @@ use App\Http\Requests\AutorizacaoPagamentoRequest;
 use App\Pessoa;
 use App\Produto;
 use App\Reports\DemoAutorizacaoPagamentoPdf;
+use App\TipoUsuario;
 use App\User;
 use App\Veiculo;
 use Carbon\Carbon;
@@ -32,7 +33,7 @@ class AutorizacoesPagamentosController extends Controller
 
         $this->middleware(function ($request, $next) {
             $user = User::findOrFail(auth()->user()->id);
-            if ($user->tipo->id == 3) {
+            if ($user->tipo->id == TipoUsuario::NIVEL_OPERADOR) {
                 $centrosCustosUser = $user->centrosCustos()->pluck('id_centro_custo')->toArray();
                 $this->autorizacoes = AutorizacaoPagamento::whereIn('id_centro_custo', $centrosCustosUser)->orderBy('id', 'desc');
                 $this->centrosCusto = CentroCusto::whereIn('id', $centrosCustosUser)->orderBy('nome', 'asc')->pluck('nome', 'id');

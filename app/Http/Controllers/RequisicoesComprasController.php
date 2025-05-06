@@ -13,6 +13,7 @@ use App\Solicitante;
 use App\Veiculo;
 use App\Reports\DemoRequisicaoCompraPdf;
 use App\RequisicaoCompraItem;
+use App\TipoUsuario;
 use App\User;
 use Carbon\Carbon;
 use Exception;
@@ -25,7 +26,7 @@ class RequisicoesComprasController extends Controller
     {
         $this->middleware(function ($request, $next) {
             $user = User::findOrFail(auth()->user()->id);
-            if ($user->tipo->id == 3) {
+            if ($user->tipo->id == TipoUsuario::NIVEL_OPERADOR) {
                 return redirect()->route('home')->with('danger', 'Você não tem permissão para acessar esta área.');
             }
             return $next($request);

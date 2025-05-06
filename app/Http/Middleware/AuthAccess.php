@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\TipoUsuario;
 use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class AuthAccess
             return redirect('/logout');
         }
         
-        if ($user->tipo->id == 3) {
+        if ($user->tipo->id == TipoUsuario::NIVEL_OPERADOR) {
             return redirect()->route('home');
         }
 

@@ -12,6 +12,7 @@ class TipoUsuario extends Model
 
     const NIVEL_MANUTENCAO = 1;
     const NIVEL_ADMINISTRADOR = 2;
-    const NIVEL_OPERADOR = 3;   
+    const NIVEL_GERENTE = 3;
+    const NIVEL_OPERADOR = 4;   
 
 }

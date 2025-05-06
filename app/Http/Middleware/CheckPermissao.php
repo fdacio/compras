@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Rota;
+use App\TipoUsuario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -34,9 +35,9 @@ class CheckPermissao
         $routeName = $request->route()->getName();
         $nivelUsuario = Auth::user()->tipo->id;
         
-        if ($nivelUsuario == 1 || $nivelUsuario == 2) {
+        if ($nivelUsuario == TipoUsuario::NIVEL_MANUTENCAO || $nivelUsuario == TipoUsuario::NIVEL_ADMINISTRADOR || TipoUsuario::NIVEL_GERENTE) {
             $verificarPermissao = false;
-        } elseif ($nivelUsuario == 3 && in_array($routeName, $routesAdmin)) {
+        } elseif ($nivelUsuario == TipoUsuario::NIVEL_OPERADOR && in_array($routeName, $routesAdmin)) {
             $verificarPermissao = true;
         } else {
             $verificarPermissao = false;

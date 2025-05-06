@@ -66,10 +66,10 @@
 
         <div class="collapse navbar-collapse menu-responsive" id="navbarSupportedContent">
             <nav class="nav navbar-nav text-white bg-primary">
-                @if ((Auth::user()->tipo->id === 1) || (Auth::user()->tipo->id === 2))
-                    @include('layouts.menus.menu-main')
-                @else
+                @if (Auth::user()->tipo->id === App\TipoUsuario::NIVEL_OPERADOR)
                     @include('layouts.menus.menu-operador')
+                @else
+                    @include('layouts.menus.menu-main')
                 @endif
             </nav>
         </div>
@@ -79,11 +79,11 @@
         <div class="row">
             <nav class="sidebar bg-light col-md-2 col-lg-2">
                 <div class="sidebar-sticky">
-                    @if ((Auth::user()->tipo->id === 1) || (Auth::user()->tipo->id === 2))
-                    @include('layouts.menus.menu-main')
-                @else
-                    @include('layouts.menus.menu-operador')
-                @endif
+                    @if (Auth::user()->tipo->id === App\TipoUsuario::NIVEL_OPERADOR)
+                        @include('layouts.menus.menu-operador')
+                    @else
+                        @include('layouts.menus.menu-main')
+                    @endif
                 </div>
             </nav>
             <main role="main" class="col-md-10 col-lg-10 ml-sm-auto">
