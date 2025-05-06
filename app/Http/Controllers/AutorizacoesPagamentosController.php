@@ -308,6 +308,11 @@ class AutorizacoesPagamentosController extends Controller
 
     public function autorizar(AutorizacaoPagamento $autorizacao)
     {
+        $user = User::findOrFail(auth()->user()->id);
+        if ($user->tipo->id != TipoUsuario::NIVEL_ADMINISTRADOR) {
+            return redirect()->route('home')->with('danger', 'Você não tem permissão ação.');
+        }
+
         $autorizacao->situacao = AutorizacaoPagamento::SITUACAO_AUTORIZADO;
         $autorizacao->id_usuario_autorizacao = auth()->user()->id;
         $autorizacao->data_autorizacao = Carbon::now();

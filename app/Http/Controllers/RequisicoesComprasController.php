@@ -335,6 +335,11 @@ class RequisicoesComprasController extends Controller
 
     public function autorizar(RequisicaoCompra $requisicao)
     {
+        $user = User::findOrFail(auth()->user()->id);
+        if ($user->tipo->id != TipoUsuario::NIVEL_ADMINISTRADOR) {
+            return redirect()->route('home')->with('danger', 'Você não tem permissão ação.');
+        }
+
         $requisicao->situacao = RequisicaoCompra::SITUACAO_AUTORIZADA;
         $requisicao->id_usuario_autorizacao = auth()->user()->id;
         $requisicao->data_autorizacao = Carbon::now();
