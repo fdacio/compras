@@ -23,34 +23,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $i)
-                            {{ dd("item", $i->itens) }}
-                                <tr class="row-itens-cotacao">
-                                    <td class="text-left text-sm">
-                                        {{ $i->item }}
-                                    </td>
-                                    <td class="text-left text-sm">
-                                        {{ $i->descricao }}
-                                    </td>
-                                    <td class="text-left text-sm">
-                                        {{ $i->unidade }}
-                                    </td>
-                                    <td class="text-right text-sm">
-                                        {{ $i->quantidade_solicitada }}
-                                    </td>
-                                    <td class="text-right text-sm">
-                                        {{ $i->quantidade_cotada }}
-                                    </td>
-                                    <td class="text-right text-sm">
-                                        {{ $i->quantidade_atendida }}
-                                    </td>
-                                    <td class="text-right text-sm">
-                                        {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.') }}
-                                    </td>
-                                    <td class="text-right text-sm">
-                                        {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
-                                    </td>
-                                </tr>
+                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $fornecedorItem)
+                                {{-- {{ dd("fornecedor", $fornecedorItem) }} --}}
+                                @foreach ($fornecedorItem->itens as $i)
+                                    {{-- {{ dd("item", $i) }} --}}
+                                    {{-- {{ dd("item", $i->itens) }} --}}
+                                    {{-- {{ dd("item", $i->id_item) }} --}}
+
+                                    {{ dd('item', $i) }}
+                                    <tr class="row-itens-cotacao">
+                                        <td class="text-left text-sm">
+                                            {{ $i->item }}
+                                        </td>
+                                        <td class="text-left text-sm">
+                                            {{ $i->descricao }}
+                                        </td>
+                                        <td class="text-left text-sm">
+                                            {{ $i->unidade }}
+                                        </td>
+                                        <td class="text-right text-sm">
+                                            {{ $i->quantidade_solicitada }}
+                                        </td>
+                                        <td class="text-right text-sm">
+                                            {{ $i->quantidade_cotada }}
+                                        </td>
+                                        <td class="text-right text-sm">
+                                            {{ $i->quantidade_atendida }}
+                                        </td>
+                                        <td class="text-right text-sm">
+                                            {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.') }}
+                                        </td>
+                                        <td class="text-right text-sm">
+                                            {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @endforeach
                             {{-- <tfoot>
                                 <tr>
