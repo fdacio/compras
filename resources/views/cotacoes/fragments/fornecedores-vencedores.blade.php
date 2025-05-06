@@ -3,7 +3,7 @@
         @foreach ($cotacao->fornecedoresVencedores as $fornecedor)
             <div class="alert alert-success">
                 <strong>
-                {{ $fornecedor->fornecedor->pessoa->nome_razao_social }}
+                    {{ $fornecedor->fornecedor->pessoa->nome_razao_social }}
                 </strong>
             </div>
 
@@ -23,9 +23,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{ dd($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor->itens))}}
+                            {{ dd($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor)) }}
                             @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $i)
-                            {{ $i }}
+                                {{ $i }}
                                 <tr class="row-itens-cotacao">
                                     <td class="text-left text-sm">
                                         {{ $i->item }}
@@ -33,10 +33,10 @@
                                     <td class="text-left text-sm">
                                         {{ $i->descricao }}
                                     </td>
-                                    <td class="text-left text-sm">                            
+                                    <td class="text-left text-sm">
                                         {{ $i->unidade }}
                                     </td>
-                                    <td class="text-right text-sm">                            
+                                    <td class="text-right text-sm">
                                         {{ $i->quantidade_solicitada }}
                                     </td>
                                     <td class="text-right text-sm">
@@ -46,7 +46,7 @@
                                         {{ $i->quantidade_atendida }}
                                     </td>
                                     <td class="text-right text-sm">
-                                        {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.')  }}
+                                        {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.') }}
                                     </td>
                                     <td class="text-right text-sm">
                                         {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
@@ -69,7 +69,6 @@
                     </table>
                 </div>
             </div>
-            
         @endforeach
     </div>
 </div>
