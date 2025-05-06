@@ -79,39 +79,25 @@
                             <td class="text-right text-nowrap">
 
                                 <a href="{{ route('requisicoes-compras.show', $requisicao->id) }}"
-                                    class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye"></i></a>
+                                    class="btn btn-info btn-sm" title="Visualizar Requisição"><i class="fa fa-eye"></i></a>
 
-                                <a href="{{ route('requisicoes-compras.edit', $requisicao->id) }}"
-                                    class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
-
-                                @if ($requisicoes->total() > 0)
-                                    {!! Form::open([
-                                        'id' => 'form_cotar_' . $requisicao->id,
-                                        'method' => 'put',
-                                        'route' => ['requisicoes-compras.cotar', $requisicao->id],
-                                        'style' => 'display: inline',
-                                    ]) !!}
-                                    {!! Form::button('<i class="fa fa-tty"></i>', [
-                                        'class' => 'btn btn-success btn-sm modal-cotar-requisicao',
-                                        'title' => 'Cotar',
-                                    ]) !!}
-                                    {!! Form::close() !!}
-                                @endif
+                                <a href="{{ route('cotacoes.show', $requisicao->cotacao->id) }}"
+                                    class="btn btn-info btn-sm" title="Visualizar Cotação"><i class="fa fa-eye"></i></a>
+    
 
                                 @if ($requisicoes->total() > 0)
                                     {!! Form::open([
-                                        'id' => 'form_cancelar_' . $requisicao->id,
+                                        'id' => 'form_autorizar_' . $requisicao->id,
                                         'method' => 'put',
-                                        'route' => ['requisicoes-compras.cancelar', $requisicao->id],
+                                        'route' => ['requisicoes-compras.autorizar', $requisicao->id],
                                         'style' => 'display: inline',
                                     ]) !!}
-                                    {!! Form::button('<i class="fa fa-close"></i>', [
-                                        'class' => 'btn btn-danger btn-sm modal-cancelar-requisicao',
-                                        'title' => 'Cancelar',
+                                    {!! Form::button('<i class="fa fa-check"></i>', [
+                                        'class' => 'btn btn-success btn-sm modal-autorizar',
+                                        'title' => 'Autorizar Comprar',
                                     ]) !!}
                                     {!! Form::close() !!}
                                 @endif
-
                             </td>
                         </tr>
                     @endforeach
@@ -128,7 +114,6 @@
 
 @if ($requisicoes->total() > 0)
     @section('scripts')
-        {!! Html::script('js/modal-cancelar-requisicao.js') !!}
-        {!! Html::script('js/modal-cotar-requisicao.js') !!}
+        {!! Html::script('js/modal-autorizar.js') !!}
     @endsection
 @endif
