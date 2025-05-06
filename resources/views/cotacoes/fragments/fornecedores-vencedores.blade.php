@@ -7,7 +7,7 @@
                 </strong>
             </div>
 
-            <div class="card">
+            <div class="card border-0">
                 <div class="card-body">
                     <table class="table table-sm table-bordered">
                         <thead>
