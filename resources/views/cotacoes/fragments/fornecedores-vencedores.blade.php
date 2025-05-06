@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $i)
+                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor)->get() as $i)
                                 <tr class="row-itens-cotacao">
                                     <td class="text-left text-sm">
                                         {{ $i->item }}
@@ -51,18 +51,19 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7" class="text-right text-sm">
+                                        <strong>Total:</strong>
+                                    </td>
+                                    <td class="text-right text-sm">
+                                        <strong>
+                                            {{ 'R$ ' . number_format($item->itens->sum('valor_total'), '2', ',', '.') }}
+                                        </strong>
+                                    </td>
+                                </tr>      
+                            </tfoot>         
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="7" class="text-right text-sm">
-                                    <strong>Total:</strong>
-                                </td>
-                                <td class="text-right text-sm">
-                                    <strong>
-                                        {{ 'R$ ' . number_format($item->itens->sum('valor_total'), '2', ',', '.') }}
-                                    </strong>
-                                </td>
-                            </tr>           
                     </table>
                 </div>
             </div>
