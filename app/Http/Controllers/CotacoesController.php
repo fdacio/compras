@@ -253,7 +253,7 @@ class CotacoesController extends Controller
                 $menorValor = $valorTotal;
                 CotacaoFornecedorVencedor::updateOrCreate([
                     'id_cotacao' => $cotacao->id,
-                    'id_fornecedor' => $fornecedor->id
+                    'id_fornecedor' => $fornecedor->id_fornecedor,
                 ]);
             }
         }
