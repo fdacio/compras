@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $i)
+                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor)->itens as $i)
                             {{ $i }}
                                 <tr class="row-itens-cotacao">
                                     <td class="text-left text-sm">
@@ -59,7 +59,7 @@
                                     </td>
                                     <td class="text-right text-sm">
                                         <strong>
-                                            {{ 'R$ ' . number_format($i->itens->sum('valor_total'), '2', ',', '.') }}
+                                            {{ 'R$ ' . number_format($i->sum('valor_total'), '2', ',', '.') }}
                                         </strong>
                                     </td>
                                 </tr>      
