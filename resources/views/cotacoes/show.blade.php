@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tabs-requisicao-tab" data-toggle="pill" href="#tabs-requisicao" role="tab"
-                        aria-controls="tabs-requisicao" aria-selected="true">Requisção</a>
+                        aria-controls="tabs-requisicao" aria-selected="true">Requisição</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tabs-fornecedores-tab" data-toggle="pill" href="#tabs-fornecedores"
