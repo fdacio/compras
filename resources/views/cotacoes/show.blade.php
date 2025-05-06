@@ -156,7 +156,9 @@
                 ]) !!}
                 {!! Form::close() !!}
             </div>
-            <a class="btn btn-danger" href="{{ url()->previous() }}">Voltar</a>
+
+            <a class="btn btn-danger" href="{{ route('cotacoes.index') }}">Voltar</a>
+            <a class="btn btn-danger" href="{{ route('requisicoes-compras.cotadas.autorizacoes') }}">Voltar Autorizações</a>
         </div>
     </div>
 @endsection
