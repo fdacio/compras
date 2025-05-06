@@ -234,6 +234,7 @@ class CotacoesController extends Controller
             return redirect()->route('cotacoes.show', $cotacao->id)->with('success', 'Cotação finalizada com sucesso.');
         } catch (Exception $e) {
             DB::rollBack();
+            dd($e->getMessage());
             return redirect()->route('cotacoes.index')->with('danger', 'Não foi possível finalizar a Cotação.');
         }
     }
