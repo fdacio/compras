@@ -126,7 +126,7 @@
                 <div class="tab-pane fade" id="tabs-vencedores" role="tabpanel" aria-labelledby="tabs-vencedores-tab">
                     <div class="card">
                         @if ($cotacao->finalizada)
-                            @include('cotacoes.fragments.dados-vencedores')
+                            @include('cotacoes.fragments.fornecedores-vencedores')
                         @else
                             <div class="card-body">
                                 <div class="alert alert-warning">

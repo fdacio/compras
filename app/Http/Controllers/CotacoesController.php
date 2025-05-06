@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cotacao;
 use App\CotacaoFornecedor;
 use App\CotacaoFornecedorItem;
+use App\CotacaoFornecedorVencedor;
 use App\Fornecedor;
 use App\Http\Requests\CotacaoFornecedoItemRequest;
 use App\Reports\DemoCotacaoPdf;
@@ -227,23 +228,33 @@ class CotacoesController extends Controller
         try {
             DB::beginTransaction();
             $cotacao->update(['finalizada' => 1]);
+            $this->geraFornecedorVencedor($cotacao);
             $cotacao->requisicao->update(['situacao' => RequisicaoCompra::SITUACAO_COTADA]);
-            /*
-            Aqui gerar registros dos fornecedores vencedores global com menor valor total geral 
-            ou por item com menor valor total por item
-            */
-            $fornecedoresVencedores = $cotacao->fornecedores->map(function ($fornecedor) {
-                return [
-                    'id_fornecedor' => $fornecedor->id,
-                    'id_cotacao' => $fornecedor->id_cotacao,
-                    'id_usuario_cadastrou' => auth()->user()->id,
-                ];
-            });
             DB::commit();
             return redirect()->route('cotacoes.show', $cotacao->id)->with('success', 'Cotação finalizada com sucesso.');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->route('cotacoes.index')->with('danger', 'Não foi possível finalizar a Cotação.');
+        }
+    }
+
+    private function geraFornecedorVencedor(Cotacao $cotacao)
+    {
+        $fornecedores = $cotacao->fornecedores;
+        $menorValor = null;
+
+        foreach ($fornecedores as $fornecedor) {
+            $valorTotal = 0;
+            foreach ($fornecedor->itens as $item) {
+                $valorTotal += $item->valor_total;
+            }
+            if (is_null($menorValor) || $valorTotal <= $menorValor) {
+                $menorValor = $valorTotal;
+                CotacaoFornecedorVencedor::updateOrCreate([
+                    'id_cotacao' => $cotacao->id,
+                    'id_fornecedor' => $fornecedor->id
+                ]);
+            }
         }
     }
 
