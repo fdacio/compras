@@ -43,6 +43,17 @@
                     </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7" class="text-right text-sm">
+                        <strong>Total:</strong>
+                    </td>
+                    <td class="text-right text-sm">
+                        <strong>
+                            {{ 'R$ ' . number_format($item->itens->sum('valor_total'), '2', ',', '.') }}
+                        </strong>
+                    </td>
+                </tr>           
         </table>
     </div>
 </div>
