@@ -24,8 +24,8 @@
                         </thead>
                         <tbody>
                             @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $fornecedorItem)
-                                {{ dd($fornecedorItem) }}
-                                @foreach ($fornecedorItem->itens as $i)
+                                
+                                @foreach (App\CotacaoFornecedorItem::where('id_cotacao_fornecedor', $fornecedorItem->id) as $i)
                                     <tr class="row-itens-cotacao">
                                         <td class="text-left text-sm">
                                             {{ $i->item }}
