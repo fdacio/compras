@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{ dd($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor))}}
+                            {{ dd($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor->itens))}}
                             @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $i)
                             {{ $i }}
                                 <tr class="row-itens-cotacao">
