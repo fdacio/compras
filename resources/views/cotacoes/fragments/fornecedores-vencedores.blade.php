@@ -52,19 +52,20 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7" class="text-right text-sm">
+                                            <strong>Total:</strong>
+                                        </td>
+                                        <td class="text-right text-sm">
+                                            <strong>
+                                                {{ 'R$ ' . number_format($i->itens->sum('valor_total'), '2', ',', '.') }}
+                                            </strong>
+                                        </td>
+                                    </tr>      
+                                </tfoot>         
+    
                             @endforeach
-                            <tfoot>
-                                <tr>
-                                    <td colspan="7" class="text-right text-sm">
-                                        <strong>Total:</strong>
-                                    </td>
-                                    <td class="text-right text-sm">
-                                        <strong>
-                                            {{ 'R$ ' . number_format($i->sum('valor_total'), '2', ',', '.') }}
-                                        </strong>
-                                    </td>
-                                </tr>      
-                            </tfoot>         
                         </tbody>
                     </table>
                 </div>
