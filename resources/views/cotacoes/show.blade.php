@@ -37,7 +37,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tabs-vencedores-tab" data-toggle="pill" href="#tabs-vencedores" role="tab"
-                        aria-controls="tabs-itens" aria-selected="false">Vencedores</a>
+                        aria-controls="tabs-itens" aria-selected="false">Vencedor</a>
                 </li>
 
             </ul>
