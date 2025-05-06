@@ -78,11 +78,8 @@
                             <td>{{ $requisicao->situacao_nome }}</td>
                             <td class="text-right text-nowrap">
 
-                                <a href="{{ route('requisicoes-compras.show', $requisicao->id) }}"
-                                    class="btn btn-info btn-sm" title="Visualizar Requisição"><i class="fa fa-eye"></i></a>
-
                                 <a href="{{ route('requisicoes-compras.cotacao.show', $requisicao->id) }}"
-                                    class="btn btn-warning btn-sm" title="Visualizar Cotação"><i class="fa fa-eye"></i></a>
+                                    class="btn btn-info btn-sm" title="Visualizar Cotação"><i class="fa fa-eye"></i></a>
     
 
                                 @if ($requisicoes->total() > 0)
