@@ -156,7 +156,7 @@
                 ]) !!}
                 {!! Form::close() !!}
             </div>
-            <a class="btn btn-danger" href="{{ route()->back() }}">Voltar</a>
+            <a class="btn btn-danger" href="{{ url()->previous() }}">Voltar</a>
         </div>
     </div>
 @endsection
