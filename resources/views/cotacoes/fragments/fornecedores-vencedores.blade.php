@@ -24,31 +24,30 @@
                         </thead>
                         <tbody>
                             @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $i)
-                            {{ $i->itens }}
                                 <tr class="row-itens-cotacao">
                                     <td class="text-left text-sm">
-                                        {{ $i->item }}
+                                        {{ $i->itens->item }}
                                     </td>
                                     <td class="text-left text-sm">
-                                        {{ $i->descricao }}
+                                        {{ $i->itens->descricao }}
                                     </td>
                                     <td class="text-left text-sm">                            
-                                        {{ $i->unidade }}
+                                        {{ $i->itens->unidade }}
                                     </td>
                                     <td class="text-right text-sm">                            
-                                        {{ $i->quantidade_solicitada }}
+                                        {{ $i->itens->quantidade_solicitada }}
                                     </td>
                                     <td class="text-right text-sm">
-                                        {{ $i->quantidade_cotada }}
+                                        {{ $i->itens->quantidade_cotada }}
                                     </td>
                                     <td class="text-right text-sm">
-                                        {{ $i->quantidade_atendida }}
+                                        {{ $i->itens->quantidade_atendida }}
                                     </td>
                                     <td class="text-right text-sm">
-                                        {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.')  }}
+                                        {{ 'R$ ' . number_format($i->itens->valor_unitario, '2', ',', '.')  }}
                                     </td>
                                     <td class="text-right text-sm">
-                                        {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
+                                        {{ 'R$ ' . number_format($i->itens->valor_total, '2', ',', '.') }}
                                     </td>
                                 </tr>
                             @endforeach
