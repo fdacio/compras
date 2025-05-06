@@ -38,10 +38,6 @@ class RequisicaoCompra extends Model
             'value' => self::SITUACAO_PENDENTE
         ],
         [
-            'label' => 'Autorizada',
-            'value' => self::SITUACAO_AUTORIZADA
-        ],
-        [
             'label' => 'Cancelada',
             'value' => self::SITUACAO_CANCELADA
         ],
@@ -55,7 +51,11 @@ class RequisicaoCompra extends Model
         ],
         [
             'label' => 'Aguardando Autorização',
-            'value' => self::SITUACAO_AGUARDANDO_AUTORIZACAO
+            'value' => self::SITUACAO_AGUARDANDO_AUTORIZACAO //Ainda sem aplicação
+        ],
+        [
+            'label' => 'Autorizada',
+            'value' => self::SITUACAO_AUTORIZADA
         ],
     ];
 
