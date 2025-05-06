@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor)->itens as $i)
+                            @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor)->itens() as $i)
                             {{ $i }}
                                 <tr class="row-itens-cotacao">
                                     <td class="text-left text-sm">
