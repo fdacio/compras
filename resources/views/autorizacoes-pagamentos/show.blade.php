@@ -44,7 +44,7 @@
                         <tr>
                             <th>Contrato:</th>
                             <td>{{ $autorizacao->empresa->pessoa->nome_razao_social }}</td>
-                        </tr>                        
+                        </tr>
                         <tr>
                             <th class="col-md-3">Centro de Custo:</th>
                             <td>{{ $autorizacao->centroCusto->nome }}</td>
@@ -105,7 +105,7 @@
                         </tr>
                         <tr>
                             <th>Usuário que Cadastrou:</th>
-                            <td>{{ ($autorizacao->usuarioCadastrou) ? $autorizacao->usuarioCadastrou->name : ""}}</td>
+                            <td>{{ $autorizacao->usuarioCadastrou ? $autorizacao->usuarioCadastrou->name : '' }}</td>
                         </tr>
                         <tr>
                             <th>Criado:</th>
@@ -113,7 +113,7 @@
                         </tr>
                         <tr>
                             <th>Usuário que Alterou:</th>
-                            <td>{{ ($autorizacao->usuarioAlterou) ? $autorizacao->usuarioAlterou->name : ""}}</td>
+                            <td>{{ $autorizacao->usuarioAlterou ? $autorizacao->usuarioAlterou->name : '' }}</td>
                         </tr>
                         <tr>
                             <th>Alterado:</th>
@@ -222,9 +222,9 @@
         <div class="card-footer">
             <a href="{{ route('autorizacoes-pagamentos.edit', $autorizacao->id) }}" class="btn btn-primary"
                 title="Editar">Editar</a>
-            <a class="btn btn-danger" href="{{ route('autorizacoes-pagamentos.index') }}">Voltar</a>
             <a href="{{ route('autorizacoes-pagamentos.gera.pdf', $autorizacao->id) }}" class="btn btn-success"
                 title="download" target="_blank">Demonstrativo</a>
+            <a class="btn btn-danger" href="{{ route('autorizacoes-pagamentos.index') }}">Voltar</a>
         </div>
     </div>
 @endsection
