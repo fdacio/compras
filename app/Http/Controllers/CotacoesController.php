@@ -183,7 +183,6 @@ class CotacoesController extends Controller
                     'valor_unitario' => $valorUnitario,
                     'valor_total' => $quantidadeAtendida * $valorUnitario,
                 ]);
-
             }
             DB::commit();
             return redirect()->route('cotacoes.edit', $cotacao->id)->with('success', 'Valores do fornecedor informados com sucesso.');
@@ -210,7 +209,7 @@ class CotacoesController extends Controller
         if ($cotacao->fornecedores->count() == 0) {
             return redirect()->back()->with('danger', 'Não é possível finalizar Cotação sem Fornecedor.');
         }
-        
+
         if ($cotacao->fornecedores->count() < 2) {
             return redirect()->back()->with('danger', 'Não é possível finalizar Cotação com menos de 2 Fornecedores.');
         }
@@ -243,19 +242,35 @@ class CotacoesController extends Controller
     {
         $fornecedores = $cotacao->fornecedores;
         $menorValor = null;
-
+        $listaFornecedoresCandidatos = [];
         foreach ($fornecedores as $fornecedor) {
             $valorTotal = 0;
             foreach ($fornecedor->itens as $item) {
                 $valorTotal += $item->valor_total;
             }
-            if (is_null($menorValor) || $valorTotal <= $menorValor) {
-                $menorValor = $valorTotal;
-                CotacaoFornecedorVencedor::updateOrCreate([
-                    'id_cotacao' => $cotacao->id,
-                    'id_fornecedor' => $fornecedor->id_fornecedor,
-                ]);
+            $listaFornecedoresCandidatos[] = [
+                'id_fornecedor' => $fornecedor->id_fornecedor,
+                'valor_total' => $valorTotal,
+            ];
+        }
+
+        $menorValor = collect($listaFornecedoresCandidatos)->sortBy('valor_total')->first();
+        $vencedores = [];
+        foreach ($listaFornecedoresCandidatos as $key => $fornecedorCandidato) {
+            if ($fornecedorCandidato['valor_total'] == $menorValor->valor_total) {
+                $vencedores[] = [
+                    'id_fornecedor' => $fornecedorCandidato['id_fornecedor'],
+                    'valor_total' => $fornecedorCandidato['valor_total'],
+                ];
             }
+        
+        }
+        foreach ($vencedores as $key => $vencedor) {
+            $fornecedor = $vencedor['id_fornecedor'];
+            CotacaoFornecedorVencedor::updateOrCreate([
+                'id_cotacao' => $cotacao->id,
+                'id_fornecedor' => $fornecedor,
+            ]);
         }
     }
 
@@ -265,5 +280,4 @@ class CotacoesController extends Controller
         $demo->setContent($cotacao);
         $demo->download();
     }
-
 }
