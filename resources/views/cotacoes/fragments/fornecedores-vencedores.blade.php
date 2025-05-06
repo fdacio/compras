@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                             @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $i)
-                                {{ dd($i) }}
+                            {{ dd("item", $i) }}
                                 <tr class="row-itens-cotacao">
                                     <td class="text-left text-sm">
                                         {{ $i->item }}
