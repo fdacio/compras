@@ -24,13 +24,7 @@
                         </thead>
                         <tbody>
                             @foreach ($cotacao->fornecedores->where('id_fornecedor', $fornecedor->id_fornecedor) as $fornecedorItem)
-                                {{-- {{ dd("fornecedor", $fornecedorItem) }} --}}
                                 @foreach ($fornecedorItem->itens as $i)
-                                    {{-- {{ dd("item", $i) }} --}}
-                                    {{-- {{ dd("item", $i->itens) }} --}}
-                                    {{-- {{ dd("item", $i->id_item) }} --}}
-
-                                    {{ dd('item', $i) }}
                                     <tr class="row-itens-cotacao">
                                         <td class="text-left text-sm">
                                             {{ $i->item }}
@@ -59,7 +53,7 @@
                                     </tr>
                                 @endforeach
                             @endforeach
-                            {{-- <tfoot>
+                            <tfoot>
                                 <tr>
                                     <td colspan="7" class="text-right text-sm">
                                         <strong>Total:</strong>
@@ -70,7 +64,7 @@
                                         </strong>
                                     </td>
                                 </tr>      
-                            </tfoot>          --}}
+                            </tfoot>         
                         </tbody>
                     </table>
                 </div>
