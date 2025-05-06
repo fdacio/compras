@@ -60,7 +60,7 @@ class CotacoesController extends Controller
     public function edit(Cotacao $cotacao)
     {
         if ($cotacao->finalizada) {
-            return redirect()->route('cotacoes.index')->with('danger', 'Não é possível editar uma Cotação já finalizada.');
+            return redirect()->back()->with('danger', 'Não é possível editar uma Cotação já finalizada.');
         }
         $fornecedores = Fornecedor::get()->map(function ($fornecedor) {
             return ['id' => $fornecedor->id, 'nome_razao_social' => $fornecedor->pessoa->nome_razao_social];
