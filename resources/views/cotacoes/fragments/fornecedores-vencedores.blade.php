@@ -60,7 +60,7 @@
                                         </td>
                                         <td class="text-right text-sm">
                                             <strong>
-                                                {{ 'R$ ' . number_format($i->sum('valor_total'), '2', ',', '.') }}
+                                                {{ 'R$ ' . number_format($fornecedorItem->itens->sum('valor_total'), '2', ',', '.') }}
                                             </strong>
                                         </td>
                                     </tr>      
