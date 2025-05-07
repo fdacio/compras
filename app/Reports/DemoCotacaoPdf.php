@@ -51,5 +51,30 @@ class DemoCotacaoPdf extends ReportPdf
         $this->Cell(80, 5, utf8_decode(($cotacao->finaliza) ? "Sim" : "Não"), 'LBR');
         $this->Ln();
 
+        //Aqui dados da requisição
+        
+        
+        //Aqui fornecedores da cotação, quandou houver fornecedores
+        if ($cotacao->fornecedores->count() > 0) {
+
+            foreach ($cotacao->fornecedores as $fornecedor) {
+                
+                foreach ($cotacao->fornecedores->itens as $item) {
+
+                }
+            }
+
+
+        }
+
+        //Aqui fornecedore vecedor(es), quando a cotação estiver finalizada
+        if ($cotacao->finalizada) {
+
+            foreach ($cotacao->fornecedoresVencedores as $fornecedor) {
+
+            }
+        }
+
+
     }
 }

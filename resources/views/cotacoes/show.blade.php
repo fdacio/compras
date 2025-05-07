@@ -95,22 +95,22 @@
                 <div class="tab-pane fade" id="tabs-fornecedores" role="tabpanel" aria-labelledby="tabs-fornecedores-tab">
                     <div class="card">
                         <div class="card-body">
-                            @foreach ($cotacao->fornecedores as $item)
+                            @foreach ($cotacao->fornecedores as $fornecedor)
                                 <div class="card-header border-0 my-2">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
-                                            <div id="accordion-itens-{{ $item->id }}" class="accordion">
+                                            <div id="accordion-itens-{{ $fornecedor->id }}" class="accordion">
                                                 <a class="card-link" data-toggle="collapse"
-                                                    href="#itens-{{ $item->id }}">
-                                                    {{ $item->fornecedor->pessoa->nome_razao_social }}
+                                                    href="#itens-{{ $fornecedor->id }}">
+                                                    {{ $fornecedor->fornecedor->pessoa->nome_razao_social }}
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div id="itens-{{ $item->id }}" class="collapse hide"
-                                    data-parent="#accordion-itens-{{ $item->id }}">
+                                <div id="itens-{{ $fornecedor->id }}" class="collapse hide"
+                                    data-parent="#accordion-itens-{{ $fornecedor->id }}">
 
                                     @include('cotacoes.fragments.itens-fornecedor-show')
 

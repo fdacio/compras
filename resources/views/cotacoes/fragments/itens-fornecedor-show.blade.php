@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($item->itens as $i)
+                @foreach ($fornecedor->itens as $i)
                     <tr class="row-itens-cotacao">
                         <td class="text-left text-sm">
                             {{ $i->item }}
@@ -22,10 +22,10 @@
                         <td class="text-left text-sm">
                             {{ $i->descricao }}
                         </td>
-                        <td class="text-left text-sm">                            
+                        <td class="text-left text-sm">
                             {{ $i->unidade }}
                         </td>
-                        <td class="text-right text-sm">                            
+                        <td class="text-right text-sm">
                             {{ $i->quantidade_solicitada }}
                         </td>
                         <td class="text-right text-sm">
@@ -35,7 +35,7 @@
                             {{ $i->quantidade_atendida }}
                         </td>
                         <td class="text-right text-sm">
-                            {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.')  }}
+                            {{ 'R$ ' . number_format($i->valor_unitario, '2', ',', '.') }}
                         </td>
                         <td class="text-right text-sm">
                             {{ 'R$ ' . number_format($i->valor_total, '2', ',', '.') }}
@@ -53,7 +53,7 @@
                             {{ 'R$ ' . number_format($item->itens->sum('valor_total'), '2', ',', '.') }}
                         </strong>
                     </td>
-                </tr>           
+                </tr>
         </table>
     </div>
 </div>
