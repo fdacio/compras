@@ -54,7 +54,7 @@
     <tr>
         <th class="col-md-3">Observação:</th>
         <td>
-            <p style="white-space: pre-wrap">{{ $cotacao->requisicao->obsrvacao }}</p>
+            <p style="white-space: pre-wrap">{{ $cotacao->requisicao->observacao }}</p>
         </td>
     </tr>
     <tr>
